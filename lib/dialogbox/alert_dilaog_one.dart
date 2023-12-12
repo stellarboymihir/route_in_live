@@ -13,11 +13,7 @@ class AlertDialogOne extends StatelessWidget {
       title: const Text(
         '\‘One Q Live’ on camera \n'
         'I\'m trying to approach.',
-        style: TextStyle(
-          fontFamily: 'NotoSansKR',
-          fontSize: 17,
-          fontWeight: FontWeight.w500,
-        ),
+        style: MyStyle.tx17B,
         textAlign: TextAlign.center,
       ),
       content: const Column(
@@ -25,11 +21,7 @@ class AlertDialogOne extends StatelessWidget {
         children: [
           Text(
             'You can take photos and videos.',
-            style: TextStyle(
-              fontFamily: 'NotoSansKR',
-              fontSize: 13,
-              fontWeight: FontWeight.w400,
-            ),
+            style: MyStyle.tx13B,
             textAlign: TextAlign.center,
           ),
         ],
@@ -45,12 +37,6 @@ class AlertDialogOne extends StatelessWidget {
         ),
         Row(
           children: [
-            // const VerticalDivider(
-            //   thickness: 1,
-            //   indent: 0,
-            //   endIndent: 0,
-            //   color: Colors.grey,
-            // ),
             Expanded(
               child: TextButton(
                 onPressed: () {
@@ -59,12 +45,9 @@ class AlertDialogOne extends StatelessWidget {
                       builder: (BuildContext context) =>
                           const AlertDialogTwo());
                 },
-                child: Text(
+                child: const Text(
                   'Not Allowed',
-                  style: MyStyle.Tx14.copyWith(
-                    color: MyColor.lred,
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: MyStyle.tx17N,
                 ),
               ),
             ),
@@ -86,12 +69,9 @@ class AlertDialogOne extends StatelessWidget {
                       builder: (BuildContext context) =>
                           const AlertDialogTwo());
                 },
-                child: Text(
+                child: const Text(
                   'Permit',
-                  style: MyStyle.Tx14.copyWith(
-                    color: MyColor.iosblue,
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: MyStyle.tx17P,
                 ),
               ),
             ),

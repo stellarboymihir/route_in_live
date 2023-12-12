@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:route_in_live/authentication/login_page.dart';
-
-import '../values/MyColor.dart';
 import '../values/MyStyle.dart';
 
 class AlertDialogThree extends StatelessWidget {
@@ -13,11 +11,7 @@ class AlertDialogThree extends StatelessWidget {
       title: const Text(
         'Notifications from \‘OneQ Live\' \n'
         'I would like to send',
-        style: TextStyle(
-          fontFamily: 'NotoSansKR',
-          fontSize: 17,
-          fontWeight: FontWeight.w500,
-        ),
+        style: MyStyle.tx17B,
         textAlign: TextAlign.center,
       ),
       content: const Column(
@@ -27,11 +21,7 @@ class AlertDialogThree extends StatelessWidget {
             'Alerts, sounds and icon placement\n'
             'It can be included in notifications.\n'
             'You can configure this in settings.',
-            style: TextStyle(
-              fontFamily: 'NotoSansKR',
-              fontSize: 13,
-              fontWeight: FontWeight.w400,
-            ),
+            style: MyStyle.tx13B,
             textAlign: TextAlign.center,
           ),
         ],
@@ -55,12 +45,9 @@ class AlertDialogThree extends StatelessWidget {
                     builder: (BuildContext context) => const LoginPage(),
                   );
                 },
-                child: Text(
+                child: const Text(
                   'Not Allowed',
-                  style: MyStyle.Tx14.copyWith(
-                    color: MyColor.lred,
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: MyStyle.tx17N,
                 ),
               ),
             ),
@@ -81,12 +68,9 @@ class AlertDialogThree extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) => const LoginPage());
                 },
-                child: Text(
+                child: const Text(
                   'Permit',
-                  style: MyStyle.Tx14.copyWith(
-                    color: MyColor.iosblue,
-                    fontWeight: FontWeight.w400,
-                  ),
+                  style: MyStyle.tx17P,
                 ),
               ),
             ),
