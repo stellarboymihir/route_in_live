@@ -14,19 +14,20 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 153),
-            child: Center(
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 100),
               child: Image.asset('assets/images/logo.png'),
             ),
           ),
-          // const SizedBox(
-          //   width: 10,
-          //   height: 40,
-          // ),
+          const SizedBox(
+            height: 60,
+          ),
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 1.0),
+            padding: EdgeInsets.only(left: 20.0),
             child: Text(
               'ID',
               style: TextStyle(
@@ -37,45 +38,64 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
             child: TextField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'ID',
+              style: const TextStyle(),
+              decoration: InputDecoration(
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: MyColor.orange,
+                  ),
+                ),
                 hintText: 'Please enter your email.',
+                hintStyle: TextStyle(
+                  color: MyColor.orange.withOpacity(0.3),
+                ),
               ),
               controller: TextEditingController(),
               keyboardType: TextInputType.emailAddress,
             ),
           ),
-
-          const Text(
-            'Password',
-            textAlign: TextAlign.left,
-            style: TextStyle(
-              color: MyColor.orange,
-              fontWeight: FontWeight.w400,
-              fontSize: 13.0,
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+            child: Text(
+              'Password',
+              style: TextStyle(
+                color: MyColor.orange,
+                fontWeight: FontWeight.w400,
+                fontSize: 13.0,
+              ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(20.0),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0, right: 20.0),
             child: TextField(
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Password',
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: MyColor.orange,
+                  ),
+                ),
+                border: const OutlineInputBorder(),
                 hintText: 'Please enter a password.',
+                hintStyle: TextStyle(
+                  color: MyColor.orange.withOpacity(0.3),
+                ),
               ),
               obscureText: true,
             ),
           ),
-          SizedBox(
-            height: 40,
-            width: 304,
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 20.0,
+              right: 20.0,
+              top: 20,
+            ),
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                  backgroundColor: MyColor.orange,
+                  fixedSize: const Size(304, 44),
+                  backgroundColor: MyColor.orange.withOpacity(0.3),
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                   )),
@@ -89,16 +109,21 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-
-          const Text(
-            'Forgot ID/Password?',
-            style: TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.w400,
-              color: MyColor.black,
+          const SizedBox(
+            height: 2.0,
+          ),
+          const Align(
+            alignment: Alignment.center,
+            child: Text(
+              'Forgot ID/Password?',
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w400,
+                color: MyColor.black,
+              ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -108,12 +133,18 @@ class _LoginPageState extends State<LoginPage> {
               Image.asset('assets/images/apple.png'),
             ],
           ),
-          const Text(
-            'Do you need general membership registration?',
-            style: TextStyle(
-              fontSize: 10,
-              fontWeight: FontWeight.w400,
-              color: MyColor.black,
+          const SizedBox(
+            height: 2.0,
+          ),
+          const Align(
+            alignment: Alignment.center,
+            child: Text(
+              'Do you need general membership registration?',
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.w400,
+                color: MyColor.black,
+              ),
             ),
           ),
         ],
