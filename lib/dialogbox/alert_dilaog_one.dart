@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../values/MyColor.dart';
 import '../values/MyStyle.dart';
 import 'alert_dialog_two.dart';
 
@@ -10,27 +8,32 @@ class AlertDialogOne extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      titlePadding: const EdgeInsets.only(top: 20),
       title: const Text(
         '\‘One Q Live’ on camera \n'
         'I\'m trying to approach.',
         style: MyStyle.tx17B,
         textAlign: TextAlign.center,
       ),
-      content: const Column(
+      content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             'You can take photos and videos.',
-            style: MyStyle.tx13B,
+            style: MyStyle.tx13B.copyWith(fontSize: 12),
             textAlign: TextAlign.center,
           ),
         ],
       ),
-      actionsPadding: const EdgeInsets.only(bottom: 10),
+      contentPadding: const EdgeInsets.only(top: 5, bottom: 20),
+      actionsPadding: const EdgeInsets.all(0),
       actions: [
         const Divider(
-          height: 10,
-          thickness: 1,
+          height: 0,
+          thickness: 0,
           indent: 0,
           endIndent: 0,
           color: Colors.grey,
@@ -45,17 +48,17 @@ class AlertDialogOne extends StatelessWidget {
                       builder: (BuildContext context) =>
                           const AlertDialogTwo());
                 },
-                child: const Text(
+                child: Text(
                   'Not Allowed',
-                  style: MyStyle.tx17N,
+                  style: MyStyle.tx17N.copyWith(fontSize: 15),
                 ),
               ),
             ),
             const SizedBox(
               height: 44,
               child: VerticalDivider(
-                width: 27,
-                thickness: 1,
+                width: 0,
+                thickness: 0,
                 indent: 0,
                 endIndent: 0,
                 color: Colors.grey,
@@ -69,9 +72,9 @@ class AlertDialogOne extends StatelessWidget {
                       builder: (BuildContext context) =>
                           const AlertDialogTwo());
                 },
-                child: const Text(
+                child: Text(
                   'Permit',
-                  style: MyStyle.tx17P,
+                  style: MyStyle.tx17P.copyWith(fontSize: 15),
                 ),
               ),
             ),

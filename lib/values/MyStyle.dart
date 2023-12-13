@@ -11,7 +11,7 @@ class MyStyle {
   );
   static const tx12O = TextStyle(
     fontSize: 12,
-    fontFamily: 'NotoSansKR-Medium',
+    fontFamily: 'NotoSansKR',
     fontWeight: FontWeight.w300,
     color: MyColor.orange,
   );
@@ -45,11 +45,17 @@ class MyStyle {
     fontWeight: FontWeight.w400,
     color: MyColor.orange,
   );
+  static const tx14OB = TextStyle(
+    fontSize: 14,
+    fontFamily: 'NotoSansKR-SemiBold',
+    fontWeight: FontWeight.w400,
+    color: MyColor.orange,
+  );
   static TextStyle tx14OP = TextStyle(
     fontSize: 14,
-    fontFamily: 'NotoSansKR-Medium',
+    fontFamily: 'NotoSansKR',
     fontWeight: FontWeight.w400,
-    color: MyColor.orange.withOpacity(0.3),
+    color: MyColor.orange.withOpacity(0.2),
   );
   static const tx14W = TextStyle(
     fontSize: 14,
@@ -64,12 +70,12 @@ class MyStyle {
       color: Colors.black);
   static const tx17N = TextStyle(
       fontSize: 17,
-      fontFamily: 'NotoSansKR-SemiBold',
+      fontFamily: 'NotoSansKR-Medium',
       fontWeight: FontWeight.w500,
       color: MyColor.lred);
   static const tx17P = TextStyle(
       fontSize: 17,
-      fontFamily: 'NotoSansKR-SemiBold',
+      fontFamily: 'NotoSansKR-Medium',
       fontWeight: FontWeight.w500,
       color: MyColor.iosblue);
 

@@ -8,29 +8,34 @@ class AlertDialogThree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      titlePadding: const EdgeInsets.only(top: 20),
+      title: Text(
         'Notifications from \‘OneQ Live\' \n'
         'I would like to send',
-        style: MyStyle.tx17B,
+        style: MyStyle.tx17B.copyWith(fontSize: 15),
         textAlign: TextAlign.center,
       ),
-      content: const Column(
+      content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
             'Alerts, sounds and icon placement\n'
             'It can be included in notifications.\n'
             'You can configure this in settings.',
-            style: MyStyle.tx13B,
+            style: MyStyle.tx13B.copyWith(fontSize: 12),
             textAlign: TextAlign.center,
           ),
         ],
       ),
-      actionsPadding: const EdgeInsets.only(bottom: 10),
+      contentPadding: const EdgeInsets.only(top: 5, bottom: 20),
+      actionsPadding: const EdgeInsets.only(bottom: 0),
       actions: [
         const Divider(
-          height: 10,
-          thickness: 1,
+          height: 0,
+          thickness: 0,
           indent: 0,
           endIndent: 0,
           color: Colors.grey,
@@ -45,17 +50,17 @@ class AlertDialogThree extends StatelessWidget {
                     builder: (BuildContext context) => const LoginPage(),
                   );
                 },
-                child: const Text(
+                child: Text(
                   'Not Allowed',
-                  style: MyStyle.tx17N,
+                  style: MyStyle.tx17N.copyWith(fontSize: 15),
                 ),
               ),
             ),
             const SizedBox(
               height: 44,
               child: VerticalDivider(
-                width: 27,
-                thickness: 1,
+                width: 0,
+                thickness: 0,
                 indent: 0,
                 endIndent: 0,
                 color: Colors.grey,
@@ -68,9 +73,9 @@ class AlertDialogThree extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) => const LoginPage());
                 },
-                child: const Text(
+                child: Text(
                   'Permit',
-                  style: MyStyle.tx17P,
+                  style: MyStyle.tx17P.copyWith(fontSize: 15),
                 ),
               ),
             ),

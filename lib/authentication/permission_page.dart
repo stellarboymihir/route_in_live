@@ -13,10 +13,12 @@ class PermissionPage extends StatefulWidget {
 class _PermissionPageState extends State<PermissionPage> {
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 40),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,119 +26,121 @@ class _PermissionPageState extends State<PermissionPage> {
                 const SizedBox(
                   height: 45,
                 ),
-                RichText(
-                  text: const TextSpan(
-                    text: 'App access permission guide',
-                    style: MyStyle.tx24,
-                  ),
+                Text(
+                  'App access permission guide',
+                  style: MyStyle.tx24.copyWith(fontSize: 22),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 8.0),
-                  child: Text(
-                    'To use OneQ Live, follow the steps below. \nYou are using selective access rights.',
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: MyStyle.tx12B,
-                  ),
+                const SizedBox(
+                  height: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: MyColor.orange),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
+                const Text(
+                  'To use OneQ Live, follow the steps below. \nYou are using selective access rights.',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: MyStyle.tx12B,
+                ),
+                const SizedBox(
+                  height: 35,
+                ),
+                Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: MyColor.orange),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
+                          Image.asset('assets/images/Camera.png'),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Image.asset('assets/images/Camera.png'),
-                                const SizedBox(
-                                  width: 5,
+                                const Text(
+                                  'Camera',
+                                  style: MyStyle.tx14OB,
                                 ),
-                                const Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        'Camera',
-                                        style: MyStyle.tx14O,
-                                      ),
-                                      Text(
-                                        'Profile picture settings',
-                                        style: MyStyle.tx12O,
-                                      ),
-                                    ],
-                                  ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  'Profile picture settings',
+                                  style: MyStyle.tx12O
+                                      .copyWith(letterSpacing: 1.5),
                                 ),
                               ],
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Image.asset('assets/images/Folder.png'),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                const Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text('Photos / Media / Files',
-                                          style: MyStyle.tx14O),
-                                      Text(
-                                        'Utilization to register photos and videos',
-                                        style: MyStyle.tx12O,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset('assets/images/Alert.png'),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              const Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Notification (optional)',
-                                      style: MyStyle.tx14O,
-                                    ),
-                                    Text(
-                                        'Receive notification messages such as service changes and events',
-                                        style: MyStyle.tx12O),
-                                  ],
-                                ),
-                              ),
-                            ],
                           ),
                         ],
                       ),
-                    ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset('assets/images/Folder.png'),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text('Photos / Media / Files',
+                                    style: MyStyle.tx14OB),
+                                const SizedBox(height: 5),
+                                Text(
+                                  'Utilization to register photos and videos',
+                                  style: MyStyle.tx12O
+                                      .copyWith(letterSpacing: 1.5),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset('assets/images/Alert.png'),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Notification (optional)',
+                                  style: MyStyle.tx14OB,
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  'Receive notification messages such as service changes and events',
+                                  style: MyStyle.tx12O
+                                      .copyWith(letterSpacing: 1.5),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
                 Opacity(
-                  opacity: 0.3,
+                  opacity: 0.5,
                   child: Text(
                     '* How to change access rights ',
                     style: MyStyle.tx12OP,
@@ -153,47 +157,33 @@ class _PermissionPageState extends State<PermissionPage> {
                   height: 2,
                 ),
                 Opacity(
-                  opacity: 0.3,
+                  opacity: 0.5,
                   child: Text(
                     '* If the permission is denied, the function works normally It may not work. \n'
                     '* After denying, you can allow it again in the settings.',
                     style: MyStyle.tx12OP,
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: height * 0.1,
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 40.0, horizontal: 5),
+                InkWell(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) =>
+                            const AlertDialogOne());
+                  },
                   child: Container(
+                    alignment: Alignment.center,
+                    height: 44,
                     width: double.infinity,
                     decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          MyColor.dorange,
-                          MyColor.lorange,
-                          MyColor.yellow,
-                        ],
-                      ),
+                      gradient: MyColor.orangeGrad,
                     ),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                      ),
-                      onPressed: () {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) =>
-                                const AlertDialogOne());
-                      },
-                      child: const Text(
-                        'Confirm',
-                        style: MyStyle.tx14W,
-                      ),
-
-                      // ),
+                    child: const Text(
+                      'Confirm',
+                      style: MyStyle.tx14W,
                     ),
                   ),
                 ),

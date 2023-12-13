@@ -21,16 +21,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 100),
-                child: Image.asset('assets/images/logo.png'),
-              ),
+              child: Image.asset('assets/images/logo.png'),
             ),
             const SizedBox(
               height: 60,
@@ -41,6 +38,9 @@ class _LoginPageState extends State<LoginPage> {
                 'ID',
                 style: MyStyle.tx13O,
               ),
+            ),
+            const SizedBox(
+              height: 5,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
@@ -72,11 +72,14 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+              padding: EdgeInsets.only(left: 20.0),
               child: Text(
                 'Password',
                 style: MyStyle.tx13O,
               ),
+            ),
+            const SizedBox(
+              height: 5,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
@@ -118,7 +121,6 @@ class _LoginPageState extends State<LoginPage> {
                       passwordController.text.isNotEmpty) {}
                 },
                 style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(304, 44),
                     backgroundColor: (emailController.text.isNotEmpty &&
                             passwordController.text.isNotEmpty)
                         ? MyColor.orangeO
@@ -133,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(
-              height: 2.0,
+              height: 5.0,
             ),
             const Align(
               alignment: Alignment.center,
@@ -142,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                 style: MyStyle.tx10,
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -153,7 +155,7 @@ class _LoginPageState extends State<LoginPage> {
               ],
             ),
             const SizedBox(
-              height: 2.0,
+              height: 5.0,
             ),
             const Align(
               alignment: Alignment.center,
