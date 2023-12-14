@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:route_in_live/bottomsheet/modalSheet.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
@@ -13,10 +14,11 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   //
-  Color emailBorderColor = MyColor.orangeO;
-  Color passwordBorderColor = MyColor.orangeO;
-  Color emailHintColor = MyColor.orangeO;
-  Color passwordHintColor = MyColor.orangeO;
+  // Color emailBorderColor = MyColor.orangeO;
+  // Color
+  // = MyColor.orangeO;
+  // Color emailHintColor = MyColor.orangeO;
+  // Color passwordHintColor = MyColor.orangeO;
 
   final _formKey = GlobalKey<FormState>();
 
@@ -24,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(vertical: 80),
         child: Form(
           key: _formKey,
           child: Column(
@@ -58,25 +61,25 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: emailBorderColor,
+                        color: MyColor.orangeO,
                       ),
                     ),
                     border: const OutlineInputBorder(),
                     hintText: 'Please enter your email.',
                     hintStyle: TextStyle(
-                      color: emailHintColor,
+                      color: MyColor.orangeO,
                     ),
                   ),
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   onChanged: (value) {
                     setState(() {
-                      emailBorderColor = (value.isEmpty
-                          ? MyStyle.tx14OP
-                          : MyStyle.tx14O) as Color;
-                      emailHintColor = (value.isEmpty
-                          ? MyStyle.tx14OP
-                          : MyStyle.tx14O) as Color;
+                      // emailBorderColor = (value.isEmpty
+                      //     ? MyStyle.tx14OP
+                      //     : MyStyle.tx14O) as Color;
+                      // emailHintColor = (value.isEmpty
+                      //     ? MyStyle.tx14OP
+                      //     : MyStyle.tx14O) as Color;
                     });
                   },
                 ),
@@ -103,24 +106,24 @@ class _LoginPageState extends State<LoginPage> {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                        color: passwordBorderColor,
+                        color: MyColor.orangeO,
                       ),
                     ),
                     border: const OutlineInputBorder(),
                     hintText: 'Please enter a password.',
                     hintStyle: TextStyle(
-                      color: passwordHintColor,
+                      color: MyColor.orangeO,
                     ),
                   ),
                   controller: passwordController,
                   onChanged: (value) {
                     setState(() {
-                      passwordBorderColor = (value.isEmpty
-                          ? MyStyle.tx14OP
-                          : MyStyle.tx14O) as Color;
-                      passwordHintColor = (value.isEmpty
-                          ? MyStyle.tx14OP
-                          : MyStyle.tx14O) as Color;
+                      // passwordBorderColor = (value.isEmpty
+                      //     ? MyStyle.tx14OP
+                      //     : MyStyle.tx14O) as Color;
+                      // passwordHintColor = (value.isEmpty
+                      //     ? MyStyle.tx14OP
+                      //     : MyStyle.tx14O) as Color;
                     });
                   },
                 ),
@@ -163,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Container(
                     height: 40,
                     width: 320,
-                    decoration: (emailController.text.isNotEmpty ||
+                    decoration: (emailController.text.isNotEmpty &&
                             passwordController.text.isNotEmpty)
                         ? const BoxDecoration(gradient: MyColor.orangeGrad)
                         : BoxDecoration(gradient: MyColor.inOrangeGrad),
@@ -190,9 +193,35 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset('assets/images/kakao.png'),
-                  Image.asset('assets/images/naver.png'),
-                  Image.asset('assets/images/google.png'),
+                  // Modal Sheet for Kakoo
+                  InkWell(
+                    onTap: () {
+                      bottomSheet1();
+                    },
+                    child: Image.asset(
+                      'assets/images/kakao.png',
+                    ),
+                  ),
+
+                  //Modal Sheet for Naver
+                  InkWell(
+                    onTap: () {
+                      bottomSheet2();
+                    },
+                    child: Image.asset(
+                      'assets/images/naver.png',
+                    ),
+                  ),
+
+                  //Modal Sheet for Google
+                  InkWell(
+                    onTap: () {
+                      bottomSheet3();
+                    },
+                    child: Image.asset(
+                      'assets/images/google.png',
+                    ),
+                  ),
                   Image.asset('assets/images/apple.png'),
                 ],
               ),
@@ -211,5 +240,214 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  void bottomSheet1() {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (BuildContext context) {
+          return Column(
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                height: 185,
+              ),
+              Text(
+                'Login',
+                style: MyStyle.tx18.copyWith(fontSize: 17, letterSpacing: 0.15),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                height: 40,
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: MyColor.yellow,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      )),
+                  child: Text(
+                    'Kakao Talk simple login',
+                    style: MyStyle.tx14Blk,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 7,
+              ),
+              SizedBox(
+                height: 40,
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: MyColor.yellow,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                  child: Text(
+                    'Log in with a different Kakao account',
+                    style: MyStyle.tx14BlkM,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              IconButton(
+                color: Colors.white,
+                icon: const Icon(Icons.cancel_outlined),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        });
+  }
+
+  void bottomSheet2() {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (BuildContext context) {
+          return Column(
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                height: 185,
+              ),
+              Text(
+                'Login',
+                style: MyStyle.tx18.copyWith(fontSize: 17, letterSpacing: 0.15),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                height: 40,
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: MyColor.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      )),
+                  child: Text(
+                    'Naver\'s simple login',
+                    style: MyStyle.tx14Blk.copyWith(color: Colors.white),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 7,
+              ),
+              SizedBox(
+                height: 40,
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: MyColor.green,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                  child: Text(
+                    'Log in with a different NAVER account',
+                    style: MyStyle.tx14BlkM
+                        .copyWith(color: Colors.white, fontSize: 13),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              IconButton(
+                color: Colors.white,
+                icon: const Icon(Icons.cancel_outlined),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        });
+  }
+
+  void bottomSheet3() {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (BuildContext context) {
+          return Column(
+            // mainAxisSize: MainAxisSize.min,
+            children: [
+              const SizedBox(
+                height: 185,
+              ),
+              Text(
+                'Login',
+                style: MyStyle.tx18.copyWith(fontSize: 17, letterSpacing: 0.15),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                height: 40,
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: MyColor.googlered,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      )),
+                  child: Text(
+                    'Google simple login',
+                    style: MyStyle.tx14Blk.copyWith(color: Colors.white),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 7,
+              ),
+              SizedBox(
+                height: 40,
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: MyColor.googlered,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                  child: Text(
+                    'Log in with a different Google account',
+                    style: MyStyle.tx14BlkM
+                        .copyWith(color: Colors.white, fontSize: 13),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              IconButton(
+                color: Colors.white,
+                icon: const Icon(Icons.cancel_outlined),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        });
   }
 }

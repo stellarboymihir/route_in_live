@@ -4,11 +4,11 @@ import 'package:route_in_live/values/MyColor.dart';
 
 class MyStyle {
   static const tx10 = TextStyle(
-    fontSize: 10,
-    fontFamily: 'NotoSansKR-Thin',
-    fontWeight: FontWeight.w400,
-    color: MyColor.black,
-  );
+      fontSize: 10,
+      fontFamily: 'NotoSansKR-Thin',
+      fontWeight: FontWeight.w400,
+      color: MyColor.black,
+      decoration: TextDecoration.underline);
   static const tx12O = TextStyle(
     fontSize: 12,
     fontFamily: 'NotoSansKR',
@@ -63,6 +63,18 @@ class MyStyle {
     fontWeight: FontWeight.w400,
     color: Colors.white,
   );
+  static TextStyle tx14Blk = TextStyle(
+    fontSize: 14,
+    fontFamily: 'NotoSansKR-SemiBold',
+    fontWeight: FontWeight.w500,
+    color: Colors.black.withOpacity(0.8),
+  );
+  static TextStyle tx14BlkM = TextStyle(
+    fontSize: 14,
+    fontFamily: 'NotoSansKR-Medium',
+    fontWeight: FontWeight.w400,
+    color: Colors.black.withOpacity(0.8),
+  );
   static const tx17B = TextStyle(
       fontSize: 17,
       fontFamily: 'NotoSansKR-SemiBold',
@@ -78,6 +90,12 @@ class MyStyle {
       fontFamily: 'NotoSansKR-Medium',
       fontWeight: FontWeight.w500,
       color: MyColor.iosblue);
+
+  static const tx18 = TextStyle(
+      fontSize: 18,
+      fontFamily: 'NotoSansKR-Medium',
+      fontWeight: FontWeight.w700,
+      color: Colors.white);
 
   static const tx20 = TextStyle(
     fontSize: 20,

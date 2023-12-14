@@ -9,6 +9,9 @@ class MyColor {
   static const Color lred = Color(0xFFE64646);
   static const Color iosblue = Color(0xFF007AFF);
   static const Color black = Color(0xFF303030);
+  static const Color yellow = Color(0xFFFEE500);
+  static const Color green = Color(0xFF1EC800);
+  static const Color googlered = Color(0xFFE24939);
   static Color blackO = const Color(0xFF303030).withOpacity(0.3);
   static const LinearGradient orangeGrad = LinearGradient(
     colors: [
