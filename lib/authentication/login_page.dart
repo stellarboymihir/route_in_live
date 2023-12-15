@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:route_in_live/bottomsheet/modalSheet.dart';
+import 'package:route_in_live/authentication/terms_condition_page.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
@@ -228,11 +228,21 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 5.0,
               ),
-              const Align(
+              Align(
                 alignment: Alignment.center,
-                child: Text(
-                  'Do you need general membership registration?',
-                  style: MyStyle.tx10,
+                child: TextButton(
+                  // style: MyStyle.tx10,
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TermConditionPage(),
+                        ));
+                  },
+                  child: const Text(
+                    'Do you need general membership registration?',
+                    style: MyStyle.tx10,
+                  ),
                 ),
               ),
             ],

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:route_in_live/values/MyColor.dart';
 
@@ -25,8 +24,14 @@ class MyStyle {
     fontSize: 12,
     fontFamily: 'NotoSansKR-Medium',
     fontWeight: FontWeight.w400,
-    color: Colors.black,
+    color: MyColor.black,
   );
+  // static const tx12BO = TextStyle(
+  //   fontSize: 12,
+  //   fontFamily: 'NotoSansKR-Medium',
+  //   fontWeight: FontWeight.w400,
+  //   color: MyColor.black,
+  // );
   static const tx13B = TextStyle(
     fontSize: 13,
     fontFamily: 'NotoSansKR-Medium',

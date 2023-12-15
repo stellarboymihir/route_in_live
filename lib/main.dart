@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:route_in_live/rect.dart';
 
 import 'authentication/splash_screen.dart';
 
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
             .copyWith(background: Colors.white),
       ),
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      home: const Rect(),
+      // SplashScreen(),
     );
   }
 }
