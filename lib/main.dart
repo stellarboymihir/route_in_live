@@ -23,10 +23,11 @@ class MyApp extends StatelessWidget {
             .copyWith(background: Colors.white),
       ),
       debugShowCheckedModeBanner: false,
-      home: const TaskOne(),
-      // const Task(),
-      // const Rect(),
-      // SplashScreen(),
+      home:
+          // const TaskOne(),
+          // const Task(),
+          // const Rect(),
+          const SplashScreen(),
     );
   }
 }
