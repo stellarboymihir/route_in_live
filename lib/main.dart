@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:route_in_live/rect.dart';
 import 'package:route_in_live/task.dart';
+import 'package:route_in_live/taskOne.dart';
 
 import 'authentication/splash_screen.dart';
 
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
             .copyWith(background: Colors.white),
       ),
       debugShowCheckedModeBanner: false,
-      home: const Task(),
+      home: const TaskOne(),
+      // const Task(),
       // const Rect(),
       // SplashScreen(),
     );
