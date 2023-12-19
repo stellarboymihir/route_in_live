@@ -27,4 +27,10 @@ class MyColor {
     Color(0xFFE66100).withOpacity(0.3),
     Color(0xFFE66100).withOpacity(0.3)
   ]);
+
+  static LinearGradient circleOrange = const LinearGradient(colors: [
+    Color(0xFFE63100),
+    Color(0xFFEE8D03),
+    Color(0xFFF2B705),
+  ]);
 }

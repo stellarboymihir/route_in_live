@@ -30,6 +30,31 @@ class _ProfileSettingsState extends State<ProfileSettings> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Container(
+              height: 160,
+              width: 160,
+              decoration: BoxDecoration(
+                border: Border.all(
+                    // color: MyColor.circleOrange,
+                    // gradient: MyColor.circleOrange,
+                    ),
+                shape: BoxShape.circle,
+                color: Colors.orange.shade200,
+              ),
+              child: Container(
+                height: 160,
+                width: 160,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                      // color: MyColor.circleOrange,
+                      // gradient: MyColor.circleOrange,
+                      ),
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                ),
+                child: Image.asset('assets/images/colorcam.png'),
+              ),
+            ),
             // Nickname Field
             Padding(
               padding: const EdgeInsets.all(8.0),
