@@ -13,13 +13,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  //
-  // Color emailBorderColor = MyColor.orangeO;
-  // Color
-  // = MyColor.orangeO;
-  // Color emailHintColor = MyColor.orangeO;
-  // Color passwordHintColor = MyColor.orangeO;
-
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -73,14 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                   controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   onChanged: (value) {
-                    setState(() {
-                      // emailBorderColor = (value.isEmpty
-                      //     ? MyStyle.tx14OP
-                      //     : MyStyle.tx14O) as Color;
-                      // emailHintColor = (value.isEmpty
-                      //     ? MyStyle.tx14OP
-                      //     : MyStyle.tx14O) as Color;
-                    });
+                    setState(() {});
                   },
                 ),
               ),
@@ -117,14 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   controller: passwordController,
                   onChanged: (value) {
-                    setState(() {
-                      // passwordBorderColor = (value.isEmpty
-                      //     ? MyStyle.tx14OP
-                      //     : MyStyle.tx14O) as Color;
-                      // passwordHintColor = (value.isEmpty
-                      //     ? MyStyle.tx14OP
-                      //     : MyStyle.tx14O) as Color;
-                    });
+                    setState(() {});
                   },
                 ),
               ),
@@ -134,24 +113,6 @@ class _LoginPageState extends State<LoginPage> {
                   right: 20.0,
                   top: 20,
                 ),
-                // child: ElevatedButton(
-                //   onPressed: () {
-                //     if (emailController.text.isNotEmpty &&
-                //         passwordController.text.isNotEmpty) {}
-                //   },
-                //   style: ElevatedButton.styleFrom(
-                //       backgroundColor: (emailController.text.isNotEmpty &&
-                //               passwordController.text.isNotEmpty)
-                //           ? MyColor.orangeGrad
-                //           : MyColor.orangeO,
-                //       shape: const RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.zero,
-                //       )),
-                //   child: const Text(
-                //     'Log In',
-                //     style: MyStyle.tx14W,
-                //   ),
-                // ),
                 child: InkWell(
                   onTap: () {
                     if (_formKey.currentState?.validate() == true) {
