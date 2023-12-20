@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'permission_page.dart';
+import 'permission/permission_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

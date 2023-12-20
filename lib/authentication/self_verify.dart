@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:route_in_live/authentication/profile/profile_settings.dart';
+import 'package:route_in_live/authentication/register/profile/profile_settings.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
 import '../values/MyColor.dart';

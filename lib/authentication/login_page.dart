@@ -354,71 +354,72 @@ class _LoginPageState extends State<LoginPage> {
 
   void bottomSheet3() {
     showModalBottomSheet(
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (BuildContext context) {
-          return Column(
-            // mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(
-                height: 185,
-              ),
-              Text(
-                'Login',
-                style: MyStyle.tx18.copyWith(fontSize: 17, letterSpacing: 0.15),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              SizedBox(
-                height: 40,
-                width: 300,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: MyColor.googlered,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4),
-                      )),
-                  child: Text(
-                    'Google simple login',
-                    style: MyStyle.tx14Blk.copyWith(color: Colors.white),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 7,
-              ),
-              SizedBox(
-                height: 40,
-                width: 300,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        return Column(
+          // mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(
+              height: 185,
+            ),
+            Text(
+              'Login',
+              style: MyStyle.tx18.copyWith(fontSize: 17, letterSpacing: 0.15),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            SizedBox(
+              height: 40,
+              width: 300,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
                     backgroundColor: MyColor.googlered,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4),
-                    ),
-                  ),
-                  child: Text(
-                    'Log in with a different Google account',
-                    style: MyStyle.tx14BlkM
-                        .copyWith(color: Colors.white, fontSize: 13),
-                  ),
+                    )),
+                child: Text(
+                  'Google simple login',
+                  style: MyStyle.tx14Blk.copyWith(color: Colors.white),
                 ),
               ),
-              const SizedBox(
-                height: 15,
+            ),
+            const SizedBox(
+              height: 7,
+            ),
+            SizedBox(
+              height: 40,
+              width: 300,
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: MyColor.googlered,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+                child: Text(
+                  'Log in with a different Google account',
+                  style: MyStyle.tx14BlkM
+                      .copyWith(color: Colors.white, fontSize: 13),
+                ),
               ),
-              IconButton(
-                color: Colors.white,
-                icon: const Icon(Icons.cancel_outlined),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          );
-        });
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            IconButton(
+              color: Colors.white,
+              icon: const Icon(Icons.cancel_outlined),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:route_in_live/dialogbox/alert_dilaog_one.dart';
+import 'package:route_in_live/authentication/permission/dialogbox/alert_dilaog_one.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 

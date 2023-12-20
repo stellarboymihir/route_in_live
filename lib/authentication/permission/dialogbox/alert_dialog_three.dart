@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../values/MyStyle.dart';
-import 'alert_dialog_two.dart';
+import 'package:route_in_live/authentication/login_page.dart';
+import '../../../values/MyStyle.dart';
 
-class AlertDialogOne extends StatelessWidget {
-  const AlertDialogOne({super.key});
+class AlertDialogThree extends StatelessWidget {
+  const AlertDialogThree({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,24 +12,26 @@ class AlertDialogOne extends StatelessWidget {
         borderRadius: BorderRadius.circular(18),
       ),
       titlePadding: const EdgeInsets.only(top: 20),
-      title: const Text(
-        '\‘One Q Live’ on camera \n'
-        'I\'m trying to approach.',
-        style: MyStyle.tx17B,
+      title: Text(
+        'Notifications from \‘OneQ Live\' \n'
+        'I would like to send',
+        style: MyStyle.tx17B.copyWith(fontSize: 15),
         textAlign: TextAlign.center,
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            'You can take photos and videos.',
+            'Alerts, sounds and icon placement\n'
+            'It can be included in notifications.\n'
+            'You can configure this in settings.',
             style: MyStyle.tx13B.copyWith(fontSize: 12),
             textAlign: TextAlign.center,
           ),
         ],
       ),
       contentPadding: const EdgeInsets.only(top: 5, bottom: 20),
-      actionsPadding: const EdgeInsets.all(0),
+      actionsPadding: const EdgeInsets.only(bottom: 0),
       actions: [
         const Divider(
           height: 0,
@@ -44,9 +46,9 @@ class AlertDialogOne extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   showDialog(
-                      context: context,
-                      builder: (BuildContext context) =>
-                          const AlertDialogTwo());
+                    context: context,
+                    builder: (BuildContext context) => const LoginPage(),
+                  );
                 },
                 child: Text(
                   'Not Allowed',
@@ -69,8 +71,7 @@ class AlertDialogOne extends StatelessWidget {
                 onPressed: () {
                   showDialog(
                       context: context,
-                      builder: (BuildContext context) =>
-                          const AlertDialogTwo());
+                      builder: (BuildContext context) => const LoginPage());
                 },
                 child: Text(
                   'Permit',

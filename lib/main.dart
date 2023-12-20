@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:route_in_live/rect.dart';
-import 'package:route_in_live/task.dart';
-import 'package:route_in_live/taskOne.dart';
 
 import 'authentication/splash_screen.dart';
 

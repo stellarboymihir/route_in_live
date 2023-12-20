@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:route_in_live/dialogbox/alert_dialog_three.dart';
+import 'package:route_in_live/authentication/permission/dialogbox/alert_dialog_three.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
 class AlertDialogTwo extends StatelessWidget {

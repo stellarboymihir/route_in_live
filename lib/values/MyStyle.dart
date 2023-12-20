@@ -80,6 +80,13 @@ class MyStyle {
     fontWeight: FontWeight.w400,
     color: Colors.black.withOpacity(0.8),
   );
+  static TextStyle tx16B = const TextStyle(
+    fontSize: 16,
+    fontFamily: 'NotoSansKR-Regular',
+    fontWeight: FontWeight.w400,
+    color: Colors.black,
+    letterSpacing: 0.33,
+  );
   static const tx17B = TextStyle(
       fontSize: 17,
       fontFamily: 'NotoSansKR-SemiBold',
