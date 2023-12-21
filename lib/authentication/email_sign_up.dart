@@ -52,8 +52,8 @@ class _SignUpState extends State<EmailSignUp> {
                   contentPadding: const EdgeInsets.all(8.0),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(1),
-                    borderSide: BorderSide(
-                      color: MyColor.orangeO,
+                    borderSide: const BorderSide(
+                      color: MyColor.orange,
                     ),
                   ),
                   border: const OutlineInputBorder(),

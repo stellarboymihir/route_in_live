@@ -87,6 +87,13 @@ class MyStyle {
     color: Colors.black,
     letterSpacing: 0.33,
   );
+  static TextStyle tx16O = const TextStyle(
+    fontSize: 16,
+    fontFamily: 'NotoSansKR-Regular',
+    fontWeight: FontWeight.w400,
+    color: MyColor.orange,
+    letterSpacing: 0.33,
+  );
   static const tx17B = TextStyle(
       fontSize: 17,
       fontFamily: 'NotoSansKR-SemiBold',
@@ -114,6 +121,7 @@ class MyStyle {
     fontFamily: 'NotoSansKR-Bold',
     fontWeight: FontWeight.w700,
     color: MyColor.orange,
+    letterSpacing: 0.33,
   );
   static const tx24 = TextStyle(
     fontSize: 24,

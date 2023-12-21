@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:route_in_live/authentication/register/findingpass/resetpass.dart';
+import 'package:route_in_live/authentication/register/findingid/id.dart';
+import 'package:route_in_live/values/MyColor.dart';
+import 'package:route_in_live/values/MyStyle.dart';
 
-import '../../../values/MyColor.dart';
-import '../../../values/MyStyle.dart';
-
-class FindingPass extends StatefulWidget {
-  const FindingPass({super.key});
+class FindingId extends StatefulWidget {
+  const FindingId({super.key});
 
   @override
-  State<FindingPass> createState() => _FindingPassState();
+  State<FindingId> createState() => _FindingIdState();
 }
 
-class _FindingPassState extends State<FindingPass> {
-  final _passFinder = GlobalKey<FormState>();
-  TextEditingController cellNumberOne = TextEditingController();
-  TextEditingController authNumberOne = TextEditingController();
+class _FindingIdState extends State<FindingId> {
+  final _idFinder = GlobalKey<FormState>();
+  TextEditingController cellNumber = TextEditingController();
+  TextEditingController authNumber = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Finding a password',
-            style: MyStyle.tx14W.copyWith(
-              color: Colors.black,
-            )),
+        title: Text(
+          'Finding the ID',
+          style: MyStyle.tx14W.copyWith(
+            color: Colors.black,
+          ),
+        ),
       ),
       body: Form(
-        key: _passFinder,
+        key: _idFinder,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +74,7 @@ class _FindingPassState extends State<FindingPass> {
                     color: MyColor.orangeO,
                   ),
                 ),
-                controller: cellNumberOne,
+                controller: cellNumber,
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
                   setState(() {});
@@ -89,7 +91,7 @@ class _FindingPassState extends State<FindingPass> {
                 child: Container(
                   alignment: Alignment.center,
                   height: 44,
-                  decoration: (cellNumberOne.text.isNotEmpty)
+                  decoration: (cellNumber.text.isNotEmpty)
                       ? const BoxDecoration(color: MyColor.orange)
                       : BoxDecoration(
                           color: MyColor.orangeO,
@@ -140,7 +142,7 @@ class _FindingPassState extends State<FindingPass> {
                       'Enter the authentication number you received by text.',
                   hintStyle: MyStyle.tx14O.copyWith(color: MyColor.orangeO),
                 ),
-                controller: authNumberOne,
+                controller: authNumber,
                 keyboardType: TextInputType.number,
                 onChanged: (value) {
                   setState(() {});
@@ -155,7 +157,7 @@ class _FindingPassState extends State<FindingPass> {
                 showDialog(
                     context: context,
                     builder: (BuildContext context) {
-                      return confirmPassDialog();
+                      return confirmDialog();
                     });
               },
               child: Padding(
@@ -163,7 +165,7 @@ class _FindingPassState extends State<FindingPass> {
                 child: Container(
                   alignment: Alignment.center,
                   height: 44,
-                  decoration: (authNumberOne.text.isNotEmpty)
+                  decoration: (authNumber.text.isNotEmpty)
                       ? const BoxDecoration(color: MyColor.orange)
                       : BoxDecoration(
                           color: MyColor.orangeO,
@@ -181,18 +183,19 @@ class _FindingPassState extends State<FindingPass> {
     );
   }
 
-  Widget confirmPassDialog() {
+  Widget confirmDialog() {
     return AlertDialog(
       title: Text(
-        'There are no results to be '
-        'shown',
+        'With a regular membership,\n'
+        'There is no account registered.',
         textAlign: TextAlign.center,
         style: MyStyle.tx17B.copyWith(fontSize: 15),
       ),
       content: Text(
         textAlign: TextAlign.center,
-        'This is an unregistered email or cell\n phone.\n'
-        'Please check again.\n',
+        'I wonder if you signed up for social\n'
+        ' login.\n'
+        'Please check again.',
         style: MyStyle.tx13B.copyWith(
           color: Colors.black.withOpacity(0.5),
         ),
@@ -214,7 +217,7 @@ class _FindingPassState extends State<FindingPass> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const ResetPass()),
+              MaterialPageRoute(builder: (context) => const ID()),
             );
           },
           child: Center(

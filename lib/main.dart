@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:route_in_live/values/MyColor.dart';
 
 import 'authentication/splash_screen.dart';
 
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         fontFamily: 'NotoSansKR',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)
-            .copyWith(background: Colors.white),
+        // colorScheme: ColorScheme.fromSeed(
+        //     seedColor: MyColor.orange)
+        //     .copyWith(background: Colors.white),
       ),
       debugShowCheckedModeBanner: false,
       home:

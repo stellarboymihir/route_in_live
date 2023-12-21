@@ -59,7 +59,7 @@ class _SelfVerificationPageState extends State<SelfVerificationPage> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(1),
                     borderSide: BorderSide(
-                      color: MyColor.orangeO,
+                      color: MyColor.orange,
                     ),
                   ),
                   border: const OutlineInputBorder(),
@@ -130,9 +130,9 @@ class _SelfVerificationPageState extends State<SelfVerificationPage> {
                   contentPadding: const EdgeInsets.all(8.0),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(1),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       width: 1,
-                      color: MyColor.orangeO,
+                      color: MyColor.orange,
                     ),
                   ),
                   border: const OutlineInputBorder(),
