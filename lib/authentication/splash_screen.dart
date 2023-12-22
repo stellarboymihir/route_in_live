@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:route_in_live/constants/routes.dart';
 
 import 'permission/permission_page.dart';
 
@@ -16,9 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (BuildContext context) => const PermissionPage(),
-      ));
+      Navigator.of(context).pushReplacementNamed(permissionRoute);
     });
   }
 

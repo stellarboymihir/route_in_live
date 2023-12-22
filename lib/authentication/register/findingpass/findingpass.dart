@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:route_in_live/authentication/register/findingpass/resetpass.dart';
+import 'package:route_in_live/constants/routes.dart';
 
 import '../../../values/MyColor.dart';
 import '../../../values/MyStyle.dart';
@@ -212,9 +212,9 @@ class _FindingPassState extends State<FindingPass> {
         ),
         InkWell(
           onTap: () {
-            Navigator.push(
+            Navigator.pushNamed(
               context,
-              MaterialPageRoute(builder: (context) => const ResetPass()),
+              resetPassRoute,
             );
           },
           child: Center(

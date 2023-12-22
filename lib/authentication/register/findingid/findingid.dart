@@ -3,6 +3,8 @@ import 'package:route_in_live/authentication/register/findingid/id.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
+import '../../../constants/routes.dart';
+
 class FindingId extends StatefulWidget {
   const FindingId({super.key});
 
@@ -215,9 +217,9 @@ class _FindingIdState extends State<FindingId> {
         ),
         InkWell(
           onTap: () {
-            Navigator.push(
+            Navigator.pushNamed(
               context,
-              MaterialPageRoute(builder: (context) => const ID()),
+              showIdRoute,
             );
           },
           child: Center(

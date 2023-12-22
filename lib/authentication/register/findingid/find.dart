@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
+import '../../../constants/routes.dart';
 import '../findingpass/findingemailpass.dart';
 import 'findingid.dart';
 
@@ -31,11 +32,9 @@ class _FindState extends State<Find> {
           children: [
             InkWell(
               onTap: () {
-                Navigator.push(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const FindingId(),
-                  ),
+                  idCertifyFindRoute,
                 );
               },
               child: Container(
@@ -70,11 +69,9 @@ class _FindState extends State<Find> {
             ),
             InkWell(
               onTap: () {
-                Navigator.push(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const FindingEmailPass(),
-                  ),
+                  passFindEmailRoute,
                 );
               },
               child: Container(
@@ -106,11 +103,9 @@ class _FindState extends State<Find> {
             ),
             InkWell(
               onTap: () {
-                Navigator.push(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const FindingId(),
-                  ),
+                  idCertifyFindRoute,
                 );
               },
               child: Text(

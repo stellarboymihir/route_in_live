@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:route_in_live/authentication/email_sign_up.dart';
+import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
@@ -221,10 +222,9 @@ class _TermConditionPageState extends State<TermConditionPage> {
                     personalInfoAccepted == true) {
                   // termsAndConditionsAccepted = true;
                   // personalInfoAccepted = true;
-                  Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => const EmailSignUp()),
+                    emailSignUpRoute,
                   );
                 } else {
                   // termsAndConditionsAccepted = false;

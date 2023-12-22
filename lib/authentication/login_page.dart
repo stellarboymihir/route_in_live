@@ -3,6 +3,8 @@ import 'package:route_in_live/authentication/terms_condition_page.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
+import '../constants/routes.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -143,11 +145,19 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 5.0,
               ),
-              const Align(
+              Align(
                 alignment: Alignment.center,
-                child: Text(
-                  'Forgot ID/Password?',
-                  style: MyStyle.tx10,
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      idPassFindRoute,
+                    );
+                  },
+                  child: const Text(
+                    'Forgot ID/Password?',
+                    style: MyStyle.tx10,
+                  ),
                 ),
               ),
               const SizedBox(height: 50),
@@ -194,11 +204,10 @@ class _LoginPageState extends State<LoginPage> {
                 child: TextButton(
                   // style: MyStyle.tx10,
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const TermConditionPage(),
-                        ));
+                    Navigator.pushNamed(
+                      context,
+                      termsAndConditionRoute,
+                    );
                   },
                   child: const Text(
                     'Do you need general membership registration?',

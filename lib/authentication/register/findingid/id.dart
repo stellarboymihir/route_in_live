@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:route_in_live/authentication/register/findingpass/findingemailpass.dart';
+import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
@@ -27,7 +28,7 @@ class _IDState extends State<ID> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             RichText(
@@ -62,8 +63,15 @@ class _IDState extends State<ID> {
                 height: 44,
                 // width: 320,
                 color: MyColor.orange,
-                child: const Center(
-                  child: Text('Go to the login screen', style: MyStyle.tx14W),
+                child: Center(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, loginRoute, (route) => false);
+                    },
+                    child: const Text('Go to the login screen',
+                        style: MyStyle.tx14W),
+                  ),
                 ),
               ),
             ),
@@ -73,13 +81,9 @@ class _IDState extends State<ID> {
             Center(
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                      // Routing to Finding Email Password Field
-                      builder: (BuildContext context) =>
-                          const FindingEmailPass(),
-                    ),
+                    passFindEmailRoute,
                   );
                 },
                 child: Text(

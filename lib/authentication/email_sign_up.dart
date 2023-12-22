@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:route_in_live/authentication/pass_sign_page.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
+import '../constants/routes.dart';
 import '../values/MyColor.dart';
 
 class EmailSignUp extends StatefulWidget {
@@ -84,10 +85,10 @@ class _SignUpState extends State<EmailSignUp> {
                 //     ),
                 //   );
                 // }
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => const PassSignUp()));
+                Navigator.pushNamed(
+                  context,
+                  passSignUpRoute,
+                );
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),

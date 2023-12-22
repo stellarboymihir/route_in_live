@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:route_in_live/authentication/register/profile/profile_settings.dart';
+import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
 import '../values/MyColor.dart';
@@ -58,7 +59,7 @@ class _SelfVerificationPageState extends State<SelfVerificationPage> {
                   contentPadding: const EdgeInsets.all(8.0),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(1),
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: MyColor.orange,
                     ),
                   ),
@@ -161,11 +162,9 @@ class _SelfVerificationPageState extends State<SelfVerificationPage> {
             InkWell(
               onTap: () {
                 //Routing for Next Page
-                Navigator.push(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => const ProfileSettings(),
-                  ),
+                  profileSettingsRoute,
                 );
               },
               child: Padding(

@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:route_in_live/authentication/register/findingid/find.dart';
+import '../../../constants/routes.dart';
 import '../../../values/MyColor.dart';
 import '../../../values/MyStyle.dart';
 import 'package:image_picker/image_picker.dart';
@@ -67,8 +68,6 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                         : ClipOval(
                             child: Image.file(
                               image!,
-                              // height: 160,
-                              // width: 160,
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -138,11 +137,9 @@ class _ProfileSettingsState extends State<ProfileSettings> {
             //  Setting Button
             InkWell(
               onTap: () {
-                Navigator.push(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => const Find(),
-                  ),
+                  idPassFindRoute,
                 );
               },
               child: Padding(

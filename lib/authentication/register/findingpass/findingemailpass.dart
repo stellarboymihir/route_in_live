@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:route_in_live/authentication/register/findingid/findingid.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
+import '../../../constants/routes.dart';
 import '../../../values/MyColor.dart';
 import 'findingpass.dart';
 
@@ -13,6 +14,7 @@ class FindingEmailPass extends StatefulWidget {
 }
 
 TextEditingController emailFinder = TextEditingController();
+TextEditingController passNextFinder = TextEditingController();
 
 class _FindingPassState extends State<FindingEmailPass> {
   final _passFinder = GlobalKey<FormState>();
@@ -88,19 +90,21 @@ class _FindingPassState extends State<FindingEmailPass> {
             ),
             InkWell(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            // For Password Finding after giving email id
-                            const FindingPass()));
+                Navigator.pushNamed(
+                  context,
+                  passFindRoute,
+                );
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
                   height: 44,
                   width: 345,
-                  color: MyColor.orange,
+                  decoration: (passNextFinder.text.isNotEmpty)
+                      ? const BoxDecoration(color: MyColor.orange)
+                      : BoxDecoration(
+                          color: MyColor.orangeO,
+                        ),
                   child: Center(
                     child: Text(
                       'Next',
@@ -118,12 +122,9 @@ class _FindingPassState extends State<FindingEmailPass> {
             Center(
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                      // Routing to Finding Email Password Field
-                      builder: (BuildContext context) => const FindingId(),
-                    ),
+                    idCertifyFindRoute,
                   );
                 },
                 child: Text(

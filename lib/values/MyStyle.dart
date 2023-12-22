@@ -26,12 +26,12 @@ class MyStyle {
     fontWeight: FontWeight.w400,
     color: MyColor.black,
   );
-  // static const tx12BO = TextStyle(
-  //   fontSize: 12,
-  //   fontFamily: 'NotoSansKR-Medium',
-  //   fontWeight: FontWeight.w400,
-  //   color: MyColor.black,
-  // );
+  static const tx12P = TextStyle(
+    fontSize: 12,
+    fontFamily: 'NotoSansKR-Medium',
+    fontWeight: FontWeight.w400,
+    color: MyColor.purple,
+  );
   static const tx13B = TextStyle(
     fontSize: 13,
     fontFamily: 'NotoSansKR-Medium',

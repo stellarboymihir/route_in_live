@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:route_in_live/authentication/self_verify.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
+import '../constants/routes.dart';
 import '../values/MyColor.dart';
 
 class PassSignUp extends StatefulWidget {
@@ -133,11 +134,10 @@ class _PassSignUpState extends State<PassSignUp> {
             InkWell(
               onTap: () {
                 //Routing for Next Page
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const SelfVerificationPage()));
+                Navigator.pushNamed(
+                  context,
+                  selfVerifyRoute,
+                );
               },
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
