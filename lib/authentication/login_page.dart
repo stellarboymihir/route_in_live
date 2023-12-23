@@ -117,6 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 child: InkWell(
                   onTap: () {
+                    Navigator.pushNamed(context, dashboardRoute);
                     if (_formKey.currentState?.validate() == true) {
                       // Perform login logic here
                       ScaffoldMessenger.of(context).showSnackBar(

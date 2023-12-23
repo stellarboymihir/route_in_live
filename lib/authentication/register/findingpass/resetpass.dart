@@ -211,7 +211,7 @@ class _ResetPassState extends State<ResetPass> {
           onTap: () {
             Navigator.pushNamed(
               context,
-              dashboardRoute,
+              loginRoute,
             );
           },
           child: Center(
