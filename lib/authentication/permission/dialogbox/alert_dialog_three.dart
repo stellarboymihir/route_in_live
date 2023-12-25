@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:route_in_live/authentication/login_page.dart';
+import 'package:route_in_live/constants/routes.dart';
 import '../../../values/MyStyle.dart';
 
 class AlertDialogThree extends StatelessWidget {
@@ -45,10 +46,11 @@ class AlertDialogThree extends StatelessWidget {
             Expanded(
               child: TextButton(
                 onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) => const LoginPage(),
-                  );
+                  // showDialog(
+                  //   context: context,
+                  //   builder: (BuildContext context) => const LoginPage(),
+                  // );
+                  Navigator.pushNamed(context, loginRoute);
                 },
                 child: Text(
                   'Not Allowed',
@@ -69,9 +71,10 @@ class AlertDialogThree extends StatelessWidget {
             Expanded(
               child: TextButton(
                 onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (BuildContext context) => const LoginPage());
+                  // showDialog(
+                  //     context: context,
+                  //     builder: (BuildContext context) => const LoginPage());
+                  Navigator.pushNamed(context, loginRoute);
                 },
                 child: Text(
                   'Permit',

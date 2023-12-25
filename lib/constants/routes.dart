@@ -16,3 +16,6 @@ const resetPassRoute = '/resetPass/';
 // Dashboard
 const dashboardRoute = '/dashboard/';
 const homeRoute = '/homePage/';
+
+// Register Broadcast
+const liveReservationRoute = '/liveReservation/';

@@ -4,6 +4,7 @@ import 'package:route_in_live/authentication/login_page.dart';
 import 'package:route_in_live/authentication/register/findingid/find.dart';
 import 'package:route_in_live/dashboard/dashboard.dart';
 import 'package:route_in_live/dashboard/home/home.dart';
+import 'package:route_in_live/dashboard/home/regsiterbroadcast/LiveReservation.dart';
 import 'package:route_in_live/values/MyColor.dart';
 
 import 'authentication/pass_sign_page.dart';
@@ -59,6 +60,9 @@ class MyApp extends StatelessWidget {
 
         dashboardRoute: (context) => const Dashboard(),
         homeRoute: (context) => const Home(),
+
+        //  ** Register Broadcast **
+        liveReservationRoute: (context) => const LiveReservation(),
       },
     );
   }
