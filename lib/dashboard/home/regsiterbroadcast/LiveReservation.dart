@@ -1,4 +1,10 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
 import '../../../values/MyColor.dart';
@@ -11,6 +17,7 @@ class LiveReservation extends StatefulWidget {
 }
 
 class _LiveReservationState extends State<LiveReservation> {
+  File? image;
   final _liveRegisterKey = GlobalKey<FormState>();
   TextEditingController broadcastNameController = TextEditingController();
   TextEditingController broadcastDateController = TextEditingController();
@@ -367,6 +374,7 @@ class _LiveReservationState extends State<LiveReservation> {
                     hintText: 'Attach videos and images',
                     suffixIcon: InkWell(
                       onTap: () {
+                        FocusScope.of(context).unfocus();
                         showDialog(
                             context: context,
                             builder: (BuildContext context) {
@@ -423,16 +431,21 @@ class _LiveReservationState extends State<LiveReservation> {
                 ),
 
                 // *** Buttons ***
-                Container(
-                  height: 40,
-                  decoration: const BoxDecoration(
-                    color: MyColor.dorange,
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Select products to sell',
-                      style: MyStyle.tx14W.copyWith(
-                        fontFamily: 'NotoSansKR-Regular',
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, sellProductRoute);
+                  },
+                  child: Container(
+                    height: 40,
+                    decoration: const BoxDecoration(
+                      color: MyColor.dorange,
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Select products to sell',
+                        style: MyStyle.tx14W.copyWith(
+                          fontFamily: 'NotoSansKR-Regular',
+                        ),
                       ),
                     ),
                   ),
@@ -481,136 +494,456 @@ class _LiveReservationState extends State<LiveReservation> {
     );
   }
 
+  // *** Dialog Box For Live Broadcast
   Widget liveBroadcastDialog() {
     return AlertDialog(
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // *** Uploading an Image ***
-          Row(
-            children: [
-              Image.asset(
-                'assets/icons/Shape.png',
-                height: 18,
-                width: 18,
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              Text(
-                'Uploading an image',
-                style: MyStyle.tx16B.copyWith(
-                    color: MyColor.black, fontFamily: 'NotoSansKR-Medium'),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            ' The image is an image used as a thumbnail,'
-            ' and only files up to 10MB or less can be uploaded.',
-            style: MyStyle.tx12B.copyWith(
-              color: MyColor.black.withOpacity(0.7),
+      contentPadding: EdgeInsets.zero,
+      backgroundColor: Colors.transparent,
+      titlePadding: const EdgeInsets.only(bottom: 4.0),
+      title: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Image.asset(
+          'assets/icons/Circle.png',
+          height: 28,
+          width: 28,
+          alignment: Alignment.topRight,
+        ),
+      ),
+      content: Container(
+        padding:
+            const EdgeInsets.only(top: 25.0, left: 20, right: 20, bottom: 20),
+        height: 395,
+        width: 352,
+        color: MyColor.white,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // *** Uploading an Image ***
+            Row(
+              children: [
+                Image.asset(
+                  'assets/icons/Shape.png',
+                  height: 18,
+                  width: 18,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  'Uploading an image',
+                  style: MyStyle.tx16B.copyWith(
+                      color: MyColor.black, fontFamily: 'NotoSansKR-Medium'),
+                ),
+              ],
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            height: 40,
-            width: 330,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(1),
-              border: Border.all(
-                color: MyColor.orange,
-                width: 1,
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              ' The image is an image used as a thumbnail,'
+              ' and only files up to 10MB or less can be uploaded.',
+              style: MyStyle.tx12B.copyWith(
+                color: MyColor.black.withOpacity(0.7),
               ),
             ),
-            child: const Center(
-              child: Text(
-                'Uploading an image',
-                style: MyStyle.tx14O,
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+                broadcastImageBottomSheet();
+              },
+              child: Container(
+                height: 40,
+                width: 330,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(1),
+                  border: Border.all(
+                    color: MyColor.orange,
+                    width: 1,
+                  ),
+                ),
+                child: const Center(
+                  child: Text(
+                    'Uploading an image',
+                    style: MyStyle.tx14O,
+                  ),
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
+            const SizedBox(
+              height: 15,
+            ),
 
-          // *** Uploading an Video ***
-          Row(
-            children: [
-              Image.asset(
-                'assets/icons/Video.png',
-                height: 18,
-                width: 18,
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              Text(
-                'Upload a preview video',
-                style: MyStyle.tx16B.copyWith(
-                    color: MyColor.black, fontFamily: 'NotoSansKR-Medium'),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Text(
-            'The preview video is a video that viewers can watch '
-            'before watching the broadcast, and only files up to '
-            '350MB or less can be uploaded.',
-            style: MyStyle.tx12B.copyWith(
-              fontSize: 11,
-              color: MyColor.black.withOpacity(0.7),
+            // *** Uploading an Video ***
+            Row(
+              children: [
+                Image.asset(
+                  'assets/icons/Video.png',
+                  height: 18,
+                  width: 18,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  'Upload a preview video',
+                  style: MyStyle.tx16B.copyWith(
+                      color: MyColor.black, fontFamily: 'NotoSansKR-Medium'),
+                ),
+              ],
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Container(
-            height: 40,
-            width: 330,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(1),
-              border: Border.all(
-                color: MyColor.orange,
-                width: 1,
-              ),
+            const SizedBox(
+              height: 10,
             ),
-            child: const Center(
-              child: Text(
-                'Upload the preview video',
-                style: MyStyle.tx14O,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-
-          //   *** Text ***
-          Center(
-            child: Text(
-              'Images and preview videos are optional. \n'
-              'Up to one image and one preview can be uploaded.',
-              textAlign: TextAlign.center,
-              style: MyStyle.tx12O.copyWith(
-                fontWeight: FontWeight.w400,
+            Text(
+              'The preview video is a video that viewers can watch '
+              'before watching the broadcast, and only files up to '
+              '350MB or less can be uploaded.',
+              style: MyStyle.tx12B.copyWith(
                 fontSize: 11,
+                color: MyColor.black.withOpacity(0.7),
               ),
             ),
-          ),
-          RichText(
-            text: const TextSpan(
-                text: 'Images and preview videos are optional. \n'
-                    'Up to one image and one preview can be uploaded.'),
-          ),
-        ],
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+                broadcastVideoBottomSheet();
+              },
+              child: Container(
+                height: 40,
+                width: 330,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(1),
+                  border: Border.all(
+                    color: MyColor.orange,
+                    width: 1,
+                  ),
+                ),
+                child: const Center(
+                  child: Text(
+                    'Upload the preview video',
+                    style: MyStyle.tx14O,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+
+            //   *** Text ***
+            RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                style: MyStyle.tx12B.copyWith(
+                  color: MyColor.orange,
+                  fontSize: 10,
+                ),
+                children: [
+                  const TextSpan(
+                    text: 'Images and preview videos are ',
+                  ),
+                  TextSpan(
+                    text: 'optional.',
+                    style: MyStyle.tx12B.copyWith(
+                      fontWeight: FontWeight.w700,
+                      color: MyColor.orange,
+                    ),
+                  ),
+                  const TextSpan(
+                    text: 'Up to ',
+                  ),
+                  TextSpan(
+                    text: 'one image ',
+                    style: MyStyle.tx12B.copyWith(
+                      color: MyColor.orange,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const TextSpan(
+                    text: 'and ',
+                  ),
+                  TextSpan(
+                    text: 'one preview ',
+                    style: MyStyle.tx12B.copyWith(
+                      color: MyColor.orange,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const TextSpan(
+                    text: 'can be uploaded.',
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  // *** Bottom Sheet for Image
+  void broadcastImageBottomSheet() {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              height: 132,
+              width: 330,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Center(
+                child: Column(
+                  children: [
+                    Text(
+                      'Uploading an image',
+                      style: MyStyle.tx16B.copyWith(
+                        color: Colors.black.withOpacity(0.5),
+                      ),
+                    ),
+                    const Divider(),
+                    InkWell(
+                      onTap: () {
+                        // Created a method
+                        _pickerCamBroadcast();
+                      },
+                      child: SizedBox(
+                        height: 26,
+                        width: 330,
+                        child: Center(
+                          child: Text(
+                            'Camera',
+                            style: MyStyle.tx16B
+                                .copyWith(fontFamily: 'NotoSansKR-Medium'),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Divider(),
+                    InkWell(
+                      onTap: () {
+                        _pickerImgBroadcast();
+                      },
+                      child: SizedBox(
+                        height: 26,
+                        width: 330,
+                        child: Center(
+                          child: Text(
+                            'Gallery',
+                            style: MyStyle.tx16B
+                                .copyWith(fontFamily: 'NotoSansKR-Medium'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: SizedBox(
+                height: 48,
+                width: 330,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white,
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Cancel',
+                      style: MyStyle.tx17B,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _pickerCamBroadcast() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.camera);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      setState(() {
+        this.image = imageTemp;
+        Navigator.pop(context);
+      });
+    } on PlatformException catch (e) {
+      print('Failed to pick Image: $e');
+    }
+  }
+
+  Future<void> _pickerImgBroadcast() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      setState(() {
+        this.image = imageTemp;
+        Navigator.pop(context);
+      });
+    } on PlatformException catch (e) {
+      if (kDebugMode) {
+        print('Failed to pick Image: $e');
+      }
+    }
+  }
+
+  // *** Bottom Sheet for Video
+  void broadcastVideoBottomSheet() {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              height: 132,
+              width: 330,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Center(
+                child: Column(
+                  children: [
+                    Text(
+                      'Uploading a video',
+                      style: MyStyle.tx16B.copyWith(
+                        color: Colors.black.withOpacity(0.5),
+                      ),
+                    ),
+                    const Divider(),
+                    InkWell(
+                      onTap: () {
+                        // Created a method
+                        _pickerVideoCamBroadcast();
+                      },
+                      child: SizedBox(
+                        height: 26,
+                        width: 330,
+                        child: Center(
+                          child: Text(
+                            'Camera',
+                            style: MyStyle.tx16B
+                                .copyWith(fontFamily: 'NotoSansKR-Medium'),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Divider(),
+                    InkWell(
+                      onTap: () {
+                        _pickerVideoImgBroadcast();
+                      },
+                      child: SizedBox(
+                        height: 26,
+                        width: 330,
+                        child: Center(
+                          child: Text(
+                            'Gallery',
+                            style: MyStyle.tx16B
+                                .copyWith(fontFamily: 'NotoSansKR-Medium'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: SizedBox(
+                height: 48,
+                width: 330,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white,
+                  ),
+                  child: const Center(
+                    child: Text(
+                      'Cancel',
+                      style: MyStyle.tx17B,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _pickerVideoCamBroadcast() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.camera);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      setState(() {
+        this.image = imageTemp;
+        Navigator.pop(context);
+      });
+    } on PlatformException catch (e) {
+      print('Failed to pick Image: $e');
+    }
+  }
+
+  Future<void> _pickerVideoImgBroadcast() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      setState(() {
+        this.image = imageTemp;
+        Navigator.pop(context);
+      });
+    } on PlatformException catch (e) {
+      if (kDebugMode) {
+        print('Failed to pick Image: $e');
+      }
+    }
   }
 }

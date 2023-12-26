@@ -19,3 +19,4 @@ const homeRoute = '/homePage/';
 
 // Register Broadcast
 const liveReservationRoute = '/liveReservation/';
+const sellProductRoute = '/sellProductRoute/';

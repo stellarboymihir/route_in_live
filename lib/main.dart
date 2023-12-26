@@ -5,6 +5,7 @@ import 'package:route_in_live/authentication/register/findingid/find.dart';
 import 'package:route_in_live/dashboard/dashboard.dart';
 import 'package:route_in_live/dashboard/home/home.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/LiveReservation.dart';
+import 'package:route_in_live/dashboard/home/regsiterbroadcast/sellProduct.dart';
 import 'package:route_in_live/values/MyColor.dart';
 
 import 'authentication/pass_sign_page.dart';
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
 
         //  ** Register Broadcast **
         liveReservationRoute: (context) => const LiveReservation(),
+        sellProductRoute: (context) => const SellProduct(),
       },
     );
   }
