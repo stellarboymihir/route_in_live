@@ -167,7 +167,7 @@ class _TaskOneState extends State<TaskOne> {
             ),
             //Column 2
             Expanded(
-              flex: 1,
+              // flex: 1,
               child: Column(
                 children: [
                   Expanded(
@@ -192,7 +192,7 @@ class _TaskOneState extends State<TaskOne> {
                     ),
                   ),
                   Expanded(
-                    flex: 3,
+                    // flex: 3,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(

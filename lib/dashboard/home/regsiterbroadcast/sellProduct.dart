@@ -10,6 +10,17 @@ class SellProduct extends StatefulWidget {
 }
 
 class _SellProductState extends State<SellProduct> {
+  final List<String> _capacity = <String>[
+    '11, graphite, golf bag set, genuine product.',
+    '11, graphite, caddy bag, genuine product.',
+    '11, lightweight steel, caddy bag, genuine product.',
+    '7, graphite, golf set. At the same time.',
+    '7,Lightweight steel. Minimum golf set. At the same time.',
+    '7, graphite, golf set, genuine product.',
+    'Global specification. At the same time.',
+  ];
+  String? selectedVal;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,23 +38,16 @@ class _SellProductState extends State<SellProduct> {
             color: MyColor.black.withOpacity(0.1),
           ),
         ),
-
         actions: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(15.0),
             child: Image.asset(
               'assets/icons/bag.png',
               height: 17,
-              width: 18,
+              width: 17,
             ),
           ),
         ],
-        // Image.asset(
-        //   alignment: Alignment.topRight,
-        //   'assets/icons/bag.png',
-        //   height: 17,
-        //   width: 18,
-        // ),
         centerTitle: true,
         elevation: 0,
       ),
@@ -56,7 +60,7 @@ class _SellProductState extends State<SellProduct> {
               margin: const EdgeInsets.all(8.0),
               padding: const EdgeInsets.only(left: 10.0),
               decoration: BoxDecoration(
-                color: MyColor.grey,
+                color: MyColor.black.withOpacity(0.05),
                 borderRadius: BorderRadius.circular(26),
               ),
               child: Row(
@@ -69,13 +73,28 @@ class _SellProductState extends State<SellProduct> {
                     ),
                     textAlign: TextAlign.start,
                   ),
+                  const SizedBox(
+                    width: 30,
+                  ),
+                  InkWell(
+                    // onTap: () {
+                    //   Navigator.pop(context);
+                    // },
+                    child: Image.asset(
+                      'assets/icons/close.png',
+                      width: 16,
+                      height: 16,
+                    ),
+                  ),
                   Container(
+                    // padding: EdgeInsets.all(8.0),
                     // width: 120
                     alignment: Alignment.topRight,
                     decoration: BoxDecoration(
                         color: MyColor.orange,
                         borderRadius: BorderRadius.circular(33)),
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 15.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -88,8 +107,9 @@ class _SellProductState extends State<SellProduct> {
                         ),
                         Image.asset(
                           'assets/icons/search.png',
-                          height: 14,
-                          width: 14,
+                          fit: BoxFit.fill,
+                          height: 12,
+                          width: 12,
                         ),
                       ],
                     ),
@@ -108,7 +128,7 @@ class _SellProductState extends State<SellProduct> {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.grey,
+                        color: MyColor.black.withOpacity(0.05),
                         height: 236,
                         width: 172,
                         child: Column(
@@ -139,20 +159,25 @@ class _SellProductState extends State<SellProduct> {
                                   width: 15,
                                 ),
                                 // Plus Button
-                                Container(
-                                  height: 32,
-                                  width: 32,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: MyColor.yellowamber,
-                                  ),
-                                  child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Image.asset(
-                                        'assets/icons/plus.png',
-                                        height: 14,
-                                        width: 14,
+                                InkWell(
+                                  onTap: () {
+                                    productBottomSheet();
+                                  },
+                                  child: Container(
+                                    height: 32,
+                                    width: 32,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: MyColor.yellowamber,
+                                    ),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Image.asset(
+                                          'assets/icons/plus.png',
+                                          height: 14,
+                                          width: 14,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -171,7 +196,7 @@ class _SellProductState extends State<SellProduct> {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.grey,
+                        color: MyColor.black.withOpacity(0.05),
                         height: 236,
                         width: 172,
                         child: Column(
@@ -202,18 +227,23 @@ class _SellProductState extends State<SellProduct> {
                                   width: 15,
                                 ),
                                 // Plus Button
-                                Container(
-                                  height: 32,
-                                  width: 32,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: MyColor.yellowamber,
-                                  ),
-                                  child: Center(
-                                    child: Image.asset(
-                                      'assets/icons/plus.png',
-                                      height: 14,
-                                      width: 14,
+                                InkWell(
+                                  onTap: () {
+                                    // productBottomSheet();
+                                  },
+                                  child: Container(
+                                    height: 32,
+                                    width: 32,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: MyColor.yellowamber,
+                                    ),
+                                    child: Center(
+                                      child: Image.asset(
+                                        'assets/icons/plus.png',
+                                        height: 14,
+                                        width: 14,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -238,7 +268,7 @@ class _SellProductState extends State<SellProduct> {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.grey,
+                        color: MyColor.black.withOpacity(0.05),
                         height: 236,
                         width: 172,
                         child: Column(
@@ -269,20 +299,25 @@ class _SellProductState extends State<SellProduct> {
                                   width: 15,
                                 ),
                                 // Plus Button
-                                Container(
-                                  height: 32,
-                                  width: 32,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: MyColor.yellowamber,
-                                  ),
-                                  child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Image.asset(
-                                        'assets/icons/plus.png',
-                                        height: 14,
-                                        width: 14,
+                                InkWell(
+                                  onTap: () {
+                                    // productBottomSheet();
+                                  },
+                                  child: Container(
+                                    height: 32,
+                                    width: 32,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: MyColor.yellowamber,
+                                    ),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Image.asset(
+                                          'assets/icons/plus.png',
+                                          height: 14,
+                                          width: 14,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -301,7 +336,7 @@ class _SellProductState extends State<SellProduct> {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.grey,
+                        color: MyColor.black.withOpacity(0.05),
                         height: 236,
                         width: 172,
                         child: Column(
@@ -332,18 +367,23 @@ class _SellProductState extends State<SellProduct> {
                                   width: 15,
                                 ),
                                 // Plus Button
-                                Container(
-                                  height: 32,
-                                  width: 32,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: MyColor.yellowamber,
-                                  ),
-                                  child: Center(
-                                    child: Image.asset(
-                                      'assets/icons/plus.png',
-                                      height: 14,
-                                      width: 14,
+                                InkWell(
+                                  onTap: () {
+                                    // productBottomSheet();
+                                  },
+                                  child: Container(
+                                    height: 32,
+                                    width: 32,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: MyColor.yellowamber,
+                                    ),
+                                    child: Center(
+                                      child: Image.asset(
+                                        'assets/icons/plus.png',
+                                        height: 14,
+                                        width: 14,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -368,7 +408,7 @@ class _SellProductState extends State<SellProduct> {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.grey,
+                        color: MyColor.black.withOpacity(0.05),
                         height: 236,
                         width: 172,
                         child: Column(
@@ -399,20 +439,25 @@ class _SellProductState extends State<SellProduct> {
                                   width: 15,
                                 ),
                                 // Plus Button
-                                Container(
-                                  height: 32,
-                                  width: 32,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: MyColor.yellowamber,
-                                  ),
-                                  child: Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Image.asset(
-                                        'assets/icons/plus.png',
-                                        height: 14,
-                                        width: 14,
+                                InkWell(
+                                  onTap: () {
+                                    // productBottomSheet();
+                                  },
+                                  child: Container(
+                                    height: 32,
+                                    width: 32,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: MyColor.yellowamber,
+                                    ),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Image.asset(
+                                          'assets/icons/plus.png',
+                                          height: 14,
+                                          width: 14,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -431,7 +476,7 @@ class _SellProductState extends State<SellProduct> {
                     Expanded(
                       child: Container(
                         padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.grey,
+                        color: MyColor.black.withOpacity(0.05),
                         height: 236,
                         width: 172,
                         child: Column(
@@ -462,18 +507,23 @@ class _SellProductState extends State<SellProduct> {
                                   width: 15,
                                 ),
                                 // Plus Button
-                                Container(
-                                  height: 32,
-                                  width: 32,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: MyColor.yellowamber,
-                                  ),
-                                  child: Center(
-                                    child: Image.asset(
-                                      'assets/icons/plus.png',
-                                      height: 14,
-                                      width: 14,
+                                InkWell(
+                                  onTap: () {
+                                    // productBottomSheet();
+                                  },
+                                  child: Container(
+                                    height: 32,
+                                    width: 32,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: MyColor.yellowamber,
+                                    ),
+                                    child: Center(
+                                      child: Image.asset(
+                                        'assets/icons/plus.png',
+                                        height: 14,
+                                        width: 14,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -491,5 +541,230 @@ class _SellProductState extends State<SellProduct> {
         ),
       ),
     );
+  }
+
+  void productBottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return SizedBox(
+            width: 370,
+            height: 450,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assets/icons/cancel.png',
+                    alignment: Alignment.bottomRight,
+                    height: 22,
+                    width: 22,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Image.asset('assets/images/img1.png'),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0,
+                            // vertical: 4.0,
+                          ),
+                          child: Text(
+                            'Golf club',
+                            style: MyStyle.tx16B
+                                .copyWith(fontFamily: 'NotoSansKR-SemiBold'),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8.0,
+                            // vertical: 4.0,
+                          ),
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: '36,000 ',
+                                  style: MyStyle.tx16B.copyWith(
+                                    fontFamily: 'NotoNastaliqUrdu-Regular',
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'won',
+                                  style: MyStyle.tx16B.copyWith(
+                                    fontFamily: 'Montserrat-Medium',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Divider(
+                  thickness: 0,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+
+                // *** DropDown
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: MyColor.black.withOpacity(0.5),
+                    ),
+                  ),
+                  height: 32,
+                  // width: 342,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Measure of Capacity',
+                        style: MyStyle.tx13B.copyWith(
+                          color: MyColor.black.withOpacity(0.3),
+                        ),
+                      ),
+                      DropdownButtonFormField(
+                        value: selectedVal,
+                        icon: const Icon(
+                          Icons.keyboard_arrow_down_outlined,
+                          size: 16,
+                        ),
+                        items: _capacity.map<DropdownMenuItem<String>>((list) {
+                          return DropdownMenuItem<String>(
+                            value: list,
+                            child: Text(list),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedVal = newValue;
+                          });
+                        },
+                      ),
+                      // Expanded(
+                      //   child: DropdownButtonFormField<String>(
+                      //     value: selectedVal,
+                      //     icon: const Icon(
+                      //       Icons.keyboard_arrow_down_outlined,
+                      //       size: 16,
+                      //       color: MyColor.black,
+                      //     ),
+                      //     onChanged: (String? newValue) {
+                      //       setState(() {
+                      //         selectedVal = newValue!;
+                      //       });
+                      //     },
+                      //     items:
+                      //         _capacity.map<DropdownMenuItem<String>>((list) {
+                      //       return DropdownMenuItem<String>(
+                      //           value: list,
+                      //           child: Text(
+                      //             list,
+                      //             style: const TextStyle(color: MyColor.orange),
+                      //           ));
+                      //     }).toList(),
+                      //   ),
+                      // ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 10,
+                ),
+
+                // *** Size Increase Or Decrease
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(0.6),
+                      border: Border.all(
+                        color: MyColor.black.withOpacity(0.1),
+                      ),
+                    ),
+                    alignment: Alignment.bottomRight,
+                    height: 24,
+                    width: 110,
+                    child: const Row(
+                      children: [
+                        SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Center(
+                            child: Text(
+                              '-',
+                            ),
+                          ),
+                        ),
+                        VerticalDivider(
+                          thickness: 0,
+                        ),
+                        SizedBox(
+                          height: 16,
+                          width: 24,
+                          child: Center(
+                            child: Text(
+                              '1',
+                              // textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                        VerticalDivider(
+                          thickness: 0,
+                        ),
+                        SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: Center(
+                            child: Text(
+                              '+',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                //  Button
+                Container(
+                  alignment: Alignment.topLeft,
+                  margin: const EdgeInsets.all(10.0),
+                  height: 44,
+                  color: MyColor.yellowamber,
+                  child: Center(
+                    child: Text(
+                      'Put it in',
+                      style: MyStyle.tx16B.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: MyColor.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }

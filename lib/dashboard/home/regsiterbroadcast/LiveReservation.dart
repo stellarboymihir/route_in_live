@@ -328,17 +328,20 @@ class _LiveReservationState extends State<LiveReservation> {
                   ],
                 ),
 
-                //   *** Live Preview Videos and Iamges
+                //   *** Live Preview Videos and Images
                 Text(
                   'Live preview video and images',
                   style: MyStyle.tx16O
                       .copyWith(fontFamily: 'NotoSansKR-Regular', fontSize: 15),
                 ),
+                const SizedBox(
+                  height: 5,
+                ),
                 Text(
                   'Please upload an image used as a preview video or thumbnail.',
                   style: MyStyle.tx12B.copyWith(
                     fontSize: 10,
-                    fontFamily: 'NotoSansKR-Medium',
+                    fontFamily: 'NotoSansKR-Regular',
                     decoration: TextDecoration.none,
                   ),
                 ),
@@ -427,7 +430,7 @@ class _LiveReservationState extends State<LiveReservation> {
                   style: MyStyle.tx12B.copyWith(fontSize: 11),
                 ),
                 const SizedBox(
-                  height: 12,
+                  height: 15,
                 ),
 
                 // *** Buttons ***
@@ -512,11 +515,14 @@ class _LiveReservationState extends State<LiveReservation> {
         ),
       ),
       content: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: MyColor.white,
+        ),
         padding:
             const EdgeInsets.only(top: 25.0, left: 20, right: 20, bottom: 20),
         height: 395,
         width: 352,
-        color: MyColor.white,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -566,10 +572,13 @@ class _LiveReservationState extends State<LiveReservation> {
                     width: 1,
                   ),
                 ),
-                child: const Center(
+                child: Center(
                   child: Text(
                     'Uploading an image',
-                    style: MyStyle.tx14O,
+                    style: MyStyle.tx14O.copyWith(
+                      fontSize: 13,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
                   ),
                 ),
               ),
@@ -626,10 +635,13 @@ class _LiveReservationState extends State<LiveReservation> {
                     width: 1,
                   ),
                 ),
-                child: const Center(
+                child: Center(
                   child: Text(
-                    'Upload the preview video',
-                    style: MyStyle.tx14O,
+                    'Uploading a video',
+                    style: MyStyle.tx14O.copyWith(
+                      fontSize: 13,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
                   ),
                 ),
               ),
@@ -700,7 +712,7 @@ class _LiveReservationState extends State<LiveReservation> {
           children: [
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              height: 132,
+              height: 122,
               width: 330,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -711,11 +723,13 @@ class _LiveReservationState extends State<LiveReservation> {
                   children: [
                     Text(
                       'Uploading an image',
-                      style: MyStyle.tx16B.copyWith(
+                      style: MyStyle.tx12B.copyWith(
                         color: Colors.black.withOpacity(0.5),
                       ),
                     ),
-                    const Divider(),
+                    const Divider(
+                      thickness: 0,
+                    ),
                     InkWell(
                       onTap: () {
                         // Created a method
@@ -727,14 +741,19 @@ class _LiveReservationState extends State<LiveReservation> {
                         child: Center(
                           child: Text(
                             'Camera',
-                            style: MyStyle.tx16B
-                                .copyWith(fontFamily: 'NotoSansKR-Medium'),
+                            style: MyStyle.tx14W.copyWith(
+                              // fontFamily: 'NotoSansKR-Medium'
+                              fontSize: 14,
+                              color: MyColor.black,
+                            ),
                             textAlign: TextAlign.center,
                           ),
                         ),
                       ),
                     ),
-                    const Divider(),
+                    const Divider(
+                      thickness: 0,
+                    ),
                     InkWell(
                       onTap: () {
                         _pickerImgBroadcast();
@@ -745,8 +764,11 @@ class _LiveReservationState extends State<LiveReservation> {
                         child: Center(
                           child: Text(
                             'Gallery',
-                            style: MyStyle.tx16B
-                                .copyWith(fontFamily: 'NotoSansKR-Medium'),
+                            style: MyStyle.tx14W.copyWith(
+                              // fontFamily: 'NotoSansKR-Medium'
+                              fontSize: 14,
+                              color: MyColor.black,
+                            ),
                           ),
                         ),
                       ),
@@ -770,10 +792,10 @@ class _LiveReservationState extends State<LiveReservation> {
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
                       'Cancel',
-                      style: MyStyle.tx17B,
+                      style: MyStyle.tx14W.copyWith(color: MyColor.black),
                     ),
                   ),
                 ),
@@ -829,7 +851,7 @@ class _LiveReservationState extends State<LiveReservation> {
           children: [
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10),
-              height: 132,
+              height: 122,
               width: 330,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -840,11 +862,13 @@ class _LiveReservationState extends State<LiveReservation> {
                   children: [
                     Text(
                       'Uploading a video',
-                      style: MyStyle.tx16B.copyWith(
+                      style: MyStyle.tx12B.copyWith(
                         color: Colors.black.withOpacity(0.5),
                       ),
                     ),
-                    const Divider(),
+                    const Divider(
+                      thickness: 0,
+                    ),
                     InkWell(
                       onTap: () {
                         // Created a method
@@ -856,14 +880,15 @@ class _LiveReservationState extends State<LiveReservation> {
                         child: Center(
                           child: Text(
                             'Camera',
-                            style: MyStyle.tx16B
-                                .copyWith(fontFamily: 'NotoSansKR-Medium'),
+                            style: MyStyle.tx14W.copyWith(color: MyColor.black),
                             textAlign: TextAlign.center,
                           ),
                         ),
                       ),
                     ),
-                    const Divider(),
+                    const Divider(
+                      thickness: 0,
+                    ),
                     InkWell(
                       onTap: () {
                         _pickerVideoImgBroadcast();
@@ -874,8 +899,7 @@ class _LiveReservationState extends State<LiveReservation> {
                         child: Center(
                           child: Text(
                             'Gallery',
-                            style: MyStyle.tx16B
-                                .copyWith(fontFamily: 'NotoSansKR-Medium'),
+                            style: MyStyle.tx14W.copyWith(color: MyColor.black),
                           ),
                         ),
                       ),
@@ -899,10 +923,10 @@ class _LiveReservationState extends State<LiveReservation> {
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.white,
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Text(
                       'Cancel',
-                      style: MyStyle.tx17B,
+                      style: MyStyle.tx14W.copyWith(color: MyColor.black),
                     ),
                   ),
                 ),

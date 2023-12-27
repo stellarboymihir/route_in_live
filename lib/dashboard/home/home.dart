@@ -100,39 +100,36 @@ class _HomePageState extends State<Home> {
               ),
               const SizedBox(height: 10),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'No more equipment. It\'s time to imp...',
-                          style: MyStyle.tx16B.copyWith(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 15,
-                              fontFamily: 'NotoSansKR-Medium'),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'It\'s scheduled to air at 8:00 PM today',
-                              style: MyStyle.tx12P.copyWith(
-                                fontSize: 11,
-                              ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        'No more equipment. It\'s time to imp...',
+                        style: MyStyle.tx16B.copyWith(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                            fontFamily: 'NotoSansKR-Medium'),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'It\'s scheduled to air at 8:00 PM today',
+                            style: MyStyle.tx12P.copyWith(
+                              fontSize: 11,
                             ),
-                            Text(
-                              ' I Pak Se-ri',
-                              style: MyStyle.tx12B.copyWith(
-                                fontSize: 11,
-                              ),
+                          ),
+                          Text(
+                            ' I Pak Se-ri',
+                            style: MyStyle.tx12B.copyWith(
+                              fontSize: 11,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   Column(
                     children: [
