@@ -473,16 +473,25 @@ class _LiveReservationState extends State<LiveReservation> {
                 const SizedBox(
                   height: 16,
                 ),
-                Container(
-                  height: 40,
-                  decoration: const BoxDecoration(
-                    color: MyColor.purple,
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Request for reservation',
-                      style:
-                          MyStyle.tx14W.copyWith(fontWeight: FontWeight.w700),
+                InkWell(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return requestDialog();
+                        });
+                  },
+                  child: Container(
+                    height: 40,
+                    decoration: const BoxDecoration(
+                      color: MyColor.purple,
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Request for reservation',
+                        style:
+                            MyStyle.tx14W.copyWith(fontWeight: FontWeight.w700),
+                      ),
                     ),
                   ),
                 ),
@@ -969,5 +978,145 @@ class _LiveReservationState extends State<LiveReservation> {
         print('Failed to pick Image: $e');
       }
     }
+  }
+
+  Widget requestDialog() {
+    return Center(
+      child: AlertDialog(
+        title: Text(
+          'I applied for a live reservation',
+          style: MyStyle.tx17B.copyWith(
+            fontSize: 16,
+          ),
+        ),
+        content: Text(
+          'The live application has been \n'
+          'completed with what you entered. \n'
+          ' A separate e-mail will be sent.\n'
+          'Thank you.',
+          textAlign: TextAlign.center,
+          style: MyStyle.tx13B.copyWith(
+            fontFamily: 'NotoSansKR-Regular',
+            fontSize: 12,
+            // color: MyColor.black.withOpacity(0.5),
+          ),
+        ),
+        contentPadding: const EdgeInsets.only(top: 8, bottom: 0),
+        actionsPadding: const EdgeInsets.all(10),
+        actions: [
+          const Divider(
+            thickness: 1,
+          ),
+          Center(
+            child: InkWell(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext) {
+                      return reqEssentialDialog();
+                    });
+              },
+              child: Text(
+                'Confirm',
+                style: MyStyle.tx17B.copyWith(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget reqEssentialDialog() {
+    return AlertDialog(
+      title: Text(
+        'Request to enter essential information.',
+        textAlign: TextAlign.center,
+        style: MyStyle.tx17B.copyWith(fontSize: 17),
+      ),
+      content: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: 'In order to host the show, '
+                  'the minimum\n information is...\n'
+                  'Please input it.\n',
+              style: MyStyle.tx13B.copyWith(
+                color: Colors.black.withOpacity(0.5),
+                fontSize: 12,
+              ),
+            ),
+            const WidgetSpan(
+              child: SizedBox(
+                height: 10,
+              ),
+            ),
+            TextSpan(
+              text: '\n Required: Name of the show, scheduled '
+                  ' date of the show, \n and whether to proceed '
+                  ' with \n the quiz.'
+                  'Choice: Live preview video and image,'
+                  'Choose a \n product to sell.',
+              style: MyStyle.tx13B.copyWith(
+                fontFamily: 'Montserrat-Medium',
+                // fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: MyColor.lred,
+              ),
+            ),
+          ],
+        ),
+      ),
+      // Text(
+      //   textAlign: TextAlign.center,
+      //   'In order to host the show, the minimum \n information is...\n'
+      //   'Please input it.',
+      //   style: MyStyle.tx13B.copyWith(
+      //     color: Colors.black.withOpacity(0.5),
+      //     fontSize: 12,
+      //   ),
+      // ),
+
+      contentPadding: const EdgeInsets.only(
+        top: 8,
+        bottom: 5,
+      ),
+      // actionsPadding: const EdgeInsets.all(10),
+      actions: [
+        const Divider(
+          height: 0,
+          thickness: 0,
+          indent: 0,
+          endIndent: 0,
+          color: Colors.grey,
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        InkWell(
+          // onTap: () {
+          //   Navigator.pushNamed(
+          //     context,
+          //     showIdRoute,
+          //   );
+          // },
+          child: Center(
+            child: Text(
+              // textAlign: TextAlign.center,
+              'Confirm',
+              style: MyStyle.tx17B.copyWith(
+                fontFamily: 'NotoSansKR-Medium',
+                fontWeight: FontWeight.w400,
+                fontSize: 16,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

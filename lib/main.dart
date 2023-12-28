@@ -20,6 +20,7 @@ import 'authentication/self_verify.dart';
 import 'authentication/splash_screen.dart';
 import 'authentication/terms_condition_page.dart';
 import 'constants/routes.dart';
+import 'dashboard/home/regsiterbroadcast/StoredItem.dart';
 
 void main() {
   runApp(const MyApp());
@@ -65,6 +66,7 @@ class MyApp extends StatelessWidget {
         //  ** Register Broadcast **
         liveReservationRoute: (context) => const LiveReservation(),
         sellProductRoute: (context) => const SellProduct(),
+        storeItemRoute: (context) => const StoredItem(),
       },
     );
   }

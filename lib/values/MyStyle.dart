@@ -56,7 +56,7 @@ class MyStyle {
     fontSize: 13,
     fontFamily: 'NotoSansKR-Medium',
     fontWeight: FontWeight.w400,
-    color: Colors.black,
+    color: MyColor.black,
   );
   static const tx13P = TextStyle(
     fontSize: 13,
@@ -111,7 +111,7 @@ class MyStyle {
     fontSize: 16,
     fontFamily: 'NotoSansKR-Regular',
     fontWeight: FontWeight.w400,
-    color: Colors.black,
+    color: MyColor.black,
     letterSpacing: 0.33,
   );
   static TextStyle tx16O = const TextStyle(

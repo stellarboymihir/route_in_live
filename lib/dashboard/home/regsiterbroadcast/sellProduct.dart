@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
+import '../../../constants/routes.dart';
+
 class SellProduct extends StatefulWidget {
   const SellProduct({super.key});
 
@@ -555,11 +557,16 @@ class _SellProductState extends State<SellProduct> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),
-                  child: Image.asset(
-                    'assets/icons/cancel.png',
-                    alignment: Alignment.bottomRight,
-                    height: 22,
-                    width: 22,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      'assets/icons/cancel.png',
+                      alignment: Alignment.bottomRight,
+                      height: 22,
+                      width: 22,
+                    ),
                   ),
                 ),
                 Row(
@@ -623,69 +630,54 @@ class _SellProductState extends State<SellProduct> {
                 ),
 
                 // *** DropDown
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  margin: const EdgeInsets.symmetric(horizontal: 10.0),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: MyColor.black.withOpacity(0.5),
+                DropdownButtonFormField<String>(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(0.6),
+                      borderSide: BorderSide(
+                        color: MyColor.black.withOpacity(0.5),
+                      ),
                     ),
+                    contentPadding: const EdgeInsets.all(10),
                   ),
-                  height: 32,
-                  // width: 342,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Measure of Capacity',
-                        style: MyStyle.tx13B.copyWith(
-                          color: MyColor.black.withOpacity(0.3),
-                        ),
-                      ),
-                      DropdownButtonFormField(
-                        value: selectedVal,
-                        icon: const Icon(
-                          Icons.keyboard_arrow_down_outlined,
-                          size: 16,
-                        ),
-                        items: _capacity.map<DropdownMenuItem<String>>((list) {
-                          return DropdownMenuItem<String>(
-                            value: list,
-                            child: Text(list),
-                          );
-                        }).toList(),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            selectedVal = newValue;
-                          });
-                        },
-                      ),
-                      // Expanded(
-                      //   child: DropdownButtonFormField<String>(
-                      //     value: selectedVal,
-                      //     icon: const Icon(
-                      //       Icons.keyboard_arrow_down_outlined,
-                      //       size: 16,
-                      //       color: MyColor.black,
-                      //     ),
-                      //     onChanged: (String? newValue) {
-                      //       setState(() {
-                      //         selectedVal = newValue!;
-                      //       });
-                      //     },
-                      //     items:
-                      //         _capacity.map<DropdownMenuItem<String>>((list) {
-                      //       return DropdownMenuItem<String>(
-                      //           value: list,
-                      //           child: Text(
-                      //             list,
-                      //             style: const TextStyle(color: MyColor.orange),
-                      //           ));
-                      //     }).toList(),
-                      //   ),
-                      // ),
-                    ],
+                  isExpanded: true,
+                  hint: Text(
+                    'Measure of Capacity',
+                    style: MyStyle.tx13B.copyWith(
+                        fontFamily: 'NotoSansKR-Regular', letterSpacing: 0.33),
                   ),
+                  selectedItemBuilder: (BuildContext context) {
+                    return _capacity.map<Widget>((String item) {
+                      return Container(
+                        alignment: Alignment.centerLeft,
+                        constraints: const BoxConstraints(minWidth: 100),
+                        child: Text(
+                          item,
+                          maxLines: 1,
+                          style: MyStyle.tx13B,
+                        ),
+                      );
+                    }).toList();
+                  },
+                  value: selectedVal,
+                  icon: const Icon(
+                    Icons.keyboard_arrow_down_outlined,
+                    size: 16,
+                    color: MyColor.black,
+                  ),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedVal = newValue!;
+                    });
+                  },
+                  items: _capacity.map<DropdownMenuItem<String>>((list) {
+                    return DropdownMenuItem<String>(
+                        value: list,
+                        child: Text(
+                          list,
+                          style: MyStyle.tx13B,
+                        ));
+                  }).toList(),
                 ),
 
                 const SizedBox(
@@ -747,17 +739,27 @@ class _SellProductState extends State<SellProduct> {
                 ),
 
                 //  Button
-                Container(
-                  alignment: Alignment.topLeft,
-                  margin: const EdgeInsets.all(10.0),
-                  height: 44,
-                  color: MyColor.yellowamber,
-                  child: Center(
-                    child: Text(
-                      'Put it in',
-                      style: MyStyle.tx16B.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: MyColor.white,
+                InkWell(
+                  onTap: () {
+                    // showDialog(
+                    //     context: context,
+                    //     builder: (BuildContext context) {
+                    //       return sellDialog();
+                    //     });
+                    Navigator.pushNamed(context, storeItemRoute);
+                  },
+                  child: Container(
+                    alignment: Alignment.topLeft,
+                    margin: const EdgeInsets.all(10.0),
+                    height: 44,
+                    color: MyColor.yellowamber,
+                    child: Center(
+                      child: Text(
+                        'Put it in',
+                        style: MyStyle.tx16B.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: MyColor.white,
+                        ),
                       ),
                     ),
                   ),
@@ -766,5 +768,40 @@ class _SellProductState extends State<SellProduct> {
             ),
           );
         });
+  }
+
+  Widget sellDialog() {
+    return AlertDialog(
+      title: Column(
+        children: [
+          Text(
+            'The product was included in the product to be sold with the option you chose.',
+            textAlign: TextAlign.center,
+            style: MyStyle.tx17B.copyWith(
+              fontSize: 16,
+              letterSpacing: 0.41,
+              fontFamily: 'NotoSansKR-Medium',
+            ),
+          ),
+          const Divider(
+            thickness: 0,
+          ),
+          InkWell(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Text(
+              'Close',
+              style: MyStyle.tx17B.copyWith(
+                fontWeight: FontWeight.w400,
+                fontFamily: 'NotoSansKR-SemiBold',
+                letterSpacing: 0.41,
+                fontSize: 15,
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
