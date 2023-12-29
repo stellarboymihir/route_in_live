@@ -3,6 +3,7 @@ import 'package:route_in_live/authentication/email_sign_up.dart';
 import 'package:route_in_live/authentication/login_page.dart';
 import 'package:route_in_live/authentication/register/findingid/find.dart';
 import 'package:route_in_live/dashboard/dashboard.dart';
+import 'package:route_in_live/dashboard/home/collecting/collectingpreview.dart';
 import 'package:route_in_live/dashboard/home/home.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/LiveReservation.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/sellProduct.dart';
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
         liveReservationRoute: (context) => const LiveReservation(),
         sellProductRoute: (context) => const SellProduct(),
         storeItemRoute: (context) => const StoredItem(),
+        collectingPreviewRoute: (context) => const CollectingPreview(),
       },
     );
   }

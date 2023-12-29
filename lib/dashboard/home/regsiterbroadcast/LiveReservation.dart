@@ -998,11 +998,11 @@ class _LiveReservationState extends State<LiveReservation> {
           style: MyStyle.tx13B.copyWith(
             fontFamily: 'NotoSansKR-Regular',
             fontSize: 12,
-            // color: MyColor.black.withOpacity(0.5),
+            color: MyColor.black.withOpacity(0.5),
           ),
         ),
         contentPadding: const EdgeInsets.only(top: 8, bottom: 0),
-        actionsPadding: const EdgeInsets.all(10),
+        actionsPadding: const EdgeInsets.symmetric(vertical: 10),
         actions: [
           const Divider(
             thickness: 1,
@@ -1012,7 +1012,7 @@ class _LiveReservationState extends State<LiveReservation> {
               onTap: () {
                 showDialog(
                     context: context,
-                    builder: (BuildContext) {
+                    builder: (BuildContext context) {
                       return reqEssentialDialog();
                     });
               },
@@ -1032,10 +1032,16 @@ class _LiveReservationState extends State<LiveReservation> {
 
   Widget reqEssentialDialog() {
     return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
       title: Text(
         'Request to enter essential information.',
         textAlign: TextAlign.center,
-        style: MyStyle.tx17B.copyWith(fontSize: 17),
+        style: MyStyle.tx17B.copyWith(
+          fontSize: 17,
+          height: 1.2,
+        ),
       ),
       content: RichText(
         textAlign: TextAlign.center,
@@ -1043,11 +1049,12 @@ class _LiveReservationState extends State<LiveReservation> {
           children: [
             TextSpan(
               text: 'In order to host the show, '
-                  'the minimum\n information is...\n'
+                  'the \n minimum information is...\n'
                   'Please input it.\n',
               style: MyStyle.tx13B.copyWith(
                 color: Colors.black.withOpacity(0.5),
                 fontSize: 12,
+                height: 1.2,
               ),
             ),
             const WidgetSpan(
@@ -1056,46 +1063,31 @@ class _LiveReservationState extends State<LiveReservation> {
               ),
             ),
             TextSpan(
-              text: '\n Required: Name of the show, scheduled '
-                  ' date of the show, \n and whether to proceed '
-                  ' with \n the quiz.'
-                  'Choice: Live preview video and image,'
-                  'Choose a \n product to sell.',
+              text: '\n Required: Name of the show, \n scheduled '
+                  ' date of the show,  and \n whether to proceed '
+                  ' with the quiz. \n'
+                  'Choice: Live preview video and image,\n'
+                  'Choose a product to sell.',
               style: MyStyle.tx13B.copyWith(
-                fontFamily: 'Montserrat-Medium',
-                // fontSize: 12,
-                fontWeight: FontWeight.w500,
-                color: MyColor.lred,
-              ),
+                  fontFamily: 'Montserrat-Medium',
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: MyColor.lred,
+                  height: 1.2),
             ),
           ],
         ),
       ),
-      // Text(
-      //   textAlign: TextAlign.center,
-      //   'In order to host the show, the minimum \n information is...\n'
-      //   'Please input it.',
-      //   style: MyStyle.tx13B.copyWith(
-      //     color: Colors.black.withOpacity(0.5),
-      //     fontSize: 12,
-      //   ),
-      // ),
-
       contentPadding: const EdgeInsets.only(
         top: 8,
-        bottom: 5,
+        bottom: 2,
       ),
-      // actionsPadding: const EdgeInsets.all(10),
+      actionsPadding: const EdgeInsets.symmetric(vertical: 10),
       actions: [
         const Divider(
-          height: 0,
-          thickness: 0,
+          thickness: 1,
           indent: 0,
           endIndent: 0,
-          color: Colors.grey,
-        ),
-        const SizedBox(
-          height: 8,
         ),
         InkWell(
           // onTap: () {
@@ -1106,7 +1098,6 @@ class _LiveReservationState extends State<LiveReservation> {
           // },
           child: Center(
             child: Text(
-              // textAlign: TextAlign.center,
               'Confirm',
               style: MyStyle.tx17B.copyWith(
                 fontFamily: 'NotoSansKR-Medium',

@@ -12,7 +12,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomePageState extends State<Home> {
-  var onClick = false;
+  var notifyClick = false;
 
   @override
   Widget build(BuildContext context) {
@@ -145,21 +145,28 @@ class _HomePageState extends State<Home> {
                               });
                         },
                         // child: Image.asset(),
-                        child: Image.asset(
-                          onClick == true
-                              ? 'assets/icons/alerton.png'
-                              : 'assets/icons/alert.png',
-                          height: 24,
-                          width: 24,
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              notifyClick == true
+                                  ? 'assets/icons/alerton.png'
+                                  : 'assets/icons/alert.png',
+                              height: 24,
+                              width: 24,
+                            ),
+                            Text(
+                              'Notification',
+                              style: MyStyle.tx10.copyWith(
+                                  decoration: TextDecoration.none,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 9,
+                                  color: notifyClick == true
+                                      ? MyColor.orange
+                                      : MyColor.black,
+                                  fontFamily: 'NotoSans-KR-Medium'),
+                            ),
+                          ],
                         ),
-                      ),
-                      Text(
-                        'Notification',
-                        style: MyStyle.tx10.copyWith(
-                            decoration: TextDecoration.none,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 9,
-                            fontFamily: 'NotoSans-KR-Medium'),
                       ),
                     ],
                   ),
@@ -401,20 +408,25 @@ class _HomePageState extends State<Home> {
               const SizedBox(
                 height: 15,
               ),
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(1),
-                  border: Border.all(
-                    color: MyColor.orange,
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, collectingPreviewRoute);
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(1),
+                    border: Border.all(
+                      color: MyColor.orange,
+                    ),
                   ),
-                ),
-                height: 40,
-                width: double.infinity,
-                child: const Text(
-                  'Collecting previews',
-                  textAlign: TextAlign.center,
-                  style: MyStyle.tx14O,
+                  height: 40,
+                  width: double.infinity,
+                  child: const Text(
+                    'Collecting previews',
+                    textAlign: TextAlign.center,
+                    style: MyStyle.tx14O,
+                  ),
                 ),
               ),
 
@@ -809,7 +821,7 @@ class _HomePageState extends State<Home> {
               child: InkWell(
                 onTap: () {
                   setState(() {
-                    onClick = false;
+                    notifyClick = false;
                   });
                   Navigator.pop(context);
                 },
@@ -839,7 +851,7 @@ class _HomePageState extends State<Home> {
               child: InkWell(
                 onTap: () {
                   setState(() {
-                    onClick = true;
+                    notifyClick = true;
                   });
                   Navigator.pop(context);
                 },

@@ -559,7 +559,12 @@ class _SellProductState extends State<SellProduct> {
                   padding: const EdgeInsets.all(10.0),
                   child: InkWell(
                     onTap: () {
-                      Navigator.pop(context);
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return sellDialog();
+                        },
+                      );
                     },
                     child: Image.asset(
                       'assets/icons/cancel.png',
