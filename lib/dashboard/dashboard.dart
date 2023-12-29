@@ -35,6 +35,8 @@ class _DashboardState extends State<Dashboard> {
         },
         selectedItemColor: MyColor.orange,
         unselectedItemColor: MyColor.black,
+        type: BottomNavigationBarType.fixed,
+        showUnselectedLabels: true,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

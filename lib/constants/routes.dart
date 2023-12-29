@@ -22,3 +22,4 @@ const liveReservationRoute = '/liveReservation/';
 const sellProductRoute = '/sellProductRoute/';
 const storeItemRoute = '/storeItemRoute/';
 const collectingPreviewRoute = '/collectingPreviewRoute/';
+const liveBroadcastRoute = '/liveBroadcastRoute/';

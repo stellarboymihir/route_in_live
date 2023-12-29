@@ -20,6 +20,12 @@ class MyStyle {
       fontWeight: FontWeight.w400,
       color: MyColor.black,
       decoration: TextDecoration.underline);
+  static const tx10W = TextStyle(
+    fontSize: 10,
+    fontFamily: 'NotoSansKR-Medium',
+    fontWeight: FontWeight.w500,
+    color: MyColor.white,
+  );
 
   static const tx11 = TextStyle(
     fontSize: 11,

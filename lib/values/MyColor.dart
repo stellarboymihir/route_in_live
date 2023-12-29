@@ -16,7 +16,7 @@ class MyColor {
   static const Color purple = Color(0xFF693ACC);
   static const Color yellowamber = Color(0xFFF2B705);
   static const Color white = Color(0xFFFFFFFF);
-
+  static Color yellowO = const Color(0xFFF2B70533).withOpacity(0.2);
   static Color blackO = const Color(0xFF303030).withOpacity(0.3);
   static const LinearGradient orangeGrad = LinearGradient(
     colors: [

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
@@ -105,24 +106,27 @@ class _CollectingPreviewState extends State<CollectingPreview> {
                           setState(() {
                             if (notifyPrevClick == true) {
                               notifyPrevClick = false;
+                              Fluttertoast.showToast(
+                                msg:
+                                    'I don\'t receive broadcast start notifications',
+                                toastLength: Toast.LENGTH_SHORT,
+                                timeInSecForIosWeb: 3,
+                                backgroundColor: MyColor.white,
+                                textColor: MyColor.black,
+                                fontSize: 13,
+                              );
                             } else {
                               notifyPrevClick = true;
+                              Fluttertoast.showToast(
+                                msg:
+                                    'You will be notified of the start of the broadcast',
+                                toastLength: Toast.LENGTH_SHORT,
+                                timeInSecForIosWeb: 3,
+                                backgroundColor: MyColor.white,
+                                textColor: MyColor.black,
+                                fontSize: 13,
+                              );
                             }
-                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text(
-                                'You will be notified of the start of the broadcast',
-                                style: MyStyle.tx14W.copyWith(
-                                  fontFamily: 'NotoSansKR-Regular',
-                                  color: MyColor.black,
-                                ),
-                              ),
-                              backgroundColor: MyColor.white,
-                              padding: const EdgeInsets.all(8.0),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16),
-                              ),
-                              duration: const Duration(seconds: 3),
-                            ));
                           });
                         },
                         child: Column(
@@ -158,10 +162,14 @@ class _CollectingPreviewState extends State<CollectingPreview> {
                       Positioned(
                         bottom: 10,
                         right: 10,
-                        child: Image.asset(
-                          'assets/icons/border.png',
-                          height: 20,
-                          width: 20,
+                        // after that for video
+                        child: InkWell(
+                          // onTap: (){},
+                          child: Image.asset(
+                            'assets/icons/border.png',
+                            height: 20,
+                            width: 20,
+                          ),
                         ),
                       ),
                     ],

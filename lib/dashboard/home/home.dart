@@ -70,29 +70,48 @@ class _HomePageState extends State<Home> {
                     bottom: 8,
                     left: 90,
                     right: 90,
-                    child: Container(
-                      padding: const EdgeInsets.all(4.0),
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.6),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Row(
-                        // crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'It will air after ',
-                            style: MyStyle.tx12B.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          Text(
-                            '06:12:59 ',
-                            style: MyStyle.tx12P
-                                .copyWith(fontWeight: FontWeight.w700),
-                          )
-                        ],
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, liveBroadcastRoute);
+                      },
+                      // child: Container(
+                      //   padding: const EdgeInsets.all(4.0),
+                      //   width: 100,
+                      //   decoration: BoxDecoration(
+                      //     color: Colors.white.withOpacity(0.6),
+                      //     borderRadius: BorderRadius.circular(12),
+                      //   ),
+                      //   child: Row(
+                      //     // crossAxisAlignment: CrossAxisAlignment.end,
+                      //     mainAxisAlignment: MainAxisAlignment.center,
+                      //     children: [
+                      //       Text(
+                      //         'It will air after ',
+                      //         style: MyStyle.tx12B.copyWith(
+                      //           fontWeight: FontWeight.w500,
+                      //         ),
+                      //       ),
+                      //       Text(
+                      //         '06:12:59 ',
+                      //         style: MyStyle.tx12P
+                      //             .copyWith(fontWeight: FontWeight.w700),
+                      //       )
+                      //     ],
+                      //   ),
+                      // ),
+                      child: Container(
+                        margin: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(18),
+                          color: MyColor.purple,
+                        ),
+                        child: Text(
+                          'Live, enter',
+                          textAlign: TextAlign.center,
+                          style: MyStyle.tx14W
+                              .copyWith(fontWeight: FontWeight.w500),
+                        ),
                       ),
                     ),
                   ),
