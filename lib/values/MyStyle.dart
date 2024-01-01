@@ -161,4 +161,18 @@ class MyStyle {
     fontFamily: 'NotoSansKR-ExtraBold',
     color: MyColor.orange,
   );
+
+  BoxDecoration kInnerDecoration = BoxDecoration(
+    color: Colors.white,
+    border: Border.all(color: MyColor.white),
+    borderRadius: BorderRadius.circular(12),
+  );
+
+  BoxDecoration kGradientBoxDecoration = BoxDecoration(
+    gradient: MyColor.orangeGrad,
+    border: Border.all(
+        // color: kHintColor,
+        ),
+    borderRadius: BorderRadius.circular(12),
+  );
 }

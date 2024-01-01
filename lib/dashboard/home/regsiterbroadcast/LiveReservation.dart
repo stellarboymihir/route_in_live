@@ -441,7 +441,7 @@ class _LiveReservationState extends State<LiveReservation> {
                   child: Container(
                     height: 40,
                     decoration: const BoxDecoration(
-                      color: MyColor.dorange,
+                      color: MyColor.lemonyellow,
                     ),
                     child: Center(
                       child: Text(
