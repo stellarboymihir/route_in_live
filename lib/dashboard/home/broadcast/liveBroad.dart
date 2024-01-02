@@ -40,8 +40,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 fit: BoxFit.fill,
                 width: width,
                 height: height,
-                // filterQuality: FilterQuality.low,
-                // opacity: const AlwaysStoppedAnimation(0.5),
               ),
               Positioned(
                 top: 40,
@@ -85,8 +83,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     Row(
                       children: [
                         Container(
-                          // padding: const EdgeInsets.all(8.0),
-                          // margin: const EdgeInsets.all(8.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: MyColor.white.withOpacity(0.20),
@@ -239,6 +235,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // 3rd Row
                     Container(
                       width: 240,
                       margin: const EdgeInsets.all(8.0),
@@ -270,7 +267,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         ],
                       ),
                     ),
-
                     // 4th Row
                     Container(
                       width: 175,
@@ -306,7 +302,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     Container(
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
-                        // mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           //Users and messages
                           Row(
@@ -400,36 +395,27 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                             ],
                           ),
 
-                          // RotatedBox(
-                          //   quarterTurns: 4,
-                          //   child: Slider(
-                          //     value: 1,
-                          //     min: 1,
-                          //     max: 4,
-                          //     onChanged: (newValue) {
-                          //       setState(() {});
-                          //     },
-                          //   ),
-                          // ),
-
+                          // Last Row
                           Row(
                             // Bottom Row
                             children: [
-                              // const SizedBox(
-                              //   width: 10,
-                              // ),
-                              Container(
-                                padding: const EdgeInsets.all(8.0),
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: MyColor.orange,
-                                ),
-                                height: 32,
-                                width: 32,
-                                child: Image.asset(
-                                  'assets/icons/gift.png',
-                                  height: 16,
-                                  width: 16,
+                              InkWell(
+                                onTap: () {
+                                  prodSheet();
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(8.0),
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: MyColor.orange,
+                                  ),
+                                  height: 32,
+                                  width: 32,
+                                  child: Image.asset(
+                                    'assets/icons/gift.png',
+                                    height: 16,
+                                    width: 16,
+                                  ),
                                 ),
                               ),
                               const SizedBox(
@@ -511,19 +497,10 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               // ),
                               //
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ),
-                    // Column(
-                    //   children: [
-                    //     Image.asset(
-                    //       'assets/icons/fade.png',
-                    //       width: 45,
-                    //       height: 252,
-                    //     ),
-                    //   ],
-                    // ),
                   ],
                 ),
               )
@@ -608,6 +585,384 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
           ],
         ),
       ],
+    );
+  }
+
+  void prodSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SingleChildScrollView(
+          child: SizedBox(
+            width: 375,
+            height: 940,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0, vertical: 15.0),
+
+                  // Top Row
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: 32,
+                        width: 132,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: MyColor.orange,
+                        ),
+                        child: Center(
+                          child: Text(
+                            '6 products sold',
+                            style: MyStyle.tx13B.copyWith(color: MyColor.white),
+                          ),
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/icons/cancel.png',
+                        height: 20,
+                        width: 20,
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      // Images for 1st Row
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 9.0, vertical: 8.0),
+                        child: Expanded(
+                          child: Row(
+                            children: [
+                              // 1st Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img1.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 2.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Sports shoes with...',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Text('39,000 won'),
+                                              ],
+                                            ),
+                                          ),
+                                          // const SizedBox(
+                                          //   width: 15,
+                                          // ),
+                                          // Plus Button
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+
+                              // 2nd Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img2.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 6.0, vertical: 2.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Golf club',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Text('310,000 won'),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      //  Images for 2nd Row
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Expanded(
+                          child: Row(
+                            children: [
+                              // 3rd Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img3.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 6.0, vertical: 2.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Golf ball set',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Text('60,000 won'),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              width: 15,
+                                            ),
+                                            // Plus Button
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+
+                              // 4th Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img4.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 2.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'A white cap',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Text('39,000 won'),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      //  Images for 3rd Row
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Expanded(
+                          child: Row(
+                            children: [
+                              // 5th Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img5.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 2.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Sports shoes with...',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Text('39,000 won'),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+
+                              // 6th Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img6.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 2.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Golf club',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Text('310,000 won'),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+
+                              Container(
+                                padding: const EdgeInsets.only(top: 15.0),
+                                color: MyColor.black.withOpacity(0.05),
+                                height: 236,
+                                width: 172,
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
