@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
@@ -33,6 +34,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
         children: [
           Stack(
             children: [
+              // Image
               Image.asset(
                 'assets/images/live.png',
                 fit: BoxFit.fill,
@@ -47,6 +49,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 right: 10,
                 child: Column(
                   children: [
+                    // 1st Row
+
                     Container(
                       width: width,
                       margin: const EdgeInsets.all(8.0),
@@ -76,6 +80,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         ],
                       ),
                     ),
+
+                    // 2nd Row
                     Row(
                       children: [
                         Container(
@@ -114,10 +120,11 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                             ],
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
 
+                        //DropDown Menu
                         SizedBox(
                             height: 24,
                             width: 140,
@@ -154,7 +161,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                     );
                                   }).toList();
                                 },
-                                icon: Visibility(
+                                icon: const Visibility(
                                     visible: false,
                                     child: Icon(Icons.arrow_downward)),
                                 value: selectedList,
@@ -193,17 +200,27 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         // It will be uncommented
 
                         Expanded(
-                          child: Container(
-                            padding: const EdgeInsets.all(8.0),
-                            margin: const EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: MyColor.dred),
-                            child: Text(
-                              'Get out',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx10W.copyWith(
-                                fontWeight: FontWeight.w500,
+                          // 2nd Row 3rd Column
+                          child: InkWell(
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return closeDialog();
+                                  });
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(8.0),
+                              margin: const EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: MyColor.dred),
+                              child: Text(
+                                'Get out',
+                                textAlign: TextAlign.center,
+                                style: MyStyle.tx10W.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ),
@@ -213,6 +230,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                   ],
                 ),
               ),
+
+              // Bottom Container
               Positioned(
                 bottom: 10,
                 left: 0,
@@ -221,12 +240,15 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
+                      width: 240,
                       margin: const EdgeInsets.all(8.0),
                       padding: const EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: MyColor.yellowO,
                       ),
+
+                      //  3rd Row
                       child: Row(
                         children: [
                           Text(
@@ -248,7 +270,10 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         ],
                       ),
                     ),
+
+                    // 4th Row
                     Container(
+                      width: 175,
                       margin: const EdgeInsets.all(8.0),
                       padding: const EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
@@ -276,11 +301,14 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         ],
                       ),
                     ),
+
+                    //  Chat container
                     Container(
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         // mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                          //Users and messages
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -371,6 +399,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               ),
                             ],
                           ),
+
                           // RotatedBox(
                           //   quarterTurns: 4,
                           //   child: Slider(
@@ -382,11 +411,13 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                           //     },
                           //   ),
                           // ),
+
                           Row(
+                            // Bottom Row
                             children: [
-                              const SizedBox(
-                                width: 10,
-                              ),
+                              // const SizedBox(
+                              //   width: 10,
+                              // ),
                               Container(
                                 padding: const EdgeInsets.all(8.0),
                                 decoration: const BoxDecoration(
@@ -406,26 +437,19 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               ),
 
                               Container(
-                                width: 205,
-                                height: 25,
+                                width: 170,
+                                height: 28,
+                                padding: const EdgeInsets.all(5.0),
+                                // margin: const EdgeInsets.all(2.0),
                                 decoration: BoxDecoration(
-                                  gradient: MyColor.orangeGrad,
                                   borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(color: MyColor.orange),
                                 ),
-                                child: Container(
-                                  padding: const EdgeInsets.all(4.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Colors.transparent,
-                                  ),
-                                  width: 200,
-                                  height: 20,
-                                  child: Text(
-                                    'Enter the text.',
-                                    style: MyStyle.tx12B.copyWith(
-                                      fontSize: 11,
-                                      color: MyColor.white.withOpacity(0.7),
-                                    ),
+                                child: Text(
+                                  'Enter the text.',
+                                  style: MyStyle.tx12B.copyWith(
+                                    fontSize: 11,
+                                    color: MyColor.white.withOpacity(0.7),
                                   ),
                                 ),
                               ),
@@ -460,6 +484,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               const SizedBox(
                                 width: 8,
                               ),
+
                               Container(
                                 padding: const EdgeInsets.all(8.0),
                                 decoration: BoxDecoration(
@@ -474,11 +499,31 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                   width: 16,
                                 ),
                               ),
+                              //  //  //  For Vertical Animation
+                              // Column(
+                              //   children: [
+                              //     Image.asset(
+                              //       'assets/icons/fade.png',
+                              //       width: 45,
+                              //       height: 252,
+                              //     ),
+                              //   ],
+                              // ),
+                              //
                             ],
                           )
                         ],
                       ),
                     ),
+                    // Column(
+                    //   children: [
+                    //     Image.asset(
+                    //       'assets/icons/fade.png',
+                    //       width: 45,
+                    //       height: 252,
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
               )
@@ -486,6 +531,83 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
           ),
         ],
       ),
+    );
+  }
+
+  Widget closeDialog() {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      titlePadding: const EdgeInsets.only(top: 20),
+      title: const Text(
+        'Exit',
+        style: MyStyle.tx17B,
+        textAlign: TextAlign.center,
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Are you sure you want to end the\n broadcast?',
+            style: MyStyle.tx13B.copyWith(fontSize: 12),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+      contentPadding: const EdgeInsets.only(top: 5, bottom: 20),
+      actionsPadding: const EdgeInsets.all(0),
+      actions: [
+        const Divider(
+          height: 0,
+          thickness: 0,
+          indent: 0,
+          endIndent: 0,
+          // color: Colors.grey,
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Close',
+                  style: MyStyle.tx17B.copyWith(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                      color: MyColor.lred),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 44,
+              child: VerticalDivider(
+                width: 0,
+                thickness: 0,
+                indent: 0,
+                endIndent: 0,
+                // color: Colors.grey,
+              ),
+            ),
+            Expanded(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, homeRoute);
+                },
+                child: Text(
+                  'End',
+                  style: MyStyle.tx17B.copyWith(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                      color: MyColor.iosblue),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

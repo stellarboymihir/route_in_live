@@ -132,11 +132,13 @@ class MyStyle {
       fontFamily: 'NotoSansKR-SemiBold',
       fontWeight: FontWeight.w500,
       color: Colors.black);
+
   static const tx17N = TextStyle(
       fontSize: 17,
       fontFamily: 'NotoSansKR-Medium',
       fontWeight: FontWeight.w500,
       color: MyColor.lred);
+
   static const tx17P = TextStyle(
       fontSize: 17,
       fontFamily: 'NotoSansKR-Medium',
