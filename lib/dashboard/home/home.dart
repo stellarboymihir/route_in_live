@@ -304,7 +304,11 @@ class _HomePageState extends State<Home> {
                               const SizedBox(
                                 width: 30,
                               ),
-                              Image.asset('assets/images/badge.png'),
+                              Image.asset(
+                                'assets/images/badge.png',
+                                height: 24,
+                                width: 24,
+                              ),
                               const SizedBox(
                                 width: 4,
                               ),

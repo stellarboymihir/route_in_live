@@ -130,8 +130,9 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                     MyColor.white.withOpacity(0.25),
                               ),
                               child: DropdownButtonFormField(
+                                style: MyStyle.tx10W,
                                 // itemHeight: 20,
-                                dropdownColor: Colors.transparent,
+                                // dropdownColor: Colors.transparent,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
@@ -145,18 +146,18 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                   'Quality - Automatic (1080p)',
                                   style: MyStyle.tx10W,
                                 ),
-                                selectedItemBuilder: (BuildContext context) {
-                                  return _list.map<Widget>((String item) {
-                                    return Container(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        item,
-                                        maxLines: 1,
-                                        style: MyStyle.tx10W,
-                                      ),
-                                    );
-                                  }).toList();
-                                },
+                                // selectedItemBuilder: (BuildContext context) {
+                                //   return _list.map<Widget>((String item) {
+                                //     return Container(
+                                //       alignment: Alignment.center,
+                                //       child: Text(
+                                //         item,
+                                //         maxLines: 1,
+                                //         style: MyStyle.tx10W,
+                                //       ),
+                                //     );
+                                //   }).toList();
+                                // },
                                 icon: const Visibility(
                                     visible: false,
                                     child: Icon(Icons.arrow_downward)),
@@ -174,6 +175,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                 onChanged: (String? newValue) {
                                   setState(() {
                                     selectedList = newValue!;
+                                    print(selectedList);
                                   });
                                 },
                               ),
@@ -423,7 +425,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               ),
 
                               Container(
-                                width: 170,
+                                width: 220,
                                 height: 28,
                                 padding: const EdgeInsets.all(5.0),
                                 // margin: const EdgeInsets.all(2.0),
@@ -434,7 +436,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                 child: Text(
                                   'Enter the text.',
                                   style: MyStyle.tx12B.copyWith(
-                                    fontSize: 11,
+                                    fontSize: 10,
                                     color: MyColor.white.withOpacity(0.7),
                                   ),
                                 ),
@@ -500,7 +502,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               //     ),
                               //   ],
                               // ),
-                              //
                             ],
                           ),
                         ],
@@ -595,276 +596,94 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
 
   void prodSheet() {
     showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+        ),
+      ),
       context: context,
+      isScrollControlled: true,
       builder: (BuildContext context) {
-        return SingleChildScrollView(
-          child: Expanded(
-            child: SizedBox(
-              width: 375,
-              height: 940,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0, vertical: 15.0),
-
-                    // Top Row
-                    child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 32,
-                          width: 132,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: MyColor.orange,
-                          ),
-                          child: Center(
-                            child: Text(
-                              '6 products sold',
-                              style:
-                                  MyStyle.tx13B.copyWith(color: MyColor.white),
-                            ),
-                          ),
+        return SizedBox(
+          // width: 375,
+          height: MediaQuery.sizeOf(context).height * 0.8,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 12.0, vertical: 15.0),
+                // Top Row
+                child: Row(
+                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 32,
+                      width: 132,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: MyColor.orange,
+                      ),
+                      child: Center(
+                        child: Text(
+                          '6 products sold',
+                          style: MyStyle.tx13B.copyWith(color: MyColor.white),
                         ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Container(
-                          height: 32,
-                          width: 132,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: MyColor.black.withOpacity(0.05),
-                          ),
-                          child: Center(
-                            child: Text(
-                              '0 shopping carts',
-                              style: MyStyle.tx13B.copyWith(
-                                color: MyColor.black.withOpacity(0.5),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 40,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Image.asset(
-                            'assets/icons/cancel.png',
-                            height: 20,
-                            width: 20,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Column(
-                      children: [
-                        // Images for 1st Row
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 9.0, vertical: 8.0),
-                          child: Expanded(
-                            child: Row(
-                              children: [
-                                // 1st Image
-                                InkWell(
-                                  onTap: () {
-                                    almostSheet();
-                                  },
-                                  child: Expanded(
-                                    child: Container(
-                                      padding: const EdgeInsets.only(top: 15.0),
-                                      color: MyColor.black.withOpacity(0.05),
-                                      height: 236,
-                                      width: 172,
-                                      child: Column(
-                                        children: [
-                                          Stack(children: [
-                                            Image.asset(
-                                              'assets/images/img1.png',
-                                              height: 172,
-                                              width: 172,
-                                            ),
-                                            Positioned(
-                                              top: 10,
-                                              left: 10,
-                                              child: Container(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(50),
-                                                  color: MyColor.purple,
-                                                ),
-                                                child: const Text(
-                                                  'It\'s almost',
-                                                  style: MyStyle.tx10W,
-                                                ),
-                                              ),
-                                            ),
-                                          ]),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 6.0,
-                                                        vertical: 2.0),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Sports shoes with...',
-                                                      style: MyStyle.tx14W
-                                                          .copyWith(
-                                                              color:
-                                                                  MyColor.black,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700,
-                                                              letterSpacing:
-                                                                  0.33,
-                                                              fontSize: 12),
-                                                    ),
-                                                    const Row(
-                                                      children: [
-                                                        Text(
-                                                          '10%',
-                                                          style: MyStyle.tx13P,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 5,
-                                                        ),
-                                                        Text('39,000 won'),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-
-                                // 2nd Image
-                                Expanded(
-                                  child: InkWell(
-                                    onTap: () {
-                                      showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return soldDialog();
-                                          });
-                                    },
-                                    child: Container(
-                                      padding: const EdgeInsets.only(top: 15.0),
-                                      color: MyColor.black.withOpacity(0.05),
-                                      height: 236,
-                                      width: 172,
-                                      child: Column(
-                                        children: [
-                                          Stack(
-                                            children: [
-                                              Image.asset(
-                                                'assets/images/img2.png',
-                                                height: 172,
-                                                width: 172,
-                                              ),
-                                              Positioned(
-                                                top: 10,
-                                                left: 10,
-                                                child: Container(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                    color: MyColor.black,
-                                                  ),
-                                                  child: const Text(
-                                                    'Sold out',
-                                                    style: MyStyle.tx10W,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 6.0, vertical: 2.0),
-                                            child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Golf club',
-                                                      style: MyStyle.tx14W
-                                                          .copyWith(
-                                                              color:
-                                                                  MyColor.black,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700,
-                                                              letterSpacing:
-                                                                  0.33,
-                                                              fontSize: 12),
-                                                    ),
-                                                    const Row(
-                                                      children: [
-                                                        Text(
-                                                          '20%',
-                                                          style: MyStyle.tx13P,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 5,
-                                                        ),
-                                                        Text('310,000 won'),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Container(
+                      height: 32,
+                      width: 132,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: MyColor.black.withOpacity(0.05),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '0 shopping carts',
+                          style: MyStyle.tx13B.copyWith(
+                            color: MyColor.black.withOpacity(0.5),
                           ),
                         ),
-
-                        //  Images for 2nd Row
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Expanded(
-                            child: Row(
-                              children: [
-                                // 3rd Image
-                                Expanded(
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 40,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(
+                        'assets/icons/cancel.png',
+                        height: 20,
+                        width: 20,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      // Images for 1st Row
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 9.0, vertical: 8.0),
+                        child: Expanded(
+                          child: Row(
+                            children: [
+                              // 1st Image
+                              InkWell(
+                                onTap: () {
+                                  almostSheet();
+                                },
+                                child: Expanded(
                                   child: Container(
                                     padding: const EdgeInsets.only(top: 15.0),
                                     color: MyColor.black.withOpacity(0.05),
@@ -872,142 +691,30 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                     width: 172,
                                     child: Column(
                                       children: [
-                                        Image.asset(
-                                          'assets/images/img3.png',
-                                          height: 172,
-                                          width: 172,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 6.0, vertical: 2.0),
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    'Golf ball set',
-                                                    style: MyStyle.tx14W
-                                                        .copyWith(
-                                                            color:
-                                                                MyColor.black,
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            letterSpacing: 0.33,
-                                                            fontSize: 12),
-                                                  ),
-                                                  const Row(
-                                                    children: [
-                                                      Text(
-                                                        '10%',
-                                                        style: MyStyle.tx13P,
-                                                      ),
-                                                      SizedBox(
-                                                        width: 5,
-                                                      ),
-                                                      Text('60,000 won'),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
+                                        Stack(children: [
+                                          Image.asset(
+                                            'assets/images/img1.png',
+                                            height: 172,
+                                            width: 172,
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-
-                                // 4th Image
-                                Expanded(
-                                  child: Container(
-                                    padding: const EdgeInsets.only(top: 15.0),
-                                    color: MyColor.black.withOpacity(0.05),
-                                    height: 236,
-                                    width: 172,
-                                    child: Column(
-                                      children: [
-                                        Image.asset(
-                                          'assets/images/img4.png',
-                                          height: 172,
-                                          width: 172,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: [
-                                            Padding(
+                                          Positioned(
+                                            top: 10,
+                                            left: 10,
+                                            child: Container(
                                               padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 6.0,
-                                                      vertical: 2.0),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    'A white cap',
-                                                    style: MyStyle.tx14W
-                                                        .copyWith(
-                                                            color:
-                                                                MyColor.black,
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            letterSpacing: 0.33,
-                                                            fontSize: 12),
-                                                  ),
-                                                  const Row(
-                                                    children: [
-                                                      Text(
-                                                        '10%',
-                                                        style: MyStyle.tx13P,
-                                                      ),
-                                                      SizedBox(
-                                                        width: 5,
-                                                      ),
-                                                      Text('39,000 won'),
-                                                    ],
-                                                  ),
-                                                ],
+                                                  const EdgeInsets.all(8.0),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                color: MyColor.purple,
+                                              ),
+                                              child: const Text(
+                                                'It\'s almost',
+                                                style: MyStyle.tx10W,
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-
-                        //  Images for 3rd Row
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Expanded(
-                            child: Row(
-                              children: [
-                                // 5th Image
-                                Expanded(
-                                  child: Container(
-                                    padding: const EdgeInsets.only(top: 15.0),
-                                    color: MyColor.black.withOpacity(0.05),
-                                    height: 236,
-                                    width: 172,
-                                    child: Column(
-                                      children: [
-                                        Image.asset(
-                                          'assets/images/img5.png',
-                                          height: 172,
-                                          width: 172,
-                                        ),
+                                          ),
+                                        ]),
                                         Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
@@ -1053,12 +760,21 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                     ),
                                   ),
                                 ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
 
-                                // 6th Image
-                                Expanded(
+                              // 2nd Image
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return soldDialog();
+                                        });
+                                  },
                                   child: Container(
                                     padding: const EdgeInsets.only(top: 15.0),
                                     color: MyColor.black.withOpacity(0.05),
@@ -1066,21 +782,40 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                     width: 172,
                                     child: Column(
                                       children: [
-                                        Image.asset(
-                                          'assets/images/img6.png',
-                                          height: 172,
-                                          width: 172,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                        Stack(
                                           children: [
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 6.0,
-                                                      vertical: 2.0),
-                                              child: Column(
+                                            Image.asset(
+                                              'assets/images/img2.png',
+                                              height: 172,
+                                              width: 172,
+                                            ),
+                                            Positioned(
+                                              top: 10,
+                                              left: 10,
+                                              child: Container(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                  color: MyColor.black,
+                                                ),
+                                                child: const Text(
+                                                  'Sold out',
+                                                  style: MyStyle.tx10W,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 6.0, vertical: 2.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Column(
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
@@ -1109,23 +844,273 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                                   ),
                                                 ],
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
+                      ),
+
+                      //  Images for 2nd Row
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Expanded(
+                          child: Row(
+                            children: [
+                              // 3rd Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img3.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 6.0, vertical: 2.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Golf ball set',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Row(
+                                                  children: [
+                                                    Text(
+                                                      '10%',
+                                                      style: MyStyle.tx13P,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5,
+                                                    ),
+                                                    Text('60,000 won'),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+
+                              // 4th Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img4.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 2.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'A white cap',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Row(
+                                                  children: [
+                                                    Text(
+                                                      '10%',
+                                                      style: MyStyle.tx13P,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5,
+                                                    ),
+                                                    Text('39,000 won'),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      //  Images for 3rd Row
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Expanded(
+                          child: Row(
+                            children: [
+                              // 5th Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img5.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 2.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Sports shoes with...',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Row(
+                                                  children: [
+                                                    Text(
+                                                      '10%',
+                                                      style: MyStyle.tx13P,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5,
+                                                    ),
+                                                    Text('39,000 won'),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+
+                              // 6th Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img6.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 2.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Golf club',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Row(
+                                                  children: [
+                                                    Text(
+                                                      '20%',
+                                                      style: MyStyle.tx13P,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5,
+                                                    ),
+                                                    Text('310,000 won'),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
           ),
         );
       },
@@ -1136,723 +1121,487 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
     showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
-          return SingleChildScrollView(
-            child: SizedBox(
-              height: 950,
-              width: 340,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0, vertical: 12.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: 32,
-                          width: 132,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: MyColor.orange,
-                          ),
-                          child: Center(
-                            child: Text(
-                              '6 products sold',
-                              style:
-                                  MyStyle.tx13B.copyWith(color: MyColor.white),
-                            ),
+          return SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.8,
+            // width: 340,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 12.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: 32,
+                        width: 132,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: MyColor.orange,
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Sponsorship',
+                            style: MyStyle.tx13B.copyWith(color: MyColor.white),
                           ),
                         ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Image.asset(
-                            'assets/icons/cancel.png',
-                            height: 20,
-                            width: 20,
-                          ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Image.asset(
+                          'assets/icons/cancel.png',
+                          height: 20,
+                          width: 20,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Table(
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SingleChildScrollView(
+                    child: Column(
                       children: [
-                        // Heading
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Username',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-SemiBold',
-                                fontWeight: FontWeight.w700,
                                 color: MyColor.black,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'NotoSansKR-SemiBold',
                               ),
                             ),
                             Text(
                               'Hour',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-SemiBold',
-                                fontWeight: FontWeight.w700,
                                 color: MyColor.black,
+                                fontWeight: FontWeight.w700,
+                                fontFamily: 'NotoSansKR-SemiBold',
                               ),
                             ),
                             Text(
                               'Sponsored Points',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-SemiBold',
+                                color: MyColor.black,
                                 fontWeight: FontWeight.w700,
-                                color: MyColor.black,
+                                fontFamily: 'NotoSansKR-SemiBold',
                               ),
                             ),
                           ],
                         ),
-
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '19.02',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
                               '10,000 points ',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              'Mint Rubber',
-                              textAlign: TextAlign.center,
+                              'Kim Mint',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '19.02',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
                               '10,000 points ',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              'sportsman',
-                              textAlign: TextAlign.center,
+                              'Kim Mint',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:50',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
                               '10,000 points ',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-
-                        TableRow(
-                          children: [
-                            Text(
-                              'king of golf',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '18:50',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                        TableRow(
-                          children: [
-                            Text(
-                              'Taekwondo Korea',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '18:50',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                        TableRow(
-                          children: [
-                            Text(
-                              'Run to Run',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '18:48',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:48',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:45',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:40',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:40',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:40',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:35',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:30',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:30',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:30',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:30',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:30',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:30',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:30',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:30',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                           ],
                         ),
-                        TableRow(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
                               'Kim Mint',
-                              textAlign: TextAlign.center,
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '18:30',
-                              textAlign: TextAlign.center,
+                              '19:02',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
                             Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
+                              '10,000 points ',
                               style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                        TableRow(
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '18:30',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                        TableRow(
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '18:30',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '100 points ',
-                              textAlign: TextAlign.center,
-                              style: MyStyle.tx14W.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
                                 color: MyColor.black,
                               ),
                             ),
@@ -1860,9 +1609,9 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         ),
                       ],
                     ),
-                  )
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
           );
         });
@@ -1904,6 +1653,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
     );
   }
 
+  //  The product final sheet
   void almostSheet() {
     showModalBottomSheet(
         context: context,
@@ -1925,10 +1675,15 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         height: 24,
                         width: 24,
                       ),
-                      Image.asset(
-                        'assets/icons/close.png',
-                        height: 24,
-                        width: 24,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Image.asset(
+                          'assets/icons/close.png',
+                          height: 24,
+                          width: 24,
+                        ),
                       ),
                     ],
                   ),
@@ -1970,7 +1725,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                             text: '10%',
                             style: MyStyle.tx14W.copyWith(
                               color: MyColor.purple,
-                              fontSize: 12,
+                              // fontSize: 13,
                               fontWeight: FontWeight.w300,
                               fontFamily: 'NotoSansKR-SemiBold',
                             ),
@@ -1985,11 +1740,11 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     Text(
                       '36,000',
                       style: MyStyle.tx13B.copyWith(
-                        fontWeight: FontWeight.w300,
-                      ),
+                          // fontWeight: FontWeight.w300,
+                          fontFamily: 'NotoSansKR-SemiBold'),
                     ),
                     Text(
-                      'won',
+                      'won   |   ',
                       style: MyStyle.tx13B.copyWith(
                         fontWeight: FontWeight.w100,
                         fontFamily: 'NotoSansKR-Regular',
@@ -2004,7 +1759,53 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                       ),
                     ),
                   ],
-                )
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  children: [
+                    Image.asset(
+                      'assets/images/badge.png',
+                      width: 10,
+                      height: 13,
+                    ),
+                    Text(
+                      'Promoted celebrity list',
+                      style: MyStyle.tx14W.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: MyColor.purple,
+                      ),
+                    )
+                  ],
+                ),
+                Row(children: [
+                  Image.asset(
+                    'assets/images/avtar4.png',
+                    height: 72,
+                    width: 72,
+                  ),
+                  Image.asset(
+                    'assets/images/avtar5.png',
+                    height: 72,
+                    width: 72,
+                  ),
+                  Image.asset(
+                    'assets/images/avtar6.png',
+                    height: 72,
+                    width: 72,
+                  ),
+                  Image.asset(
+                    'assets/images/avtar7.png',
+                    height: 72,
+                    width: 72,
+                  ),
+                  Image.asset(
+                    'assets/images/avtar8.png',
+                    height: 72,
+                    width: 72,
+                  ),
+                ]),
               ],
             ),
           );
