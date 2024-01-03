@@ -158,6 +158,15 @@ class MyStyle {
     color: MyColor.orange,
     letterSpacing: 0.33,
   );
+
+  static const tx20W = TextStyle(
+    fontSize: 20,
+    fontFamily: 'NotoSansKR-Medium',
+    fontWeight: FontWeight.w500,
+    color: MyColor.white,
+    letterSpacing: 0.33,
+  );
+
   static const tx24 = TextStyle(
     fontSize: 24,
     fontFamily: 'NotoSansKR-ExtraBold',

@@ -22,7 +22,13 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
 
   String? selectedList;
 
+  bool isModelProduct = false;
+
   var size, height, width;
+
+  var container2;
+
+  var container1;
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -681,7 +687,20 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               // 1st Image
                               InkWell(
                                 onTap: () {
-                                  almostSheet();
+                                  // detailSheet();
+                                  setState(() {
+                                    // if (button == true) {
+                                    //   button = false;
+                                    //   print(button);
+                                    // } else {
+                                    //   button = true;
+                                    //   print(button);
+                                    //   detailSheet();
+                                    // }
+                                    isModelProduct == true
+                                        ? supportSheet()
+                                        : detailSheet();
+                                  });
                                 },
                                 child: Expanded(
                                   child: Container(
@@ -1117,9 +1136,11 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
     );
   }
 
+  // Table Sheet
   void supportSheet() {
     showModalBottomSheet(
         context: context,
+        isScrollControlled: true,
         builder: (BuildContext context) {
           return SizedBox(
             height: MediaQuery.sizeOf(context).height * 0.8,
@@ -1162,452 +1183,411 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Username',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'NotoSansKR-SemiBold',
+                    child: Expanded(
+                      child: Column(
+                        children: [
+                          // Heading
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Username',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'NotoSansKR-SemiBold',
+                                ),
                               ),
-                            ),
-                            Text(
-                              'Hour',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'NotoSansKR-SemiBold',
+                              Text(
+                                'Hour',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'NotoSansKR-SemiBold',
+                                ),
                               ),
-                            ),
-                            Text(
-                              'Sponsored Points',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'NotoSansKR-SemiBold',
+                              Text(
+                                'Sponsored Points',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                  fontWeight: FontWeight.w700,
+                                  fontFamily: 'NotoSansKR-SemiBold',
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+
+                          // Table
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                'Kim Mint',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '19:02',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
+                              Text(
+                                '10,000 points ',
+                                style: MyStyle.tx14W.copyWith(
+                                  color: MyColor.black,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              'Kim Mint',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '19:02',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
-                              ),
-                            ),
-                            Text(
-                              '10,000 points ',
-                              style: MyStyle.tx14W.copyWith(
-                                color: MyColor.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -1617,6 +1597,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
         });
   }
 
+  // Sold Out Dialog
   Widget soldDialog() {
     return AlertDialog(
       title: Center(
@@ -1653,162 +1634,236 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
     );
   }
 
-  //  The product final sheet
-  void almostSheet() {
+  //  The product Detail sheet
+
+  void detailSheet() {
     showModalBottomSheet(
-        context: context,
-        isScrollControlled: true,
-        builder: (BuildContext context) {
-          return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.75,
-            // height: 652,
-            width: 375,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Image.asset(
-                        'assets/icons/leftArrow.png',
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(16),
+          topLeft: Radius.circular(16),
+        ),
+      ),
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: MediaQuery.of(context).size.height * 0.75,
+          // height: 652,
+          width: 375,
+
+          //Top UI
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Indicators
+                    Image.asset(
+                      'assets/icons/leftArrow.png',
+                      height: 24,
+                      width: 24,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(
+                        'assets/icons/close.png',
                         height: 24,
                         width: 24,
                       ),
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Image.asset(
-                          'assets/icons/close.png',
-                          height: 24,
-                          width: 24,
+                    ),
+                  ],
+                ),
+              ),
+
+              //Stack ke andar UI
+              Stack(
+                children: [
+                  SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/images/img3.png',
+                          height: 352,
+                          width: 352,
+                        ),
+
+                        // Bottom Text
+                        Row(
+                          children: [
+                            Text(
+                              '11 types of vivid golf balls',
+                              style: MyStyle.tx16B.copyWith(
+                                fontFamily: 'NotoSansKR-Medium',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 20,
+                            ),
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'the rate of discount ',
+                                    style: MyStyle.tx14W.copyWith(
+                                      color: MyColor.purple,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w100,
+                                      fontFamily: 'NotoSansKR-Regular',
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: '10%',
+                                    style: MyStyle.tx14W.copyWith(
+                                      color: MyColor.purple,
+                                      // fontSize: 13,
+                                      fontWeight: FontWeight.w300,
+                                      fontFamily: 'NotoSansKR-SemiBold',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          children: [
+                            Text(
+                              '36,000',
+                              style: MyStyle.tx13B.copyWith(
+                                  // fontWeight: FontWeight.w300,
+                                  fontFamily: 'NotoSansKR-SemiBold'),
+                            ),
+                            Text(
+                              'won   |   ',
+                              style: MyStyle.tx13B.copyWith(
+                                fontWeight: FontWeight.w100,
+                                fontFamily: 'NotoSansKR-Regular',
+                              ),
+                            ),
+                            Text(
+                              '40,000',
+                              style: MyStyle.tx13B.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                color: MyColor.black.withOpacity(0.7),
+                                decoration: TextDecoration.lineThrough,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          children: [
+                            Image.asset(
+                              'assets/images/badge.png',
+                              width: 10,
+                              height: 13,
+                            ),
+                            Text(
+                              ' Promoted celebrity list',
+                              style: MyStyle.tx14W.copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: MyColor.purple,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                          ],
+                        ),
+                        Expanded(
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                'assets/images/avtar4.png',
+                                height: 72,
+                                width: 72,
+                              ),
+                              Image.asset(
+                                'assets/images/avtar5.png',
+                                height: 72,
+                                width: 72,
+                              ),
+                              Image.asset(
+                                'assets/images/avtar6.png',
+                                height: 72,
+                                width: 72,
+                              ),
+                              Image.asset(
+                                'assets/images/avtar7.png',
+                                height: 72,
+                                width: 72,
+                              ),
+                              Image.asset(
+                                'assets/images/avtar8.png',
+                                height: 72,
+                                width: 72,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 351,
+                          height: 476,
+                          child: Text(
+                            'Detail img',
+                            style: MyStyle.tx20W,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+
+              // Image
+
+              // Bottom 2 Row
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 44,
+                      color: MyColor.yellowamber,
+                      child: Center(
+                        child: Text(
+                          'A Shopping Basket',
+                          style: MyStyle.tx14W.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    'assets/images/img3.png',
-                    height: 352,
-                    width: 352,
-                  ),
-                ),
-                Row(
-                  children: [
-                    Text(
-                      '11 types of vivid golf balls',
-                      style: MyStyle.tx16B.copyWith(
-                        fontFamily: 'NotoSansKR-Medium',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w700,
-                      ),
                     ),
-                    const SizedBox(
-                      width: 35,
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'the rate of discount ',
-                            style: MyStyle.tx14W.copyWith(
-                              color: MyColor.purple,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w100,
-                              fontFamily: 'NotoSansKR-Regular',
-                            ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 44,
+                      color: MyColor.purple,
+                      child: Center(
+                        child: Text(
+                          'Buy it right away',
+                          style: MyStyle.tx14W.copyWith(
+                            fontWeight: FontWeight.w500,
                           ),
-                          TextSpan(
-                            text: '10%',
-                            style: MyStyle.tx14W.copyWith(
-                              color: MyColor.purple,
-                              // fontSize: 13,
-                              fontWeight: FontWeight.w300,
-                              fontFamily: 'NotoSansKR-SemiBold',
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      '36,000',
-                      style: MyStyle.tx13B.copyWith(
-                          // fontWeight: FontWeight.w300,
-                          fontFamily: 'NotoSansKR-SemiBold'),
-                    ),
-                    Text(
-                      'won   |   ',
-                      style: MyStyle.tx13B.copyWith(
-                        fontWeight: FontWeight.w100,
-                        fontFamily: 'NotoSansKR-Regular',
-                      ),
-                    ),
-                    Text(
-                      '40,000',
-                      style: MyStyle.tx13B.copyWith(
-                        fontFamily: 'NotoSansKR-Regular',
-                        color: MyColor.black.withOpacity(0.7),
-                        decoration: TextDecoration.lineThrough,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    Image.asset(
-                      'assets/images/badge.png',
-                      width: 10,
-                      height: 13,
-                    ),
-                    Text(
-                      'Promoted celebrity list',
-                      style: MyStyle.tx14W.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: MyColor.purple,
-                      ),
-                    )
-                  ],
-                ),
-                Row(children: [
-                  Image.asset(
-                    'assets/images/avtar4.png',
-                    height: 72,
-                    width: 72,
                   ),
-                  Image.asset(
-                    'assets/images/avtar5.png',
-                    height: 72,
-                    width: 72,
-                  ),
-                  Image.asset(
-                    'assets/images/avtar6.png',
-                    height: 72,
-                    width: 72,
-                  ),
-                  Image.asset(
-                    'assets/images/avtar7.png',
-                    height: 72,
-                    width: 72,
-                  ),
-                  Image.asset(
-                    'assets/images/avtar8.png',
-                    height: 72,
-                    width: 72,
-                  ),
-                ]),
-              ],
-            ),
-          );
-        });
+                ],
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
