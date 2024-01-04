@@ -100,6 +100,13 @@ class MyStyle {
     fontFamily: 'NotoSansKR-Medium',
     fontWeight: FontWeight.w400,
     color: Colors.white,
+    letterSpacing: 0.33,
+  );
+  static const tx14B = TextStyle(
+    fontSize: 14,
+    fontFamily: 'NotoSansKR-Medium',
+    fontWeight: FontWeight.w400,
+    color: MyColor.black,
   );
   static TextStyle tx14Blk = TextStyle(
     fontSize: 14,
