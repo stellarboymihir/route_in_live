@@ -615,6 +615,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
           return SizedBox(
             // width: 375,
             height: MediaQuery.sizeOf(context).height * 0.8,
+            width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
                 Padding(
@@ -625,6 +626,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
+                      // Product Sold
                       Container(
                         height: 32,
                         width: 132,
@@ -642,6 +644,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                       const SizedBox(
                         width: 5,
                       ),
+
+                      //Shopping Cart Container
                       Container(
                         height: 32,
                         width: 132,
@@ -676,663 +680,589 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 ),
                 Expanded(
                   child: SingleChildScrollView(
-                    child: isModelProduct == false
-                        ? Column(
+                      child: Column(
+                    children: [
+                      // Images for 1st Row
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 9.0, vertical: 8.0),
+                        child: Expanded(
+                          child: Row(
                             children: [
-                              // Images for 1st Row
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 9.0, vertical: 8.0),
+                              // 1st Image
+                              InkWell(
+                                onTap: () {
+                                  detailSheet();
+                                  // setState(() {
+                                  //   isModelProduct == true
+                                  //       ? supportSheet()
+                                  //       : detailSheet();
+                                  // }
+                                  // );
+                                },
                                 child: Expanded(
-                                  child: Row(
-                                    children: [
-                                      // 1st Image
-                                      InkWell(
-                                        onTap: () {
-                                          // detailSheet();
-                                          setState(() {
-                                            // if (button == true) {
-                                            //   button = false;
-                                            //   print(button);
-                                            // } else {
-                                            //   button = true;
-                                            //   print(button);
-                                            //   detailSheet();
-                                            // }
-                                            isModelProduct == true
-                                                ? supportSheet()
-                                                : detailSheet();
-                                          });
-                                        },
-                                        child: Expanded(
-                                          child: Container(
-                                            padding: const EdgeInsets.only(
-                                                top: 15.0),
-                                            color:
-                                                MyColor.black.withOpacity(0.05),
-                                            height: 236,
+                                  child: Container(
+                                    padding: const EdgeInsets.only(top: 15.0),
+                                    color: MyColor.black.withOpacity(0.05),
+                                    height: 236,
+                                    width: 172,
+                                    child: Column(
+                                      children: [
+                                        Stack(children: [
+                                          Image.asset(
+                                            'assets/images/img1.png',
+                                            height: 172,
                                             width: 172,
-                                            child: Column(
-                                              children: [
-                                                Stack(children: [
-                                                  Image.asset(
-                                                    'assets/images/img1.png',
-                                                    height: 172,
-                                                    width: 172,
-                                                  ),
-                                                  Positioned(
-                                                    top: 10,
-                                                    left: 10,
-                                                    child: Container(
-                                                      padding:
-                                                          const EdgeInsets.all(
-                                                              8.0),
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(50),
-                                                        color: MyColor.purple,
-                                                      ),
-                                                      child: const Text(
-                                                        'It\'s almost',
-                                                        style: MyStyle.tx10W,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ]),
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding: const EdgeInsets
-                                                          .symmetric(
-                                                          horizontal: 6.0,
-                                                          vertical: 2.0),
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            'Sports shoes with...',
-                                                            style: MyStyle.tx14W
-                                                                .copyWith(
-                                                                    color:
-                                                                        MyColor
-                                                                            .black,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w700,
-                                                                    letterSpacing:
-                                                                        0.33,
-                                                                    fontSize:
-                                                                        12),
-                                                          ),
-                                                          const Row(
-                                                            children: [
-                                                              Text(
-                                                                '10%',
-                                                                style: MyStyle
-                                                                    .tx13P,
-                                                              ),
-                                                              SizedBox(
-                                                                width: 5,
-                                                              ),
-                                                              Text(
-                                                                  '39,000 won'),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
+                                          ),
+                                          Positioned(
+                                            top: 10,
+                                            left: 10,
+                                            child: Container(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                color: MyColor.purple,
+                                              ),
+                                              child: const Text(
+                                                'It\'s almost',
+                                                style: MyStyle.tx10W,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-
-                                      // 2nd Image
-                                      Expanded(
-                                        child: InkWell(
-                                          onTap: () {
-                                            showDialog(
-                                                context: context,
-                                                builder:
-                                                    (BuildContext context) {
-                                                  return soldDialog();
-                                                });
-                                          },
-                                          child: Container(
-                                            padding: const EdgeInsets.only(
-                                                top: 15.0),
-                                            color:
-                                                MyColor.black.withOpacity(0.05),
-                                            height: 236,
-                                            width: 172,
-                                            child: Column(
-                                              children: [
-                                                Stack(
-                                                  children: [
-                                                    Image.asset(
-                                                      'assets/images/img2.png',
-                                                      height: 172,
-                                                      width: 172,
-                                                    ),
-                                                    Positioned(
-                                                      top: 10,
-                                                      left: 10,
-                                                      child: Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .all(8.0),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(50),
-                                                          color: MyColor.black,
-                                                        ),
-                                                        child: const Text(
-                                                          'Sold out',
-                                                          style: MyStyle.tx10W,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
+                                        ]),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
                                                       horizontal: 6.0,
                                                       vertical: 2.0),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.start,
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'Sports shoes with...',
+                                                    style: MyStyle.tx14W
+                                                        .copyWith(
+                                                            color:
+                                                                MyColor.black,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            letterSpacing: 0.33,
+                                                            fontSize: 12),
+                                                  ),
+                                                  const Row(
                                                     children: [
-                                                      Column(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            'Golf club',
-                                                            style: MyStyle.tx14W
-                                                                .copyWith(
-                                                                    color:
-                                                                        MyColor
-                                                                            .black,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w700,
-                                                                    letterSpacing:
-                                                                        0.33,
-                                                                    fontSize:
-                                                                        12),
-                                                          ),
-                                                          const Row(
-                                                            children: [
-                                                              Text(
-                                                                '20%',
-                                                                style: MyStyle
-                                                                    .tx13P,
-                                                              ),
-                                                              SizedBox(
-                                                                width: 5,
-                                                              ),
-                                                              Text(
-                                                                  '310,000 won'),
-                                                            ],
-                                                          ),
-                                                        ],
+                                                      Text(
+                                                        '10%',
+                                                        style: MyStyle.tx13P,
                                                       ),
+                                                      SizedBox(
+                                                        width: 5,
+                                                      ),
+                                                      Text('39,000 won'),
                                                     ],
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-
-                              //  Images for 2nd Row
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Expanded(
-                                  child: Row(
-                                    children: [
-                                      // 3rd Image
-                                      Expanded(
-                                        child: Container(
-                                          padding:
-                                              const EdgeInsets.only(top: 15.0),
-                                          color:
-                                              MyColor.black.withOpacity(0.05),
-                                          height: 236,
-                                          width: 172,
-                                          child: Column(
-                                            children: [
-                                              Image.asset(
-                                                'assets/images/img3.png',
-                                                height: 172,
-                                                width: 172,
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 6.0,
-                                                        vertical: 2.0),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: [
-                                                    Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          'Golf ball set',
-                                                          style: MyStyle.tx14W
-                                                              .copyWith(
-                                                                  color: MyColor
-                                                                      .black,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w700,
-                                                                  letterSpacing:
-                                                                      0.33,
-                                                                  fontSize: 12),
-                                                        ),
-                                                        const Row(
-                                                          children: [
-                                                            Text(
-                                                              '10%',
-                                                              style:
-                                                                  MyStyle.tx13P,
-                                                            ),
-                                                            SizedBox(
-                                                              width: 5,
-                                                            ),
-                                                            Text('60,000 won'),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-
-                                      // 4th Image
-                                      Expanded(
-                                        child: Container(
-                                          padding:
-                                              const EdgeInsets.only(top: 15.0),
-                                          color:
-                                              MyColor.black.withOpacity(0.05),
-                                          height: 236,
-                                          width: 172,
-                                          child: Column(
-                                            children: [
-                                              Image.asset(
-                                                'assets/images/img4.png',
-                                                height: 172,
-                                                width: 172,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 6.0,
-                                                        vertical: 2.0),
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          'A white cap',
-                                                          style: MyStyle.tx14W
-                                                              .copyWith(
-                                                                  color: MyColor
-                                                                      .black,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w700,
-                                                                  letterSpacing:
-                                                                      0.33,
-                                                                  fontSize: 12),
-                                                        ),
-                                                        const Row(
-                                                          children: [
-                                                            Text(
-                                                              '10%',
-                                                              style:
-                                                                  MyStyle.tx13P,
-                                                            ),
-                                                            SizedBox(
-                                                              width: 5,
-                                                            ),
-                                                            Text('39,000 won'),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-
-                              //  Images for 3rd Row
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Expanded(
-                                  child: Row(
-                                    children: [
-                                      // 5th Image
-                                      Expanded(
-                                        child: Container(
-                                          padding:
-                                              const EdgeInsets.only(top: 15.0),
-                                          color:
-                                              MyColor.black.withOpacity(0.05),
-                                          height: 236,
-                                          width: 172,
-                                          child: Column(
-                                            children: [
-                                              Image.asset(
-                                                'assets/images/img5.png',
-                                                height: 172,
-                                                width: 172,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 6.0,
-                                                        vertical: 2.0),
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          'Sports shoes with...',
-                                                          style: MyStyle.tx14W
-                                                              .copyWith(
-                                                                  color: MyColor
-                                                                      .black,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w700,
-                                                                  letterSpacing:
-                                                                      0.33,
-                                                                  fontSize: 12),
-                                                        ),
-                                                        const Row(
-                                                          children: [
-                                                            Text(
-                                                              '10%',
-                                                              style:
-                                                                  MyStyle.tx13P,
-                                                            ),
-                                                            SizedBox(
-                                                              width: 5,
-                                                            ),
-                                                            Text('39,000 won'),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-
-                                      // 6th Image
-                                      Expanded(
-                                        child: Container(
-                                          padding:
-                                              const EdgeInsets.only(top: 15.0),
-                                          color:
-                                              MyColor.black.withOpacity(0.05),
-                                          height: 236,
-                                          width: 172,
-                                          child: Column(
-                                            children: [
-                                              Image.asset(
-                                                'assets/images/img6.png',
-                                                height: 172,
-                                                width: 172,
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 6.0,
-                                                        vertical: 2.0),
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          'Golf club',
-                                                          style: MyStyle.tx14W
-                                                              .copyWith(
-                                                                  color: MyColor
-                                                                      .black,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w700,
-                                                                  letterSpacing:
-                                                                      0.33,
-                                                                  fontSize: 12),
-                                                        ),
-                                                        const Row(
-                                                          children: [
-                                                            Text(
-                                                              '20%',
-                                                              style:
-                                                                  MyStyle.tx13P,
-                                                            ),
-                                                            SizedBox(
-                                                              width: 5,
-                                                            ),
-                                                            Text('310,000 won'),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )
-                        : Column(
-                            children: [
-                              Image.asset(
-                                'assets/images/img3.png',
-                                height: 352,
-                                width: 352,
-                              ),
-
-                              // Bottom Text
-                              Row(
-                                children: [
-                                  Text(
-                                    '11 types of vivid golf balls',
-                                    style: MyStyle.tx16B.copyWith(
-                                      fontFamily: 'NotoSansKR-Medium',
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700,
+                                      ],
                                     ),
                                   ),
-                                  const SizedBox(
-                                    width: 20,
-                                  ),
-                                  RichText(
-                                    text: TextSpan(
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+
+                              // 2nd Image
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return soldDialog();
+                                        });
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.only(top: 15.0),
+                                    color: MyColor.black.withOpacity(0.05),
+                                    height: 236,
+                                    width: 172,
+                                    child: Column(
                                       children: [
-                                        TextSpan(
-                                          text: 'the rate of discount ',
-                                          style: MyStyle.tx14W.copyWith(
-                                            color: MyColor.purple,
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w100,
-                                            fontFamily: 'NotoSansKR-Regular',
-                                          ),
+                                        Stack(
+                                          children: [
+                                            Image.asset(
+                                              'assets/images/img2.png',
+                                              height: 172,
+                                              width: 172,
+                                            ),
+                                            Positioned(
+                                              top: 10,
+                                              left: 10,
+                                              child: Container(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                  color: MyColor.black,
+                                                ),
+                                                child: const Text(
+                                                  'Sold out',
+                                                  style: MyStyle.tx10W,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        TextSpan(
-                                          text: '10%',
-                                          style: MyStyle.tx14W.copyWith(
-                                            color: MyColor.purple,
-                                            // fontSize: 13,
-                                            fontWeight: FontWeight.w300,
-                                            fontFamily: 'NotoSansKR-SemiBold',
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 6.0, vertical: 2.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    'Golf club',
+                                                    style: MyStyle.tx14W
+                                                        .copyWith(
+                                                            color:
+                                                                MyColor.black,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            letterSpacing: 0.33,
+                                                            fontSize: 12),
+                                                  ),
+                                                  const Row(
+                                                    children: [
+                                                      Text(
+                                                        '20%',
+                                                        style: MyStyle.tx13P,
+                                                      ),
+                                                      SizedBox(
+                                                        width: 5,
+                                                      ),
+                                                      Text('310,000 won'),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                ],
-                              ),
-
-                              Row(
-                                children: [
-                                  Text(
-                                    '36,000',
-                                    style: MyStyle.tx13B.copyWith(
-                                        // fontWeight: FontWeight.w300,
-                                        fontFamily: 'NotoSansKR-SemiBold'),
-                                  ),
-                                  Text(
-                                    'won   |   ',
-                                    style: MyStyle.tx13B.copyWith(
-                                      fontWeight: FontWeight.w100,
-                                      fontFamily: 'NotoSansKR-Regular',
-                                    ),
-                                  ),
-                                  Text(
-                                    '40,000',
-                                    style: MyStyle.tx13B.copyWith(
-                                      fontFamily: 'NotoSansKR-Regular',
-                                      color: MyColor.black.withOpacity(0.7),
-                                      decoration: TextDecoration.lineThrough,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                children: [
-                                  Image.asset(
-                                    'assets/images/badge.png',
-                                    width: 10,
-                                    height: 13,
-                                  ),
-                                  Text(
-                                    ' Promoted celebrity list',
-                                    style: MyStyle.tx14W.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      color: MyColor.purple,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              ),
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/avtar4.png',
-                                      height: 72,
-                                      width: 72,
-                                    ),
-                                    Image.asset(
-                                      'assets/images/avtar5.png',
-                                      height: 72,
-                                      width: 72,
-                                    ),
-                                    Image.asset(
-                                      'assets/images/avtar6.png',
-                                      height: 72,
-                                      width: 72,
-                                    ),
-                                    Image.asset(
-                                      'assets/images/avtar7.png',
-                                      height: 72,
-                                      width: 72,
-                                    ),
-                                    Image.asset(
-                                      'assets/images/avtar8.png',
-                                      height: 72,
-                                      width: 72,
-                                    ),
-                                  ],
                                 ),
                               ),
-                              Container(
-                                width: 351,
-                                height: 476,
-                                child: const Text(
-                                  'Detail img',
-                                  style: MyStyle.tx20W,
-                                ),
-                              )
                             ],
                           ),
-                  ),
+                        ),
+                      ),
+
+                      //  Images for 2nd Row
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Expanded(
+                          child: Row(
+                            children: [
+                              // 3rd Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img3.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 6.0, vertical: 2.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Golf ball set',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Row(
+                                                  children: [
+                                                    Text(
+                                                      '10%',
+                                                      style: MyStyle.tx13P,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5,
+                                                    ),
+                                                    Text('60,000 won'),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+
+                              // 4th Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img4.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 2.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'A white cap',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Row(
+                                                  children: [
+                                                    Text(
+                                                      '10%',
+                                                      style: MyStyle.tx13P,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5,
+                                                    ),
+                                                    Text('39,000 won'),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+
+                      //  Images for 3rd Row
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Expanded(
+                          child: Row(
+                            children: [
+                              // 5th Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img5.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 2.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Sports shoes with...',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Row(
+                                                  children: [
+                                                    Text(
+                                                      '10%',
+                                                      style: MyStyle.tx13P,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5,
+                                                    ),
+                                                    Text('39,000 won'),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+
+                              // 6th Image
+                              Expanded(
+                                child: Container(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  color: MyColor.black.withOpacity(0.05),
+                                  height: 236,
+                                  width: 172,
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'assets/images/img6.png',
+                                        height: 172,
+                                        width: 172,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 6.0, vertical: 2.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Golf club',
+                                                  style: MyStyle.tx14W.copyWith(
+                                                      color: MyColor.black,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      letterSpacing: 0.33,
+                                                      fontSize: 12),
+                                                ),
+                                                const Row(
+                                                  children: [
+                                                    Text(
+                                                      '20%',
+                                                      style: MyStyle.tx13P,
+                                                    ),
+                                                    SizedBox(
+                                                      width: 5,
+                                                    ),
+                                                    Text('310,000 won'),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
+                      // : Column(
+                      //     children: [
+                      //       Image.asset(
+                      //         'assets/images/img3.png',
+                      //         height: 352,
+                      //         width: 352,
+                      //       ),
+                      //
+                      //       // Bottom Text
+                      //       Row(
+                      //         children: [
+                      //           Text(
+                      //             '11 types of vivid golf balls',
+                      //             style: MyStyle.tx16B.copyWith(
+                      //               fontFamily: 'NotoSansKR-Medium',
+                      //               fontSize: 14,
+                      //               fontWeight: FontWeight.w700,
+                      //             ),
+                      //           ),
+                      //           const SizedBox(
+                      //             width: 20,
+                      //           ),
+                      //           RichText(
+                      //             text: TextSpan(
+                      //               children: [
+                      //                 TextSpan(
+                      //                   text: 'the rate of discount ',
+                      //                   style: MyStyle.tx14W.copyWith(
+                      //                     color: MyColor.purple,
+                      //                     fontSize: 12,
+                      //                     fontWeight: FontWeight.w100,
+                      //                     fontFamily: 'NotoSansKR-Regular',
+                      //                   ),
+                      //                 ),
+                      //                 TextSpan(
+                      //                   text: '10%',
+                      //                   style: MyStyle.tx14W.copyWith(
+                      //                     color: MyColor.purple,
+                      //                     // fontSize: 13,
+                      //                     fontWeight: FontWeight.w300,
+                      //                     fontFamily: 'NotoSansKR-SemiBold',
+                      //                   ),
+                      //                 ),
+                      //               ],
+                      //             ),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //
+                      //       Row(
+                      //         children: [
+                      //           Text(
+                      //             '36,000',
+                      //             style: MyStyle.tx13B.copyWith(
+                      //                 // fontWeight: FontWeight.w300,
+                      //                 fontFamily: 'NotoSansKR-SemiBold'),
+                      //           ),
+                      //           Text(
+                      //             'won   |   ',
+                      //             style: MyStyle.tx13B.copyWith(
+                      //               fontWeight: FontWeight.w100,
+                      //               fontFamily: 'NotoSansKR-Regular',
+                      //             ),
+                      //           ),
+                      //           Text(
+                      //             '40,000',
+                      //             style: MyStyle.tx13B.copyWith(
+                      //               fontFamily: 'NotoSansKR-Regular',
+                      //               color: MyColor.black.withOpacity(0.7),
+                      //               decoration: TextDecoration.lineThrough,
+                      //             ),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //       const SizedBox(
+                      //         height: 15,
+                      //       ),
+                      //       Row(
+                      //         children: [
+                      //           Image.asset(
+                      //             'assets/images/badge.png',
+                      //             width: 10,
+                      //             height: 13,
+                      //           ),
+                      //           Text(
+                      //             ' Promoted celebrity list',
+                      //             style: MyStyle.tx14W.copyWith(
+                      //               fontWeight: FontWeight.w500,
+                      //               color: MyColor.purple,
+                      //             ),
+                      //           ),
+                      //           const SizedBox(
+                      //             height: 10,
+                      //           ),
+                      //         ],
+                      //       ),
+                      //       Expanded(
+                      //         child: Row(
+                      //           children: [
+                      //             Image.asset(
+                      //               'assets/images/avtar4.png',
+                      //               height: 72,
+                      //               width: 72,
+                      //             ),
+                      //             Image.asset(
+                      //               'assets/images/avtar5.png',
+                      //               height: 72,
+                      //               width: 72,
+                      //             ),
+                      //             Image.asset(
+                      //               'assets/images/avtar6.png',
+                      //               height: 72,
+                      //               width: 72,
+                      //             ),
+                      //             Image.asset(
+                      //               'assets/images/avtar7.png',
+                      //               height: 72,
+                      //               width: 72,
+                      //             ),
+                      //             Image.asset(
+                      //               'assets/images/avtar8.png',
+                      //               height: 72,
+                      //               width: 72,
+                      //             ),
+                      //           ],
+                      //         ),
+                      //       ),
+                      //       Container(
+                      //         width: 351,
+                      //         height: 476,
+                      //         child: const Text(
+                      //           'Detail img',
+                      //           style: MyStyle.tx20W,
+                      //         ),
+                      //       )
+                      //     ],
+                      //   ),
+                      ),
                 ),
               ],
             ),
@@ -1860,260 +1790,454 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
           // width: 375,
 
           //Top UI
-          child: Stack(
+          child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Indicators
-                    Image.asset(
-                      'assets/icons/leftArrow.png',
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  // Indicators
+                  Image.asset(
+                    'assets/icons/leftArrow.png',
+                    height: 24,
+                    width: 24,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      'assets/icons/close.png',
                       height: 24,
                       width: 24,
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: Image.asset(
-                        'assets/icons/close.png',
-                        height: 24,
-                        width: 24,
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-
-              //Stack ke andar UI
-              Positioned(
-                top: 40,
-                right: 0,
-                left: 0,
-                child: Expanded(
-                  child: SingleChildScrollView(
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          'assets/images/img3.png',
-                          height: 352,
-                          width: 352,
-                        ),
-
-                        // Bottom Text
-                        Row(
-                          children: [
-                            Text(
-                              '11 types of vivid golf balls',
-                              style: MyStyle.tx16B.copyWith(
-                                fontFamily: 'NotoSansKR-Medium',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
+              SizedBox(
+                height: MediaQuery.of(context).size.height - 210,
+                width: MediaQuery.of(context).size.width,
+                child: Stack(
+                  children: [
+                    //Stack ke andar UI
+                    Positioned(
+                      top: 40,
+                      right: 0,
+                      left: 0,
+                      child: Expanded(
+                        child: SingleChildScrollView(
+                          physics: const BouncingScrollPhysics(),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                'assets/images/img3.png',
+                                height: 352,
+                                width: 352,
                               ),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            RichText(
-                              text: TextSpan(
+
+                              // Bottom Text
+                              Row(
                                 children: [
-                                  TextSpan(
-                                    text: 'the rate of discount ',
-                                    style: MyStyle.tx14W.copyWith(
-                                      color: MyColor.purple,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w100,
-                                      fontFamily: 'NotoSansKR-Regular',
+                                  Text(
+                                    '11 types of vivid golf balls',
+                                    style: MyStyle.tx16B.copyWith(
+                                      fontFamily: 'NotoSansKR-Medium',
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700,
                                     ),
                                   ),
-                                  TextSpan(
-                                    text: '10%',
-                                    style: MyStyle.tx14W.copyWith(
-                                      color: MyColor.purple,
-                                      // fontSize: 13,
-                                      fontWeight: FontWeight.w300,
-                                      fontFamily: 'NotoSansKR-SemiBold',
+                                  const SizedBox(
+                                    width: 20,
+                                  ),
+                                  RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: 'the rate of discount ',
+                                          style: MyStyle.tx14W.copyWith(
+                                            color: MyColor.purple,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w100,
+                                            fontFamily: 'NotoSansKR-Regular',
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: '10%',
+                                          style: MyStyle.tx14W.copyWith(
+                                            color: MyColor.purple,
+                                            // fontSize: 13,
+                                            fontWeight: FontWeight.w300,
+                                            fontFamily: 'NotoSansKR-SemiBold',
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
-                            ),
-                          ],
-                        ),
 
-                        Row(
-                          children: [
-                            Text(
-                              '36,000',
-                              style: MyStyle.tx13B.copyWith(
-                                  // fontWeight: FontWeight.w300,
-                                  fontFamily: 'NotoSansKR-SemiBold'),
-                            ),
-                            Text(
-                              'won   |   ',
-                              style: MyStyle.tx13B.copyWith(
-                                fontWeight: FontWeight.w100,
-                                fontFamily: 'NotoSansKR-Regular',
+                              Row(
+                                children: [
+                                  Text(
+                                    '36,000',
+                                    style: MyStyle.tx13B.copyWith(
+                                        // fontWeight: FontWeight.w300,
+                                        fontFamily: 'NotoSansKR-SemiBold'),
+                                  ),
+                                  Text(
+                                    'won   |   ',
+                                    style: MyStyle.tx13B.copyWith(
+                                      fontWeight: FontWeight.w100,
+                                      fontFamily: 'NotoSansKR-Regular',
+                                    ),
+                                  ),
+                                  Text(
+                                    '40,000',
+                                    style: MyStyle.tx13B.copyWith(
+                                      fontFamily: 'NotoSansKR-Regular',
+                                      color: MyColor.black.withOpacity(0.7),
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                            Text(
-                              '40,000',
-                              style: MyStyle.tx13B.copyWith(
-                                fontFamily: 'NotoSansKR-Regular',
-                                color: MyColor.black.withOpacity(0.7),
-                                decoration: TextDecoration.lineThrough,
+                              const SizedBox(
+                                height: 15,
                               ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 15,
-                        ),
-                        Row(
-                          children: [
-                            Image.asset(
-                              'assets/images/badge.png',
-                              width: 10,
-                              height: 13,
-                            ),
-                            Text(
-                              ' Promoted celebrity list',
-                              style: MyStyle.tx14W.copyWith(
-                                fontWeight: FontWeight.w500,
-                                color: MyColor.purple,
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/badge.png',
+                                    width: 10,
+                                    height: 13,
+                                  ),
+                                  Text(
+                                    ' Promoted celebrity list',
+                                    style: MyStyle.tx14W.copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      color: MyColor.purple,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                ],
                               ),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                          ],
-                        ),
 
-                        //  Images in Row
-                        SingleChildScrollView(
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                'assets/images/avtar4.png',
-                                height: 72,
-                                width: 72,
+                              //  Images in Row
+                              SingleChildScrollView(
+                                physics: const AlwaysScrollableScrollPhysics(),
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/avtar4.png',
+                                      height: 72,
+                                      width: 72,
+                                    ),
+                                    Image.asset(
+                                      'assets/images/avtar5.png',
+                                      height: 72,
+                                      width: 72,
+                                    ),
+                                    Image.asset(
+                                      'assets/images/avtar6.png',
+                                      height: 72,
+                                      width: 72,
+                                    ),
+                                    Image.asset(
+                                      'assets/images/avtar7.png',
+                                      height: 72,
+                                      width: 72,
+                                    ),
+                                    Image.asset(
+                                      'assets/images/avtar8.png',
+                                      height: 72,
+                                      width: 72,
+                                    ),
+                                  ],
+                                ),
                               ),
-                              Image.asset(
-                                'assets/images/avtar5.png',
-                                height: 72,
-                                width: 72,
+
+                              // Img container
+                              Container(
+                                // padding: const EdgeInsets.all(20.0),
+                                margin: const EdgeInsets.all(15.0),
+                                width: 351,
+                                height: 476,
+                                color: MyColor.lgrey,
+                                child: const Center(
+                                  child: Text(
+                                    'Detail img',
+                                    style: MyStyle.tx20W,
+                                  ),
+                                ),
                               ),
-                              Image.asset(
-                                'assets/images/avtar6.png',
-                                height: 72,
-                                width: 72,
-                              ),
-                              Image.asset(
-                                'assets/images/avtar7.png',
-                                height: 72,
-                                width: 72,
-                              ),
-                              Image.asset(
-                                'assets/images/avtar8.png',
-                                height: 72,
-                                width: 72,
+
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  // mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    const Text('Delivery information',
+                                        style: MyStyle.tx14B),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Divider(
+                                      thickness: 0,
+                                    ),
+                                    const Text(
+                                      '- Delivery: CJ Logistics'
+                                      '- Shipping fee: 3,000 won (Additional 5,000 won for '
+                                      'mountainous areas/Jeju Island)',
+                                      style: MyStyle.tx14B,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Divider(
+                                      thickness: 0,
+                                    ),
+                                    const Text(
+                                      'Shipping/Return/Exchange Guidance',
+                                      style: MyStyle.tx14B,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Divider(
+                                      thickness: 0,
+                                    ),
+                                    const Text(
+                                      'A/S information',
+                                      style: MyStyle.tx14B,
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    const Divider(
+                                      thickness: 0,
+                                    ),
+                                    ExpansionTile(
+                                      title: const Text(
+                                        'Seller information',
+                                        style: MyStyle.tx14B,
+                                      ),
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  'One Q Studio Co., Ltd',
+                                                  style: MyStyle.tx11.copyWith(
+                                                    fontFamily:
+                                                        'NotoSansKR-Regular',
+                                                    fontWeight: FontWeight.w700,
+                                                  ),
+                                                ),
+                                                Column(
+                                                  children: [
+                                                    Text(
+                                                      'Terms and conditions',
+                                                      textAlign:
+                                                          TextAlign.right,
+                                                      style:
+                                                          MyStyle.tx11.copyWith(
+                                                        fontSize: 10,
+                                                        fontFamily:
+                                                            'NotoSansKR-Regular',
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              // mainAxisAlignment:
+                                              //     MainAxisAlignment.spaceAround,
+                                              children: [
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    const SizedBox(
+                                                      height: 30,
+                                                    ),
+                                                    Text(
+                                                      'View business information',
+                                                      style: MyStyle.tx9B.copyWith(
+                                                          fontFamily:
+                                                              'NotoSansKR-Thin'),
+                                                    ),
+                                                    const SizedBox(height: 10),
+                                                    const Text('CEO',
+                                                        style: MyStyle.tx9B),
+                                                    const Text(
+                                                        'Company Registration Number',
+                                                        style: MyStyle.tx9B),
+                                                    const Text(
+                                                        'Mail-order business report',
+                                                        style: MyStyle.tx9B),
+                                                    const SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    const Text('Main Phone',
+                                                        style: MyStyle.tx9B),
+                                                    const Text('E-Mail',
+                                                        style: MyStyle.tx9B),
+                                                  ],
+                                                ),
+                                                Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      'Personal information processing policy.',
+                                                      style:
+                                                          MyStyle.tx11.copyWith(
+                                                        fontSize: 9,
+                                                        fontFamily:
+                                                            'NotoSansKR-Regular',
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(height: 37),
+                                                    Text(
+                                                      'CEO',
+                                                      textAlign: TextAlign.left,
+                                                      style:
+                                                          MyStyle.tx9B.copyWith(
+                                                        fontFamily:
+                                                            'NotoSansKR-Thin',
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      'CEO',
+                                                      textAlign: TextAlign.left,
+                                                      style:
+                                                          MyStyle.tx9B.copyWith(
+                                                        fontFamily:
+                                                            'NotoSansKR-Thin',
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      '2020-Regional Information-Number of \n'
+                                                      'subscriptions.',
+                                                      textAlign: TextAlign.left,
+                                                      style:
+                                                          MyStyle.tx9B.copyWith(
+                                                        fontFamily:
+                                                            'NotoSansKR-Thin',
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(
+                                                      height: 30,
+                                                    ),
+                                                    Text(
+                                                      '1500-0000',
+                                                      textAlign: TextAlign.left,
+                                                      style:
+                                                          MyStyle.tx9B.copyWith(
+                                                        fontFamily:
+                                                            'NotoSansKR-Thin',
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      'help@onecue.kr',
+                                                      textAlign: TextAlign.left,
+                                                      style:
+                                                          MyStyle.tx9B.copyWith(
+                                                        fontFamily:
+                                                            'NotoSansKR-Thin',
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                    const Divider(
+                                      thickness: 0,
+                                    ),
+                                    const Text(
+                                      '1:1 inquiry',
+                                      style: MyStyle.tx14B,
+                                    ),
+                                    const Divider(
+                                      thickness: 0,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
-
-                        // Img container
-                        Container(
-                          // padding: const EdgeInsets.all(20.0),
-                          margin: const EdgeInsets.all(15.0),
-                          width: 351,
-                          height: 476,
-                          color: MyColor.lgrey,
-                          child: const Center(
-                            child: Text(
-                              'Detail img',
-                              style: MyStyle.tx20W,
-                            ),
-                          ),
-                        ),
-
-                        const Text('Delivery information',
-                            style: MyStyle.tx14B),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        const Text(
-                          '- Delivery: CJ Logistics'
-                          '- Shipping fee: 3,000 won (Additional 5,000 won for '
-                          'mountainous areas/Jeju Island)',
-                          style: MyStyle.tx14B,
-                        ),
-                        const Text(
-                          'Shipping/Return/Exchange Guidance',
-                          style: MyStyle.tx14B,
-                        ),
-                        const Text(
-                          'A/S information',
-                          style: MyStyle.tx14B,
-                        ),
-                        const Text(
-                          'Seller information',
-                          style: MyStyle.tx14B,
-                        ),
-                        const Text(
-                          '1:1 inquiry',
-                          style: MyStyle.tx14B,
-                        ),
-
-                        const Divider(
-                          thickness: 0,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              // Image
-
-              // Bottom 2 Row
-              Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 44,
-                        color: MyColor.yellowamber,
-                        child: Center(
-                          child: Text(
-                            'A Shopping Basket',
-                            style: MyStyle.tx14W.copyWith(
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        height: 44,
-                        color: MyColor.purple,
-                        child: Center(
-                          child: Text(
-                            'Buy it right away',
-                            style: MyStyle.tx14W.copyWith(
-                              fontWeight: FontWeight.w500,
+                    // Image
+
+                    // Bottom 2 Row
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 44,
+                              color: MyColor.yellowamber,
+                              child: Center(
+                                child: Text(
+                                  'A Shopping Basket',
+                                  style: MyStyle.tx14W.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          Expanded(
+                            child: Container(
+                              height: 44,
+                              color: MyColor.purple,
+                              child: Center(
+                                child: Text(
+                                  'Buy it right away',
+                                  style: MyStyle.tx14W.copyWith(
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
