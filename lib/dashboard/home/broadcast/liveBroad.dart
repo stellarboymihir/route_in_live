@@ -35,6 +35,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
     '3 greens',
     '3 oranges',
   ];
+
+  String? colorVal;
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -158,18 +160,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                   'Quality - Automatic (1080p)',
                                   style: MyStyle.tx10W,
                                 ),
-                                // selectedItemBuilder: (BuildContext context) {
-                                //   return _list.map<Widget>((String item) {
-                                //     return Container(
-                                //       alignment: Alignment.center,
-                                //       child: Text(
-                                //         item,
-                                //         maxLines: 1,
-                                //         style: MyStyle.tx10W,
-                                //       ),
-                                //     );
-                                //   }).toList();
-                                // },
+
                                 icon: const Visibility(
                                     visible: false,
                                     child: Icon(Icons.arrow_downward)),
@@ -192,22 +183,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                 },
                               ),
                             )),
-                        // InkWell(
-                        //   child: Container(
-                        //     padding: const EdgeInsets.all(8.0),
-                        //     margin: const EdgeInsets.all(8.0),
-                        //     decoration: BoxDecoration(
-                        //       borderRadius: BorderRadius.circular(12),
-                        //       color: MyColor.white.withOpacity(0.20),
-                        //     ),
-                        //     child: const Text(
-                        //       'Quality - Automatic (1080p)',
-                        //       style: MyStyle.tx10W,
-                        //     ),
-                        //   ),
-                        // ),
-
-                        // It will be uncommented
 
                         Expanded(
                           // 2nd Row 3rd Column
@@ -1133,6 +1108,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                       ),
                     ],
                   )
+
+                      //     Bhaiya's Expample
                       // : Column(
                       //     children: [
                       //       Image.asset(
@@ -1746,6 +1723,9 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
   // Sold Out Dialog
   Widget soldDialog() {
     return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
       title: Center(
         child: Text(
           'This item is out of stock.',
@@ -2337,78 +2317,470 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
     );
   }
 
+  //  Shop basket sheet
   void shoppingBasket() {
     showModalBottomSheet(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(16),
+            topLeft: Radius.circular(16),
+          ),
+        ),
         context: context,
         isScrollControlled: true,
         builder: (BuildContext context) {
-          return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20.0, right: 15.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Image.asset(
-                        'assets/icons/cancel.png',
-                        height: 20,
-                        width: 20,
-                      ),
-                    ],
+          return SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: SizedBox(
+              height: (MediaQuery.of(context).size.height * 0.5) + 20,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0, right: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Image.asset(
+                          'assets/icons/cancel.png',
+                          height: 20,
+                          width: 20,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        'assets/images/img3.png',
-                        height: 172,
-                        width: 172,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              '11 types of vivid \n golf balls',
-                              style: MyStyle.tx16B.copyWith(
-                                fontFamily: 'NotoSansKR-Medium',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w700,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          'assets/images/img3.png',
+                          height: 172,
+                          width: 172,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Text(
+                                '11 types of vivid \n golf balls',
+                                style: MyStyle.tx16B.copyWith(
+                                  fontFamily: 'NotoSansKR-Medium',
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700,
+                                ),
                               ),
-                            ),
-                            Row(
-                              children: [
-                                Text('10%', style: MyStyle.tx13P),
-                                Text(
-                                  ' 36,000',
-                                  style: MyStyle.tx13B.copyWith(
-                                      // fontWeight: FontWeight.w300,
-                                      fontFamily: 'NotoSansKR-SemiBold'),
-                                ),
-                                Text(
-                                  'won',
-                                  style: MyStyle.tx13B.copyWith(
-                                    fontWeight: FontWeight.w100,
-                                    fontFamily: 'NotoSansKR-Regular',
+                              Row(
+                                children: [
+                                  const Text('10%', style: MyStyle.tx13P),
+                                  Text(
+                                    ' 36,000',
+                                    style: MyStyle.tx13B.copyWith(
+                                        // fontWeight: FontWeight.w300,
+                                        fontFamily: 'NotoSansKR-SemiBold'),
                                   ),
-                                ),
-                              ],
-                            ),
-                          ],
+                                  Text(
+                                    'won',
+                                    style: MyStyle.tx13B.copyWith(
+                                      fontWeight: FontWeight.w100,
+                                      fontFamily: 'NotoSansKR-Regular',
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Divider(thickness: 0),
+
+                  // Drop Down Button
+                  DropdownButtonFormField(
+                    padding: const EdgeInsets.all(12.0),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(0.6),
+                        borderSide: BorderSide(
+                          color: MyColor.black.withOpacity(0.5),
                         ),
                       ),
-                    ],
+                      contentPadding: const EdgeInsets.all(10),
+                    ),
+                    isExpanded: true,
+                    icon: const Icon(
+                      Icons.keyboard_arrow_down_outlined,
+                      size: 16,
+                      color: MyColor.black,
+                    ),
+                    hint: Text(
+                      'Color',
+                      style: MyStyle.tx13B.copyWith(color: MyColor.blackO),
+                    ),
+                    onChanged: (String? newVal) {
+                      setState(() {
+                        colorVal = newVal!;
+                      });
+                    },
+                    items: _colorTypes.map<DropdownMenuItem<String>>((val) {
+                      return DropdownMenuItem<String>(
+                          value: val,
+                          child: Text(
+                            val,
+                            style: MyStyle.tx13B,
+                          ));
+                    }).toList(),
                   ),
-                ),
-                Divider(thickness: 0),
-                DropdownMenu(dropdownMenuEntries: dropdownMenuEntries),
-              ],
+
+                  //   Increase or Decrease
+
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(0.6),
+                            border: Border.all(
+                              color: MyColor.black.withOpacity(0.1),
+                            ),
+                          ),
+                          alignment: Alignment.bottomRight,
+                          height: 24,
+                          width: 110,
+                          child: const Row(
+                            children: [
+                              SizedBox(
+                                height: 24,
+                                width: 24,
+                                child: Center(
+                                  child: Text(
+                                    '-',
+                                  ),
+                                ),
+                              ),
+                              VerticalDivider(
+                                thickness: 0,
+                              ),
+                              SizedBox(
+                                height: 16,
+                                width: 24,
+                                child: Center(
+                                  child: Text(
+                                    '1',
+                                    // textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                              VerticalDivider(
+                                thickness: 0,
+                              ),
+                              SizedBox(
+                                height: 24,
+                                width: 24,
+                                child: Center(
+                                  child: Text(
+                                    '+',
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  //   Button
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return shoppingCardDialog();
+                            });
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(8.0),
+                        width: 345,
+                        height: 44,
+                        color: MyColor.yellowamber,
+                        child: Text(
+                          'a shopping basket',
+                          textAlign: TextAlign.center,
+                          style: MyStyle.tx16B.copyWith(
+                            fontWeight: FontWeight.w500,
+                            color: MyColor.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
+          );
+        });
+  }
+
+  Widget shoppingCardDialog() {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      title: Text(
+        'The product is in your \n shopping cart \n'
+        'contained.',
+        textAlign: TextAlign.center,
+        style: MyStyle.tx17B.copyWith(
+          fontSize: 15,
+          fontFamily: 'NotoSansKR-Medium',
+        ),
+      ),
+      // actionsPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 4.0),
+      actions: [
+        const Divider(
+          thickness: 0,
+        ),
+        InkWell(
+          onTap: () {
+            return paymentSheet();
+          },
+          child: Center(
+            child: Text(
+              'Confirm',
+              textAlign: TextAlign.center,
+              style: MyStyle.tx17B.copyWith(
+                fontSize: 15,
+                fontFamily: 'NotoSansKR-Regular',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void paymentSheet() {
+    showModalBottomSheet(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(16),
+            topLeft: Radius.circular(16),
+          ),
+        ),
+        context: context,
+        builder: (BuildContext context) {
+          return Column(
+            children: [
+              // Top Layer
+              Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  // Product Sold
+                  Container(
+                    // padding:
+                    //     EdgeInsets.symmetric(vertical: 10.0, horizontal: 8.0),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 8.0),
+                    height: 32,
+                    width: 132,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: MyColor.black.withOpacity(0.05),
+                    ),
+                    child: Center(
+                      child: Text(
+                        '6 products sold',
+                        style: MyStyle.tx13B.copyWith(
+                          color: MyColor.black.withOpacity(0.5),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+
+                  //Shopping Cart Container
+                  Container(
+                    height: 32,
+                    width: 132,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: MyColor.orange,
+                    ),
+                    child: Center(
+                      child: Text(
+                        '1 shopping carts',
+                        style: MyStyle.tx13B.copyWith(color: MyColor.white),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(
+                    width: 40,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      'assets/icons/cancel.png',
+                      height: 20,
+                      width: 20,
+                    ),
+                  ),
+                ],
+              ),
+
+              //  Middle Layer
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icons/right.png',
+                      height: 24,
+                      width: 24,
+                    ),
+                    Text(
+                      'Select All(1/1)',
+                      style: MyStyle.tx12O.copyWith(
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'NotoSansKR-Regular',
+                        letterSpacing: 0.33,
+                      ),
+                    ),
+                    const SizedBox(width: 110),
+                    Container(
+                      height: 26,
+                      width: 102,
+                      padding: const EdgeInsets.all(2.0),
+                      margin: const EdgeInsets.all(8.0),
+                      alignment: Alignment.topRight,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: MyColor.black,
+                        ),
+                      ),
+                      child: const Text(
+                        'Delete selection',
+                        style: MyStyle.tx12B,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              //   Next Row
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      'assets/icons/right.png',
+                      height: 24,
+                      width: 24,
+                      alignment: Alignment.topLeft,
+                    ),
+                    const SizedBox(width: 2),
+                    Image.asset(
+                      'assets/images/img3.png',
+                      height: 84,
+                      width: 84,
+                    ),
+                    const SizedBox(width: 8),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const SizedBox(
+                          height: 18,
+                        ),
+                        Text(
+                          '11 kinds of vivid golf balls',
+                          style: MyStyle.tx16B.copyWith(
+                            fontFamily: 'NotoSansKR-Medium',
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        const Text(
+                          '3 kinds of yellow',
+                          textAlign: TextAlign.start,
+                          style: MyStyle.tx12B,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+
+              // 3rd Row
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0, vertical: 12.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(0.6),
+                        border: Border.all(
+                          color: MyColor.black.withOpacity(0.1),
+                        ),
+                      ),
+                      height: 24,
+                      width: 110,
+                      child: const Row(
+                        children: [
+                          SizedBox(
+                            height: 24,
+                            width: 24,
+                            child: Center(
+                              child: Text(
+                                '-',
+                              ),
+                            ),
+                          ),
+                          VerticalDivider(
+                            thickness: 0,
+                          ),
+                          SizedBox(
+                            height: 16,
+                            width: 24,
+                            child: Center(
+                              child: Text(
+                                '1',
+                                // textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                          VerticalDivider(
+                            thickness: 0,
+                          ),
+                          SizedBox(
+                            height: 24,
+                            width: 24,
+                            child: Center(
+                              child: Text(
+                                '+',
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
           );
         });
   }
