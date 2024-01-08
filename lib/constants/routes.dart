@@ -23,3 +23,4 @@ const sellProductRoute = '/sellProductRoute/';
 const storeItemRoute = '/storeItemRoute/';
 const collectingPreviewRoute = '/collectingPreviewRoute/';
 const liveBroadcastRoute = '/liveBroadcastRoute/';
+const purchaseRoute = '/purchaseRoute/';

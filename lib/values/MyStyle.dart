@@ -41,6 +41,14 @@ class MyStyle {
     letterSpacing: 0.3,
   );
 
+  static const tx11W = TextStyle(
+    fontSize: 11,
+    fontFamily: 'NotoSansKR-Medium',
+    fontWeight: FontWeight.w500,
+    color: MyColor.white,
+    letterSpacing: 0.3,
+  );
+
   static const tx12O = TextStyle(
     fontSize: 12,
     fontFamily: 'NotoSansKR',

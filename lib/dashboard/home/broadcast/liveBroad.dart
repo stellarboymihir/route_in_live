@@ -128,7 +128,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                   const TextSpan(
                                       text: 'Viewers', style: MyStyle.tx10W),
                                 ]),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -2707,23 +2707,28 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         ),
                       ),
                       const SizedBox(width: 110),
-                      Container(
-                        height: 26,
-                        width: 102,
-                        padding: const EdgeInsets.all(2.0),
-                        margin: const EdgeInsets.all(8.0),
-                        alignment: Alignment.topRight,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 0.4,
-                            color: MyColor.black,
+                      InkWell(
+                        onTap: () {
+                          saleSheet();
+                        },
+                        child: Container(
+                          height: 26,
+                          width: 102,
+                          padding: const EdgeInsets.all(2.0),
+                          margin: const EdgeInsets.all(8.0),
+                          alignment: Alignment.topRight,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 0.4,
+                              color: MyColor.black,
+                            ),
                           ),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Delete selection',
-                            style: MyStyle.tx12B.copyWith(
-                              fontSize: 11,
+                          child: Center(
+                            child: Text(
+                              'Delete selection',
+                              style: MyStyle.tx12B.copyWith(
+                                fontSize: 11,
+                              ),
                             ),
                           ),
                         ),
@@ -3046,16 +3051,135 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 SizedBox(
                   height: 80,
                 ),
-                Expanded(
-                  child: Container(
-                    height: 48,
-                    color: MyColor.purple,
-                    child: Center(
-                      child: Text(
-                        'Make a Payment',
-                        style: MyStyle.tx14W.copyWith(
-                          fontWeight: FontWeight.w500,
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, purchaseRoute);
+                  },
+                  child: Expanded(
+                    child: Container(
+                      height: 48,
+                      color: MyColor.purple,
+                      child: Center(
+                        child: Text(
+                          'Make a Payment',
+                          style: MyStyle.tx14W.copyWith(
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  void saleSheet() {
+    showModalBottomSheet(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(16),
+            topLeft: Radius.circular(16),
+          ),
+        ),
+        context: context,
+        isScrollControlled: true,
+        builder: (BuildContext context) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * 0.75,
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                // Top Layer
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    // Product Sold
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 8.0),
+                      height: 32,
+                      width: 132,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: MyColor.black.withOpacity(0.05),
+                      ),
+                      child: Center(
+                        child: Text(
+                          '6 products sold',
+                          style: MyStyle.tx13B.copyWith(
+                            color: MyColor.black.withOpacity(0.5),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+
+                    //Shopping Cart Container
+                    Container(
+                      height: 32,
+                      width: 132,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        color: MyColor.orange,
+                      ),
+                      child: Center(
+                        child: Text(
+                          '1 shopping carts',
+                          style: MyStyle.tx13B.copyWith(color: MyColor.white),
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(
+                      width: 40,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(
+                        'assets/icons/cancel.png',
+                        height: 20,
+                        width: 20,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 180,
+                ),
+                Image.asset(
+                  'assets/icons/error.png',
+                  height: 40,
+                  width: 40,
+                ),
+                Center(
+                  child: Text(
+                    'There are no products contained \n in the shopping cart.',
+                    textAlign: TextAlign.center,
+                    style: MyStyle.tx17B.copyWith(
+                      fontFamily: 'NotoSansKR-Medium',
+                      color: MyColor.orange,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 180,
+                ),
+
+                Container(
+                  height: 48,
+                  color: MyColor.yellowamber,
+                  child: Center(
+                    child: Text(
+                      'Go To Sale',
+                      style: MyStyle.tx14W.copyWith(
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ),
