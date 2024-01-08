@@ -40,7 +40,12 @@ class _LiveReservationState extends State<LiveReservation> {
       appBar: AppBar(
         title: Row(
           children: [
-            Image.asset('assets/icons/back.png'),
+            InkWell(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Image.asset('assets/icons/back.png'),
+            ),
             const SizedBox(
               width: 20,
             ),
@@ -1016,11 +1021,16 @@ class _LiveReservationState extends State<LiveReservation> {
                       return reqEssentialDialog();
                     });
               },
-              child: Text(
-                'Confirm',
-                style: MyStyle.tx17B.copyWith(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
+              child: SizedBox(
+                height: 36,
+                child: Center(
+                  child: Text(
+                    'Confirm',
+                    style: MyStyle.tx17B.copyWith(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -1096,13 +1106,16 @@ class _LiveReservationState extends State<LiveReservation> {
           //     showIdRoute,
           //   );
           // },
-          child: Center(
-            child: Text(
-              'Confirm',
-              style: MyStyle.tx17B.copyWith(
-                fontFamily: 'NotoSansKR-Medium',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
+          child: SizedBox(
+            height: 36,
+            child: Center(
+              child: Text(
+                'Confirm',
+                style: MyStyle.tx17B.copyWith(
+                  fontFamily: 'NotoSansKR-Medium',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                ),
               ),
             ),
           ),
