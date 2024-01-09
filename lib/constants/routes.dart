@@ -24,3 +24,4 @@ const storeItemRoute = '/storeItemRoute/';
 const collectingPreviewRoute = '/collectingPreviewRoute/';
 const liveBroadcastRoute = '/liveBroadcastRoute/';
 const purchaseRoute = '/purchaseRoute/';
+const paySuccesRoute = '/paySuccesRoute/';

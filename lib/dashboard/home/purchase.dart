@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
@@ -258,7 +259,7 @@ class _PurchaseState extends State<Purchase> {
                       'Phone number',
                       style: MyStyle.tx14B.copyWith(
                         fontSize: 14,
-                        fontFamily: 'NotoSansKR-Regualar',
+                        fontFamily: 'NotoSansKR-Regular',
                       ),
                     ),
                     Container(
@@ -689,7 +690,7 @@ class _PurchaseState extends State<Purchase> {
                     //   height: 2,
                     // ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(6.0),
                       child: Row(
                         children: [
                           Container(
@@ -730,11 +731,11 @@ class _PurchaseState extends State<Purchase> {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      height: 8,
-                    ),
+                    // const SizedBox(
+                    //   height: 8,
+                    // ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(6.0),
                       child: Row(
                         children: [
                           Container(
@@ -833,6 +834,7 @@ class _PurchaseState extends State<Purchase> {
                       color: MyColor.black.withOpacity(0.1),
                     ),
                     ExpansionTile(
+                      shape: Border.all(color: Colors.transparent),
                       leading: Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 4.0, vertical: 0.0),
@@ -872,7 +874,7 @@ class _PurchaseState extends State<Purchase> {
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Text(
@@ -988,14 +990,23 @@ class _PurchaseState extends State<Purchase> {
                     SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      height: 48,
-                      color: MyColor.purple,
-                      child: const Center(
-                        child: Text(
-                          'Pay for it',
-                          textAlign: TextAlign.center,
-                          style: MyStyle.tx14W,
+                    InkWell(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return reqDialog();
+                            });
+                      },
+                      child: Container(
+                        height: 48,
+                        color: MyColor.purple,
+                        child: const Center(
+                          child: Text(
+                            'Pay for it',
+                            textAlign: TextAlign.center,
+                            style: MyStyle.tx14W,
+                          ),
                         ),
                       ),
                     ),
@@ -1239,5 +1250,152 @@ class _PurchaseState extends State<Purchase> {
             ),
           );
         });
+  }
+
+  Widget reqDialog() {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      titlePadding:
+          const EdgeInsets.only(left: 19, right: 16, top: 19, bottom: 16),
+      title: Text(
+        'Please enter the required items.',
+        style: MyStyle.tx17B.copyWith(
+          fontFamily: 'NotoSansKR-Medium',
+          fontWeight: FontWeight.w400,
+          fontSize: 17,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      actionsPadding: const EdgeInsets.all(0),
+      actions: [
+        const Divider(
+          height: 0,
+          thickness: 0,
+          indent: 0,
+          endIndent: 0,
+          color: Colors.grey,
+        ),
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return paymentDialog();
+                  });
+            },
+            child: Center(
+              child: Text(
+                'Confirm',
+                style: MyStyle.tx17B.copyWith(
+                  fontSize: 15,
+                  fontFamily: 'NotoSansKR-Medium',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget paymentDialog() {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      titlePadding:
+          const EdgeInsets.only(left: 19, right: 16, top: 19, bottom: 16),
+      title: Text(
+        'Please choose the payment method.',
+        style: MyStyle.tx17B.copyWith(
+          fontFamily: 'NotoSansKR-Medium',
+          fontWeight: FontWeight.w400,
+          fontSize: 17,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      actionsPadding: const EdgeInsets.all(0),
+      actions: [
+        const Divider(
+          height: 0,
+          thickness: 0,
+          indent: 0,
+          endIndent: 0,
+          color: Colors.grey,
+        ),
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return agreeDialog();
+                  });
+            },
+            child: Center(
+              child: Text(
+                'Confirm',
+                style: MyStyle.tx17B.copyWith(
+                  fontSize: 15,
+                  fontFamily: 'NotoSansKR-Medium',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget agreeDialog() {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      titlePadding:
+          const EdgeInsets.only(left: 19, right: 16, top: 19, bottom: 16),
+      title: Text(
+        'Check the terms and conditions. \n'
+        'Please agree.',
+        style: MyStyle.tx17B.copyWith(
+          fontFamily: 'NotoSansKR-Medium',
+          fontWeight: FontWeight.w400,
+          fontSize: 17,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      actionsPadding: const EdgeInsets.all(0),
+      actions: [
+        const Divider(
+          height: 0,
+          thickness: 0,
+          indent: 0,
+          endIndent: 0,
+          color: Colors.grey,
+        ),
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, paySuccesRoute);
+            },
+            child: Center(
+              child: Text(
+                'Confirm',
+                style: MyStyle.tx17B.copyWith(
+                  fontSize: 15,
+                  fontFamily: 'NotoSansKR-Medium',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

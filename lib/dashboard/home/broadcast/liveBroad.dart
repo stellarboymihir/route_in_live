@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
@@ -467,18 +468,23 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                 width: 8,
                               ),
 
-                              Container(
-                                padding: const EdgeInsets.all(8.0),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  gradient: MyColor.purpleGrad,
-                                ),
-                                height: 32,
-                                width: 32,
-                                child: Image.asset(
-                                  'assets/icons/love.png',
-                                  height: 16,
-                                  width: 16,
+                              InkWell(
+                                onTap: () {
+                                  sponsorSheet();
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(8.0),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    gradient: MyColor.purpleGrad,
+                                  ),
+                                  height: 32,
+                                  width: 32,
+                                  child: Image.asset(
+                                    'assets/icons/love.png',
+                                    height: 16,
+                                    width: 16,
+                                  ),
                                 ),
                               ),
                               //  //  //  For Vertical Animation
@@ -3048,7 +3054,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 80,
                 ),
                 InkWell(
@@ -3150,7 +3156,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 180,
                 ),
                 Image.asset(
@@ -3168,7 +3174,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 180,
                 ),
 
@@ -3188,5 +3194,587 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
             ),
           );
         });
+  }
+
+  // Sponsor Sheet
+
+  void sponsorSheet() {
+    showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(16),
+          topLeft: Radius.circular(16),
+        ),
+      ),
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: MediaQuery.of(context).size.height * 0.4,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 12.0, horizontal: 12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Sponsor',
+                      style: MyStyle.tx16B.copyWith(
+                        fontFamily: 'NotoSansKR-Medium',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15,
+                      ),
+                    ),
+                    Image.asset(
+                      'assets/icons/Circle.png',
+                      height: 24,
+                      width: 24,
+                      color: MyColor.black,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  children: [
+                    Text(
+                      'Point',
+                      style: MyStyle.tx14B.copyWith(
+                        fontSize: 14,
+                        fontFamily: 'NotoSansKR-Medium',
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 80,
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '1,400',
+                            style: MyStyle.tx14B.copyWith(
+                              fontSize: 14,
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'Points',
+                            style: MyStyle.tx14B.copyWith(
+                              fontSize: 14,
+                              color: MyColor.black.withOpacity(0.5),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 40,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        pointsSheet();
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: MyColor.purple,
+                        ),
+                        height: 32,
+                        width: 92,
+                        child: Center(
+                          child: Text(
+                            'Charging',
+                            style: MyStyle.tx14W.copyWith(
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  'Sponsorship point.',
+                  style: MyStyle.tx14B.copyWith(
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(4.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1,
+                          color: MyColor.black.withOpacity(0.5),
+                        ),
+                      ),
+                      height: 32,
+                      width: 260,
+                      child: Text(
+                        'Please input the point.',
+                        style: MyStyle.tx13B.copyWith(
+                          color: MyColor.black.withOpacity(0.3),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'Points',
+                      textAlign: TextAlign.end,
+                      style: MyStyle.tx14B.copyWith(
+                        fontSize: 14,
+                        color: MyColor.black.withOpacity(0.5),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 44,
+                  width: 351,
+                  color: MyColor.yellowamber,
+                  child: Center(
+                    child: Text(
+                      'Sponsor',
+                      style: MyStyle.tx16B.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: MyColor.white,
+                        fontFamily: 'NotoSansKR-Medium',
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  // Points Sheet
+  void pointsSheet() {
+    showModalBottomSheet(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(16),
+          topLeft: Radius.circular(16),
+        ),
+      ),
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: MediaQuery.of(context).size.height * 0.8,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    vertical: 12.0, horizontal: 12.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Buying points',
+                      style: MyStyle.tx16B.copyWith(
+                        fontFamily: 'NotoSansKR-Medium',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15,
+                      ),
+                    ),
+                    Image.asset(
+                      'assets/icons/Circle.png',
+                      height: 24,
+                      width: 24,
+                      color: MyColor.black,
+                    ),
+                  ],
+                ),
+              ),
+              Image.asset(
+                'assets/icons/point.png',
+                height: 72,
+                width: 136,
+              ),
+              Text(
+                'Point',
+                style: MyStyle.tx14B.copyWith(
+                  fontSize: 13,
+                ),
+              ),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '1,400',
+                      style: MyStyle.tx20B.copyWith(
+                        fontSize: 18,
+                      ),
+                    ),
+                    TextSpan(
+                      text: ' Points',
+                      style: MyStyle.tx16B.copyWith(
+                        color: MyColor.black.withOpacity(0.5),
+                        fontSize: 15,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: MyColor.purple,
+                ),
+                width: 346,
+                height: 56,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '1,400',
+                            style: MyStyle.tx16W.copyWith(
+                                fontWeight: FontWeight.w700, fontSize: 13),
+                          ),
+                          TextSpan(
+                            text: ' Points',
+                            style: MyStyle.tx14W.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '1,300',
+                            style: MyStyle.tx16W.copyWith(
+                                fontWeight: FontWeight.w600, fontSize: 13),
+                          ),
+                          TextSpan(
+                            text: ' won',
+                            style: MyStyle.tx14W.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: MyColor.purple,
+                ),
+                width: 346,
+                height: 56,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '3,000',
+                            style: MyStyle.tx16W.copyWith(
+                                fontWeight: FontWeight.w700, fontSize: 13),
+                          ),
+                          TextSpan(
+                            text: ' Points',
+                            style: MyStyle.tx14W.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '3,900',
+                            style: MyStyle.tx16W.copyWith(
+                                fontWeight: FontWeight.w600, fontSize: 13),
+                          ),
+                          TextSpan(
+                            text: ' won',
+                            style: MyStyle.tx14W.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: MyColor.purple,
+                ),
+                width: 346,
+                height: 56,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '5,000',
+                            style: MyStyle.tx16W.copyWith(
+                                fontWeight: FontWeight.w700, fontSize: 13),
+                          ),
+                          TextSpan(
+                            text: ' Points',
+                            style: MyStyle.tx14W.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '6,500',
+                            style: MyStyle.tx16W.copyWith(
+                                fontWeight: FontWeight.w600, fontSize: 13),
+                          ),
+                          TextSpan(
+                            text: ' won',
+                            style: MyStyle.tx14W.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              InkWell(
+                onTap: () {
+                  print('yes');
+                  Navigator.pop(context);
+                  Fluttertoast.showToast(
+                      msg: "Your toast message",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      fontSize: 16.0);
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: MyColor.purple,
+                  ),
+                  width: 346,
+                  height: 56,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '10,000',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w700, fontSize: 13),
+                            ),
+                            TextSpan(
+                              text: ' Points',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '13,000',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 13),
+                            ),
+                            TextSpan(
+                              text: ' won',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: MyColor.purple,
+                ),
+                width: 346,
+                height: 56,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '50,000',
+                            style: MyStyle.tx16W.copyWith(
+                                fontWeight: FontWeight.w700, fontSize: 13),
+                          ),
+                          TextSpan(
+                            text: ' Points',
+                            style: MyStyle.tx14W.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '65,000',
+                            style: MyStyle.tx16W.copyWith(
+                                fontWeight: FontWeight.w600, fontSize: 13),
+                          ),
+                          TextSpan(
+                            text: ' won',
+                            style: MyStyle.tx14W.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: MyColor.purple,
+                ),
+                width: 346,
+                height: 56,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '100,000',
+                            style: MyStyle.tx16W.copyWith(
+                                fontWeight: FontWeight.w700, fontSize: 13),
+                          ),
+                          TextSpan(
+                            text: ' Points',
+                            style: MyStyle.tx14W.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '130,000',
+                            style: MyStyle.tx16W.copyWith(
+                                fontWeight: FontWeight.w600, fontSize: 13),
+                          ),
+                          TextSpan(
+                            text: ' won',
+                            style: MyStyle.tx14W.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontSize: 11,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

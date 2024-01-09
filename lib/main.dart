@@ -6,6 +6,7 @@ import 'package:route_in_live/dashboard/dashboard.dart';
 import 'package:route_in_live/dashboard/home/broadcast/liveBroad.dart';
 import 'package:route_in_live/dashboard/home/collecting/collectingpreview.dart';
 import 'package:route_in_live/dashboard/home/home.dart';
+import 'package:route_in_live/dashboard/home/paysuccessful.dart';
 import 'package:route_in_live/dashboard/home/purchase.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/LiveReservation.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/sellProduct.dart';
@@ -73,6 +74,7 @@ class MyApp extends StatelessWidget {
         collectingPreviewRoute: (context) => const CollectingPreview(),
         liveBroadcastRoute: (context) => const LiveBroadcast(),
         purchaseRoute: (context) => const Purchase(),
+        paySuccesRoute: (context) => const PaymentSuccesfull(),
       },
     );
   }
