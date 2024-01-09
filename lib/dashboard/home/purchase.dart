@@ -127,31 +127,40 @@ class _PurchaseState extends State<Purchase> {
                             letterSpacing: 0.33,
                           ),
                         ),
-                        Container(
-                          margin: const EdgeInsets.all(4.0),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10.0, vertical: 2.0),
-                          height: 24,
-                          width: 120,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: MyColor.black.withOpacity(0.3),
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                'assets/icons/checkMark.png',
-                                height: 16,
-                                width: 16,
-                              ),
-                              const SizedBox(
-                                width: 4,
-                              ),
-                              const Text(
-                                'Fetch Address',
-                                style: MyStyle.tx11W,
-                              ),
-                            ],
+                        InkWell(
+                          onTap: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return purchaseDialog();
+                                });
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.all(4.0),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10.0, vertical: 2.0),
+                            height: 24,
+                            width: 120,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: MyColor.black.withOpacity(0.3),
+                            ),
+                            child: Row(
+                              children: [
+                                Image.asset(
+                                  'assets/icons/checkMark.png',
+                                  height: 16,
+                                  width: 16,
+                                ),
+                                const SizedBox(
+                                  width: 4,
+                                ),
+                                const Text(
+                                  'Fetch Address',
+                                  style: MyStyle.tx11W,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -295,22 +304,37 @@ class _PurchaseState extends State<Purchase> {
                     const SizedBox(
                       height: 4,
                     ),
-                    Container(
-                      height: 32,
-                      width: 335,
-                      padding: const EdgeInsets.all(6.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 0.4,
-                          color: MyColor.black.withOpacity(0.5),
+                    InkWell(
+                      onTap: () {
+                        shippingRequestSheet();
+                      },
+                      child: Container(
+                        height: 32,
+                        width: 335,
+                        padding: const EdgeInsets.all(6.0),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 0.4,
+                            color: MyColor.black.withOpacity(0.5),
+                          ),
+                          borderRadius: BorderRadius.circular(0.6),
                         ),
-                        borderRadius: BorderRadius.circular(0.6),
-                      ),
-                      child: Text(
-                        'Please enter your request for delivery.',
-                        textAlign: TextAlign.start,
-                        style: MyStyle.tx13B.copyWith(
-                          color: MyColor.black.withOpacity(0.3),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Please enter your request for delivery.',
+                              textAlign: TextAlign.start,
+                              style: MyStyle.tx13B.copyWith(
+                                color: MyColor.black.withOpacity(0.3),
+                              ),
+                            ),
+                            Image.asset(
+                              'assets/icons/down.png',
+                              height: 16,
+                              width: 16,
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -353,7 +377,7 @@ class _PurchaseState extends State<Purchase> {
                           TextSpan(
                             text: '5,000',
                             style: MyStyle.tx14B.copyWith(
-                              fontSize: 14,
+                              fontSize: 13,
                             ),
                           ),
                           TextSpan(
@@ -447,20 +471,29 @@ class _PurchaseState extends State<Purchase> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
+                    const SizedBox(
+                      height: 6,
+                    ),
                     RichText(
                       text: TextSpan(
                         children: [
-                          const TextSpan(text: '38,500', style: MyStyle.tx20),
+                          TextSpan(
+                              text: '38,500',
+                              style: MyStyle.tx20.copyWith(fontSize: 18)),
                           TextSpan(
                             text: ' won',
                             style: MyStyle.tx16O.copyWith(
                               fontWeight: FontWeight.w300,
                               color: MyColor.black,
+                              fontSize: 15,
                               fontFamily: 'NotoSansKR-Regular',
                             ),
                           ),
                         ],
                       ),
+                    ),
+                    const SizedBox(
+                      height: 3,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -469,7 +502,7 @@ class _PurchaseState extends State<Purchase> {
                           'Total Product Amount',
                           style: MyStyle.tx14B.copyWith(
                             color: MyColor.black.withOpacity(0.5),
-                            fontSize: 14,
+                            fontSize: 13,
                           ),
                         ),
                         RichText(
@@ -478,13 +511,13 @@ class _PurchaseState extends State<Purchase> {
                               TextSpan(
                                 text: '40,000',
                                 style: MyStyle.tx14B.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 13,
                                 ),
                               ),
                               TextSpan(
                                 text: ' won',
                                 style: MyStyle.tx14B.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 13,
                                   color: MyColor.black.withOpacity(0.5),
                                 ),
                               ),
@@ -503,7 +536,7 @@ class _PurchaseState extends State<Purchase> {
                           'Shipping Fee',
                           style: MyStyle.tx14B.copyWith(
                             color: MyColor.black.withOpacity(0.5),
-                            fontSize: 14,
+                            fontSize: 13,
                           ),
                         ),
                         RichText(
@@ -512,13 +545,13 @@ class _PurchaseState extends State<Purchase> {
                               TextSpan(
                                 text: '+2,500',
                                 style: MyStyle.tx14B.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 13,
                                 ),
                               ),
                               TextSpan(
                                 text: ' won',
                                 style: MyStyle.tx14B.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 13,
                                   color: MyColor.black.withOpacity(0.5),
                                 ),
                               ),
@@ -537,7 +570,7 @@ class _PurchaseState extends State<Purchase> {
                           'Discount Applied',
                           style: MyStyle.tx14B.copyWith(
                             color: MyColor.black.withOpacity(0.5),
-                            fontSize: 14,
+                            fontSize: 13,
                           ),
                         ),
                         RichText(
@@ -546,14 +579,14 @@ class _PurchaseState extends State<Purchase> {
                               TextSpan(
                                 text: '- 4,000',
                                 style: MyStyle.tx14B.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 13,
                                   color: MyColor.purple,
                                 ),
                               ),
                               TextSpan(
                                 text: ' won',
                                 style: MyStyle.tx14B.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 13,
                                   color: MyColor.black.withOpacity(0.5),
                                 ),
                               ),
@@ -572,7 +605,7 @@ class _PurchaseState extends State<Purchase> {
                           'Use the key point',
                           style: MyStyle.tx14B.copyWith(
                             color: MyColor.black.withOpacity(0.5),
-                            fontSize: 14,
+                            fontSize: 13,
                           ),
                         ),
                         RichText(
@@ -581,14 +614,14 @@ class _PurchaseState extends State<Purchase> {
                               TextSpan(
                                 text: '0',
                                 style: MyStyle.tx14B.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 13,
                                   color: MyColor.purple,
                                 ),
                               ),
                               TextSpan(
                                 text: ' Points',
                                 style: MyStyle.tx14B.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 13,
                                   color: MyColor.black.withOpacity(0.5),
                                 ),
                               ),
@@ -607,7 +640,7 @@ class _PurchaseState extends State<Purchase> {
                           'Total payment amount',
                           style: MyStyle.tx14B.copyWith(
                             color: MyColor.black.withOpacity(0.5),
-                            fontSize: 14,
+                            fontSize: 13,
                           ),
                         ),
                         RichText(
@@ -616,12 +649,12 @@ class _PurchaseState extends State<Purchase> {
                               TextSpan(
                                 text: '38,500',
                                 style: MyStyle.tx14B.copyWith(
-                                    fontSize: 14, color: MyColor.orange),
+                                    fontSize: 13, color: MyColor.orange),
                               ),
                               TextSpan(
                                 text: ' won',
                                 style: MyStyle.tx14B.copyWith(
-                                  fontSize: 14,
+                                  fontSize: 13,
                                   color: MyColor.black.withOpacity(0.5),
                                 ),
                               ),
@@ -639,115 +672,572 @@ class _PurchaseState extends State<Purchase> {
 
               //   Payment Method
               Container(
-                padding: const EdgeInsets.all(8.0),
                 color: MyColor.white,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Payment method',
-                      style: MyStyle.tx12B.copyWith(
-                        fontWeight: FontWeight.w700,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Payment method',
+                        style: MyStyle.tx12B.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                    // const SizedBox(
+                    //   height: 2,
+                    // ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 40,
+                            width: 164,
+                            color: MyColor.orange,
+                            child: Center(
+                              child: Text(
+                                'Credit card',
+                                style: MyStyle.tx14W.copyWith(
+                                  fontSize: 13,
+                                  fontFamily: 'NotoSansKR-Medium',
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Container(
+                            height: 40,
+                            width: 164,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                              color: MyColor.orange,
+                              width: 0.4,
+                            )),
+                            child: Center(
+                              child: Text(
+                                'Cell phone',
+                                style: MyStyle.tx14O.copyWith(
+                                  fontSize: 13,
+                                  fontFamily: 'NotoSansKR-Medium',
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(
-                      height: 12,
+                      height: 8,
                     ),
-                    Row(
-                      children: [
-                        Container(
-                          height: 40,
-                          width: 164,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Container(
+                            height: 40,
+                            width: 164,
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                              color: MyColor.orange,
+                              width: 0.4,
+                            )),
+                            child: Center(
+                              child: Text(
+                                'Make a deposit',
+                                style: MyStyle.tx14O.copyWith(
+                                  fontSize: 13,
+                                  fontFamily: 'NotoSansKR-Medium',
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Container(
+                            height: 40,
+                            width: 164,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: MyColor.orange,
+                                width: 0.4,
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Payment method API',
+                                style: MyStyle.tx14O.copyWith(
+                                  fontSize: 13,
+                                  fontFamily: 'NotoSansKR-Medium',
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+
+              // Conditions
+              Container(
+                color: MyColor.white,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/checkMark.png',
+                            height: 20,
+                            width: 20,
+                            color: MyColor.black.withOpacity(0.5),
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            'Confirmation of terms and conditions and \n'
+                            'consent to payment.',
+                            style: MyStyle.tx14B.copyWith(
+                              fontSize: 13,
+                              color: MyColor.black.withOpacity(0.5),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 22,
+                          ),
+                          Image.asset(
+                            'assets/icons/downArrow.png',
+                            height: 20,
+                            width: 20,
+                            color: MyColor.black.withOpacity(0.5),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      thickness: 0,
+                      color: MyColor.black.withOpacity(0.1),
+                    ),
+                    ExpansionTile(
+                      leading: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 4.0, vertical: 0.0),
+                        child: Image.asset(
+                          'assets/icons/right.png',
+                          height: 24,
+                          width: 24,
+                        ),
+                      ),
+                      title: Text(
+                        'Agree to provide personal information to a third party.',
+                        style: MyStyle.tx14B.copyWith(
+                          fontSize: 13,
                           color: MyColor.orange,
-                          child: const Center(
-                            child: Text(
-                              'Credit card',
-                              style: MyStyle.tx14W,
-                            ),
-                          ),
                         ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Container(
-                          height: 40,
-                          width: 164,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                            color: MyColor.orange,
-                            width: 0.4,
-                          )),
-                          child: const Center(
-                            child: Text(
-                              'Cell phone',
-                              style: MyStyle.tx14O,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Row(
+                      ),
+                      tilePadding: const EdgeInsets.all(0.0),
+                      trailing: Image.asset(
+                        'assets/icons/downArrow.png',
+                        height: 24,
+                        width: 24,
+                        color: MyColor.black.withOpacity(0.5),
+                      ),
                       children: [
-                        Container(
-                          height: 40,
-                          width: 164,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                            color: MyColor.orange,
-                            width: 0.4,
-                          )),
-                          child: const Center(
-                            child: Text(
-                              'Make a deposit',
-                              style: MyStyle.tx14O,
-                            ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Divider(
+                                thickness: 0,
+                                color: MyColor.black.withOpacity(0.1),
+                              ),
+                              Text(
+                                'Agree to provide personal information to a third party.',
+                                style: MyStyle.tx12B.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                'Agree to provide personal information to a third party. '
+                                'Agree to provide personal information to a third party. '
+                                'Agree to provide personal information to a third party. '
+                                'Agree to provide personal information to a third party. '
+                                'Agree to provide personal information to a third party. '
+                                'Agree to provide personal information to a third party. '
+                                'Agree to provide personal information to a third party. '
+                                'Agree to provide personal information to a third party. ',
+                                style: MyStyle.tx10.copyWith(
+                                  decoration: TextDecoration.none,
+                                  fontFamily: 'NotoSansKR-Regular',
+                                ),
+                              ),
+
+                              //   Spacing
+                            ],
                           ),
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Container(
-                          height: 40,
-                          width: 164,
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                            color: MyColor.orange,
-                            width: 0.4,
-                          )),
-                          child: const Center(
-                            child: Text(
-                              'Payment method API',
-                              style: MyStyle.tx14O,
-                            ),
-                          ),
-                        ),
+                        )
                       ],
                     ),
-                    const SizedBox(
-                      height: 8,
+                    Divider(
+                      thickness: 0,
+                      color: MyColor.black.withOpacity(0.1),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/checkMark.png',
+                            height: 20,
+                            width: 20,
+                            color: MyColor.black.withOpacity(0.5),
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            'Agree to collect and use personal \n information.',
+                            style: MyStyle.tx14B.copyWith(
+                              fontSize: 13,
+                              color: MyColor.black.withOpacity(0.5),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 73,
+                          ),
+                          Image.asset(
+                            'assets/icons/downArrow.png',
+                            height: 20,
+                            width: 20,
+                            color: MyColor.black.withOpacity(0.5),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      thickness: 0,
+                      color: MyColor.black.withOpacity(0.1),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Image.asset(
+                            'assets/icons/checkMark.png',
+                            height: 20,
+                            width: 20,
+                            color: MyColor.black.withOpacity(0.5),
+                          ),
+                          const SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            'I agree to use Welcome Payments.',
+                            style: MyStyle.tx14B.copyWith(
+                              fontSize: 13,
+                              color: MyColor.black.withOpacity(0.5),
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 70,
+                          ),
+                          Image.asset(
+                            'assets/icons/downArrow.png',
+                            height: 20,
+                            width: 20,
+                            color: MyColor.black.withOpacity(0.5),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      thickness: 0,
+                      color: MyColor.black.withOpacity(0.1),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8.0, vertical: 0.0),
+                      child: Text(
+                        'One Q Live Co., Ltd. is a provider of the mail order brokerage system, and is not a '
+                        'party to mail order, and each seller is responsible for ordering, delivering, and '
+                        'refunding products.',
+                        style: MyStyle.tx9B.copyWith(
+                          fontFamily: 'NotoSansKR-Regular',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                     Container(
                       height: 48,
                       color: MyColor.purple,
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           'Pay for it',
-                          style: MyStyle.tx14W.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
+                          textAlign: TextAlign.center,
+                          style: MyStyle.tx14W,
                         ),
                       ),
                     ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget purchaseDialog() {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      titlePadding: const EdgeInsets.only(top: 20),
+      title: const Text(
+        'There is no saved order information.',
+        style: MyStyle.tx17B,
+        textAlign: TextAlign.center,
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            'Please register your address in the \n profile.',
+            style: MyStyle.tx13B.copyWith(
+              fontSize: 12,
+              color: MyColor.black.withOpacity(0.5),
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
+      contentPadding: const EdgeInsets.only(top: 5, bottom: 20),
+      actionsPadding: const EdgeInsets.all(0),
+      actions: [
+        const Divider(
+          height: 0,
+          thickness: 0,
+          indent: 0,
+          endIndent: 0,
+          color: Colors.grey,
+        ),
+        Expanded(
+          child: TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Center(
+              child: Text(
+                'Confirm',
+                style: MyStyle.tx17B.copyWith(
+                  fontSize: 15,
+                  fontFamily: 'NotoSansKR-Medium',
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void shippingRequestSheet() {
+    showModalBottomSheet(
+        backgroundColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(14),
+        ),
+        context: context,
+        isScrollControlled: true,
+        builder: (BuildContext context) {
+          return SizedBox(
+            height: (MediaQuery.of(context).size.height * 0.6) + 60,
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(14),
+                      color: MyColor.white,
+                    ),
+                    height: (MediaQuery.of(context).size.height * 0.5) + 62,
+                    width: MediaQuery.of(context).size.width,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 6.0, horizontal: 12),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Please select a request for delivery.',
+                                style: MyStyle.tx17B.copyWith(
+                                  fontFamily: 'NotoSansKR-Regular',
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 15,
+                                ),
+                              ),
+                              Image.asset(
+                                'assets/icons/blueCheck.png',
+                                height: 24,
+                                width: 24,
+                              )
+                            ],
+                          ),
+                        ),
+                        const Divider(
+                          thickness: 0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 6.0, horizontal: 12),
+                          child: Text(
+                            'Please contact us in advance before delivery.',
+                            style: MyStyle.tx17B.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          thickness: 0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 6.0, horizontal: 12),
+                          child: Text(
+                            'Please leave it at the security office in \n'
+                            'case of absence.',
+                            style: MyStyle.tx17B.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          thickness: 0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 6.0, horizontal: 12),
+                          child: Text(
+                            'Please put it in front of the door in case\n'
+                            'of absence.',
+                            style: MyStyle.tx17B.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          thickness: 0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 6.0, horizontal: 12),
+                          child: Text(
+                            'Please be careful when delivering products \n '
+                            'at risk of damage.',
+                            style: MyStyle.tx17B.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          thickness: 0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 6.0, horizontal: 12),
+                          child: Text(
+                            'Please put it in the delivery box.',
+                            style: MyStyle.tx17B.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          thickness: 0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 6.0, horizontal: 12),
+                          child: Text(
+                            'Type it yourself.',
+                            style: MyStyle.tx17B.copyWith(
+                              fontFamily: 'NotoSansKR-Regular',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(14),
+                        color: MyColor.white,
+                      ),
+                      height: (MediaQuery.of(context).size.height * 0.15) - 72,
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: Text(
+                          'Close',
+                          style: MyStyle.tx20.copyWith(
+                            fontWeight: FontWeight.w400,
+                            color: MyColor.iosblue,
+                            fontFamily: "NotoSansKR-Regular",
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
