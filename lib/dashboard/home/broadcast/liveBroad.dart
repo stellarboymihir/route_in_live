@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
@@ -3354,6 +3353,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 onTap: () {
                   Navigator.pop(context);
                   showDialog(
+                      barrierDismissible: false,
+                      barrierColor: MyColor.black.withOpacity(0.2),
                       context: context,
                       builder: (BuildContext context) {
                         return quizDialog();
@@ -4089,14 +4090,62 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
     );
   }
 
+  // Quiz Dialog
   Widget quizDialog() {
     return Container(
+      color: Colors.transparent,
       child: Column(
         children: [
+          const SizedBox(height: 18),
           Container(
-            child: Row(
-              children: [],
+            height: 40,
+            width: 351,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              color: MyColor.yellowamber.withOpacity(0.3),
             ),
+            child: Center(
+              child: Text(
+                'An unexpected quiz!',
+                style: MyStyle.tx14W.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 25,
+          ),
+
+          // Timer
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                margin: EdgeInsets.all(4),
+                height: 24,
+                width: 94,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: MyColor.white.withOpacity(0.2),
+                ),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      'assets/icons/clock.png',
+                      height: 16,
+                      width: 16,
+                    ),
+                    Text(
+                      ' 29:59:59',
+                      style: MyStyle.tx11W.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
           AlertDialog(
             alignment: Alignment.center,
@@ -4117,44 +4166,59 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
             actions: [
               Column(
                 children: [
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        onQuizClick = !onQuizClick;
-                      });
-                      if (onQuizClick) {
-                        print('yellow');
-                      } else {
-                        print('white');
-                      }
-                      // showDialog(
-                      //     context: context,
-                      //     builder: (BuildContext context) {
-                      //       return timeOverDialog();
-                      //     });
-                    },
-                    child: Container(
-                      height: 40,
-                      width: 335,
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 12.0),
-                      margin: const EdgeInsets.only(
-                          top: 2.0, bottom: 8.0, left: 10, right: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: onQuizClick
-                            ? MyColor.white.withOpacity(0.7)
-                            : MyColor.yellowamber,
-                      ),
-                      child: Text(
-                        '1. quiz!',
-                        style: MyStyle.tx14B.copyWith(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
+                  // 1st Option
+                  StatefulBuilder(builder: (context, setState) {
+                    return InkWell(
+                      onTap: () {
+                        setState(() {
+                          onQuizClick = true;
+                        });
+                        if (onQuizClick) {
+                          print('yellow');
+                        } else {
+                          print('white');
+                        }
+                        print('Before delay');
+                        Future.delayed(
+                          const Duration(seconds: 3),
+                          () {
+                            print('After delay');
+                            Navigator.pop(context);
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return timeOverDialog();
+                                });
+                          },
+                        );
+                        print('After await');
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 335,
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10.0, horizontal: 12.0),
+                        margin: const EdgeInsets.only(
+                            top: 2.0, bottom: 8.0, left: 10, right: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: onQuizClick
+                              ? MyColor.yellowamber
+                              : MyColor.white.withOpacity(0.7),
+                        ),
+                        child: Text(
+                          '1. quiz!',
+                          style: MyStyle.tx14B.copyWith(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                            color: onQuizClick ? MyColor.white : MyColor.black,
+                          ),
                         ),
                       ),
-                    ),
-                  ),
+                    );
+                  }),
+
+                  // 2nd Option
                   Container(
                     height: 40,
                     width: 335,
@@ -4174,24 +4238,42 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: 40,
-                    width: 335,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 12.0),
-                    margin: const EdgeInsets.only(
-                        top: 2.0, bottom: 10.0, left: 10, right: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: MyColor.white.withOpacity(0.7),
-                    ),
-                    child: Text(
-                      '3. No',
-                      style: MyStyle.tx14B.copyWith(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
+
+                  // 3rd Option
+
+                  StatefulBuilder(
+                    builder: (context, setState) {
+                      return InkWell(
+                        onTap: () {
+                          setState(() {
+                            onQuizClick = !onQuizClick;
+                          });
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 335,
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 12.0),
+                          margin: const EdgeInsets.only(
+                              top: 2.0, bottom: 10.0, left: 10, right: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: onQuizClick
+                                ? MyColor.purple
+                                : MyColor.white.withOpacity(0.7),
+                          ),
+                          child: Text(
+                            '3. No',
+                            style: MyStyle.tx14B.copyWith(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w500,
+                              color:
+                                  onQuizClick ? MyColor.white : MyColor.black,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               )
@@ -4218,35 +4300,38 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
       actions: [
         Column(
           children: [
-            InkWell(
-              onTap: () {
-                // setState(() {
-                //   onQuizClick = true;
-                // });
-
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return timeOverDialog();
-                    });
-              },
-              child: Container(
-                height: 40,
-                width: 310,
-                padding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 12.0),
-                margin: const EdgeInsets.only(
-                    top: 12.0, bottom: 18.0, left: 10, right: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: MyColor.purple,
-                ),
-                child: Center(
-                  child: Text(
-                    'Show us the answer',
-                    style: MyStyle.tx14W.copyWith(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w500,
+            StatefulBuilder(
+              builder: (context, setState) => InkWell(
+                onTap: () {
+                  setState(() {
+                    onQuizClick = true;
+                    print('color changed');
+                  });
+                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return quizDialog();
+                      });
+                },
+                child: Container(
+                  height: 40,
+                  width: 310,
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 10.0, horizontal: 12.0),
+                  margin: const EdgeInsets.only(
+                      top: 12.0, bottom: 18.0, left: 10, right: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: MyColor.purple,
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Show us the answer',
+                      style: MyStyle.tx14W.copyWith(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ),
                 ),
