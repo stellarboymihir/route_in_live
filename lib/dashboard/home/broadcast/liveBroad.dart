@@ -3,6 +3,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 
 class LiveBroadcast extends StatefulWidget {
   const LiveBroadcast({super.key});
@@ -24,6 +25,10 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
   String? selectedList;
 
   bool isModelProduct = false;
+
+  // bool onQuizClick = false;
+
+  var onQuizClick = false;
 
   var size, height, width;
 
@@ -3210,7 +3215,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
       isScrollControlled: true,
       builder: (BuildContext context) {
         return SizedBox(
-          height: MediaQuery.of(context).size.height * 0.4,
+          height: MediaQuery.of(context).size.height * 0.35 + 7,
           width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
@@ -3299,11 +3304,15 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
               ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: Text(
-                  'Sponsorship point.',
-                  style: MyStyle.tx14B.copyWith(
-                    fontSize: 14,
-                  ),
+                child: Row(
+                  children: [
+                    Text(
+                      'Sponsorship point.',
+                      style: MyStyle.tx14B.copyWith(
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Padding(
@@ -3341,19 +3350,29 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 44,
-                  width: 351,
-                  color: MyColor.yellowamber,
-                  child: Center(
-                    child: Text(
-                      'Sponsor',
-                      style: MyStyle.tx16B.copyWith(
-                        fontWeight: FontWeight.w500,
-                        color: MyColor.white,
-                        fontFamily: 'NotoSansKR-Medium',
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return quizDialog();
+                      });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 44,
+                    width: 351,
+                    color: MyColor.yellowamber,
+                    child: Center(
+                      child: Text(
+                        'Sponsor',
+                        style: MyStyle.tx16B.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: MyColor.white,
+                          fontFamily: 'NotoSansKR-Medium',
+                        ),
                       ),
                     ),
                   ),
@@ -3439,160 +3458,121 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: MyColor.purple,
-                ),
-                width: 346,
-                height: 56,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '1,400',
-                            style: MyStyle.tx16W.copyWith(
-                                fontWeight: FontWeight.w700, fontSize: 13),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                  //Interactive toast, set [isIgnoring] false.
+                  showToastWidget(
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 28.0, vertical: 10.0),
+                      // margin: const EdgeInsets.symmetric(
+                      //     horizontal: 20.0, vertical: 20.0),
+                      decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
                           ),
-                          TextSpan(
-                            text: ' Points',
-                            style: MyStyle.tx14W.copyWith(
-                              fontFamily: 'NotoSansKR-Regular',
-                              fontSize: 11,
+                          color: MyColor.white),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '1,400 Points',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.purple,
+                                fontFamily: 'Montserrat-SemiBold',
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                        ],
+                            TextSpan(
+                              text: ' were charged normally',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.black,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'NotoSansKR-Regular',
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '1,300',
-                            style: MyStyle.tx16W.copyWith(
-                                fontWeight: FontWeight.w600, fontSize: 13),
-                          ),
-                          TextSpan(
-                            text: ' won',
-                            style: MyStyle.tx14W.copyWith(
-                              fontFamily: 'NotoSansKR-Regular',
-                              fontSize: 11,
+                    position:
+                        const StyledToastPosition(align: Alignment.center),
+                    context: context,
+                    isIgnoring: false,
+                    duration: const Duration(seconds: 4),
+                  );
+                  // showToastWidget(
+                  //   Container(
+                  //       padding: const EdgeInsets.symmetric(
+                  //           horizontal: 18.0, vertical: 10.0),
+                  //       // margin: const EdgeInsets.symmetric(
+                  //       //     horizontal: 20.0, vertical: 20.0),
+                  //       decoration: ShapeDecoration(
+                  //           shape: RoundedRectangleBorder(
+                  //             borderRadius: BorderRadius.circular(16.0),
+                  //           ),
+                  //           color: MyColor.white),
+                  //       child: Text(
+                  //         'Charging was not performed normally due to an error.',
+                  //         style: MyStyle.tx13B.copyWith(fontSize: 11),
+                  //       )),
+                  //   position:
+                  //       const StyledToastPosition(align: Alignment.center),
+                  //   context: context,
+                  //   isIgnoring: false,
+                  //   duration: const Duration(seconds: 8),
+                  // );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: MyColor.purple,
+                  ),
+                  width: 346,
+                  height: 56,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '1,400',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w700, fontSize: 13),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: MyColor.purple,
-                ),
-                width: 346,
-                height: 56,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '3,000',
-                            style: MyStyle.tx16W.copyWith(
-                                fontWeight: FontWeight.w700, fontSize: 13),
-                          ),
-                          TextSpan(
-                            text: ' Points',
-                            style: MyStyle.tx14W.copyWith(
-                              fontFamily: 'NotoSansKR-Regular',
-                              fontSize: 11,
+                            TextSpan(
+                              text: ' Points',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '3,900',
-                            style: MyStyle.tx16W.copyWith(
-                                fontWeight: FontWeight.w600, fontSize: 13),
-                          ),
-                          TextSpan(
-                            text: ' won',
-                            style: MyStyle.tx14W.copyWith(
-                              fontFamily: 'NotoSansKR-Regular',
-                              fontSize: 11,
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '1,300',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 13),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: MyColor.purple,
-                ),
-                width: 346,
-                height: 56,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '5,000',
-                            style: MyStyle.tx16W.copyWith(
-                                fontWeight: FontWeight.w700, fontSize: 13),
-                          ),
-                          TextSpan(
-                            text: ' Points',
-                            style: MyStyle.tx14W.copyWith(
-                              fontFamily: 'NotoSansKR-Regular',
-                              fontSize: 11,
+                            TextSpan(
+                              text: ' won',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '6,500',
-                            style: MyStyle.tx16W.copyWith(
-                                fontWeight: FontWeight.w600, fontSize: 13),
-                          ),
-                          TextSpan(
-                            text: ' won',
-                            style: MyStyle.tx14W.copyWith(
-                              fontFamily: 'NotoSansKR-Regular',
-                              fontSize: 11,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
@@ -3600,16 +3580,255 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
               ),
               InkWell(
                 onTap: () {
-                  print('yes');
                   Navigator.pop(context);
-                  Fluttertoast.showToast(
-                      msg: "Your toast message",
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.CENTER,
-                      timeInSecForIosWeb: 1,
-                      backgroundColor: Colors.red,
-                      textColor: Colors.white,
-                      fontSize: 16.0);
+                  //Interactive toast, set [isIgnoring] false.
+                  showToastWidget(
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 28.0, vertical: 10.0),
+                      // margin: const EdgeInsets.symmetric(
+                      //     horizontal: 20.0, vertical: 20.0),
+                      decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          color: MyColor.white),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '3,000 Points',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.purple,
+                                fontFamily: 'Montserrat-SemiBold',
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            TextSpan(
+                              text: ' were charged normally',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.black,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'NotoSansKR-Regular',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    position:
+                        const StyledToastPosition(align: Alignment.center),
+                    context: context,
+                    isIgnoring: false,
+                    duration: const Duration(seconds: 4),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: MyColor.purple,
+                  ),
+                  width: 346,
+                  height: 56,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '3,000',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w700, fontSize: 13),
+                            ),
+                            TextSpan(
+                              text: ' Points',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '3,900',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 13),
+                            ),
+                            TextSpan(
+                              text: ' won',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                  //Interactive toast, set [isIgnoring] false.
+                  showToastWidget(
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 28.0, vertical: 10.0),
+                      // margin: const EdgeInsets.symmetric(
+                      //     horizontal: 20.0, vertical: 20.0),
+                      decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          color: MyColor.white),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '5,000 Points',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.purple,
+                                fontFamily: 'Montserrat-SemiBold',
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            TextSpan(
+                              text: ' were charged normally',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.black,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'NotoSansKR-Regular',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    position:
+                        const StyledToastPosition(align: Alignment.center),
+                    context: context,
+                    isIgnoring: false,
+                    duration: const Duration(seconds: 4),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: MyColor.purple,
+                  ),
+                  width: 346,
+                  height: 56,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '5,000',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w700, fontSize: 13),
+                            ),
+                            TextSpan(
+                              text: ' Points',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '6,500',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 13),
+                            ),
+                            TextSpan(
+                              text: ' won',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                  // Fluttertoast.showToast(
+                  //     msg: "Your toast message",
+                  //     toastLength: Toast.LENGTH_SHORT,
+                  //     gravity: ToastGravity.CENTER,
+                  //     timeInSecForIosWeb: 1,
+                  //     backgroundColor: Colors.red,
+                  //     textColor: Colors.white,
+                  //     fontSize: 16.0);
+
+                  //Interactive toast, set [isIgnoring] false.
+                  showToastWidget(
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 28.0, vertical: 10.0),
+                      // margin: const EdgeInsets.symmetric(
+                      //     horizontal: 20.0, vertical: 20.0),
+                      decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          color: MyColor.white),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '10,000 Points',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.purple,
+                                fontFamily: 'Montserrat-SemiBold',
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            TextSpan(
+                              text: ' were charged normally',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.black,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'NotoSansKR-Regular',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    position:
+                        const StyledToastPosition(align: Alignment.center),
+                    context: context,
+                    isIgnoring: false,
+                    duration: const Duration(seconds: 4),
+                  );
                 },
                 child: Container(
                   padding: const EdgeInsets.all(12),
@@ -3665,107 +3884,199 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
               const SizedBox(
                 height: 8,
               ),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: MyColor.purple,
-                ),
-                width: 346,
-                height: 56,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '50,000',
-                            style: MyStyle.tx16W.copyWith(
-                                fontWeight: FontWeight.w700, fontSize: 13),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+
+                  //Interactive toast, set [isIgnoring] false.
+                  showToastWidget(
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 28.0, vertical: 10.0),
+                      decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
                           ),
-                          TextSpan(
-                            text: ' Points',
-                            style: MyStyle.tx14W.copyWith(
-                              fontFamily: 'NotoSansKR-Regular',
-                              fontSize: 11,
+                          color: MyColor.white),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '50,000 Points',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.purple,
+                                fontFamily: 'Montserrat-SemiBold',
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                        ],
+                            TextSpan(
+                              text: ' were charged normally',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.black,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'NotoSansKR-Regular',
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '65,000',
-                            style: MyStyle.tx16W.copyWith(
-                                fontWeight: FontWeight.w600, fontSize: 13),
-                          ),
-                          TextSpan(
-                            text: ' won',
-                            style: MyStyle.tx14W.copyWith(
-                              fontFamily: 'NotoSansKR-Regular',
-                              fontSize: 11,
+                    position:
+                        const StyledToastPosition(align: Alignment.center),
+                    context: context,
+                    isIgnoring: false,
+                    duration: const Duration(seconds: 4),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: MyColor.purple,
+                  ),
+                  width: 346,
+                  height: 56,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '50,000',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w700, fontSize: 13),
                             ),
-                          ),
-                        ],
+                            TextSpan(
+                              text: ' Points',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '65,000',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 13),
+                            ),
+                            TextSpan(
+                              text: ' won',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 8,
               ),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: MyColor.purple,
-                ),
-                width: 346,
-                height: 56,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '100,000',
-                            style: MyStyle.tx16W.copyWith(
-                                fontWeight: FontWeight.w700, fontSize: 13),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+
+                  //Interactive toast, set [isIgnoring] false.
+                  showToastWidget(
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 28.0, vertical: 10.0),
+                      // margin: const EdgeInsets.symmetric(
+                      //     horizontal: 20.0, vertical: 20.0),
+                      decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0),
                           ),
-                          TextSpan(
-                            text: ' Points',
-                            style: MyStyle.tx14W.copyWith(
-                              fontFamily: 'NotoSansKR-Regular',
-                              fontSize: 11,
+                          color: MyColor.white),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '100,000 Points',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.purple,
+                                fontFamily: 'Montserrat-SemiBold',
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                          ),
-                        ],
+                            TextSpan(
+                              text: ' were charged normally',
+                              style: MyStyle.tx14O.copyWith(
+                                color: MyColor.black,
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'NotoSansKR-Regular',
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '130,000',
-                            style: MyStyle.tx16W.copyWith(
-                                fontWeight: FontWeight.w600, fontSize: 13),
-                          ),
-                          TextSpan(
-                            text: ' won',
-                            style: MyStyle.tx14W.copyWith(
-                              fontFamily: 'NotoSansKR-Regular',
-                              fontSize: 11,
+                    position:
+                        const StyledToastPosition(align: Alignment.center),
+                    context: context,
+                    isIgnoring: false,
+                    duration: const Duration(seconds: 4),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: MyColor.purple,
+                  ),
+                  width: 346,
+                  height: 56,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '100,000',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w700, fontSize: 13),
                             ),
-                          ),
-                        ],
+                            TextSpan(
+                              text: ' Points',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: '130,000',
+                              style: MyStyle.tx16W.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 13),
+                            ),
+                            TextSpan(
+                              text: ' won',
+                              style: MyStyle.tx14W.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                                fontSize: 11,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
@@ -3775,6 +4086,175 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
           ),
         );
       },
+    );
+  }
+
+  Widget quizDialog() {
+    return Container(
+      child: Column(
+        children: [
+          Container(
+            child: Row(
+              children: [],
+            ),
+          ),
+          AlertDialog(
+            alignment: Alignment.center,
+            backgroundColor: MyColor.white.withOpacity(0.8),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            // titlePadding: const EdgeInsets.only(top: 20),
+            title: Text(
+              'What is your unexpected quiz?',
+              style: MyStyle.tx16B.copyWith(
+                fontFamily: 'NotoSansKR-Regular',
+                fontWeight: FontWeight.w700,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            actionsPadding: const EdgeInsets.all(0),
+            actions: [
+              Column(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        onQuizClick = !onQuizClick;
+                      });
+                      if (onQuizClick) {
+                        print('yellow');
+                      } else {
+                        print('white');
+                      }
+                      // showDialog(
+                      //     context: context,
+                      //     builder: (BuildContext context) {
+                      //       return timeOverDialog();
+                      //     });
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 335,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10.0, horizontal: 12.0),
+                      margin: const EdgeInsets.only(
+                          top: 2.0, bottom: 8.0, left: 10, right: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: onQuizClick
+                            ? MyColor.white.withOpacity(0.7)
+                            : MyColor.yellowamber,
+                      ),
+                      child: Text(
+                        '1. quiz!',
+                        style: MyStyle.tx14B.copyWith(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 40,
+                    width: 335,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 12.0),
+                    margin: const EdgeInsets.only(
+                        top: 2.0, bottom: 8.0, left: 10, right: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: MyColor.white.withOpacity(0.7),
+                    ),
+                    child: Text(
+                      '2. Ok',
+                      style: MyStyle.tx14B.copyWith(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 40,
+                    width: 335,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 12.0),
+                    margin: const EdgeInsets.only(
+                        top: 2.0, bottom: 10.0, left: 10, right: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: MyColor.white.withOpacity(0.7),
+                    ),
+                    child: Text(
+                      '3. No',
+                      style: MyStyle.tx14B.copyWith(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget timeOverDialog() {
+    return AlertDialog(
+      backgroundColor: MyColor.white.withOpacity(0.8),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      // titlePadding: const EdgeInsets.only(top: 20),
+      title: Image.asset(
+        'assets/images/timeOver.png',
+        height: 152,
+        width: 232,
+      ),
+      actionsPadding: const EdgeInsets.all(0),
+      actions: [
+        Column(
+          children: [
+            InkWell(
+              onTap: () {
+                // setState(() {
+                //   onQuizClick = true;
+                // });
+
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return timeOverDialog();
+                    });
+              },
+              child: Container(
+                height: 40,
+                width: 310,
+                padding: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 12.0),
+                margin: const EdgeInsets.only(
+                    top: 12.0, bottom: 18.0, left: 10, right: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: MyColor.purple,
+                ),
+                child: Center(
+                  child: Text(
+                    'Show us the answer',
+                    style: MyStyle.tx14W.copyWith(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

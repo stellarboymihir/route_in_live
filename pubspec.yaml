@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   image_picker: ^1.0.5
   fluttertoast: ^8.2.4
+  flutter_styled_toast: ^2.2.1
 #  gradient_borders: ^0.2.0
 #  dependencies:
 
