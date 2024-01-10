@@ -3351,6 +3351,9 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
               ),
               InkWell(
                 onTap: () {
+                  setState(() {
+                    onQuizClick = false;
+                  });
                   Navigator.pop(context);
                   showDialog(
                       barrierDismissible: false,
