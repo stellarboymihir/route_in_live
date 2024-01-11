@@ -3,6 +3,11 @@ import 'package:route_in_live/authentication/email_sign_up.dart';
 import 'package:route_in_live/authentication/login_page.dart';
 import 'package:route_in_live/authentication/register/findingid/find.dart';
 import 'package:route_in_live/dashboard/dashboard.dart';
+import 'package:route_in_live/dashboard/feed/FeedScreen/allScreen.dart';
+import 'package:route_in_live/dashboard/feed/FeedScreen/feedScreen.dart';
+import 'package:route_in_live/dashboard/feed/FeedScreen/followingScreen.dart';
+import 'package:route_in_live/dashboard/feed/FeedScreen/likeScreen.dart';
+import 'package:route_in_live/dashboard/feed/MyScreen/myScreen.dart';
 import 'package:route_in_live/dashboard/home/broadcast/liveBroad.dart';
 import 'package:route_in_live/dashboard/home/collecting/collectingpreview.dart';
 import 'package:route_in_live/dashboard/home/home.dart';
@@ -24,6 +29,7 @@ import 'authentication/self_verify.dart';
 import 'authentication/splash_screen.dart';
 import 'authentication/terms_condition_page.dart';
 import 'constants/routes.dart';
+import 'dashboard/feed/feed.dart';
 import 'dashboard/home/regsiterbroadcast/StoredItem.dart';
 
 void main() {
@@ -65,8 +71,9 @@ class MyApp extends StatelessWidget {
         //   ** DashBoard  **
 
         dashboardRoute: (context) => const Dashboard(),
-        homeRoute: (context) => const Home(),
 
+        // ** Home **
+        homeRoute: (context) => const Home(),
         //  ** Register Broadcast **
         liveReservationRoute: (context) => const LiveReservation(),
         sellProductRoute: (context) => const SellProduct(),
@@ -75,6 +82,14 @@ class MyApp extends StatelessWidget {
         liveBroadcastRoute: (context) => const LiveBroadcast(),
         purchaseRoute: (context) => const Purchase(),
         paySuccesRoute: (context) => const PaymentSuccesfull(),
+
+        //   ** Feed **
+        feedRoute: (context) => Feed(),
+        feedScreenRoute: (context) => FeedScreen(),
+        myScreenRoute: (context) => MyScreen(),
+        allScreenRoute: (context) => AllScreen(),
+        followingScreenRoute: (context) => FollowingScreen(),
+        likeScreenRoute: (context) => LikeScreen(),
       },
     );
   }

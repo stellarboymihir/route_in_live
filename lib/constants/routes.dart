@@ -15,8 +15,9 @@ const resetPassRoute = '/resetPass/';
 
 // Dashboard
 const dashboardRoute = '/dashboard/';
-const homeRoute = '/homePage/';
 
+// Home
+const homeRoute = '/homePage/';
 // Register Broadcast
 const liveReservationRoute = '/liveReservation/';
 const sellProductRoute = '/sellProductRoute/';
@@ -25,3 +26,11 @@ const collectingPreviewRoute = '/collectingPreviewRoute/';
 const liveBroadcastRoute = '/liveBroadcastRoute/';
 const purchaseRoute = '/purchaseRoute/';
 const paySuccesRoute = '/paySuccesRoute/';
+
+// Feed
+const feedRoute = '/feedRoute/';
+const feedScreenRoute = '/feedScreenRoute/';
+const myScreenRoute = '/myScreenRoute/';
+const allScreenRoute = '/allScreenRoute/';
+const followingScreenRoute = '/followingScreenRoute/';
+const likeScreenRoute = '/likeScreenRoute/';
