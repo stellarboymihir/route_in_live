@@ -25,7 +25,9 @@ class _HomePageState extends State<Home> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              'assets/icons/Cart.png',
+              'assets/icons/cart.png',
+              height: 24,
+              width: 24,
               color: Colors.black,
             ),
           ),

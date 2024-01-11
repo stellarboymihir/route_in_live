@@ -48,6 +48,12 @@ class MyStyle {
     color: MyColor.white,
     letterSpacing: 0.3,
   );
+  static const tx12W = TextStyle(
+    fontSize: 12,
+    fontFamily: 'NotoSansKR-Medium',
+    fontWeight: FontWeight.w700,
+    color: MyColor.white,
+  );
 
   static const tx12O = TextStyle(
     fontSize: 12,
