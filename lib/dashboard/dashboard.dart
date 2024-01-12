@@ -33,6 +33,7 @@ class _DashboardState extends State<Dashboard> {
             pageIndex = value;
           });
         },
+        currentIndex: pageIndex,
         selectedItemColor: MyColor.orange,
         unselectedItemColor: MyColor.black,
         type: BottomNavigationBarType.fixed,

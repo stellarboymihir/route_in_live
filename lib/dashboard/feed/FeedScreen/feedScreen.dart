@@ -36,7 +36,7 @@ class _FeedScreenState extends State<FeedScreen> {
                       print('All is pressed');
                     });
                     // Navigator.pushNamed(context, allScreenRoute);
-
+                    const AllScreen();
                     print('It is opeing');
                   },
                   child: Container(
@@ -107,7 +107,7 @@ class _FeedScreenState extends State<FeedScreen> {
                       print('Like is pressed');
                     });
                     // Navigator.pushNamed(context, likeScreenRoute);
-                    LikeScreen();
+                    const LikeScreen();
                   },
                   child: Container(
                     margin: const EdgeInsets.all(8.0),
@@ -133,9 +133,15 @@ class _FeedScreenState extends State<FeedScreen> {
                 ),
               ],
             ),
-            tabMenuChange == 'All' ? AllScreen() : SizedBox(),
-            tabMenuChange == 'Following' ? FollowingScreen() : SizedBox(),
-            tabMenuChange == 'Like' ? LikeScreen() : SizedBox(),
+            tabMenuChange == 'All'
+                ? const Expanded(child: AllScreen())
+                : const SizedBox(),
+            tabMenuChange == 'Following'
+                ? const Expanded(child: FollowingScreen())
+                : const SizedBox(),
+            tabMenuChange == 'Like'
+                ? const Expanded(child: LikeScreen())
+                : const SizedBox(),
           ],
         ),
       ),

@@ -10,6 +10,6 @@ class LikeScreen extends StatefulWidget {
 class _LikeScreenState extends State<LikeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Text('Like Screen');
+    return Text('Like ');
   }
 }
