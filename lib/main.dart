@@ -5,6 +5,7 @@ import 'package:route_in_live/authentication/register/findingid/find.dart';
 import 'package:route_in_live/dashboard/dashboard.dart';
 import 'package:route_in_live/dashboard/feed/FeedScreen/allScreen.dart';
 import 'package:route_in_live/dashboard/feed/FeedScreen/feedScreen.dart';
+import 'package:route_in_live/dashboard/feed/FeedScreen/followingListScreen.dart';
 import 'package:route_in_live/dashboard/feed/FeedScreen/followingScreen.dart';
 import 'package:route_in_live/dashboard/feed/FeedScreen/likeScreen.dart';
 import 'package:route_in_live/dashboard/feed/MyScreen/myScreen.dart';
@@ -15,8 +16,6 @@ import 'package:route_in_live/dashboard/home/paysuccessful.dart';
 import 'package:route_in_live/dashboard/home/purchase.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/LiveReservation.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/sellProduct.dart';
-import 'package:route_in_live/values/MyColor.dart';
-
 import 'authentication/pass_sign_page.dart';
 import 'authentication/permission/permission_page.dart';
 import 'authentication/register/findingid/findingid.dart';
@@ -84,12 +83,13 @@ class MyApp extends StatelessWidget {
         paySuccesRoute: (context) => const PaymentSuccesfull(),
 
         //   ** Feed **
-        feedRoute: (context) => Feed(),
-        feedScreenRoute: (context) => FeedScreen(),
-        myScreenRoute: (context) => MyScreen(),
-        allScreenRoute: (context) => AllScreen(),
-        followingScreenRoute: (context) => FollowingScreen(),
-        likeScreenRoute: (context) => LikeScreen(),
+        feedRoute: (context) => const Feed(),
+        feedScreenRoute: (context) => const FeedScreen(),
+        myScreenRoute: (context) => const MyScreen(),
+        allScreenRoute: (context) => const AllScreen(),
+        followingScreenRoute: (context) => const FollowingScreen(),
+        likeScreenRoute: (context) => const LikeScreen(),
+        followingListScreenRoute: (context) => const FollowingListScreen(),
       },
     );
   }

@@ -10,6 +10,18 @@ class LikeScreen extends StatefulWidget {
 class _LikeScreenState extends State<LikeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Text('Like ');
+    return Column(
+      children: [
+        Row(
+          children: [
+            Container(
+              height: 212,
+              width: 172,
+              child: Image.asset('assets/images/img8.png'),
+            )
+          ],
+        )
+      ],
+    );
   }
 }

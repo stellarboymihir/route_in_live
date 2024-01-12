@@ -15,7 +15,7 @@ class FeedScreen extends StatefulWidget {
 }
 
 class _FeedScreenState extends State<FeedScreen> {
-  var tabMenuChange = 'Like';
+  var tabMenuChange = 'All';
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +71,7 @@ class _FeedScreenState extends State<FeedScreen> {
                       // : MyColor.black.withOpacity(0.05);
                       print('Following is pressed');
                     });
+
                     // Navigator.pushNamed(context, followingScreenRoute);
                     const FollowingScreen();
                   },
@@ -131,6 +132,24 @@ class _FeedScreenState extends State<FeedScreen> {
                     ),
                   ),
                 ),
+
+                SizedBox(
+                  width: 25,
+                ),
+
+                tabMenuChange == 'Following'
+                    ? InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, followingListScreenRoute);
+                        },
+                        child: Image.asset(
+                          'assets/icons/foll.png',
+                          height: 28,
+                          width: 28,
+                        ),
+                      )
+                    : SizedBox(),
               ],
             ),
             tabMenuChange == 'All'

@@ -34,3 +34,4 @@ const myScreenRoute = '/myScreenRoute/';
 const allScreenRoute = '/allScreenRoute/';
 const followingScreenRoute = '/followingScreenRoute/';
 const likeScreenRoute = '/likeScreenRoute/';
+const followingListScreenRoute = '/followingListScreenRoute/';

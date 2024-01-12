@@ -76,7 +76,7 @@ class _FeedState extends State<Feed> {
                   borderSide: BorderSide(color: MyColor.orange),
                 ),
                 unselectedLabelColor: MyColor.orange.withOpacity(0.3),
-                tabs: [
+                tabs: const [
                   Tab(
                     text: 'Feed',
                   ),
@@ -87,7 +87,7 @@ class _FeedState extends State<Feed> {
               ),
 
               //TabBar View
-              Expanded(
+              const Expanded(
                 child: TabBarView(
                   children: [
                     //For Feed View in TabBar
