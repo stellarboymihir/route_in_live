@@ -21,6 +21,7 @@ class _PermissionPageState extends State<PermissionPage> {
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 40),
           child: SingleChildScrollView(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(

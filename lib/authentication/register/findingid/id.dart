@@ -17,51 +17,63 @@ class _IDState extends State<ID> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(0),
+          child: Divider(
+            thickness: 0,
+            color: MyColor.black.withOpacity(0.1),
+          ),
+        ),
         title: Text(
           'Finding the ID',
           style: MyStyle.tx14W.copyWith(color: MyColor.black),
         ),
-        elevation: 0.5,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
               height: 10,
             ),
-            RichText(
-              text: TextSpan(
-                text: 'Kim Ttoreu ',
-                style: MyStyle.tx14O.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
-                children: [
-                  TextSpan(
-                    text: 'E-mail is',
-                    style: MyStyle.tx14Blk.copyWith(
-                      fontWeight: FontWeight.w400,
-                    ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RichText(
+                text: TextSpan(
+                  text: 'Kim Ttoreu ',
+                  style: MyStyle.tx14O.copyWith(
+                    fontWeight: FontWeight.w700,
                   ),
-                ],
+                  children: [
+                    TextSpan(
+                      text: 'E-mail is',
+                      style: MyStyle.tx14Blk.copyWith(
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-            Text(
-              'test@onecue.kr',
-              style: MyStyle.tx20.copyWith(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 19,
-                  fontFamily: 'NotoSansKR=Medium'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'test@onecue.kr',
+                style: MyStyle.tx20.copyWith(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 19,
+                    fontFamily: 'NotoSansKR=Medium'),
+              ),
             ),
             const SizedBox(
-              height: 70,
+              height: 80,
             ),
             InkWell(
               onTap: () {},
               child: Container(
                 height: 44,
-                // width: 320,
+                width: MediaQuery.of(context).size.width,
                 color: MyColor.orange,
                 child: Center(
                   child: InkWell(
@@ -81,6 +93,7 @@ class _IDState extends State<ID> {
             Center(
               child: InkWell(
                 onTap: () {
+                  Navigator.pop(context);
                   Navigator.pushNamed(
                     context,
                     passFindEmailRoute,

@@ -46,10 +46,7 @@ class AlertDialogThree extends StatelessWidget {
             Expanded(
               child: TextButton(
                 onPressed: () {
-                  // showDialog(
-                  //   context: context,
-                  //   builder: (BuildContext context) => const LoginPage(),
-                  // );
+                  Navigator.pop(context);
                   Navigator.pushNamed(context, loginRoute);
                 },
                 child: Text(
@@ -71,9 +68,7 @@ class AlertDialogThree extends StatelessWidget {
             Expanded(
               child: TextButton(
                 onPressed: () {
-                  // showDialog(
-                  //     context: context,
-                  //     builder: (BuildContext context) => const LoginPage());
+                  Navigator.pop(context);
                   Navigator.pushNamed(context, loginRoute);
                 },
                 child: Text(

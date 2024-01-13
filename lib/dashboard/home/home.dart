@@ -23,7 +23,7 @@ class _HomePageState extends State<Home> {
         centerTitle: true,
         actions: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(12.0),
             child: Image.asset(
               'assets/icons/cart.png',
               height: 24,
@@ -48,11 +48,18 @@ class _HomePageState extends State<Home> {
                     onTap: () {
                       Navigator.pushNamed(context, liveReservationRoute);
                     },
-                    child: Image.asset('assets/images/rectangle.png'),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        'assets/images/rectangle.png',
+                        width: MediaQuery.of(context).size.width,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
                   ),
                   Positioned(
-                    top: 10,
-                    left: 10,
+                    top: 20,
+                    left: 20,
                     child: Container(
                       padding: const EdgeInsets.all(7.0),
                       decoration: BoxDecoration(
@@ -69,7 +76,7 @@ class _HomePageState extends State<Home> {
                     ),
                   ),
                   Positioned(
-                    bottom: 8,
+                    bottom: 12,
                     left: 90,
                     right: 90,
                     child: InkWell(
@@ -119,79 +126,73 @@ class _HomePageState extends State<Home> {
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'No more equipment. It\'s time to imp...',
-                        style: MyStyle.tx16B.copyWith(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 15,
-                            fontFamily: 'NotoSansKR-Medium'),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        // crossAxisAlignment: CrossAxisAlignment.start,
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        // mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'It\'s scheduled to air at 8:00 PM today',
-                            style: MyStyle.tx12P.copyWith(
-                              fontSize: 11,
-                            ),
+                            'No more equipment. It\'s time to imp...',
+                            style: MyStyle.tx16B.copyWith(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 16,
+                                fontFamily: 'NotoSansKR-Medium'),
                           ),
-                          Text(
-                            ' I Pak Se-ri',
-                            style: MyStyle.tx12B.copyWith(
-                              fontSize: 11,
-                            ),
-                          ),
+                          RichText(
+                              text: const TextSpan(children: [
+                            TextSpan(
+                                text: 'It\'s scheduled to air at 8:00 PM today',
+                                style: MyStyle.tx12P),
+                            TextSpan(text: ' I Pak Se-ri', style: MyStyle.tx12B)
+                          ]))
                         ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      InkWell(
-                        onTap: () {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return homeDialog();
-                              });
-                        },
-                        // child: Image.asset(),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              notifyClick == true
-                                  ? 'assets/icons/alerton.png'
-                                  : 'assets/icons/alert.png',
-                              height: 24,
-                              width: 24,
-                            ),
-                            Text(
-                              'Notification',
-                              style: MyStyle.tx10.copyWith(
-                                  decoration: TextDecoration.none,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 9,
-                                  color: notifyClick == true
-                                      ? MyColor.orange
-                                      : MyColor.black,
-                                  fontFamily: 'NotoSans-KR-Medium'),
-                            ),
-                          ],
+                    ),
+                    Column(
+                      children: [
+                        const SizedBox(
+                          height: 10,
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        InkWell(
+                          onTap: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return homeDialog();
+                                });
+                          },
+                          // child: Image.asset(),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                notifyClick == true
+                                    ? 'assets/icons/alerton.png'
+                                    : 'assets/icons/alert.png',
+                                height: 24,
+                                width: 24,
+                              ),
+                              Text(
+                                'Notification',
+                                style: MyStyle.tx10.copyWith(
+                                    decoration: TextDecoration.none,
+                                    fontWeight: FontWeight.w500,
+                                    color: notifyClick == true
+                                        ? MyColor.orange
+                                        : MyColor.black,
+                                    fontFamily: 'NotoSans-KR-Medium'),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
 
               const Divider(
@@ -568,172 +569,165 @@ class _HomePageState extends State<Home> {
               Container(
                 padding: const EdgeInsets.all(10.0),
                 color: MyColor.grey,
-                child: Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    // mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Recommended celebrity',
-                        style: MyStyle.tx16B.copyWith(
-                          fontWeight: FontWeight.w700,
-                        ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Recommended celebrity',
+                      style: MyStyle.tx16B.copyWith(
+                        fontWeight: FontWeight.w700,
                       ),
-                      const SizedBox(
-                        height: 20,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: 340,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        itemCount: 5,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Container(
+                            padding: const EdgeInsets.all(8.0),
+                            margin: const EdgeInsets.only(right: 10),
+                            color: MyColor.white,
+                            child: Column(
+                              // mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Image.asset(
+                                  'assets/images/boxing.png',
+                                  height: 174,
+                                  width: 144,
+                                  fit: BoxFit.fill,
+                                ),
+                                Row(
+                                  children: [
+                                    const SizedBox(
+                                      height: 25,
+                                    ),
+                                    Text(
+                                      'Pak Se-ri',
+                                      style: MyStyle.tx13B.copyWith(
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    const SizedBox(
+                                      width: 27,
+                                    ),
+                                    Image.asset('assets/images/flower.png'),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                      '19,000',
+                                      style: MyStyle.tx11.copyWith(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'NotoSansKR-Regular'),
+                                    ),
+                                  ],
+                                ),
+                                Text(
+                                  'World-class golf that you\n learn from professionals!',
+                                  style: MyStyle.tx11.copyWith(
+                                    fontFamily: 'NotoSansKR-Regular',
+                                    fontSize: 10,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.all(2.0),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                          color: MyColor.black.withOpacity(0.1),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        '#ProfessionalGolf',
+                                        style: MyStyle.tx8.copyWith(
+                                          fontSize: 7,
+                                          color: MyColor.black,
+                                          fontWeight: FontWeight.w300,
+                                          fontFamily: 'NotoSansKR-Thin',
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 15,
+                                    ),
+                                    Container(
+                                      padding: const EdgeInsets.all(2.0),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all(
+                                          color: MyColor.black.withOpacity(0.1),
+                                        ),
+                                      ),
+                                      child: Text(
+                                        '#Golf empress',
+                                        style: MyStyle.tx8.copyWith(
+                                          fontSize: 7,
+                                          color: MyColor.black,
+                                          fontWeight: FontWeight.w300,
+                                          fontFamily: 'NotoSansKR-Thin',
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.all(2.0),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    border: Border.all(
+                                      color: MyColor.black.withOpacity(0.1),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    '#LessonGenius',
+                                    style: MyStyle.tx8.copyWith(
+                                      fontSize: 7,
+                                      color: MyColor.black,
+                                      fontWeight: FontWeight.w300,
+                                      fontFamily: 'NotoSansKR-Thin',
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 8.0, horizontal: 50.0),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    border: Border.all(color: MyColor.orange),
+                                  ),
+                                  child: Text(
+                                    'Follow',
+                                    style: MyStyle.tx12O.copyWith(
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
-                      SizedBox(
-                        height: 340,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          itemCount: 5,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Container(
-                              padding: const EdgeInsets.all(8.0),
-                              margin: const EdgeInsets.only(right: 10),
-                              color: MyColor.white,
-                              child: Column(
-                                // mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Image.asset(
-                                    'assets/images/boxing.png',
-                                    height: 174,
-                                    width: 144,
-                                    fit: BoxFit.fill,
-                                  ),
-                                  Row(
-                                    children: [
-                                      const SizedBox(
-                                        height: 25,
-                                      ),
-                                      Text(
-                                        'Pak Se-ri',
-                                        style: MyStyle.tx13B.copyWith(
-                                            fontWeight: FontWeight.w700),
-                                      ),
-                                      const SizedBox(
-                                        width: 27,
-                                      ),
-                                      Image.asset('assets/images/flower.png'),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        '19,000',
-                                        style: MyStyle.tx11.copyWith(
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.w400,
-                                            fontFamily: 'NotoSansKR-Regular'),
-                                      ),
-                                    ],
-                                  ),
-                                  Text(
-                                    'World-class golf that you\n learn from professionals!',
-                                    style: MyStyle.tx11.copyWith(
-                                      fontFamily: 'NotoSansKR-Regular',
-                                      fontSize: 10,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.all(2.0),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          border: Border.all(
-                                            color:
-                                                MyColor.black.withOpacity(0.1),
-                                          ),
-                                        ),
-                                        child: Text(
-                                          '#ProfessionalGolf',
-                                          style: MyStyle.tx8.copyWith(
-                                            fontSize: 7,
-                                            color: MyColor.black,
-                                            fontWeight: FontWeight.w300,
-                                            fontFamily: 'NotoSansKR-Thin',
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 15,
-                                      ),
-                                      Container(
-                                        padding: const EdgeInsets.all(2.0),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          border: Border.all(
-                                            color:
-                                                MyColor.black.withOpacity(0.1),
-                                          ),
-                                        ),
-                                        child: Text(
-                                          '#Golf empress',
-                                          style: MyStyle.tx8.copyWith(
-                                            fontSize: 7,
-                                            color: MyColor.black,
-                                            fontWeight: FontWeight.w300,
-                                            fontFamily: 'NotoSansKR-Thin',
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 4,
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.all(2.0),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(8),
-                                      border: Border.all(
-                                        color: MyColor.black.withOpacity(0.1),
-                                      ),
-                                    ),
-                                    child: Text(
-                                      '#LessonGenius',
-                                      style: MyStyle.tx8.copyWith(
-                                        fontSize: 7,
-                                        color: MyColor.black,
-                                        fontWeight: FontWeight.w300,
-                                        fontFamily: 'NotoSansKR-Thin',
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 8.0, horizontal: 50.0),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      border: Border.all(color: MyColor.orange),
-                                    ),
-                                    child: Text(
-                                      'Follow',
-                                      style: MyStyle.tx12O.copyWith(
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
 

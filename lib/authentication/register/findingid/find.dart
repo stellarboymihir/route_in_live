@@ -25,6 +25,13 @@ class _FindState extends State<Find> {
           ),
         ),
         centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(0),
+          child: Divider(
+            thickness: 0,
+            color: MyColor.black.withOpacity(0.1),
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -32,6 +39,7 @@ class _FindState extends State<Find> {
           children: [
             InkWell(
               onTap: () {
+                Navigator.pop(context);
                 Navigator.pushNamed(
                   context,
                   idCertifyFindRoute,
@@ -40,7 +48,7 @@ class _FindState extends State<Find> {
               child: Container(
                 // alignment: Alignment.center,
                 height: 120,
-                width: 349,
+                width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     border: Border.all(
                   width: 1,
@@ -65,10 +73,11 @@ class _FindState extends State<Find> {
               ),
             ),
             const SizedBox(
-              height: 8,
+              height: 10,
             ),
             InkWell(
               onTap: () {
+                Navigator.pop(context);
                 Navigator.pushNamed(
                   context,
                   passFindEmailRoute,
@@ -77,7 +86,7 @@ class _FindState extends State<Find> {
               child: Container(
                 // alignment: Alignment.center,
                 height: 120,
-                width: 349,
+                width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                     border: Border.all(
                   width: 1,
@@ -103,14 +112,18 @@ class _FindState extends State<Find> {
             ),
             InkWell(
               onTap: () {
+                Navigator.pop(context);
                 Navigator.pushNamed(
                   context,
-                  idCertifyFindRoute,
+                  termsAndConditionRoute,
                 );
               },
               child: Text(
                 'Do you need to register as a regular member registration?',
-                style: MyStyle.tx10.copyWith(fontFamily: 'NotoSansKR-Medium'),
+                style: MyStyle.tx10.copyWith(
+                  fontFamily: 'NotoSansKR-Medium',
+                  color: MyColor.black.withOpacity(0.7),
+                ),
               ),
             ),
           ],

@@ -4,6 +4,7 @@ class MyColor {
   static const Color orange = Color(0xFFE66100);
   static Color orangeO = const Color(0xFFE66100).withOpacity(0.3);
   static const Color dred = Color(0xFFE63100);
+  static const Color mred = Color(0xFFE24939);
   static const Color lred = Color(0xFFE64646);
   static const Color lorange = Color(0xFFEE8D03);
   static const Color lemonyellow = Color(0xFFF2B705);

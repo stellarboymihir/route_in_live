@@ -45,6 +45,7 @@ class AlertDialogTwo extends StatelessWidget {
             Expanded(
               child: TextButton(
                 onPressed: () {
+                  Navigator.pop(context);
                   showDialog(
                       context: context,
                       builder: (BuildContext context) =>
@@ -69,6 +70,7 @@ class AlertDialogTwo extends StatelessWidget {
             Expanded(
               child: TextButton(
                 onPressed: () {
+                  Navigator.pop(context);
                   showDialog(
                       context: context,
                       builder: (BuildContext context) =>

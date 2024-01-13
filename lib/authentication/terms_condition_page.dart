@@ -16,6 +16,8 @@ class _TermConditionPageState extends State<TermConditionPage> {
   bool personalInfoAccepted = false;
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: MyColor.grey,
       appBar: AppBar(
@@ -26,79 +28,77 @@ class _TermConditionPageState extends State<TermConditionPage> {
         ),
         elevation: 0,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(5),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const SizedBox(
-                width: 5,
-              ),
-              InkWell(
-                onTap: () {
-                  setState(() {
-                    if (termsAndConditionsAccepted == false &&
-                        personalInfoAccepted == false) {
-                      termsAndConditionsAccepted = true;
-                      personalInfoAccepted = true;
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const SizedBox(
+                  width: 5,
+                ),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      if (termsAndConditionsAccepted == false &&
+                          personalInfoAccepted == false) {
+                        termsAndConditionsAccepted = true;
+                        personalInfoAccepted = true;
 
-                      print(
-                          'Color Changed $termsAndConditionsAccepted $personalInfoAccepted');
-                    } else {
-                      termsAndConditionsAccepted = false;
-                      personalInfoAccepted = false;
-                      print(
-                          'Color not Changed $termsAndConditionsAccepted $personalInfoAccepted');
-                    }
-                  });
-                },
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 3.0, horizontal: 8.0),
-                  child: Row(
-                    // crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Icon(
-                        termsAndConditionsAccepted && personalInfoAccepted
-                            ? Icons.check_circle
-                            : Icons.check_circle_outline,
-                        color:
-                            termsAndConditionsAccepted && personalInfoAccepted
-                                ? MyColor.orange
-                                : MyColor.blackO,
-                        size: 24,
-                      ),
-                      Text(
-                        'All agreements to the terms and conditions',
-                        style: MyStyle.tx12B.copyWith(
+                        print(
+                            'Color Changed $termsAndConditionsAccepted $personalInfoAccepted');
+                      } else {
+                        termsAndConditionsAccepted = false;
+                        personalInfoAccepted = false;
+                        print(
+                            'Color not Changed $termsAndConditionsAccepted $personalInfoAccepted');
+                      }
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 3.0, horizontal: 8.0),
+                    child: Row(
+                      // crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Icon(
+                          termsAndConditionsAccepted && personalInfoAccepted
+                              ? Icons.check_circle
+                              : Icons.check_circle_outline,
                           color:
                               termsAndConditionsAccepted && personalInfoAccepted
                                   ? MyColor.orange
                                   : MyColor.blackO,
+                          size: 24,
                         ),
-                      ),
-                    ],
+                        Text(
+                          'All agreements to the terms and conditions',
+                          style: MyStyle.tx12B.copyWith(
+                            color: termsAndConditionsAccepted &&
+                                    personalInfoAccepted
+                                ? MyColor.orange
+                                : MyColor.blackO,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                termsAndConditionsAccepted = !termsAndConditionsAccepted;
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              ],
+            ),
+            InkWell(
+              onTap: () {
+                setState(() {
+                  termsAndConditionsAccepted = !termsAndConditionsAccepted;
+                });
+              },
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                margin: EdgeInsets.all(8.0),
                 height: 40,
-                width: 350,
+                width: MediaQuery.of(context).size.width,
                 color: termsAndConditionsAccepted
                     ? MyColor.orange
                     : MyColor.blackO,
@@ -124,20 +124,26 @@ class _TermConditionPageState extends State<TermConditionPage> {
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Scrollbar(
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              margin: EdgeInsets.all(8.0),
+              height: 188,
+              color: MyColor.white,
               child: ListView(
                 shrinkWrap: true,
                 children: [
                   RichText(
                     text: TextSpan(
-                      text: 'Article 1 (Purpose)  \n',
-                      style:
-                          MyStyle.tx12B.copyWith(fontWeight: FontWeight.w700),
-                      children: const <TextSpan>[
+                      children: [
                         TextSpan(
+                          text: 'Article 1 (Purpose) ',
+                          style: MyStyle.tx12B
+                              .copyWith(fontWeight: FontWeight.w700),
+                        ),
+                        const WidgetSpan(
+                          child: SizedBox(height: 50),
+                        ),
+                        const TextSpan(
                             text:
                                 'Thank you for using the service provided by OneQ Co.,'
                                 'Ltd. (hereinafter referred to as "Company"). The'
@@ -152,22 +158,20 @@ class _TermConditionPageState extends State<TermConditionPage> {
                 ],
               ),
             ),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                personalInfoAccepted = !personalInfoAccepted;
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+            const SizedBox(
+              height: 5,
+            ),
+            InkWell(
+              onTap: () {
+                setState(() {
+                  personalInfoAccepted = !personalInfoAccepted;
+                });
+              },
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
+                margin: EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
                 height: 40,
-                width: 350,
+                width: MediaQuery.of(context).size.width,
                 color: personalInfoAccepted ? MyColor.orange : MyColor.blackO,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -191,67 +195,80 @@ class _TermConditionPageState extends State<TermConditionPage> {
                 ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: RichText(
-              text: TextSpan(
-                text: 'Items of personal information you collect  \n',
-                style: MyStyle.tx12B.copyWith(fontWeight: FontWeight.w700),
-                children: const <TextSpan>[
-                  TextSpan(
-                      text:
-                          'Routine Live collects the minimum amount of personal '
-                          'information necessary for contract implementation, user '
-                          'identification, service improvement, new service'
-                          ' development, membership registration, and counseling \n '
-                          'on service provision.\n'
-                          'Routine Live collects essential items essential to perform.',
-                      style: MyStyle.tx12B),
-                ],
+            Container(
+              margin: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
+              color: MyColor.white,
+              height: 188,
+              width: MediaQuery.of(context).size.width,
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'Items of personal information you collect  \n',
+                      style:
+                          MyStyle.tx12B.copyWith(fontWeight: FontWeight.w700),
+                    ),
+                    const WidgetSpan(
+                      child: SizedBox(height: 30),
+                    ),
+                    const TextSpan(
+                        text:
+                            'Routine Live collects the minimum amount of personal '
+                            'information necessary for contract implementation, user '
+                            'identification, service improvement, new service'
+                            ' development, membership registration, and counseling \n '
+                            'on service provision.\n'
+                            'Routine Live collects essential items essential to perform.',
+                        style: MyStyle.tx12B),
+                  ],
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          InkWell(
-            onTap: () {
-              setState(() {
-                if (termsAndConditionsAccepted == true &&
-                    personalInfoAccepted == true) {
-                  // termsAndConditionsAccepted = true;
-                  // personalInfoAccepted = true;
-                  Navigator.pushNamed(
-                    context,
-                    emailSignUpRoute,
-                  );
-                } else {
-                  // termsAndConditionsAccepted = false;
-                  // personalInfoAccepted = false;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      'Please select both the conditions!' as SnackBar);
-                }
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4.0),
-              child: Container(
-                height: 40,
-                width: 350,
-                decoration: (termsAndConditionsAccepted && personalInfoAccepted)
-                    ? const BoxDecoration(gradient: MyColor.orangeGrad)
-                    : BoxDecoration(gradient: MyColor.inOrangeGrad),
-                child: Center(
-                  child: Text(
-                    'Next',
-                    style: MyStyle.tx14W.copyWith(fontWeight: FontWeight.w700),
+            const SizedBox(
+              height: 10,
+            ),
+            InkWell(
+              onTap: () {
+                setState(() {
+                  if (termsAndConditionsAccepted == true &&
+                      personalInfoAccepted == true) {
+                    // termsAndConditionsAccepted = true;
+                    // personalInfoAccepted = true;
+                    Navigator.pop(context);
+                    Navigator.pushNamed(
+                      context,
+                      emailSignUpRoute,
+                    );
+                  } else {
+                    // termsAndConditionsAccepted = false;
+                    // personalInfoAccepted = false;
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        'Please select both the conditions!' as SnackBar);
+                  }
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                child: Container(
+                  height: 40,
+                  width: MediaQuery.of(context).size.width,
+                  decoration:
+                      (termsAndConditionsAccepted && personalInfoAccepted)
+                          ? const BoxDecoration(gradient: MyColor.orangeGrad)
+                          : BoxDecoration(gradient: MyColor.inOrangeGrad),
+                  child: Center(
+                    child: Text(
+                      'Next',
+                      style:
+                          MyStyle.tx14W.copyWith(fontWeight: FontWeight.w700),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

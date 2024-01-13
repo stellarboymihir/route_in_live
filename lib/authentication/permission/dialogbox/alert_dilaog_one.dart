@@ -43,10 +43,13 @@ class AlertDialogOne extends StatelessWidget {
             Expanded(
               child: TextButton(
                 onPressed: () {
+                  Navigator.pop(context);
                   showDialog(
                       context: context,
-                      builder: (BuildContext context) =>
-                          const AlertDialogTwo());
+                      builder: (BuildContext context) {
+                        return const AlertDialogTwo();
+                      });
+                  // Navigator.pop(context);
                 },
                 child: Text(
                   'Not Allowed',
@@ -67,10 +70,13 @@ class AlertDialogOne extends StatelessWidget {
             Expanded(
               child: TextButton(
                 onPressed: () {
+                  Navigator.pop(context);
                   showDialog(
                       context: context,
-                      builder: (BuildContext context) =>
-                          const AlertDialogTwo());
+                      builder: (BuildContext context) {
+                        return const AlertDialogTwo();
+                      });
+                  // Navigator.pop(context);
                 },
                 child: Text(
                   'Permit',
