@@ -8,6 +8,7 @@ import 'package:route_in_live/dashboard/feed/FeedScreen/feedScreen.dart';
 import 'package:route_in_live/dashboard/feed/FeedScreen/followingListScreen.dart';
 import 'package:route_in_live/dashboard/feed/FeedScreen/followingScreen.dart';
 import 'package:route_in_live/dashboard/feed/FeedScreen/likeScreen.dart';
+import 'package:route_in_live/dashboard/feed/MyScreen/editProfile.dart';
 import 'package:route_in_live/dashboard/feed/MyScreen/myScreen.dart';
 import 'package:route_in_live/dashboard/feed/notice.dart';
 import 'package:route_in_live/dashboard/home/broadcast/liveBroad.dart';
@@ -89,7 +90,10 @@ class MyApp extends StatelessWidget {
         //   ** Feed **
         feedRoute: (context) => const Feed(),
         feedScreenRoute: (context) => const FeedScreen(),
+
+        // ** MyScreen **
         myScreenRoute: (context) => const MyScreen(),
+        editProfileRoute: (context) => const EditProfile(),
         allScreenRoute: (context) => const AllScreen(),
         followingScreenRoute: (context) => const FollowingScreen(),
         likeScreenRoute: (context) => const LikeScreen(),

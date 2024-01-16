@@ -32,7 +32,10 @@ const paySuccesRoute = '/paySuccesRoute/';
 // Feed
 const feedRoute = '/feedRoute/';
 const feedScreenRoute = '/feedScreenRoute/';
+
+// MyScreen
 const myScreenRoute = '/myScreenRoute/';
+const editProfileRoute = '/editProfileRoute/';
 const allScreenRoute = '/allScreenRoute/';
 const followingScreenRoute = '/followingScreenRoute/';
 const likeScreenRoute = '/likeScreenRoute/';
