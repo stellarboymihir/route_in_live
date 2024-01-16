@@ -18,6 +18,8 @@ const dashboardRoute = '/dashboard/';
 
 // Home
 const homeRoute = '/homePage/';
+const commentRoute = '/comment/';
+const noticeRoute = '/noticeRoute/';
 // Register Broadcast
 const liveReservationRoute = '/liveReservation/';
 const sellProductRoute = '/sellProductRoute/';

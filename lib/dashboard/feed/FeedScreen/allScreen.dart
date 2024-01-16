@@ -4,6 +4,8 @@ import 'package:route_in_live/authentication/register/profile/profile_settings.d
 import 'package:route_in_live/values/MyColor.dart';
 import 'package:route_in_live/values/MyStyle.dart';
 
+import '../../../constants/routes.dart';
+
 class AllScreen extends StatefulWidget {
   const AllScreen({super.key});
 
@@ -166,10 +168,15 @@ class _AllScreenState extends State<AllScreen> {
                               ),
                       ),
                     ),
-                    Image.asset(
-                      'assets/icons/comment.png',
-                      height: 24,
-                      width: 24,
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, commentRoute);
+                      },
+                      child: Image.asset(
+                        'assets/icons/comment.png',
+                        height: 24,
+                        width: 24,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 55.0, right: 55.0),
@@ -510,10 +517,15 @@ class _AllScreenState extends State<AllScreen> {
                               ),
                       ),
                     ),
-                    Image.asset(
-                      'assets/icons/comment.png',
-                      height: 24,
-                      width: 24,
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, commentRoute);
+                      },
+                      child: Image.asset(
+                        'assets/icons/comment.png',
+                        height: 24,
+                        width: 24,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 55.0, right: 55.0),

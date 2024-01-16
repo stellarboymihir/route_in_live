@@ -9,6 +9,7 @@ import 'package:route_in_live/dashboard/feed/FeedScreen/followingListScreen.dart
 import 'package:route_in_live/dashboard/feed/FeedScreen/followingScreen.dart';
 import 'package:route_in_live/dashboard/feed/FeedScreen/likeScreen.dart';
 import 'package:route_in_live/dashboard/feed/MyScreen/myScreen.dart';
+import 'package:route_in_live/dashboard/feed/notice.dart';
 import 'package:route_in_live/dashboard/home/broadcast/liveBroad.dart';
 import 'package:route_in_live/dashboard/home/collecting/collectingpreview.dart';
 import 'package:route_in_live/dashboard/home/home.dart';
@@ -28,6 +29,7 @@ import 'authentication/self_verify.dart';
 import 'authentication/splash_screen.dart';
 import 'authentication/terms_condition_page.dart';
 import 'constants/routes.dart';
+import 'dashboard/feed/FeedScreen/comment.dart';
 import 'dashboard/feed/feed.dart';
 import 'dashboard/home/regsiterbroadcast/StoredItem.dart';
 
@@ -73,6 +75,8 @@ class MyApp extends StatelessWidget {
 
         // ** Home **
         homeRoute: (context) => const Home(),
+        commentRoute: (context) => const Comment(),
+        noticeRoute: (context) => const Notice(),
         //  ** Register Broadcast **
         liveReservationRoute: (context) => const LiveReservation(),
         sellProductRoute: (context) => const SellProduct(),

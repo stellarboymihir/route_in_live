@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
+import '../../../constants/routes.dart';
 import '../../../values/MyColor.dart';
 import '../../../values/MyStyle.dart';
 
@@ -142,7 +143,7 @@ class _FollowingScreenState extends State<FollowingScreen> {
                   height: 10,
                 ),
 
-                //Slider Indicator
+                // Slider Indicator Row
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -167,11 +168,17 @@ class _FollowingScreenState extends State<FollowingScreen> {
                               ),
                       ),
                     ),
-                    Image.asset(
-                      'assets/icons/comment.png',
-                      height: 24,
-                      width: 24,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, commentRoute);
+                      },
+                      child: Image.asset(
+                        'assets/icons/comment.png',
+                        height: 24,
+                        width: 24,
+                      ),
                     ),
+                    // Scroll Images Indicator
                     Padding(
                       padding: const EdgeInsets.only(left: 55.0, right: 55.0),
                       child: Row(
@@ -453,10 +460,15 @@ class _FollowingScreenState extends State<FollowingScreen> {
                               ),
                       ),
                     ),
-                    Image.asset(
-                      'assets/icons/comment.png',
-                      height: 24,
-                      width: 24,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, commentRoute);
+                      },
+                      child: Image.asset(
+                        'assets/icons/comment.png',
+                        height: 24,
+                        width: 24,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 55.0, right: 55.0),
