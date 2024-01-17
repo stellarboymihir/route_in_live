@@ -32,6 +32,8 @@ const paySuccesRoute = '/paySuccesRoute/';
 // Feed
 const feedRoute = '/feedRoute/';
 const feedScreenRoute = '/feedScreenRoute/';
+const writingRoute = '/writingRoute/';
+const searchProductRoute = '/searchProductRoute/';
 
 // MyScreen
 const myScreenRoute = '/myScreenRoute/';

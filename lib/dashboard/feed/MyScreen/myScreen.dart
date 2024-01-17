@@ -31,7 +31,9 @@ class _MyScreenState extends State<MyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, writingRoute);
+        },
         shape: CircleBorder(
           side: BorderSide.none,
         ),
@@ -862,9 +864,6 @@ class _MyScreenState extends State<MyScreen> {
                   ],
                 ),
               ),
-              // tabMenuChange == 'All'
-              //     ? const Expanded(child: AllScreen())
-              //     : const SizedBox(),
             ],
           ),
         ),

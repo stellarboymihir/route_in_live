@@ -1,34 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:route_in_live/values/MyColor.dart';
-import 'package:route_in_live/values/MyStyle.dart';
 
-import '../../../constants/routes.dart';
+import '../../../values/MyColor.dart';
+import '../../../values/MyStyle.dart';
 
-class SellProduct extends StatefulWidget {
-  const SellProduct({super.key});
+class SearchProduct extends StatefulWidget {
+  const SearchProduct({super.key});
 
   @override
-  State<SellProduct> createState() => _SellProductState();
+  State<SearchProduct> createState() => _SearchProductState();
 }
 
-class _SellProductState extends State<SellProduct> {
-  final List<String> _capacity = <String>[
-    '11, graphite, golf bag set, genuine product.',
-    '11, graphite, caddy bag, genuine product.',
-    '11, lightweight steel, caddy bag, genuine product.',
-    '7, graphite, golf set. At the same time.',
-    '7,Lightweight steel. Minimum golf set. At the same time.',
-    '7, graphite, golf set, genuine product.',
-    'Global specification. At the same time.',
-  ];
-  String? selectedVal;
-
+class _SearchProductState extends State<SearchProduct> {
+  TextEditingController searchingBar = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Choose a product to sell',
+          'Select products to sell',
           textAlign: TextAlign.center,
           style: MyStyle.tx14W.copyWith(
             color: MyColor.black,
@@ -57,8 +46,55 @@ class _SellProductState extends State<SellProduct> {
         child: Column(
           children: [
             // *** Search Bar ***
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
+              child: Container(
+                height: 32,
+                margin: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(left: 10.0),
+                decoration: BoxDecoration(
+                  color: MyColor.black.withOpacity(0.05),
+                  borderRadius: BorderRadius.circular(26),
+                ),
+                child: TextFormField(
+                  buildCounter: (context,
+                          {required currentLength,
+                          required isFocused,
+                          maxLength}) =>
+                      const SizedBox(),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    border: new OutlineInputBorder(
+                      borderRadius: new BorderRadius.circular(25.0),
+                      borderSide: new BorderSide(color: MyColor.white),
+                    ),
+                    contentPadding: const EdgeInsets.all(8.0),
+                    hintText: 'Please enter the post.',
+                    hintStyle: TextStyle(
+                      color: MyColor.black.withOpacity(0.7),
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                    ),
+                  ),
+                  style: const TextStyle(
+                    color: MyColor.black,
+                  ),
+                  controller: searchingBar,
+                  keyboardType: TextInputType.text,
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                ),
+              ),
+            ),
             Container(
-              height: 38,
+              height: 32,
               margin: const EdgeInsets.all(8.0),
               padding: const EdgeInsets.only(left: 10.0),
               decoration: BoxDecoration(
@@ -69,14 +105,11 @@ class _SellProductState extends State<SellProduct> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Enter the product name.',
+                    'Please enter the product name.',
                     style: MyStyle.tx14W.copyWith(
+                      fontSize: 13,
                       color: MyColor.black.withOpacity(0.7),
                     ),
-                    textAlign: TextAlign.start,
-                  ),
-                  const SizedBox(
-                    width: 30,
                   ),
                   InkWell(
                     // onTap: () {
@@ -89,23 +122,22 @@ class _SellProductState extends State<SellProduct> {
                     ),
                   ),
                   Container(
-                    // padding: EdgeInsets.all(8.0),
-                    // width: 120
-                    alignment: Alignment.topRight,
+                    height: 32,
                     decoration: BoxDecoration(
                         color: MyColor.orange,
                         borderRadius: BorderRadius.circular(33)),
                     padding: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 15.0),
+                        vertical: 5.0, horizontal: 12.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const Text(
-                          'search',
-                          style: MyStyle.tx14W,
-                        ),
-                        const SizedBox(
-                          width: 5,
+                        Center(
+                          child: Text(
+                            'search',
+                            style: MyStyle.tx14W.copyWith(
+                              fontSize: 13,
+                            ),
+                          ),
                         ),
                         Image.asset(
                           'assets/icons/search.png',
@@ -163,7 +195,7 @@ class _SellProductState extends State<SellProduct> {
                                 // Plus Button
                                 InkWell(
                                   onTap: () {
-                                    productBottomSheet();
+                                    // productBottomSheet();
                                   },
                                   child: Container(
                                     height: 32,
@@ -231,7 +263,7 @@ class _SellProductState extends State<SellProduct> {
                                 // Plus Button
                                 InkWell(
                                   onTap: () {
-                                    productBottomSheet();
+                                    // productBottomSheet();
                                   },
                                   child: Container(
                                     height: 32,
@@ -303,7 +335,7 @@ class _SellProductState extends State<SellProduct> {
                                 // Plus Button
                                 InkWell(
                                   onTap: () {
-                                    productBottomSheet();
+                                    // productBottomSheet();
                                   },
                                   child: Container(
                                     height: 32,
@@ -371,7 +403,7 @@ class _SellProductState extends State<SellProduct> {
                                 // Plus Button
                                 InkWell(
                                   onTap: () {
-                                    productBottomSheet();
+                                    // productBottomSheet();
                                   },
                                   child: Container(
                                     height: 32,
@@ -443,7 +475,7 @@ class _SellProductState extends State<SellProduct> {
                                 // Plus Button
                                 InkWell(
                                   onTap: () {
-                                    productBottomSheet();
+                                    // productBottomSheet();
                                   },
                                   child: Container(
                                     height: 32,
@@ -511,7 +543,7 @@ class _SellProductState extends State<SellProduct> {
                                 // Plus Button
                                 InkWell(
                                   onTap: () {
-                                    productBottomSheet();
+                                    // productBottomSheet();
                                   },
                                   child: Container(
                                     height: 32,
@@ -541,271 +573,6 @@ class _SellProductState extends State<SellProduct> {
             )
           ],
         ),
-      ),
-    );
-  }
-
-  void productBottomSheet() {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext context) {
-          return SizedBox(
-            width: 370,
-            height: 450,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: InkWell(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return sellDialog();
-                        },
-                      );
-                    },
-                    child: Image.asset(
-                      'assets/icons/cancel.png',
-                      alignment: Alignment.bottomRight,
-                      height: 22,
-                      width: 22,
-                    ),
-                  ),
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Image.asset('assets/images/img1.png'),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8.0,
-                            // vertical: 4.0,
-                          ),
-                          child: Text(
-                            'Golf club',
-                            style: MyStyle.tx16B
-                                .copyWith(fontFamily: 'NotoSansKR-SemiBold'),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8.0,
-                            // vertical: 4.0,
-                          ),
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: '36,000 ',
-                                  style: MyStyle.tx16B.copyWith(
-                                    fontFamily: 'NotoNastaliqUrdu-Regular',
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: 'won',
-                                  style: MyStyle.tx16B.copyWith(
-                                    fontFamily: 'Montserrat-Medium',
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const Divider(
-                  thickness: 0,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-
-                // *** DropDown
-                DropdownButtonFormField<String>(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(0.6),
-                      borderSide: BorderSide(
-                        color: MyColor.black.withOpacity(0.5),
-                      ),
-                    ),
-                    contentPadding: const EdgeInsets.all(10),
-                  ),
-                  isExpanded: true,
-                  hint: Text(
-                    'Measure of Capacity',
-                    style: MyStyle.tx13B.copyWith(
-                        fontFamily: 'NotoSansKR-Regular', letterSpacing: 0.33),
-                  ),
-                  selectedItemBuilder: (BuildContext context) {
-                    return _capacity.map<Widget>((String item) {
-                      return Container(
-                        alignment: Alignment.centerLeft,
-                        constraints: const BoxConstraints(minWidth: 100),
-                        child: Text(
-                          item,
-                          maxLines: 1,
-                          style: MyStyle.tx13B,
-                        ),
-                      );
-                    }).toList();
-                  },
-                  value: selectedVal,
-                  icon: const Icon(
-                    Icons.keyboard_arrow_down_outlined,
-                    size: 16,
-                    color: MyColor.black,
-                  ),
-                  onChanged: (String? newValue) {
-                    setState(() {
-                      selectedVal = newValue!;
-                    });
-                  },
-                  items: _capacity.map<DropdownMenuItem<String>>((list) {
-                    return DropdownMenuItem<String>(
-                        value: list,
-                        child: Text(
-                          list,
-                          style: MyStyle.tx13B,
-                        ));
-                  }).toList(),
-                ),
-
-                const SizedBox(
-                  height: 10,
-                ),
-
-                // *** Size Increase Or Decrease
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(0.6),
-                      border: Border.all(
-                        color: MyColor.black.withOpacity(0.1),
-                      ),
-                    ),
-                    alignment: Alignment.bottomRight,
-                    height: 24,
-                    width: 110,
-                    child: const Row(
-                      children: [
-                        SizedBox(
-                          height: 24,
-                          width: 24,
-                          child: Center(
-                            child: Text(
-                              '-',
-                            ),
-                          ),
-                        ),
-                        VerticalDivider(
-                          thickness: 0,
-                        ),
-                        SizedBox(
-                          height: 16,
-                          width: 24,
-                          child: Center(
-                            child: Text(
-                              '1',
-                              // textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ),
-                        VerticalDivider(
-                          thickness: 0,
-                        ),
-                        SizedBox(
-                          height: 24,
-                          width: 24,
-                          child: Center(
-                            child: Text(
-                              '+',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-
-                //  Button
-                InkWell(
-                  onTap: () {
-                    // showDialog(
-                    //     context: context,
-                    //     builder: (BuildContext context) {
-                    //       return sellDialog();
-                    //     });
-                    Navigator.pushNamed(context, storeItemRoute);
-                  },
-                  child: Container(
-                    alignment: Alignment.topLeft,
-                    margin: const EdgeInsets.all(10.0),
-                    height: 44,
-                    color: MyColor.yellowamber,
-                    child: Center(
-                      child: Text(
-                        'Put it in',
-                        style: MyStyle.tx16B.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: MyColor.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        });
-  }
-
-  Widget sellDialog() {
-    return AlertDialog(
-      title: Column(
-        children: [
-          Text(
-            'The product was included in the product to be sold with the option you chose.',
-            textAlign: TextAlign.center,
-            style: MyStyle.tx17B.copyWith(
-              fontSize: 16,
-              letterSpacing: 0.41,
-              fontFamily: 'NotoSansKR-Medium',
-            ),
-          ),
-          const Divider(
-            thickness: 0,
-          ),
-          InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Close',
-              style: MyStyle.tx17B.copyWith(
-                fontWeight: FontWeight.w400,
-                fontFamily: 'NotoSansKR-SemiBold',
-                letterSpacing: 0.41,
-                fontSize: 15,
-              ),
-            ),
-          )
-        ],
       ),
     );
   }
