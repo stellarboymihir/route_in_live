@@ -12,6 +12,47 @@ class SearchProduct extends StatefulWidget {
 
 class _SearchProductState extends State<SearchProduct> {
   TextEditingController searchingBar = TextEditingController();
+  // bool isClicked = false;
+
+  final List<Map<String, dynamic>> gridList = [
+    {
+      "image": 'assets/images/img1.png',
+      "title": 'Sports shoes with...',
+      "subtitle": '39,000 won',
+      'isClicked': false,
+    },
+    {
+      "image": 'assets/images/img2.png',
+      "title": 'Golf club',
+      "subtitle": '310,000 won',
+      'isClicked': false,
+    },
+    {
+      "image": 'assets/images/img3.png',
+      "title": 'Golf ball Set',
+      "subtitle": '39,000 won',
+      'isClicked': false,
+    },
+    {
+      "image": 'assets/images/img4.png',
+      "title": 'A white cap',
+      "subtitle": '60,000 won',
+      'isClicked': false,
+    },
+    {
+      "image": 'assets/images/img5.png',
+      "title": 'Sports shoes with...',
+      "subtitle": '39,000 won',
+      'isClicked': false,
+    },
+    {
+      "image": 'assets/images/img6.png',
+      "title": 'Sports shoes with...',
+      "subtitle": '39,000 won',
+      'isClicked': false,
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,555 +65,197 @@ class _SearchProductState extends State<SearchProduct> {
             fontFamily: 'NotoSansKR-Regular',
           ),
         ),
-        shape: UnderlineInputBorder(
-          borderSide: BorderSide(
+        centerTitle: true,
+        elevation: 0,
+        bottom: PreferredSize(
+          preferredSize: Size.fromHeight(0.0),
+          child: Divider(
+            thickness: 1,
             color: MyColor.black.withOpacity(0.1),
           ),
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Image.asset(
-              'assets/icons/bag.png',
-              height: 17,
-              width: 17,
-            ),
-          ),
-        ],
-        centerTitle: true,
-        elevation: 0,
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            // *** Search Bar ***
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
-              child: Container(
-                height: 32,
-                margin: const EdgeInsets.all(8.0),
-                padding: const EdgeInsets.only(left: 10.0),
-                decoration: BoxDecoration(
-                  color: MyColor.black.withOpacity(0.05),
-                  borderRadius: BorderRadius.circular(26),
-                ),
-                child: TextFormField(
-                  buildCounter: (context,
-                          {required currentLength,
-                          required isFocused,
-                          maxLength}) =>
-                      const SizedBox(),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                    border: new OutlineInputBorder(
-                      borderRadius: new BorderRadius.circular(25.0),
-                      borderSide: new BorderSide(color: MyColor.white),
-                    ),
-                    contentPadding: const EdgeInsets.all(8.0),
-                    hintText: 'Please enter the post.',
-                    hintStyle: TextStyle(
-                      color: MyColor.black.withOpacity(0.7),
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14,
-                    ),
-                  ),
-                  style: const TextStyle(
-                    color: MyColor.black,
-                  ),
-                  controller: searchingBar,
-                  keyboardType: TextInputType.text,
-                  onChanged: (value) {
-                    setState(() {});
-                  },
-                ),
-              ),
+      body: Column(
+        children: [
+          // *** Search Bar ***
+          Container(
+            margin: const EdgeInsets.all(12.0),
+            height: 32,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: MyColor.black.withOpacity(0.05),
+              borderRadius: BorderRadius.circular(26),
             ),
-            Container(
-              height: 32,
-              margin: const EdgeInsets.all(8.0),
-              padding: const EdgeInsets.only(left: 10.0),
-              decoration: BoxDecoration(
-                color: MyColor.black.withOpacity(0.05),
-                borderRadius: BorderRadius.circular(26),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Please enter the product name.',
-                    style: MyStyle.tx14W.copyWith(
-                      fontSize: 13,
-                      color: MyColor.black.withOpacity(0.7),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    buildCounter: (context,
+                            {required currentLength,
+                            required isFocused,
+                            maxLength}) =>
+                        const SizedBox(),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: const EdgeInsets.all(8.0),
+                      hintText: 'Please enter the post.',
+                      hintStyle: TextStyle(
+                        color: MyColor.black.withOpacity(0.7),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    // onTap: () {
-                    //   Navigator.pop(context);
-                    // },
-                    child: Image.asset(
-                      'assets/icons/close.png',
-                      width: 16,
-                      height: 16,
+                    style: const TextStyle(
+                      color: MyColor.black,
                     ),
+                    controller: searchingBar,
+                    keyboardType: TextInputType.text,
+                    onChanged: (value) {
+                      setState(() {});
+                    },
                   ),
-                  Container(
-                    height: 32,
-                    decoration: BoxDecoration(
-                        color: MyColor.orange,
-                        borderRadius: BorderRadius.circular(33)),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 5.0, horizontal: 12.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Center(
-                          child: Text(
-                            'search',
-                            style: MyStyle.tx14W.copyWith(
-                              fontSize: 13,
-                            ),
+                ),
+                InkWell(
+                  // onTap: () {
+                  //   Navigator.pop(context);
+                  // },
+                  child: Image.asset(
+                    'assets/icons/close.png',
+                    width: 16,
+                    height: 16,
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Container(
+                  height: 32,
+                  decoration: BoxDecoration(
+                      color: MyColor.orange,
+                      borderRadius: BorderRadius.circular(33)),
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 5.0, horizontal: 12.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Center(
+                        child: Text(
+                          'search ',
+                          style: MyStyle.tx14W.copyWith(
+                            fontSize: 13,
                           ),
                         ),
-                        Image.asset(
-                          'assets/icons/search.png',
-                          fit: BoxFit.fill,
-                          height: 12,
-                          width: 12,
+                      ),
+                      Image.asset(
+                        'assets/icons/search.png',
+                        fit: BoxFit.fill,
+                        height: 12,
+                        width: 12,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 4.0,
+                    childAspectRatio: 0.9,
+                    mainAxisSpacing: 4.0),
+                itemCount: 6,
+                itemBuilder: (BuildContext ctx, index) {
+                  return Container(
+                    padding: const EdgeInsets.only(top: 12.0),
+                    // height: 232,
+
+                    color: MyColor.black.withOpacity(0.05),
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: Image.asset(
+                            '${gridList[index]["image"]}',
+                            height: 172,
+                            width: MediaQuery.of(context).size.width,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${gridList[index]["title"]}',
+                                  style: MyStyle.tx14W.copyWith(
+                                      color: MyColor.black,
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: 0.33,
+                                      fontSize: 12),
+                                ),
+                                Text('${gridList[index]["subtitle"]}'),
+                              ],
+                            ),
+                            const SizedBox(
+                              width: 15,
+                            ),
+                            // Plus Button
+                            InkWell(
+                              onTap: () {
+                                setState(() {
+                                  gridList[index]["isClicked"] =
+                                      !gridList[index]["isClicked"];
+                                });
+                                // BottomNavigationBar(
+                                //   items: <BottomNavigationBarItem>[
+                                //     BottomNavigationBarItem(
+                                //       label:
+                                //           'Registration of 2 product promotions',
+                                //       backgroundColor: MyColor.white,
+                                //
+                                //     ),
+                                //   ],
+                                // );
+                              },
+                              child: Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Image.asset(
+                                    'assets/icons/checkMark.png',
+                                    height: 24,
+                                    width: 24,
+                                    color: gridList[index]["isClicked"]
+                                        ? MyColor.yellowamber
+                                        : MyColor.grey,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  )
-                ],
+                  );
+                },
               ),
             ),
-
-            //  Images for 1st Row
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Expanded(
-                child: Row(
-                  children: [
-                    // 1st Image
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.black.withOpacity(0.05),
-                        height: 236,
-                        width: 172,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/img1.png',
-                              height: 172,
-                              width: 172,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Sports shoes with...',
-                                      style: MyStyle.tx14W.copyWith(
-                                          color: MyColor.black,
-                                          fontWeight: FontWeight.w700,
-                                          letterSpacing: 0.33,
-                                          fontSize: 12),
-                                    ),
-                                    const Text('39,000 won'),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                // Plus Button
-                                InkWell(
-                                  onTap: () {
-                                    // productBottomSheet();
-                                  },
-                                  child: Container(
-                                    height: 32,
-                                    width: 32,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: MyColor.yellowamber,
-                                    ),
-                                    child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Image.asset(
-                                          'assets/icons/plus.png',
-                                          height: 14,
-                                          width: 14,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-
-                    // 2nd Image
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.black.withOpacity(0.05),
-                        height: 236,
-                        width: 172,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/img2.png',
-                              height: 172,
-                              width: 172,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Golf club',
-                                      style: MyStyle.tx14W.copyWith(
-                                          color: MyColor.black,
-                                          fontWeight: FontWeight.w700,
-                                          letterSpacing: 0.33,
-                                          fontSize: 12),
-                                    ),
-                                    const Text('310,000 won'),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                // Plus Button
-                                InkWell(
-                                  onTap: () {
-                                    // productBottomSheet();
-                                  },
-                                  child: Container(
-                                    height: 32,
-                                    width: 32,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: MyColor.yellowamber,
-                                    ),
-                                    child: Center(
-                                      child: Image.asset(
-                                        'assets/icons/plus.png',
-                                        height: 14,
-                                        width: 14,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            //  Images for 2nd Row
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Expanded(
-                child: Row(
-                  children: [
-                    // 3rd Image
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.black.withOpacity(0.05),
-                        height: 236,
-                        width: 172,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/img3.png',
-                              height: 172,
-                              width: 172,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Golf ball set',
-                                      style: MyStyle.tx14W.copyWith(
-                                          color: MyColor.black,
-                                          fontWeight: FontWeight.w700,
-                                          letterSpacing: 0.33,
-                                          fontSize: 12),
-                                    ),
-                                    const Text('60,000 won'),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                // Plus Button
-                                InkWell(
-                                  onTap: () {
-                                    // productBottomSheet();
-                                  },
-                                  child: Container(
-                                    height: 32,
-                                    width: 32,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: MyColor.yellowamber,
-                                    ),
-                                    child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Image.asset(
-                                          'assets/icons/plus.png',
-                                          height: 14,
-                                          width: 14,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-
-                    // 4th Image
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.black.withOpacity(0.05),
-                        height: 236,
-                        width: 172,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/img4.png',
-                              height: 172,
-                              width: 172,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'A white cap',
-                                      style: MyStyle.tx14W.copyWith(
-                                          color: MyColor.black,
-                                          fontWeight: FontWeight.w700,
-                                          letterSpacing: 0.33,
-                                          fontSize: 12),
-                                    ),
-                                    const Text('39,000 won'),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                // Plus Button
-                                InkWell(
-                                  onTap: () {
-                                    // productBottomSheet();
-                                  },
-                                  child: Container(
-                                    height: 32,
-                                    width: 32,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: MyColor.yellowamber,
-                                    ),
-                                    child: Center(
-                                      child: Image.asset(
-                                        'assets/icons/plus.png',
-                                        height: 14,
-                                        width: 14,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-            //  Images for 3rd Row
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Expanded(
-                child: Row(
-                  children: [
-                    // 5th Image
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.black.withOpacity(0.05),
-                        height: 236,
-                        width: 172,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/img5.png',
-                              height: 172,
-                              width: 172,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Sports shoes with...',
-                                      style: MyStyle.tx14W.copyWith(
-                                          color: MyColor.black,
-                                          fontWeight: FontWeight.w700,
-                                          letterSpacing: 0.33,
-                                          fontSize: 12),
-                                    ),
-                                    const Text('39,000 won'),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                // Plus Button
-                                InkWell(
-                                  onTap: () {
-                                    // productBottomSheet();
-                                  },
-                                  child: Container(
-                                    height: 32,
-                                    width: 32,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: MyColor.yellowamber,
-                                    ),
-                                    child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Image.asset(
-                                          'assets/icons/plus.png',
-                                          height: 14,
-                                          width: 14,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-
-                    // 6th Image
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.only(top: 15.0),
-                        color: MyColor.black.withOpacity(0.05),
-                        height: 236,
-                        width: 172,
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/images/img6.png',
-                              height: 172,
-                              width: 172,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Golf club',
-                                      style: MyStyle.tx14W.copyWith(
-                                          color: MyColor.black,
-                                          fontWeight: FontWeight.w700,
-                                          letterSpacing: 0.33,
-                                          fontSize: 12),
-                                    ),
-                                    const Text('310,000 won'),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                // Plus Button
-                                InkWell(
-                                  onTap: () {
-                                    // productBottomSheet();
-                                  },
-                                  child: Container(
-                                    height: 32,
-                                    width: 32,
-                                    decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: MyColor.yellowamber,
-                                    ),
-                                    child: Center(
-                                      child: Image.asset(
-                                        'assets/icons/plus.png',
-                                        height: 14,
-                                        width: 14,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: Container(
+        height: 40,
+        color: MyColor.yellowamber,
       ),
     );
   }
