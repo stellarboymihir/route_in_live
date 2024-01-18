@@ -618,7 +618,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                       horizontal: 12.0, vertical: 15.0),
                   // Top Row
                   child: Row(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       // Product Sold

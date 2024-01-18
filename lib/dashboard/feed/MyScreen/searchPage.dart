@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import '../../../values/MyColor.dart';
 import '../../../values/MyStyle.dart';
 
-class SearchProduct extends StatefulWidget {
-  const SearchProduct({super.key});
+class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
 
   @override
-  State<SearchProduct> createState() => _SearchProductState();
+  State<SearchPage> createState() => _SearchPageState();
 }
 
-class _SearchProductState extends State<SearchProduct> {
-  TextEditingController searchingBar = TextEditingController();
+class _SearchPageState extends State<SearchPage> {
+  TextEditingController searchingList = TextEditingController();
   // bool isClicked = false;
 
-  final List<Map<String, dynamic>> gridList = [
+  final List<Map<String, dynamic>> fullGridList = [
     {
       "image": 'assets/images/img1.png',
       "title": 'Sports shoes with...',
@@ -52,7 +52,6 @@ class _SearchProductState extends State<SearchProduct> {
       'isClicked': false,
     },
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,7 +113,7 @@ class _SearchProductState extends State<SearchProduct> {
                     style: const TextStyle(
                       color: MyColor.black,
                     ),
-                    controller: searchingBar,
+                    controller: searchingList,
                     keyboardType: TextInputType.text,
                     onChanged: (value) {
                       setState(() {});
@@ -164,28 +163,44 @@ class _SearchProductState extends State<SearchProduct> {
               ],
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0, bottom: 10.0),
+                child: Text(
+                  'Full List',
+                  style: MyStyle.tx16B,
+                ),
+              ),
+            ],
+          ),
           Expanded(
             child: Container(
+              padding: const EdgeInsets.all(8.0),
               height: MediaQuery.of(context).size.height,
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
+                    crossAxisCount: 3,
                     crossAxisSpacing: 4.0,
                     childAspectRatio: 0.9,
                     mainAxisSpacing: 4.0),
-                itemCount: 6,
+                itemCount: 12,
                 itemBuilder: (BuildContext ctx, index) {
                   return Container(
                     padding: const EdgeInsets.only(top: 12.0),
                     // height: 232,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: MyColor.black.withOpacity(0.05),
+                    ),
 
-                    color: MyColor.black.withOpacity(0.05),
                     child: Column(
                       children: [
                         Expanded(
                           child: Image.asset(
-                            '${gridList[index]["image"]}',
-                            height: 172,
+                            '${fullGridList[index]["image"]}',
+                            height: 64,
                             width: MediaQuery.of(context).size.width,
                             fit: BoxFit.cover,
                           ),
@@ -196,15 +211,9 @@ class _SearchProductState extends State<SearchProduct> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  '${gridList[index]["title"]}',
-                                  style: MyStyle.tx14W.copyWith(
-                                      color: MyColor.black,
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: 0.33,
-                                      fontSize: 12),
-                                ),
-                                Text('${gridList[index]["subtitle"]}'),
+                                Text('${fullGridList[index]["title"]}',
+                                    style: MyStyle.tx12B),
+                                Text('${fullGridList[index]["subtitle"]}'),
                               ],
                             ),
                             const SizedBox(
@@ -215,19 +224,9 @@ class _SearchProductState extends State<SearchProduct> {
                               onTap: () {
                                 Navigator.pop(context);
                                 setState(() {
-                                  gridList[index]["isClicked"] =
-                                      !gridList[index]["isClicked"];
+                                  fullGridList[index]["isClicked"] =
+                                      !fullGridList[index]["isClicked"];
                                 });
-                                // BottomNavigationBar(
-                                //   items: <BottomNavigationBarItem>[
-                                //     BottomNavigationBarItem(
-                                //       label:
-                                //           'Registration of 2 product promotions',
-                                //       backgroundColor: MyColor.white,
-                                //
-                                //     ),
-                                //   ],
-                                // );
                               },
                               child: Center(
                                 child: Padding(
@@ -236,7 +235,7 @@ class _SearchProductState extends State<SearchProduct> {
                                     'assets/icons/checkMark.png',
                                     height: 24,
                                     width: 24,
-                                    color: gridList[index]["isClicked"]
+                                    color: fullGridList[index]["isClicked"]
                                         ? MyColor.yellowamber
                                         : MyColor.grey,
                                   ),
@@ -253,19 +252,6 @@ class _SearchProductState extends State<SearchProduct> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: Container(
-        height: 40,
-        color: MyColor.yellowamber,
-        child: Center(
-          child: Text(
-            'Registration of 2 product promotions',
-            style: MyStyle.tx14W.copyWith(
-              fontFamily: 'NotoSansKR-Regular',
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
       ),
     );
   }

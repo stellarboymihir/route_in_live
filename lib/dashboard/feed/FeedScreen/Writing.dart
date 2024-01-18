@@ -37,7 +37,12 @@ class _WritingState extends State<Writing> {
             padding: EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
-                Navigator.pop(context);
+                // Navigator.pop(context);
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return postDialog();
+                    });
               },
               child: const SizedBox(
                 child: Text('Save', style: MyStyle.tx14O),
@@ -168,6 +173,163 @@ class _WritingState extends State<Writing> {
           )
         ],
       ),
+    );
+  }
+
+  Widget postDialog() {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      titlePadding: const EdgeInsets.only(top: 20),
+      title: Text(
+        'Upload your post',
+        style: MyStyle.tx17B.copyWith(
+          fontSize: 16,
+          letterSpacing: 0.41,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      // contentPadding:
+      //     const EdgeInsets.only(top: 5, bottom: 10, right: 5, left: 5),
+      actionsPadding:
+          const EdgeInsets.only(top: 10, left: 0, right: 0, bottom: 0),
+      actions: [
+        const Center(
+          child: Text(
+              'Posts are shared in the feed.\n'
+              'Do you want to continue?',
+              style: MyStyle.tx13B),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        const Divider(
+          height: 0,
+          thickness: 0,
+          indent: 0,
+          endIndent: 0,
+          color: Colors.grey,
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: SizedBox(
+                  // height: 30,
+                  child: Text(
+                    'Cancel',
+                    style: MyStyle.tx17N.copyWith(
+                      fontSize: 15,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 44,
+              child: VerticalDivider(
+                width: 0,
+                thickness: 0,
+                indent: 0,
+                endIndent: 0,
+                color: Colors.grey,
+              ),
+            ),
+            Expanded(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return uploadDialog();
+                      });
+                },
+                child: SizedBox(
+                  // height: 30,
+                  child: Text(
+                    'Confirm',
+                    style: MyStyle.tx17P.copyWith(
+                      fontSize: 15,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget uploadDialog() {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      titlePadding: const EdgeInsets.only(top: 20),
+      title: Text(
+        'Image upload request',
+        style: MyStyle.tx17B.copyWith(
+          fontSize: 16,
+          letterSpacing: 0.41,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      // contentPadding:
+      //     const EdgeInsets.only(top: 5, bottom: 10, right: 5, left: 5),
+      actionsPadding:
+          const EdgeInsets.only(top: 10, left: 0, right: 0, bottom: 0),
+      actions: [
+        Center(
+          child: Text(
+            'No image selected. \n'
+            'Please upload an image.',
+            textAlign: TextAlign.center,
+            style:
+                MyStyle.tx13B.copyWith(color: MyColor.black.withOpacity(0.5)),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        const Divider(
+          height: 0,
+          thickness: 0,
+          indent: 0,
+          endIndent: 0,
+          color: Colors.grey,
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+            // showDialog(
+            //     context: context,
+            //     builder: (BuildContext context) {
+            //       return uploadDialog();
+            //     });
+          },
+          child: SizedBox(
+            // height: 30,
+            child: Center(
+              child: Text(
+                'Confirm',
+                style: MyStyle.tx17B.copyWith(
+                  fontSize: 15,
+                  fontFamily: 'NotoSansKR-Regular',
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

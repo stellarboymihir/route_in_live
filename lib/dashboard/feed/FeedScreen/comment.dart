@@ -150,7 +150,8 @@ class _CommentState extends State<Comment> {
                           ),
                           InkWell(
                             onTap: () {
-                              reportSheet();
+                              deleteSheet();
+                              // reportSheet();
                             },
                             child: Image.asset(
                               'assets/icons/more.png',
@@ -225,7 +226,8 @@ class _CommentState extends State<Comment> {
                           ),
                           InkWell(
                             onTap: () {
-                              reportSheet();
+                              deleteSheet();
+                              // reportSheet();
                             },
                             child: Image.asset(
                               'assets/icons/more.png',
@@ -425,19 +427,24 @@ class _CommentState extends State<Comment> {
                     ),
                   ),
                 ),
-                Container(
-                  alignment: Alignment.topRight,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: MyColor.orange,
-                  ),
-                  height: 32,
-                  width: 51,
-                  child: Center(
-                    child: Text(
-                      'Post',
-                      style: MyStyle.tx11W.copyWith(
-                        fontWeight: FontWeight.w400,
+                InkWell(
+                  onTap: () {
+                    correctionSheet();
+                  },
+                  child: Container(
+                    alignment: Alignment.topRight,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: MyColor.orange,
+                    ),
+                    height: 32,
+                    width: 51,
+                    child: Center(
+                      child: Text(
+                        'Post',
+                        style: MyStyle.tx11W.copyWith(
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),
@@ -755,6 +762,290 @@ class _CommentState extends State<Comment> {
           ),
         ),
       ],
+    );
+  }
+
+  void deleteSheet() {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        return Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                height: 96,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Center(
+                  child: Column(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return deleteCommentDialog();
+                              });
+                        },
+                        child: SizedBox(
+                          height: 30,
+                          width: MediaQuery.of(context).size.width,
+                          child: Center(
+                            child: Text(
+                              'Delete',
+                              style: MyStyle.tx16B
+                                  .copyWith(fontFamily: 'NotoSansKR-Medium'),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Divider(
+                        thickness: 0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: SizedBox(
+                          height: 30,
+                          width: MediaQuery.of(context).size.width,
+                          child: Center(
+                            child: Text(
+                              'Declaration',
+                              style: MyStyle.tx16B.copyWith(
+                                fontFamily: 'NotoSansKR-Medium',
+                                color: MyColor.lred,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  height: 48,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white,
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Cancel',
+                      style: MyStyle.tx17B.copyWith(
+                        fontFamily: 'NotoSansKR-Medium',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Widget deleteCommentDialog() {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      titlePadding: const EdgeInsets.only(top: 20),
+      title: Text(
+        'Are you sure you want to \n delete your comment?',
+        style: MyStyle.tx17B.copyWith(
+          fontSize: 16,
+          letterSpacing: 0.41,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      // contentPadding: const EdgeInsets.only(top: 5, bottom: 20),
+      actionsPadding:
+          const EdgeInsets.only(top: 15, left: 0, right: 0, bottom: 0),
+      actions: [
+        const Divider(
+          height: 0,
+          thickness: 0,
+          indent: 0,
+          endIndent: 0,
+          color: Colors.grey,
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: SizedBox(
+                  // height: 30,
+                  child: Text(
+                    'Cancel',
+                    style: MyStyle.tx17N.copyWith(
+                      fontSize: 17,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 48,
+              child: VerticalDivider(
+                width: 0,
+                thickness: 0,
+                indent: 0,
+                endIndent: 0,
+                color: Colors.grey,
+              ),
+            ),
+            Expanded(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                },
+                child: SizedBox(
+                  // height: 30,
+                  child: Text(
+                    'Confirm',
+                    style: MyStyle.tx17P.copyWith(
+                      fontSize: 17,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  void correctionSheet() {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        return Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                height: 96,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Center(
+                  child: Column(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: SizedBox(
+                          height: 30,
+                          width: MediaQuery.of(context).size.width,
+                          child: Center(
+                            child: Text(
+                              'Correction',
+                              style: MyStyle.tx16B
+                                  .copyWith(fontFamily: 'NotoSansKR-Medium'),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Divider(
+                        thickness: 0,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return deleteCommentDialog();
+                              });
+                        },
+                        child: SizedBox(
+                          height: 30,
+                          width: MediaQuery.of(context).size.width,
+                          child: Center(
+                            child: Text(
+                              'Delete',
+                              style: MyStyle.tx16B.copyWith(
+                                fontFamily: 'NotoSansKR-Medium',
+                                color: MyColor.lred,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  height: 48,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white,
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Cancel',
+                      style: MyStyle.tx17B.copyWith(
+                        fontFamily: 'NotoSansKR-Medium',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

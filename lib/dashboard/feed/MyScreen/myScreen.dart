@@ -82,29 +82,41 @@ class _MyScreenState extends State<MyScreen> {
                                 ),
                               ),
                             ),
-                            Image.asset(
-                              'assets/images/follower.png',
-                              height: 20,
-                              width: 20,
-                              fit: BoxFit.fill,
-                            ),
-                            RichText(
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: ' Follower',
-                                    style: MyStyle.tx14B.copyWith(
-                                      fontSize: 14,
-                                      color: MyColor.purple,
+                            InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                                Navigator.pushNamed(context, searchPageRoute);
+                              },
+                              child: SizedBox(
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                      'assets/images/follower.png',
+                                      height: 20,
+                                      width: 20,
+                                      fit: BoxFit.fill,
                                     ),
-                                  ),
-                                  TextSpan(
-                                    text: ' 12,000',
-                                    style: MyStyle.tx14B.copyWith(
-                                      fontSize: 14,
+                                    RichText(
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: ' Follower',
+                                            style: MyStyle.tx14B.copyWith(
+                                              fontSize: 14,
+                                              color: MyColor.purple,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text: ' 12,000',
+                                            style: MyStyle.tx14B.copyWith(
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ],

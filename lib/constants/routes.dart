@@ -32,13 +32,15 @@ const paySuccesRoute = '/paySuccesRoute/';
 // Feed
 const feedRoute = '/feedRoute/';
 const feedScreenRoute = '/feedScreenRoute/';
-const writingRoute = '/writingRoute/';
+const allScreenRoute = '/allScreenRoute/';
+const followingScreenRoute = '/followingScreenRoute/';
+const followingListScreenRoute = '/followingListScreenRoute/';
+const likeScreenRoute = '/likeScreenRoute/';
+
 const searchProductRoute = '/searchProductRoute/';
 
 // MyScreen
 const myScreenRoute = '/myScreenRoute/';
+const writingRoute = '/writingRoute/';
 const editProfileRoute = '/editProfileRoute/';
-const allScreenRoute = '/allScreenRoute/';
-const followingScreenRoute = '/followingScreenRoute/';
-const likeScreenRoute = '/likeScreenRoute/';
-const followingListScreenRoute = '/followingListScreenRoute/';
+const searchPageRoute = '/searchPageRoute/';

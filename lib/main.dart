@@ -11,6 +11,7 @@ import 'package:route_in_live/dashboard/feed/FeedScreen/likeScreen.dart';
 import 'package:route_in_live/dashboard/feed/FeedScreen/searchProduct.dart';
 import 'package:route_in_live/dashboard/feed/MyScreen/editProfile.dart';
 import 'package:route_in_live/dashboard/feed/MyScreen/myScreen.dart';
+import 'package:route_in_live/dashboard/feed/MyScreen/searchPage.dart';
 import 'package:route_in_live/dashboard/feed/notice.dart';
 import 'package:route_in_live/dashboard/home/broadcast/liveBroad.dart';
 import 'package:route_in_live/dashboard/home/collecting/collectingpreview.dart';
@@ -92,16 +93,17 @@ class MyApp extends StatelessWidget {
         //   ** Feed **
         feedRoute: (context) => const Feed(),
         feedScreenRoute: (context) => const FeedScreen(),
-        writingRoute: (context) => const Writing(),
-        searchProductRoute: (context) => const SearchProduct(),
+        allScreenRoute: (context) => const AllScreen(),
+        followingScreenRoute: (context) => const FollowingScreen(),
+        followingListScreenRoute: (context) => const FollowingListScreen(),
+        likeScreenRoute: (context) => const LikeScreen(),
 
         // ** MyScreen **
         myScreenRoute: (context) => const MyScreen(),
+        searchPageRoute: (context) => const SearchPage(),
+        writingRoute: (context) => const Writing(),
         editProfileRoute: (context) => const EditProfile(),
-        allScreenRoute: (context) => const AllScreen(),
-        followingScreenRoute: (context) => const FollowingScreen(),
-        likeScreenRoute: (context) => const LikeScreen(),
-        followingListScreenRoute: (context) => const FollowingListScreen(),
+        searchProductRoute: (context) => const SearchProduct(),
       },
     );
   }

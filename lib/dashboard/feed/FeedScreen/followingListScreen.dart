@@ -53,7 +53,6 @@ class _FollowingListScreenState extends State<FollowingListScreen> {
                       style: MyStyle.tx14B.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        fontFamily: 'NotoSansKR-Regular',
                       ),
                     ),
                   ),
@@ -139,7 +138,6 @@ class _FollowingListScreenState extends State<FollowingListScreen> {
                       style: MyStyle.tx14B.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        fontFamily: 'NotoSansKR-Regular',
                       ),
                     ),
                   ),
@@ -225,7 +223,6 @@ class _FollowingListScreenState extends State<FollowingListScreen> {
                       style: MyStyle.tx14B.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        fontFamily: 'NotoSansKR-Regular',
                       ),
                     ),
                   ),
@@ -311,7 +308,6 @@ class _FollowingListScreenState extends State<FollowingListScreen> {
                       style: MyStyle.tx14B.copyWith(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        fontFamily: 'NotoSansKR-Regular',
                       ),
                     ),
                   ),
@@ -367,6 +363,261 @@ class _FollowingListScreenState extends State<FollowingListScreen> {
                             ),
                           ),
                   ),
+                ],
+              ),
+            ),
+
+            //  5th Container
+            Container(
+              padding: const EdgeInsets.all(2.0),
+              margin: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: MyColor.white,
+              ),
+              // height: 64,
+              // width: 351,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'assets/images/img29.png',
+                      height: 48,
+                      width: 48,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      'YammyProtein',
+                      style: MyStyle.tx14B.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     setState(() {
+                  //       isFollowingPressed = !isFollowingPressed;
+                  //     });
+                  //   },
+                  //   child: isFollowingPressed
+                  //       ? Container(
+                  //           height: 28,
+                  //           width: 68,
+                  //           padding: const EdgeInsets.all(2.0),
+                  //           margin: const EdgeInsets.all(4.0),
+                  //           decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(12),
+                  //             border:
+                  //                 Border.all(width: 1, color: MyColor.purple),
+                  //             color: MyColor.white,
+                  //           ),
+                  //           child: Center(
+                  //             child: Text(
+                  //               'Follow',
+                  //               style: MyStyle.tx12W.copyWith(
+                  //                 fontWeight: FontWeight.w700,
+                  //                 color: MyColor.purple,
+                  //                 fontFamily: 'NotoSansKR-Thin',
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         )
+                  //       : Container(
+                  //           height: 28,
+                  //           width: 68,
+                  //           padding: const EdgeInsets.all(2.0),
+                  //           margin: const EdgeInsets.all(4.0),
+                  //           decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(12),
+                  //             border:
+                  //                 Border.all(width: 1, color: MyColor.purple),
+                  //             color: MyColor.purple,
+                  //           ),
+                  //           child: Center(
+                  //             child: Text(
+                  //               'Following',
+                  //               style: MyStyle.tx12W.copyWith(
+                  //                 fontWeight: FontWeight.w700,
+                  //                 color: MyColor.white,
+                  //                 fontFamily: 'NotoSansKR-Thin',
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  // ),
+                ],
+              ),
+            ),
+
+            //   6th Container
+            Container(
+              padding: const EdgeInsets.all(2.0),
+              margin: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: MyColor.white,
+              ),
+              // height: 64,
+              // width: 351,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'assets/images/img30.png',
+                      height: 48,
+                      width: 48,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      'ChcickenChick',
+                      style: MyStyle.tx14B.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     setState(() {
+                  //       isFollowingPressed = !isFollowingPressed;
+                  //     });
+                  //   },
+                  //   child: isFollowingPressed
+                  //       ? Container(
+                  //           height: 28,
+                  //           width: 68,
+                  //           padding: const EdgeInsets.all(2.0),
+                  //           margin: const EdgeInsets.all(4.0),
+                  //           decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(12),
+                  //             border:
+                  //                 Border.all(width: 1, color: MyColor.purple),
+                  //             color: MyColor.white,
+                  //           ),
+                  //           child: Center(
+                  //             child: Text(
+                  //               'Follow',
+                  //               style: MyStyle.tx12W.copyWith(
+                  //                 fontWeight: FontWeight.w700,
+                  //                 color: MyColor.purple,
+                  //                 fontFamily: 'NotoSansKR-Thin',
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         )
+                  //       : Container(
+                  //           height: 28,
+                  //           width: 68,
+                  //           padding: const EdgeInsets.all(2.0),
+                  //           margin: const EdgeInsets.all(4.0),
+                  //           decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(12),
+                  //             border:
+                  //                 Border.all(width: 1, color: MyColor.purple),
+                  //             color: MyColor.purple,
+                  //           ),
+                  //           child: Center(
+                  //             child: Text(
+                  //               'Following',
+                  //               style: MyStyle.tx12W.copyWith(
+                  //                 fontWeight: FontWeight.w700,
+                  //                 color: MyColor.white,
+                  //                 fontFamily: 'NotoSansKR-Thin',
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  // ),
+                ],
+              ),
+            ),
+
+            //   7th Container
+            Container(
+              padding: const EdgeInsets.all(2.0),
+              margin: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: MyColor.white,
+              ),
+              // height: 64,
+              // width: 351,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(
+                      'assets/images/img31.png',
+                      height: 48,
+                      width: 48,
+                    ),
+                  ),
+                  Expanded(
+                    child: Text(
+                      'Friends',
+                      style: MyStyle.tx14B.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  // InkWell(
+                  //   onTap: () {
+                  //     setState(() {
+                  //       isFollowingPressed = !isFollowingPressed;
+                  //     });
+                  //   },
+                  //   child: isFollowingPressed
+                  //       ? Container(
+                  //           height: 28,
+                  //           width: 68,
+                  //           padding: const EdgeInsets.all(2.0),
+                  //           margin: const EdgeInsets.all(4.0),
+                  //           decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(12),
+                  //             border:
+                  //                 Border.all(width: 1, color: MyColor.purple),
+                  //             color: MyColor.white,
+                  //           ),
+                  //           child: Center(
+                  //             child: Text(
+                  //               'Follow',
+                  //               style: MyStyle.tx12W.copyWith(
+                  //                 fontWeight: FontWeight.w700,
+                  //                 color: MyColor.purple,
+                  //                 fontFamily: 'NotoSansKR-Thin',
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         )
+                  //       : Container(
+                  //           height: 28,
+                  //           width: 68,
+                  //           padding: const EdgeInsets.all(2.0),
+                  //           margin: const EdgeInsets.all(4.0),
+                  //           decoration: BoxDecoration(
+                  //             borderRadius: BorderRadius.circular(12),
+                  //             border:
+                  //                 Border.all(width: 1, color: MyColor.purple),
+                  //             color: MyColor.purple,
+                  //           ),
+                  //           child: Center(
+                  //             child: Text(
+                  //               'Following',
+                  //               style: MyStyle.tx12W.copyWith(
+                  //                 fontWeight: FontWeight.w700,
+                  //                 color: MyColor.white,
+                  //                 fontFamily: 'NotoSansKR-Thin',
+                  //               ),
+                  //             ),
+                  //           ),
+                  //         ),
+                  // ),
                 ],
               ),
             ),

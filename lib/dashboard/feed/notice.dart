@@ -272,6 +272,243 @@ class _NoticeState extends State<Notice> {
                 ],
               ),
             ),
+
+            //   4th Container
+            Container(
+              margin: const EdgeInsets.only(
+                  left: 12.0, right: 12.0, top: 8.0, bottom: 0.0),
+              height: 80,
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: MyColor.white,
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Row(
+                          children: [
+                            Text(
+                              'New Post Notification',
+                              style: MyStyle.tx10O,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Coco ',
+                                style: MyStyle.tx14B.copyWith(
+                                  fontSize: 14,
+                                  fontFamily: 'NotoSansKR-SemiBold',
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 0.33,
+                                ),
+                              ),
+                              const WidgetSpan(
+                                child: SizedBox(
+                                  height: 0,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'posted a new post.',
+                                style: MyStyle.tx14B.copyWith(
+                                  fontSize: 14,
+                                  fontFamily: 'NotoSansKR-Regular',
+                                  color: MyColor.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 6,
+                        ),
+                        Text(
+                          '1 day ago',
+                          style: MyStyle.tx10.copyWith(
+                            decoration: TextDecoration.none,
+                            color: MyColor.black.withOpacity(0.5),
+                            fontFamily: 'NotoSansKR-Regular',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/images/img28.png',
+                    height: 64,
+                    width: 64,
+                    fit: BoxFit.fill,
+                  ),
+                ],
+              ),
+            ),
+
+            // 5th Container
+            Container(
+              margin: const EdgeInsets.only(
+                  left: 12.0, right: 12.0, top: 8.0, bottom: 0.0),
+              height: 80,
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: MyColor.white,
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Row(
+                          children: [
+                            Text(
+                              'New Post Notification',
+                              style: MyStyle.tx10O,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Move ',
+                                style: MyStyle.tx14B.copyWith(
+                                  fontSize: 14,
+                                  fontFamily: 'NotoSansKR-SemiBold',
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 0.33,
+                                ),
+                              ),
+                              const WidgetSpan(
+                                child: SizedBox(
+                                  height: 0,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'posted a new post.',
+                                style: MyStyle.tx14B.copyWith(
+                                  fontSize: 14,
+                                  fontFamily: 'NotoSansKR-Regular',
+                                  color: MyColor.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 6,
+                        ),
+                        Text(
+                          '1 day ago',
+                          style: MyStyle.tx10.copyWith(
+                            decoration: TextDecoration.none,
+                            color: MyColor.black.withOpacity(0.5),
+                            fontFamily: 'NotoSansKR-Regular',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/images/img18.png',
+                    height: 64,
+                    width: 64,
+                    fit: BoxFit.fill,
+                  ),
+                ],
+              ),
+            ),
+
+            // 6th Container
+            Container(
+              margin: const EdgeInsets.only(
+                  left: 12.0, right: 12.0, top: 8.0, bottom: 0.0),
+              height: 80,
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: MyColor.white,
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Row(
+                          children: [
+                            Text(
+                              'New Post Notification',
+                              style: MyStyle.tx10O,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: 'Master',
+                                style: MyStyle.tx14B.copyWith(
+                                  fontSize: 14,
+                                  fontFamily: 'NotoSansKR-SemiBold',
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 0.33,
+                                ),
+                              ),
+                              const WidgetSpan(
+                                child: SizedBox(
+                                  height: 0,
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'posted a new post.',
+                                style: MyStyle.tx14B.copyWith(
+                                  fontSize: 14,
+                                  fontFamily: 'NotoSansKR-Regular',
+                                  color: MyColor.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 6,
+                        ),
+                        Text(
+                          '1 day ago',
+                          style: MyStyle.tx10.copyWith(
+                            decoration: TextDecoration.none,
+                            color: MyColor.black.withOpacity(0.5),
+                            fontFamily: 'NotoSansKR-Regular',
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/images/img26.png',
+                    height: 64,
+                    width: 64,
+                    fit: BoxFit.fill,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
