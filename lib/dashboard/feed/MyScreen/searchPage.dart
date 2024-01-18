@@ -16,39 +16,75 @@ class _SearchPageState extends State<SearchPage> {
 
   final List<Map<String, dynamic>> fullGridList = [
     {
-      "image": 'assets/images/img1.png',
-      "title": 'Sports shoes with...',
-      "subtitle": '39,000 won',
+      "image": 'assets/images/img32.png',
+      "title": 'whosthat',
+      "subtitle": '50,000',
       'isClicked': false,
     },
     {
-      "image": 'assets/images/img2.png',
-      "title": 'Golf club',
-      "subtitle": '310,000 won',
+      "image": 'assets/images/img33.png',
+      "title": 'Coco',
+      "subtitle": '3,000',
       'isClicked': false,
     },
     {
-      "image": 'assets/images/img3.png',
-      "title": 'Golf ball Set',
-      "subtitle": '39,000 won',
+      "image": 'assets/images/img34.png',
+      "title": 'Chicken',
+      "subtitle": '333',
       'isClicked': false,
     },
     {
-      "image": 'assets/images/img4.png',
-      "title": 'A white cap',
-      "subtitle": '60,000 won',
+      "image": 'assets/images/img35.png',
+      "title": 'Gubujeong',
+      "subtitle": '70',
       'isClicked': false,
     },
     {
-      "image": 'assets/images/img5.png',
-      "title": 'Sports shoes with...',
-      "subtitle": '39,000 won',
+      "image": 'assets/images/img36.png',
+      "title": 'Iwantoilet',
+      "subtitle": '15',
       'isClicked': false,
     },
     {
-      "image": 'assets/images/img6.png',
-      "title": 'Sports shoes with...',
-      "subtitle": '39,000 won',
+      "image": 'assets/images/img37.png',
+      "title": 'Love',
+      "subtitle": '46,789',
+      'isClicked': false,
+    },
+    {
+      "image": 'assets/images/img38.png',
+      "title": 'Lisk',
+      "subtitle": '53,532',
+      'isClicked': false,
+    },
+    {
+      "image": 'assets/images/img39.png',
+      "title": 'Fat',
+      "subtitle": '100,000',
+      'isClicked': false,
+    },
+    {
+      "image": 'assets/images/img40.png',
+      "title": 'Grainbread',
+      "subtitle": '90',
+      'isClicked': false,
+    },
+    {
+      "image": 'assets/images/img41.png',
+      "title": 'Skiski',
+      "subtitle": '780',
+      'isClicked': false,
+    },
+    {
+      "image": 'assets/images/img42.png',
+      "title": 'HealthyLife',
+      "subtitle": '80',
+      'isClicked': false,
+    },
+    {
+      "image": 'assets/images/img43.png',
+      "title": 'Winelover',
+      "subtitle": '3',
       'isClicked': false,
     },
   ];
@@ -197,52 +233,39 @@ class _SearchPageState extends State<SearchPage> {
 
                     child: Column(
                       children: [
-                        Expanded(
+                        Container(
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
                           child: Image.asset(
                             '${fullGridList[index]["image"]}',
-                            height: 64,
-                            width: MediaQuery.of(context).size.width,
                             fit: BoxFit.cover,
+                            height: 64,
+                            width: 64,
                           ),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('${fullGridList[index]["title"]}',
-                                    style: MyStyle.tx12B),
-                                Text('${fullGridList[index]["subtitle"]}'),
-                              ],
-                            ),
-                            const SizedBox(
-                              width: 15,
-                            ),
-                            // Plus Button
-                            InkWell(
-                              onTap: () {
-                                Navigator.pop(context);
-                                setState(() {
-                                  fullGridList[index]["isClicked"] =
-                                      !fullGridList[index]["isClicked"];
-                                });
-                              },
-                              child: Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Image.asset(
-                                    'assets/icons/checkMark.png',
-                                    height: 24,
-                                    width: 24,
-                                    color: fullGridList[index]["isClicked"]
-                                        ? MyColor.yellowamber
-                                        : MyColor.grey,
-                                  ),
-                                ),
+                        Text('${fullGridList[index]["title"]}',
+                            style: MyStyle.tx12B),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                'assets/icons/foll.png',
+                                alignment: Alignment.bottomLeft,
+                                height: 16,
+                                width: 16,
                               ),
-                            ),
-                          ],
+                              Spacer(),
+                              Text(
+                                '${fullGridList[index]["subtitle"]}',
+                                textAlign: TextAlign.center,
+                                style: MyStyle.tx12P,
+                              ),
+                              Spacer(),
+                            ],
+                          ),
                         ),
                       ],
                     ),

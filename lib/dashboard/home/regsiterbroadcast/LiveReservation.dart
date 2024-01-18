@@ -23,6 +23,7 @@ class _LiveReservationState extends State<LiveReservation> {
   TextEditingController broadcastDateController = TextEditingController();
   TextEditingController broadcastTimeController = TextEditingController();
   TextEditingController attachController = TextEditingController();
+  TextEditingController dropController = TextEditingController();
 
   final List<String> _list = [
     '18:00 You can make a',
@@ -38,44 +39,28 @@ class _LiveReservationState extends State<LiveReservation> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Image.asset('assets/icons/back.png'),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            Text(
-              'Application for live broadcast reservation',
-              style: MyStyle.tx14W.copyWith(
-                color: MyColor.black,
-                fontFamily: 'NotoSansKR-Regular',
-                fontSize: 13,
-              ),
-            ),
-          ],
+        title: Text(
+          'Application for live broadcast reservation',
+          style: MyStyle.tx14W.copyWith(
+            color: MyColor.black,
+            fontFamily: 'NotoSansKR-Regular',
+            fontSize: 13,
+          ),
         ),
-
-        automaticallyImplyLeading: false,
-
-        // titleSpacing: 6,
-        shape: UnderlineInputBorder(
-          borderSide: BorderSide(
+        centerTitle: true,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(0.0),
+          child: Divider(
+            thickness: 1,
             color: MyColor.black.withOpacity(0.1),
           ),
         ),
-        // elevation: 0,
-        centerTitle: true,
       ),
       body: Form(
         key: _liveRegisterKey,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -83,14 +68,14 @@ class _LiveReservationState extends State<LiveReservation> {
                 // *** Broadcast Name ***
                 Text(
                   'Broadcast Name',
-                  style: MyStyle.tx16O
-                      .copyWith(fontFamily: 'NotoSansKR-Regular', fontSize: 15),
+                  style:
+                      MyStyle.tx16O.copyWith(fontFamily: 'NotoSansKR-Regular'),
                 ),
                 Text(
                   'The broadcast name is the content that is shown'
                   ' to users at the time of notice.',
                   style: MyStyle.tx10.copyWith(
-                    fontSize: 10,
+                    fontSize: 11,
                     fontFamily: 'NotoSansKR-Regular',
                     decoration: TextDecoration.none,
                   ),
@@ -98,56 +83,60 @@ class _LiveReservationState extends State<LiveReservation> {
                 const SizedBox(
                   height: 10,
                 ),
-                TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                  style: MyStyle.tx14O,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(1),
-                      borderSide: const BorderSide(
-                        color: MyColor.orange,
+                SizedBox(
+                  height: 40,
+                  width: MediaQuery.of(context).size.width,
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                    style: MyStyle.tx14O,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(1),
+                        borderSide: const BorderSide(
+                          color: MyColor.orange,
+                        ),
                       ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(1),
-                      borderSide: const BorderSide(
-                        color: MyColor.orange,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(1),
+                        borderSide: const BorderSide(
+                          color: MyColor.orange,
+                        ),
                       ),
+                      contentPadding: const EdgeInsets.all(8.0),
+                      border: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: MyColor.orange,
+                      )),
+                      hintText: 'Enter the broadcast name.',
+                      hintStyle: MyStyle.tx14O.copyWith(color: MyColor.orangeO),
                     ),
-                    contentPadding: const EdgeInsets.all(8.0),
-                    border: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                      color: MyColor.orange,
-                    )),
-                    hintText: 'Enter the broadcast name.',
-                    hintStyle: MyStyle.tx14O.copyWith(color: MyColor.orangeO),
+                    controller: broadcastNameController,
+                    keyboardType: TextInputType.text,
+                    onChanged: (value) {
+                      setState(() {});
+                    },
                   ),
-                  controller: broadcastNameController,
-                  keyboardType: TextInputType.text,
-                  onChanged: (value) {
-                    setState(() {});
-                  },
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
 
                 //  *** Scheduled broadcast date ***
                 Text(
                   'Scheduled broadcast date',
-                  style: MyStyle.tx16O
-                      .copyWith(fontFamily: 'NotoSansKR-Regular', fontSize: 15),
+                  style:
+                      MyStyle.tx16O.copyWith(fontFamily: 'NotoSansKR-Regular'),
                 ),
                 Text(
                   'The broadcast will run for one hour from the selected time.',
                   style: MyStyle.tx10.copyWith(
-                    fontSize: 10,
-                    fontFamily: 'NotoSansKR-Medium',
+                    fontSize: 11,
+                    fontFamily: 'NotoSansKR-Regular',
                     decoration: TextDecoration.none,
                   ),
                 ),
@@ -156,100 +145,121 @@ class _LiveReservationState extends State<LiveReservation> {
                 ),
                 Row(
                   children: [
-                    SizedBox(
-                      height: 40,
-                      width: 140,
-                      child: TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          return null;
-                        },
-                        style: MyStyle.tx14O,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(1),
-                            borderSide: const BorderSide(
-                              color: MyColor.orange,
+                    Expanded(
+                      child: SizedBox(
+                        height: 40,
+                        width: MediaQuery.of(context).size.width,
+                        child: TextFormField(
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter some text';
+                            }
+                            return null;
+                          },
+                          style: MyStyle.tx14O,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(1),
+                              borderSide: const BorderSide(
+                                color: MyColor.orange,
+                              ),
                             ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(1),
-                            borderSide: const BorderSide(
-                              color: MyColor.orange,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(1),
+                              borderSide: const BorderSide(
+                                color: MyColor.orange,
+                              ),
                             ),
+                            contentPadding: const EdgeInsets.all(8.0),
+                            border: const OutlineInputBorder(
+                                borderSide: BorderSide(
+                              color: MyColor.orange,
+                            )),
+                            hintText: 'YYYY.MM.DD',
+                            hintStyle:
+                                MyStyle.tx14O.copyWith(color: MyColor.orangeO),
                           ),
-                          contentPadding: const EdgeInsets.all(8.0),
-                          border: const OutlineInputBorder(
-                              borderSide: BorderSide(
-                            color: MyColor.orange,
-                          )),
-                          hintText: 'YYYY.MM.DD',
-                          hintStyle:
-                              MyStyle.tx14O.copyWith(color: MyColor.orangeO),
+                          controller: broadcastDateController,
+                          keyboardType: TextInputType.datetime,
+                          onChanged: (value) {
+                            setState(() {});
+                          },
                         ),
-                        controller: broadcastDateController,
-                        keyboardType: TextInputType.datetime,
-                        onChanged: (value) {
-                          setState(() {});
-                        },
                       ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      width: 10,
                     ),
-                    SizedBox(
-                      height: 40,
-                      width: 198,
-                      child: DropdownButtonFormField<String>(
-                        style: MyStyle.tx14O,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(1),
-                            borderSide: const BorderSide(
-                              color: MyColor.orange,
+                    Expanded(
+                      child: SizedBox(
+                        height: 40,
+                        child: DropdownButtonFormField<String>(
+                          // selectedItemBuilder: (BuildContext context) {
+                          //   return _list.map<Widget>((String item) {
+                          //     return Container(
+                          //       alignment: Alignment.centerLeft,
+                          //       // constraints:
+                          //       //     const BoxConstraints(minWidth: 100),
+                          //       child: Text(
+                          //         item,
+                          //         maxLines: 1,
+                          //         style: const TextStyle(
+                          //             color: Colors.blue,
+                          //             fontWeight: FontWeight.w600),
+                          //       ),
+                          //     );
+                          //   }).toList();
+                          // },
+                          style: MyStyle.tx14O,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(1),
+                              borderSide: const BorderSide(
+                                color: MyColor.orange,
+                              ),
                             ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(1),
-                            borderSide: const BorderSide(
-                              color: MyColor.orange,
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(1),
+                              borderSide: const BorderSide(
+                                color: MyColor.orange,
+                              ),
                             ),
-                          ),
-                          contentPadding: const EdgeInsets.all(8.0),
-                          border: const OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: MyColor.orange,
+                            contentPadding: const EdgeInsets.only(left: 4.0),
+                            border: const OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: MyColor.orange,
+                              ),
                             ),
+                            hintText: '00:00',
+                            hintStyle:
+                                MyStyle.tx14O.copyWith(color: MyColor.orangeO),
                           ),
-                          hintText: '00:00',
-                          hintStyle:
-                              MyStyle.tx14O.copyWith(color: MyColor.orangeO),
-                        ),
-                        value: _downVal,
-                        elevation: 0,
-                        // style: const TextStyle(color: MyColor.orange),
-                        icon: const Icon(
-                          Icons.keyboard_arrow_down_outlined,
-                          color: MyColor.orange,
-                        ),
-                        onChanged: (String? value) {
-                          print(value);
-                          setState(() {
-                            _downVal = null;
-                            _downVal = value!;
-                          });
-                        },
-                        items: _list.map<DropdownMenuItem<String>>((list) {
-                          print(list);
-                          return DropdownMenuItem<String>(
+                          value: _downVal,
+                          elevation: 0,
+                          isExpanded: true,
+                          // style: const TextStyle(color: MyColor.orange),
+                          icon: const Icon(
+                            Icons.keyboard_arrow_down_outlined,
+                            color: MyColor.orange,
+                          ),
+                          onChanged: (String? value) {
+                            print(value);
+                            setState(() {
+                              _downVal = null;
+                              _downVal = value!;
+                            });
+                          },
+                          items: _list.map<DropdownMenuItem<String>>((list) {
+                            print(list);
+                            return DropdownMenuItem<String>(
                               value: list,
                               child: Text(
                                 list,
-                                style: const TextStyle(color: MyColor.orange),
-                              ));
-                        }).toList(),
+                                style: MyStyle.tx14O,
+                              ),
+                            );
+                          }).toList(),
+                        ),
                       ),
                     ),
                   ],
@@ -264,14 +274,14 @@ class _LiveReservationState extends State<LiveReservation> {
                   child: Text(
                     'Quiz progress',
                     style: MyStyle.tx16O.copyWith(
-                        fontFamily: 'NotoSansKR-Regular', fontSize: 15),
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
                   ),
                 ),
                 Text(
                   'Questions are asked through separate '
                   'consultation with OneQ Co., Ltd.',
                   style: MyStyle.tx10.copyWith(
-                    fontSize: 8,
                     fontFamily: 'NotoSansKR-Medium',
                     decoration: TextDecoration.none,
                   ),
@@ -289,7 +299,6 @@ class _LiveReservationState extends State<LiveReservation> {
                           'Proceed',
                           style: MyStyle.tx14W.copyWith(
                             color: MyColor.black,
-                            fontSize: 12,
                           ),
                         ),
                         leading: Radio(
@@ -315,7 +324,6 @@ class _LiveReservationState extends State<LiveReservation> {
                           'It does not proceed',
                           style: MyStyle.tx14W.copyWith(
                             color: MyColor.black,
-                            fontSize: 12,
                           ),
                         ),
                         leading: Radio(
@@ -336,85 +344,88 @@ class _LiveReservationState extends State<LiveReservation> {
                 //   *** Live Preview Videos and Images
                 Text(
                   'Live preview video and images',
-                  style: MyStyle.tx16O
-                      .copyWith(fontFamily: 'NotoSansKR-Regular', fontSize: 15),
+                  style: MyStyle.tx16O.copyWith(
+                    fontFamily: 'NotoSansKR-Regular',
+                  ),
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 8,
                 ),
                 Text(
                   'Please upload an image used as a preview video or thumbnail.',
                   style: MyStyle.tx12B.copyWith(
-                    fontSize: 10,
-                    fontFamily: 'NotoSansKR-Regular',
                     decoration: TextDecoration.none,
                   ),
                 ),
                 const SizedBox(
                   height: 12,
                 ),
-                TextFormField(
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter some text';
-                    }
-                    return null;
-                  },
-                  style: MyStyle.tx14O,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(1),
-                      borderSide: const BorderSide(
-                        color: MyColor.orange,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(1),
-                      borderSide: const BorderSide(
-                        color: MyColor.orange,
-                      ),
-                    ),
-                    contentPadding: const EdgeInsets.all(8.0),
-                    border: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                      color: MyColor.orange,
-                    )),
-                    hintText: 'Attach videos and images',
-                    suffixIcon: InkWell(
-                      onTap: () {
-                        FocusScope.of(context).unfocus();
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return liveBroadcastDialog();
-                            });
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Image.asset(
-                          'assets/icons/Attach.png',
-                          height: 15,
-                          width: 15,
+                Container(
+                  height: 40,
+                  padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                  width: MediaQuery.of(context).size.width,
+                  child: TextFormField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                    style: MyStyle.tx14O,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(1),
+                        borderSide: const BorderSide(
+                          color: MyColor.orange,
                         ),
                       ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(1),
+                        borderSide: const BorderSide(
+                          color: MyColor.orange,
+                        ),
+                      ),
+                      contentPadding: const EdgeInsets.all(8.0),
+                      border: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                        color: MyColor.orange,
+                      )),
+                      hintText: 'Attach videos and images',
+                      suffixIcon: InkWell(
+                        onTap: () {
+                          FocusScope.of(context).unfocus();
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return liveBroadcastDialog();
+                              });
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Image.asset(
+                            'assets/icons/Attach.png',
+                            height: 15,
+                            width: 15,
+                          ),
+                        ),
+                      ),
+                      hintStyle: MyStyle.tx14O.copyWith(color: MyColor.orangeO),
                     ),
-                    hintStyle: MyStyle.tx14O.copyWith(color: MyColor.orangeO),
+                    controller: attachController,
+                    keyboardType: TextInputType.text,
+                    onChanged: (value) {
+                      setState(() {});
+                    },
                   ),
-                  controller: attachController,
-                  keyboardType: TextInputType.text,
-                  onChanged: (value) {
-                    setState(() {});
-                  },
                 ),
                 const SizedBox(
                   height: 8,
                 ),
                 Text(
-                  'Attachments can be registered up to 1 photo (10mb or less)\n'
+                  'Attachments can be registered up to 1 photo (10mb or less)'
                   'and 1 video (350mb or less)',
                   style: MyStyle.tx12B.copyWith(
                     color: MyColor.black.withOpacity(0.7),
-                    fontSize: 11,
                   ),
                 ),
                 const SizedBox(
@@ -430,9 +441,9 @@ class _LiveReservationState extends State<LiveReservation> {
                 const SizedBox(
                   height: 2,
                 ),
-                Text(
+                const Text(
                   'Search for the product you want to sell and register it.',
-                  style: MyStyle.tx12B.copyWith(fontSize: 11),
+                  style: MyStyle.tx12B,
                 ),
                 const SizedBox(
                   height: 15,
@@ -459,7 +470,7 @@ class _LiveReservationState extends State<LiveReservation> {
                   ),
                 ),
                 Divider(
-                  thickness: 0.5,
+                  thickness: 1,
                   color: MyColor.black.withOpacity(0.1),
                 ),
                 const SizedBox(
@@ -523,8 +534,8 @@ class _LiveReservationState extends State<LiveReservation> {
         },
         child: Image.asset(
           'assets/icons/Circle.png',
-          height: 28,
-          width: 28,
+          height: 24,
+          width: 24,
           alignment: Alignment.topRight,
         ),
       ),
@@ -533,10 +544,9 @@ class _LiveReservationState extends State<LiveReservation> {
           borderRadius: BorderRadius.circular(8),
           color: MyColor.white,
         ),
-        padding:
-            const EdgeInsets.only(top: 25.0, left: 20, right: 20, bottom: 20),
-        height: 395,
-        width: 352,
+        padding: const EdgeInsets.all(20.0),
+        // height: 400,
+        // width: 352,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -578,7 +588,6 @@ class _LiveReservationState extends State<LiveReservation> {
               },
               child: Container(
                 height: 40,
-                width: 330,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(1),
                   border: Border.all(
@@ -627,7 +636,6 @@ class _LiveReservationState extends State<LiveReservation> {
               'before watching the broadcast, and only files up to '
               '350MB or less can be uploaded.',
               style: MyStyle.tx12B.copyWith(
-                fontSize: 11,
                 color: MyColor.black.withOpacity(0.7),
               ),
             ),
@@ -641,7 +649,6 @@ class _LiveReservationState extends State<LiveReservation> {
               },
               child: Container(
                 height: 40,
-                width: 330,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(1),
                   border: Border.all(
@@ -668,13 +675,13 @@ class _LiveReservationState extends State<LiveReservation> {
             RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                style: MyStyle.tx12B.copyWith(
-                  color: MyColor.orange,
-                  fontSize: 10,
-                ),
                 children: [
-                  const TextSpan(
+                  TextSpan(
                     text: 'Images and preview videos are ',
+                    style: MyStyle.tx12O.copyWith(
+                      fontFamily: 'NotoSansKR-Medium',
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                   TextSpan(
                     text: 'optional.',
@@ -683,8 +690,12 @@ class _LiveReservationState extends State<LiveReservation> {
                       color: MyColor.orange,
                     ),
                   ),
-                  const TextSpan(
+                  TextSpan(
                     text: 'Up to ',
+                    style: MyStyle.tx12O.copyWith(
+                      fontFamily: 'NotoSansKR-Medium',
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                   TextSpan(
                     text: 'one image ',
@@ -693,8 +704,12 @@ class _LiveReservationState extends State<LiveReservation> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const TextSpan(
+                  TextSpan(
                     text: 'and ',
+                    style: MyStyle.tx12O.copyWith(
+                      fontFamily: 'NotoSansKR-Medium',
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                   TextSpan(
                     text: 'one preview ',
@@ -703,8 +718,12 @@ class _LiveReservationState extends State<LiveReservation> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  const TextSpan(
+                  TextSpan(
                     text: 'can be uploaded.',
+                    style: MyStyle.tx12O.copyWith(
+                      fontFamily: 'NotoSansKR-Medium',
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ],
               ),
@@ -725,9 +744,10 @@ class _LiveReservationState extends State<LiveReservation> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
+              margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
               padding: const EdgeInsets.symmetric(vertical: 10),
-              height: 122,
-              width: 330,
+              height: 140,
+              // width: 330,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(8),
@@ -750,16 +770,12 @@ class _LiveReservationState extends State<LiveReservation> {
                         _pickerCamBroadcast();
                       },
                       child: SizedBox(
-                        height: 26,
-                        width: 330,
+                        height: 35,
+                        // width: 330,
                         child: Center(
                           child: Text(
                             'Camera',
-                            style: MyStyle.tx14W.copyWith(
-                              // fontFamily: 'NotoSansKR-Medium'
-                              fontSize: 14,
-                              color: MyColor.black,
-                            ),
+                            style: MyStyle.tx14W.copyWith(color: MyColor.black),
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -773,16 +789,12 @@ class _LiveReservationState extends State<LiveReservation> {
                         _pickerImgBroadcast();
                       },
                       child: SizedBox(
-                        height: 26,
-                        width: 330,
+                        height: 35,
+                        // width: 330,
                         child: Center(
                           child: Text(
                             'Gallery',
-                            style: MyStyle.tx14W.copyWith(
-                              // fontFamily: 'NotoSansKR-Medium'
-                              fontSize: 14,
-                              color: MyColor.black,
-                            ),
+                            style: MyStyle.tx14W.copyWith(color: MyColor.black),
                           ),
                         ),
                       ),
@@ -791,16 +803,14 @@ class _LiveReservationState extends State<LiveReservation> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
             InkWell(
               onTap: () {
                 Navigator.pop(context);
               },
-              child: SizedBox(
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
                 height: 48,
-                width: 330,
+                // width: 330,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
@@ -816,7 +826,7 @@ class _LiveReservationState extends State<LiveReservation> {
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
           ],
         );
@@ -864,9 +874,10 @@ class _LiveReservationState extends State<LiveReservation> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
+              margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
               padding: const EdgeInsets.symmetric(vertical: 10),
-              height: 122,
-              width: 330,
+              height: 140,
+              // width: 330,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(8),
@@ -889,8 +900,8 @@ class _LiveReservationState extends State<LiveReservation> {
                         _pickerVideoCamBroadcast();
                       },
                       child: SizedBox(
-                        height: 26,
-                        width: 330,
+                        height: 35,
+                        // width: 330,
                         child: Center(
                           child: Text(
                             'Camera',
@@ -908,8 +919,8 @@ class _LiveReservationState extends State<LiveReservation> {
                         _pickerVideoImgBroadcast();
                       },
                       child: SizedBox(
-                        height: 26,
-                        width: 330,
+                        height: 35,
+                        // width: 330,
                         child: Center(
                           child: Text(
                             'Gallery',
@@ -922,16 +933,14 @@ class _LiveReservationState extends State<LiveReservation> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
             InkWell(
               onTap: () {
                 Navigator.pop(context);
               },
-              child: SizedBox(
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
                 height: 48,
-                width: 330,
+                // width: 330,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
@@ -947,7 +956,7 @@ class _LiveReservationState extends State<LiveReservation> {
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 20,
             ),
           ],
         );
@@ -990,9 +999,8 @@ class _LiveReservationState extends State<LiveReservation> {
       child: AlertDialog(
         title: Text(
           'I applied for a live reservation',
-          style: MyStyle.tx17B.copyWith(
-            fontSize: 16,
-          ),
+          textAlign: TextAlign.center,
+          style: MyStyle.tx17B,
         ),
         content: Text(
           'The live application has been \n'
@@ -1002,7 +1010,6 @@ class _LiveReservationState extends State<LiveReservation> {
           textAlign: TextAlign.center,
           style: MyStyle.tx13B.copyWith(
             fontFamily: 'NotoSansKR-Regular',
-            fontSize: 12,
             color: MyColor.black.withOpacity(0.5),
           ),
         ),
@@ -1028,7 +1035,6 @@ class _LiveReservationState extends State<LiveReservation> {
                     'Confirm',
                     style: MyStyle.tx17B.copyWith(
                       fontWeight: FontWeight.w400,
-                      fontSize: 16,
                     ),
                   ),
                 ),
@@ -1048,10 +1054,7 @@ class _LiveReservationState extends State<LiveReservation> {
       title: Text(
         'Request to enter essential information.',
         textAlign: TextAlign.center,
-        style: MyStyle.tx17B.copyWith(
-          fontSize: 17,
-          height: 1.2,
-        ),
+        style: MyStyle.tx17B.copyWith(),
       ),
       content: RichText(
         textAlign: TextAlign.center,
@@ -1063,8 +1066,6 @@ class _LiveReservationState extends State<LiveReservation> {
                   'Please input it.\n',
               style: MyStyle.tx13B.copyWith(
                 color: Colors.black.withOpacity(0.5),
-                fontSize: 12,
-                height: 1.2,
               ),
             ),
             const WidgetSpan(
@@ -1080,7 +1081,6 @@ class _LiveReservationState extends State<LiveReservation> {
                   'Choose a product to sell.',
               style: MyStyle.tx13B.copyWith(
                   fontFamily: 'Montserrat-Medium',
-                  fontSize: 12,
                   fontWeight: FontWeight.w500,
                   color: MyColor.lred,
                   height: 1.2),
@@ -1114,7 +1114,6 @@ class _LiveReservationState extends State<LiveReservation> {
                 style: MyStyle.tx17B.copyWith(
                   fontFamily: 'NotoSansKR-Medium',
                   fontWeight: FontWeight.w400,
-                  fontSize: 16,
                 ),
               ),
             ),

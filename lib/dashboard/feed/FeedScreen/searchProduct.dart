@@ -218,16 +218,6 @@ class _SearchProductState extends State<SearchProduct> {
                                   gridList[index]["isClicked"] =
                                       !gridList[index]["isClicked"];
                                 });
-                                // BottomNavigationBar(
-                                //   items: <BottomNavigationBarItem>[
-                                //     BottomNavigationBarItem(
-                                //       label:
-                                //           'Registration of 2 product promotions',
-                                //       backgroundColor: MyColor.white,
-                                //
-                                //     ),
-                                //   ],
-                                // );
                               },
                               child: Center(
                                 child: Padding(
