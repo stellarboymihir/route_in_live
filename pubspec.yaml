@@ -39,6 +39,7 @@ dependencies:
   fluttertoast: ^8.2.4
   flutter_styled_toast: ^2.2.1
   carousel_slider: ^4.2.1
+  dropdown_button2: ^2.3.9
 #  gradient_borders: ^0.2.0
 #  dependencies:
 

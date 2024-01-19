@@ -887,6 +887,7 @@ class _SellProductState extends State<SellProduct> {
                       //     builder: (BuildContext context) {
                       //       return sellDialog();
                       //     });
+                      Navigator.pop(context);
                       Navigator.pushNamed(context, storeItemRoute);
                     },
                     child: Container(

@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyColor.dart';
@@ -62,6 +63,11 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 width: width,
                 height: height,
               ),
+              Container(
+                color: MyColor.black.withOpacity(0.4),
+                height: height,
+                width: width,
+              ),
               Positioned(
                 top: 40,
                 left: 10,
@@ -104,6 +110,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     Row(
                       children: [
                         Container(
+                          padding: EdgeInsets.all(8.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: MyColor.white.withOpacity(0.20),
@@ -142,18 +149,15 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         ),
 
                         //DropDown Menu
-                        SizedBox(
+                        Expanded(
+                          child: SizedBox(
                             height: 24,
-                            width: 140,
                             child: Theme(
                               data: Theme.of(context).copyWith(
-                                backgroundColor:
-                                    MyColor.white.withOpacity(0.25),
-                              ),
-                              child: DropdownButtonFormField(
+                                  // canvasColor: MyColor.black.withOpacity(0.25),
+                                  ),
+                              child: DropdownButtonFormField2<String>(
                                 style: MyStyle.tx10W,
-                                // itemHeight: 20,
-                                // dropdownColor: Colors.transparent,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(12),
@@ -161,35 +165,38 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                       color: MyColor.yellowamber,
                                     ),
                                   ),
+                                  contentPadding:
+                                      const EdgeInsets.only(left: 4.0),
+                                  hintText: 'Quality - Automatic (1080p)',
+                                  hintStyle: MyStyle.tx10W,
                                 ),
-                                isExpanded: true,
-                                hint: const Text(
-                                  'Quality - Automatic (1080p)',
-                                  style: MyStyle.tx10W,
-                                ),
-
-                                icon: const Visibility(
-                                    visible: false,
-                                    child: Icon(Icons.arrow_downward)),
                                 value: selectedList,
-                                items:
-                                    _list.map<DropdownMenuItem<String>>((list) {
-                                  return DropdownMenuItem<String>(
-                                      value: list,
-                                      child: Text(
-                                        list,
-                                        style: MyStyle.tx10W.copyWith(
-                                            color: MyColor.yellowamber),
-                                      ));
-                                }).toList(),
-                                onChanged: (String? newValue) {
+                                isExpanded: true,
+                                onChanged: (String? value) {
+                                  print(value);
                                   setState(() {
-                                    selectedList = newValue!;
-                                    print(selectedList);
+                                    selectedList = null;
+                                    selectedList = value!;
                                   });
                                 },
+                                // dropdownColor: MyColor.black.withOpacity(0.25),
+                                items:
+                                    _list.map<DropdownMenuItem<String>>((list) {
+                                  print(list);
+                                  return DropdownMenuItem<String>(
+                                    value: list,
+                                    child: Text(
+                                      list,
+                                      style: MyStyle.tx10W.copyWith(
+                                        color: MyColor.yellowamber,
+                                      ),
+                                    ),
+                                  );
+                                }).toList(),
                               ),
-                            )),
+                            ),
+                          ),
+                        ),
 
                         Expanded(
                           // 2nd Row 3rd Column
@@ -417,35 +424,23 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               const SizedBox(
                                 width: 8,
                               ),
-
-                              Container(
-                                width: 220,
-                                height: 28,
-                                padding: const EdgeInsets.all(5.0),
-                                // margin: const EdgeInsets.all(2.0),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(color: MyColor.orange),
-                                ),
-                                child: Text(
-                                  'Enter the text.',
-                                  style: MyStyle.tx12B.copyWith(
-                                    fontSize: 10,
-                                    color: MyColor.white.withOpacity(0.7),
+                              Expanded(
+                                child: Container(
+                                  // width: MediaQuery.of(context).size.width,
+                                  height: 28,
+                                  padding: const EdgeInsets.all(5.0),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(color: MyColor.orange),
+                                      color: MyColor.black.withOpacity(0.2)),
+                                  child: Text(
+                                    'Enter the text.',
+                                    style: MyStyle.tx12B.copyWith(
+                                      color: MyColor.white.withOpacity(0.7),
+                                    ),
                                   ),
                                 ),
                               ),
-                              // Container(
-                              //   height: 22.0,
-                              //   decoration: kGradientBoxDecoration,
-                              //   child: Padding(
-                              //     padding: EdgeInsets.all(2.0),
-                              //     child: Container(
-                              //       child: Text("Button Title with your style"),
-                              //       decoration: KInnerDecoration,
-                              //     ),
-                              //   ),
-                              // ),
                               const SizedBox(
                                 width: 8,
                               ),
@@ -471,7 +466,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               const SizedBox(
                                 width: 8,
                               ),
-
                               InkWell(
                                 onTap: () {
                                   sponsorSheet();
@@ -491,16 +485,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                   ),
                                 ),
                               ),
-                              //  //  //  For Vertical Animation
-                              // Column(
-                              //   children: [
-                              //     Image.asset(
-                              //       'assets/icons/fade.png',
-                              //       width: 45,
-                              //       height: 252,
-                              //     ),
-                              //   ],
-                              // ),
                             ],
                           ),
                         ],
@@ -532,7 +516,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
         children: [
           Text(
             'Are you sure you want to end the\n broadcast?',
-            style: MyStyle.tx13B.copyWith(fontSize: 12),
+            style: MyStyle.tx13B,
             textAlign: TextAlign.center,
           ),
         ],
@@ -540,12 +524,12 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
       contentPadding: const EdgeInsets.only(top: 5, bottom: 20),
       actionsPadding: const EdgeInsets.all(0),
       actions: [
-        const Divider(
+        Divider(
           height: 0,
-          thickness: 0,
+          thickness: 1,
           indent: 0,
           endIndent: 0,
-          // color: Colors.grey,
+          color: MyColor.black.withOpacity(0.3),
         ),
         Row(
           children: [
@@ -557,20 +541,18 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 child: Text(
                   'Close',
                   style: MyStyle.tx17B.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: MyColor.lred),
+                      fontWeight: FontWeight.w400, color: MyColor.lred),
                 ),
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 44,
               child: VerticalDivider(
                 width: 0,
-                thickness: 0,
+                thickness: 1,
                 indent: 0,
                 endIndent: 0,
-                // color: Colors.grey,
+                color: MyColor.black.withOpacity(0.3),
               ),
             ),
             Expanded(
@@ -581,9 +563,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 child: Text(
                   'End',
                   style: MyStyle.tx17B.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: MyColor.iosblue),
+                      fontWeight: FontWeight.w400, color: MyColor.iosblue),
                 ),
               ),
             ),
@@ -623,7 +603,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                       // Product Sold
                       Container(
                         height: 32,
-                        width: 132,
+                        // width: 132,
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           color: MyColor.orange,
@@ -640,18 +621,20 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                       ),
 
                       //Shopping Cart Container
-                      Container(
-                        height: 32,
-                        width: 132,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(16),
-                          color: MyColor.black.withOpacity(0.05),
-                        ),
-                        child: Center(
-                          child: Text(
-                            '0 shopping carts',
-                            style: MyStyle.tx13B.copyWith(
-                              color: MyColor.black.withOpacity(0.5),
+                      Expanded(
+                        child: Container(
+                          height: 32,
+                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: MyColor.black.withOpacity(0.05),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '0 shopping carts',
+                              style: MyStyle.tx13B.copyWith(
+                                color: MyColor.black.withOpacity(0.5),
+                              ),
                             ),
                           ),
                         ),
@@ -674,39 +657,38 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 ),
                 Expanded(
                   child: SingleChildScrollView(
-                      child: Column(
-                    children: [
-                      // Images for 1st Row
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 9.0, vertical: 8.0),
-                        child: Expanded(
+                    child: Column(
+                      children: [
+                        // Images for 1st Row
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 9.0, vertical: 8.0),
                           child: Row(
                             children: [
                               // 1st Image
-                              InkWell(
-                                onTap: () {
-                                  detailSheet();
-                                  // setState(() {
-                                  //   isModelProduct == true
-                                  //       ? supportSheet()
-                                  //       : detailSheet();
-                                  // }
-                                  // );
-                                },
-                                child: Expanded(
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () {
+                                    detailSheet();
+                                    // setState(() {
+                                    //   isModelProduct == true
+                                    //       ? supportSheet()
+                                    //       : detailSheet();
+                                    // }
+                                    // );
+                                  },
                                   child: Container(
                                     padding: const EdgeInsets.only(top: 15.0),
                                     color: MyColor.black.withOpacity(0.05),
                                     height: 236,
-                                    width: 172,
+                                    // width: 172,
                                     child: Column(
                                       children: [
                                         Stack(children: [
                                           Image.asset(
                                             'assets/images/img1.png',
                                             height: 172,
-                                            width: 172,
+                                            // width: 172,
                                           ),
                                           Positioned(
                                             top: 10,
@@ -790,7 +772,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                     padding: const EdgeInsets.only(top: 15.0),
                                     color: MyColor.black.withOpacity(0.05),
                                     height: 236,
-                                    width: 172,
                                     child: Column(
                                       children: [
                                         Stack(
@@ -798,7 +779,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                             Image.asset(
                                               'assets/images/img2.png',
                                               height: 172,
-                                              width: 172,
+                                              // width: 172,
                                             ),
                                             Positioned(
                                               top: 10,
@@ -866,12 +847,10 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                             ],
                           ),
                         ),
-                      ),
 
-                      //  Images for 2nd Row
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Expanded(
+                        //  Images for 2nd Row
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
                               // 3rd Image
@@ -880,13 +859,12 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                   padding: const EdgeInsets.only(top: 15.0),
                                   color: MyColor.black.withOpacity(0.05),
                                   height: 236,
-                                  width: 172,
                                   child: Column(
                                     children: [
                                       Image.asset(
                                         'assets/images/img3.png',
                                         height: 172,
-                                        width: 172,
+                                        // width: 172,
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -939,13 +917,13 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                   padding: const EdgeInsets.only(top: 15.0),
                                   color: MyColor.black.withOpacity(0.05),
                                   height: 236,
-                                  width: 172,
+                                  // width: 172,
                                   child: Column(
                                     children: [
                                       Image.asset(
                                         'assets/images/img4.png',
                                         height: 172,
-                                        width: 172,
+                                        // width: 172,
                                       ),
                                       Row(
                                         mainAxisAlignment:
@@ -991,12 +969,10 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                             ],
                           ),
                         ),
-                      ),
 
-                      //  Images for 3rd Row
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Expanded(
+                        //  Images for 3rd Row
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: Row(
                             children: [
                               // 5th Image
@@ -1005,13 +981,13 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                   padding: const EdgeInsets.only(top: 15.0),
                                   color: MyColor.black.withOpacity(0.05),
                                   height: 236,
-                                  width: 172,
+                                  // width: 172,
                                   child: Column(
                                     children: [
                                       Image.asset(
                                         'assets/images/img5.png',
                                         height: 172,
-                                        width: 172,
+                                        // width: 172,
                                       ),
                                       Row(
                                         mainAxisAlignment:
@@ -1064,13 +1040,13 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                   padding: const EdgeInsets.only(top: 15.0),
                                   color: MyColor.black.withOpacity(0.05),
                                   height: 236,
-                                  width: 172,
+                                  // width: 172,
                                   child: Column(
                                     children: [
                                       Image.asset(
                                         'assets/images/img6.png',
                                         height: 172,
-                                        width: 172,
+                                        // width: 172,
                                       ),
                                       Row(
                                         mainAxisAlignment:
@@ -1116,149 +1092,9 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                             ],
                           ),
                         ),
-                      ),
-                    ],
-                  )
-
-                      //     Bhaiya's Expample
-                      // : Column(
-                      //     children: [
-                      //       Image.asset(
-                      //         'assets/images/img3.png',
-                      //         height: 352,
-                      //         width: 352,
-                      //       ),
-                      //
-                      //       // Bottom Text
-                      //       Row(
-                      //         children: [
-                      //           Text(
-                      //             '11 types of vivid golf balls',
-                      //             style: MyStyle.tx16B.copyWith(
-                      //               fontFamily: 'NotoSansKR-Medium',
-                      //               fontSize: 14,
-                      //               fontWeight: FontWeight.w700,
-                      //             ),
-                      //           ),
-                      //           const SizedBox(
-                      //             width: 20,
-                      //           ),
-                      //           RichText(
-                      //             text: TextSpan(
-                      //               children: [
-                      //                 TextSpan(
-                      //                   text: 'the rate of discount ',
-                      //                   style: MyStyle.tx14W.copyWith(
-                      //                     color: MyColor.purple,
-                      //                     fontSize: 12,
-                      //                     fontWeight: FontWeight.w100,
-                      //                     fontFamily: 'NotoSansKR-Regular',
-                      //                   ),
-                      //                 ),
-                      //                 TextSpan(
-                      //                   text: '10%',
-                      //                   style: MyStyle.tx14W.copyWith(
-                      //                     color: MyColor.purple,
-                      //                     // fontSize: 13,
-                      //                     fontWeight: FontWeight.w300,
-                      //                     fontFamily: 'NotoSansKR-SemiBold',
-                      //                   ),
-                      //                 ),
-                      //               ],
-                      //             ),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //
-                      //       Row(
-                      //         children: [
-                      //           Text(
-                      //             '36,000',
-                      //             style: MyStyle.tx13B.copyWith(
-                      //                 // fontWeight: FontWeight.w300,
-                      //                 fontFamily: 'NotoSansKR-SemiBold'),
-                      //           ),
-                      //           Text(
-                      //             'won   |   ',
-                      //             style: MyStyle.tx13B.copyWith(
-                      //               fontWeight: FontWeight.w100,
-                      //               fontFamily: 'NotoSansKR-Regular',
-                      //             ),
-                      //           ),
-                      //           Text(
-                      //             '40,000',
-                      //             style: MyStyle.tx13B.copyWith(
-                      //               fontFamily: 'NotoSansKR-Regular',
-                      //               color: MyColor.black.withOpacity(0.7),
-                      //               decoration: TextDecoration.lineThrough,
-                      //             ),
-                      //           ),
-                      //         ],
-                      //       ),
-                      //       const SizedBox(
-                      //         height: 15,
-                      //       ),
-                      //       Row(
-                      //         children: [
-                      //           Image.asset(
-                      //             'assets/images/badge.png',
-                      //             width: 10,
-                      //             height: 13,
-                      //           ),
-                      //           Text(
-                      //             ' Promoted celebrity list',
-                      //             style: MyStyle.tx14W.copyWith(
-                      //               fontWeight: FontWeight.w500,
-                      //               color: MyColor.purple,
-                      //             ),
-                      //           ),
-                      //           const SizedBox(
-                      //             height: 10,
-                      //           ),
-                      //         ],
-                      //       ),
-                      //       Expanded(
-                      //         child: Row(
-                      //           children: [
-                      //             Image.asset(
-                      //               'assets/images/avtar4.png',
-                      //               height: 72,
-                      //               width: 72,
-                      //             ),
-                      //             Image.asset(
-                      //               'assets/images/avtar5.png',
-                      //               height: 72,
-                      //               width: 72,
-                      //             ),
-                      //             Image.asset(
-                      //               'assets/images/avtar6.png',
-                      //               height: 72,
-                      //               width: 72,
-                      //             ),
-                      //             Image.asset(
-                      //               'assets/images/avtar7.png',
-                      //               height: 72,
-                      //               width: 72,
-                      //             ),
-                      //             Image.asset(
-                      //               'assets/images/avtar8.png',
-                      //               height: 72,
-                      //               width: 72,
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       ),
-                      //       Container(
-                      //         width: 351,
-                      //         height: 476,
-                      //         child: const Text(
-                      //           'Detail img',
-                      //           style: MyStyle.tx20W,
-                      //         ),
-                      //       )
-                      //     ],
-                      //   ),
-                      ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -1276,9 +1112,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
         builder: (BuildContext context) {
           return SizedBox(
             height: MediaQuery.sizeOf(context).height * 0.8,
-            // width: 340,
-            width: MediaQuery.sizeOf(context).width,
-
             child: Column(
               children: [
                 Padding(
@@ -1288,8 +1121,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
                         height: 32,
-                        width: 132,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           color: MyColor.orange,
@@ -1314,10 +1147,10 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                Expanded(
                   child: SingleChildScrollView(
-                    child: Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
                       child: Column(
                         children: [
                           // Heading
@@ -2389,7 +2222,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         Image.asset(
                           'assets/images/img3.png',
                           height: 172,
-                          width: 172,
+                          // width: 172,
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -3214,7 +3047,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
       builder: (BuildContext context) {
         return SizedBox(
           height: MediaQuery.of(context).size.height * 0.35 + 7,
-          width: MediaQuery.of(context).size.width,
+          // width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
               Padding(
@@ -3231,11 +3064,16 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         fontSize: 15,
                       ),
                     ),
-                    Image.asset(
-                      'assets/icons/Circle.png',
-                      height: 24,
-                      width: 24,
-                      color: MyColor.black,
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(
+                        'assets/icons/Circle.png',
+                        height: 24,
+                        width: 24,
+                        color: MyColor.black,
+                      ),
                     ),
                   ],
                 ),
