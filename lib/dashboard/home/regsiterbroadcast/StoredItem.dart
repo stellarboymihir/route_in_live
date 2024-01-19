@@ -30,7 +30,7 @@ class _StoredItemState extends State<StoredItem> {
         scrollDirection: Axis.vertical,
         dragStartBehavior: DragStartBehavior.start,
         child: Container(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.symmetric(vertical: 10.0),
           color: MyColor.grey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,24 +55,43 @@ class _StoredItemState extends State<StoredItem> {
                     // *** Card ***
                     return Container(
                       color: MyColor.white,
-                      margin: const EdgeInsets.all(8.0),
+                      margin: const EdgeInsets.symmetric(vertical: 8.0),
+                      height: 88,
+                      width: MediaQuery.of(context).size.width,
                       child: Row(
                         children: [
-                          Image.asset(
-                            'assets/images/img1.png',
-                            height: 72,
-                            width: 72,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12.0, vertical: 8.0),
+                            child: Image.asset(
+                              'assets/images/img1.png',
+                              height: 72,
+                              width: 72,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  'Sports shoes with com...',
-                                  style: MyStyle.tx16B.copyWith(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 14),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Sports shoes with com...',
+                                      style: MyStyle.tx16B.copyWith(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 14),
+                                    ),
+                                    Image.asset(
+                                      'assets/icons/minus.png',
+                                      height: 16,
+                                      width: 16,
+                                      alignment: Alignment.topRight,
+                                    ),
+                                  ],
                                 ),
                                 RichText(
                                   text: TextSpan(
@@ -96,50 +115,38 @@ class _StoredItemState extends State<StoredItem> {
                                     ],
                                   ),
                                 ),
-                                Text(
-                                  '11, graphite...',
-                                  style: MyStyle.tx12B.copyWith(fontSize: 11),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              // crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Image.asset(
-                                  'assets/icons/minus.png',
-                                  height: 16,
-                                  width: 16,
-                                  alignment: Alignment.topRight,
-                                ),
-                                const SizedBox(
-                                  height: 25,
-                                ),
-                                RichText(
-                                  softWrap: false,
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: '30',
-                                        style: MyStyle.tx14W.copyWith(
-                                          color: MyColor.yellowamber,
-                                          fontFamily: 'Montserrat-Regular',
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '11, graphite...',
+                                      style:
+                                          MyStyle.tx12B.copyWith(fontSize: 11),
+                                    ),
+                                    RichText(
+                                      softWrap: false,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: '30',
+                                            style: MyStyle.tx14W.copyWith(
+                                              color: MyColor.yellowamber,
+                                              fontFamily: 'Montserrat-Regular',
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text: ' cases',
+                                            style: MyStyle.tx14W.copyWith(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w300,
+                                              fontFamily: 'NotoSansKR-Regular',
+                                              color: MyColor.yellowamber,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      TextSpan(
-                                        text: ' cases',
-                                        style: MyStyle.tx14W.copyWith(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w300,
-                                          fontFamily: 'NotoSansKR-Regular',
-                                          color: MyColor.yellowamber,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),

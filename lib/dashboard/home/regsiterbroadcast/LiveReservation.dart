@@ -1022,6 +1022,7 @@ class _LiveReservationState extends State<LiveReservation> {
           Center(
             child: InkWell(
               onTap: () {
+                Navigator.pop(context);
                 showDialog(
                     context: context,
                     builder: (BuildContext context) {
@@ -1100,14 +1101,15 @@ class _LiveReservationState extends State<LiveReservation> {
           endIndent: 0,
         ),
         InkWell(
-          // onTap: () {
-          //   Navigator.pushNamed(
-          //     context,
-          //     showIdRoute,
-          //   );
-          // },
+          onTap: () {
+            Navigator.pop(context);
+            // Navigator.pushNamed(
+            //   context,
+            //   showIdRoute,
+            // );
+          },
           child: SizedBox(
-            height: 36,
+            height: 40,
             child: Center(
               child: Text(
                 'Confirm',
