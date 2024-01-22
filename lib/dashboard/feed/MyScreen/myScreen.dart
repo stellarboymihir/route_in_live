@@ -838,7 +838,7 @@ class _MyScreenState extends State<MyScreen> {
                     ),
                     Container(
                       height: 32,
-                      width: 340,
+                      width: MediaQuery.of(context).size.width,
                       margin: EdgeInsets.all(8.0),
                       padding: EdgeInsets.only(left: 10.0),
                       decoration: BoxDecoration(

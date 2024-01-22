@@ -1680,6 +1680,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               Image.asset(
                                 'assets/images/img3.png',
                                 height: 352,
+                                width: MediaQuery.of(context).size.width,
+                                fit: BoxFit.cover,
                               ),
 
                               // Bottom Text
@@ -2191,7 +2193,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
           return SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: SizedBox(
-              height: (MediaQuery.of(context).size.height * 0.5) + 20,
+              // height: (MediaQuery.of(context).size.height * 0.5) + 25,
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
@@ -2354,27 +2356,26 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                   ),
 
                   //   Button
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return shoppingCardDialog();
-                            });
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(8.0),
-                        width: 345,
-                        height: 44,
-                        color: MyColor.yellowamber,
-                        child: Text(
-                          'a shopping basket',
-                          textAlign: TextAlign.center,
-                          style: MyStyle.tx16B.copyWith(
-                            fontWeight: FontWeight.w500,
-                            color: MyColor.white,
-                          ),
+                  InkWell(
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return shoppingCardDialog();
+                          });
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      height: 44,
+                      margin: EdgeInsets.symmetric(horizontal: 8),
+                      width: MediaQuery.of(context).size.width,
+                      color: MyColor.yellowamber,
+                      child: Text(
+                        'a shopping basket',
+                        textAlign: TextAlign.center,
+                        style: MyStyle.tx16B.copyWith(
+                          fontWeight: FontWeight.w500,
+                          color: MyColor.white,
                         ),
                       ),
                     ),
@@ -2446,7 +2447,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
         isScrollControlled: true,
         builder: (BuildContext context) {
           return SizedBox(
-            height: MediaQuery.of(context).size.height * 0.75,
+            height: MediaQuery.of(context).size.height * 0.65 + 105,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
@@ -2495,18 +2496,19 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         ),
                       ),
                     ),
-
-                    const SizedBox(
-                      width: 40,
-                    ),
+                    Spacer(),
                     InkWell(
                       onTap: () {
                         Navigator.pop(context);
                       },
-                      child: Image.asset(
-                        'assets/icons/cancel.png',
-                        height: 20,
-                        width: 20,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 8.0, right: 16.0, top: 8.0, bottom: 8.0),
+                        child: Image.asset(
+                          'assets/icons/cancel.png',
+                          height: 20,
+                          width: 20,
+                        ),
                       ),
                     ),
                   ],
@@ -2541,7 +2543,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                           ),
                         ),
                       ),
-                      const SizedBox(width: 110),
+                      Spacer(),
                       InkWell(
                         onTap: () {
                           saleSheet();
@@ -2621,79 +2623,78 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
+                    Container(
+                      margin: const EdgeInsets.symmetric(
                           horizontal: 30.0, vertical: 12.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(0.6),
-                          border: Border.all(
-                            color: MyColor.black.withOpacity(0.1),
-                          ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(0.6),
+                        border: Border.all(
+                          color: MyColor.black.withOpacity(0.1),
                         ),
-                        height: 24,
-                        width: 110,
-                        child: Row(
+                      ),
+                      height: 24,
+                      width: 110,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            height: 24,
+                            width: 24,
+                            child: Center(
+                              child: Text(
+                                '-',
+                                style: MyStyle.tx16B,
+                              ),
+                            ),
+                          ),
+                          const VerticalDivider(
+                            thickness: 0,
+                          ),
+                          const SizedBox(
+                            height: 24,
+                            width: 24,
+                            child: Center(
+                              child: Text(
+                                '1',
+                                // textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ),
+                          const VerticalDivider(
+                            thickness: 0,
+                          ),
+                          const SizedBox(
+                            height: 24,
+                            width: 24,
+                            child: Center(
+                              child: Text(
+                                '+',
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                      child: RichText(
+                        text: TextSpan(
                           children: [
-                            SizedBox(
-                              height: 24,
-                              width: 24,
-                              child: Center(
-                                child: Text(
-                                  '-',
-                                  style: MyStyle.tx16B,
-                                ),
+                            TextSpan(
+                              text: '36,000',
+                              style: MyStyle.tx16B.copyWith(
+                                color: MyColor.purple,
+                                fontWeight: FontWeight.w700,
                               ),
                             ),
-                            const VerticalDivider(
-                              thickness: 0,
-                            ),
-                            const SizedBox(
-                              height: 24,
-                              width: 24,
-                              child: Center(
-                                child: Text(
-                                  '1',
-                                  // textAlign: TextAlign.center,
-                                ),
-                              ),
-                            ),
-                            const VerticalDivider(
-                              thickness: 0,
-                            ),
-                            const SizedBox(
-                              height: 24,
-                              width: 24,
-                              child: Center(
-                                child: Text(
-                                  '+',
-                                ),
+                            TextSpan(
+                              text: '원',
+                              style: MyStyle.tx16B.copyWith(
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 100,
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                            text: '36,000',
-                            style: MyStyle.tx16B.copyWith(
-                              color: MyColor.purple,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          TextSpan(
-                            text: '원',
-                            style: MyStyle.tx16B.copyWith(
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ],
                       ),
                     ),
                   ],
@@ -2701,34 +2702,37 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.only(left: 30.0),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 0.4,
+                            color: MyColor.black,
+                          ),
+                          borderRadius: BorderRadius.circular(0.4),
+                        ),
+                        height: 32,
+                        child: const Center(
+                          child: Text(
+                            'Delete',
+                            style: MyStyle.tx13B,
+                          ),
+                        ),
+                      ),
+                    ),
                     const SizedBox(
-                      width: 0,
+                      width: 10,
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 0.4,
-                          color: MyColor.black,
-                        ),
-                        borderRadius: BorderRadius.circular(0.4),
-                      ),
-                      height: 32,
-                      width: 148,
-                      child: const Center(
-                        child: Text(
-                          'Delete',
-                          style: MyStyle.tx13B,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 32,
-                      width: 148,
-                      color: MyColor.black.withOpacity(0.1),
-                      child: const Center(
-                        child: Text(
-                          'Change options',
-                          style: MyStyle.tx13B,
+                    Expanded(
+                      child: Container(
+                        height: 32,
+                        color: MyColor.black.withOpacity(0.1),
+                        child: const Center(
+                          child: Text(
+                            'Change options',
+                            style: MyStyle.tx13B,
+                          ),
                         ),
                       ),
                     )
@@ -2743,163 +2747,162 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 ),
 
                 SizedBox(
-                  height: 104,
-                  width: 304,
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Total Product Amount',
-                            style: MyStyle.tx14B.copyWith(
-                              color: MyColor.black.withOpacity(0.5),
-                              fontSize: 14,
+                  height: 108,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0, vertical: 8.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Total Product Amount',
+                              style: MyStyle.tx14B.copyWith(
+                                color: MyColor.black.withOpacity(0.5),
+                                fontSize: 14,
+                              ),
                             ),
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: '40,000',
-                                  style: MyStyle.tx14B.copyWith(
-                                    fontSize: 14,
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: '40,000',
+                                    style: MyStyle.tx14B.copyWith(
+                                      fontSize: 14,
+                                    ),
                                   ),
-                                ),
-                                TextSpan(
-                                  text: ' won',
-                                  style: MyStyle.tx14B.copyWith(
-                                    fontSize: 14,
-                                    color: MyColor.black.withOpacity(0.5),
+                                  TextSpan(
+                                    text: ' won',
+                                    style: MyStyle.tx14B.copyWith(
+                                      fontSize: 14,
+                                      color: MyColor.black.withOpacity(0.5),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'shipping fee',
-                            style: MyStyle.tx14B.copyWith(
-                              color: MyColor.black.withOpacity(0.5),
-                              fontSize: 14,
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Shipping fee',
+                              style: MyStyle.tx14B.copyWith(
+                                color: MyColor.black.withOpacity(0.5),
+                                fontSize: 14,
+                              ),
                             ),
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: '2,500',
-                                  style: MyStyle.tx14B.copyWith(
-                                    fontSize: 14,
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: '2,500',
+                                    style: MyStyle.tx14B.copyWith(
+                                      fontSize: 14,
+                                    ),
                                   ),
-                                ),
-                                TextSpan(
-                                  text: ' won',
-                                  style: MyStyle.tx14B.copyWith(
-                                    fontSize: 14,
-                                    color: MyColor.black.withOpacity(0.5),
+                                  TextSpan(
+                                    text: ' won',
+                                    style: MyStyle.tx14B.copyWith(
+                                      fontSize: 14,
+                                      color: MyColor.black.withOpacity(0.5),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Apply Discount',
-                            style: MyStyle.tx14B.copyWith(
-                              color: MyColor.black.withOpacity(0.5),
-                              fontSize: 14,
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Apply Discount',
+                              style: MyStyle.tx14B.copyWith(
+                                color: MyColor.black.withOpacity(0.5),
+                                fontSize: 14,
+                              ),
                             ),
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: '4,000',
-                                  style: MyStyle.tx14B.copyWith(
-                                    fontSize: 14,
-                                    color: MyColor.purple,
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: '4,000',
+                                    style: MyStyle.tx14B.copyWith(
+                                      fontSize: 14,
+                                      color: MyColor.purple,
+                                    ),
                                   ),
-                                ),
-                                TextSpan(
-                                  text: ' won',
-                                  style: MyStyle.tx14B.copyWith(
-                                    fontSize: 14,
-                                    color: MyColor.black.withOpacity(0.5),
+                                  TextSpan(
+                                    text: ' won',
+                                    style: MyStyle.tx14B.copyWith(
+                                      fontSize: 14,
+                                      color: MyColor.black.withOpacity(0.5),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Total payment amount',
-                            style: MyStyle.tx14B.copyWith(
-                              color: MyColor.black.withOpacity(0.5),
-                              fontSize: 14,
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Total payment amount',
+                              style: MyStyle.tx14B.copyWith(
+                                color: MyColor.black.withOpacity(0.5),
+                                fontSize: 14,
+                              ),
                             ),
-                          ),
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: '38,500',
-                                  style: MyStyle.tx14B.copyWith(
-                                      fontSize: 14, color: MyColor.orange),
-                                ),
-                                TextSpan(
-                                  text: ' won',
-                                  style: MyStyle.tx14B.copyWith(
-                                    fontSize: 14,
-                                    color: MyColor.black.withOpacity(0.5),
+                            RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: '38,500',
+                                    style: MyStyle.tx14B.copyWith(
+                                        fontSize: 14, color: MyColor.orange),
                                   ),
-                                ),
-                              ],
+                                  TextSpan(
+                                    text: ' won',
+                                    style: MyStyle.tx14B.copyWith(
+                                      fontSize: 14,
+                                      color: MyColor.black.withOpacity(0.5),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                const SizedBox(
-                  height: 80,
-                ),
+                Spacer(),
                 InkWell(
                   onTap: () {
                     Navigator.pushNamed(context, purchaseRoute);
                   },
-                  child: Expanded(
-                    child: Container(
-                      height: 48,
-                      color: MyColor.purple,
-                      child: Center(
-                        child: Text(
-                          'Make a Payment',
-                          style: MyStyle.tx14W.copyWith(
-                            fontWeight: FontWeight.w500,
-                          ),
+                  child: Container(
+                    height: 48,
+                    color: MyColor.purple,
+                    child: Center(
+                      child: Text(
+                        'Make a Payment',
+                        style: MyStyle.tx14W.copyWith(
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -3214,20 +3217,19 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         return quizDialog();
                       });
                 },
-                child: Padding(
+                child: Container(
+                  margin: const EdgeInsets.all(8.0),
                   padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    height: 44,
-                    width: 351,
-                    color: MyColor.yellowamber,
-                    child: Center(
-                      child: Text(
-                        'Sponsor',
-                        style: MyStyle.tx16B.copyWith(
-                          fontWeight: FontWeight.w500,
-                          color: MyColor.white,
-                          fontFamily: 'NotoSansKR-Medium',
-                        ),
+                  height: 44,
+                  width: MediaQuery.of(context).size.width,
+                  color: MyColor.yellowamber,
+                  child: Center(
+                    child: Text(
+                      'Sponsor',
+                      style: MyStyle.tx16B.copyWith(
+                        fontWeight: FontWeight.w500,
+                        color: MyColor.white,
+                        fontFamily: 'NotoSansKR-Medium',
                       ),
                     ),
                   ),
@@ -3915,12 +3917,15 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                   );
                 },
                 child: Container(
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: MyColor.purple,
                   ),
-                  width: 346,
                   height: 56,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

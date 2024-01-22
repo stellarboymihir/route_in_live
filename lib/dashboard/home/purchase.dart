@@ -17,6 +17,8 @@ class _PurchaseState extends State<Purchase> {
     return Scaffold(
       backgroundColor: MyColor.grey,
       appBar: AppBar(
+        backgroundColor: MyColor.white,
+        scrolledUnderElevation: 0.0,
         title: Text(
           'Purchase',
           textAlign: TextAlign.center,
@@ -180,7 +182,7 @@ class _PurchaseState extends State<Purchase> {
                     ),
                     Container(
                       height: 32,
-                      width: 335,
+                      width: MediaQuery.of(context).size.width,
                       padding: const EdgeInsets.all(6.0),
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -211,7 +213,7 @@ class _PurchaseState extends State<Purchase> {
                     ),
                     Container(
                       height: 32,
-                      width: 335,
+                      width: MediaQuery.of(context).size.width,
                       padding: const EdgeInsets.all(6.0),
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -233,7 +235,7 @@ class _PurchaseState extends State<Purchase> {
                     ),
                     Container(
                       height: 32,
-                      width: 335,
+                      width: MediaQuery.of(context).size.width,
                       padding: const EdgeInsets.all(6.0),
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -264,7 +266,7 @@ class _PurchaseState extends State<Purchase> {
                     ),
                     Container(
                       height: 32,
-                      width: 335,
+                      width: MediaQuery.of(context).size.width,
                       padding: const EdgeInsets.all(6.0),
                       decoration: BoxDecoration(
                         border: Border.all(
@@ -311,7 +313,7 @@ class _PurchaseState extends State<Purchase> {
                       },
                       child: Container(
                         height: 32,
-                        width: 335,
+                        width: MediaQuery.of(context).size.width,
                         padding: const EdgeInsets.all(6.0),
                         decoration: BoxDecoration(
                           border: Border.all(
@@ -1054,19 +1056,17 @@ class _PurchaseState extends State<Purchase> {
           endIndent: 0,
           color: Colors.grey,
         ),
-        Expanded(
-          child: TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Center(
-              child: Text(
-                'Confirm',
-                style: MyStyle.tx17B.copyWith(
-                  fontSize: 15,
-                  fontFamily: 'NotoSansKR-Medium',
-                  fontWeight: FontWeight.w400,
-                ),
+        TextButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Center(
+            child: Text(
+              'Confirm',
+              style: MyStyle.tx17B.copyWith(
+                fontSize: 15,
+                fontFamily: 'NotoSansKR-Medium',
+                fontWeight: FontWeight.w400,
               ),
             ),
           ),
@@ -1378,19 +1378,17 @@ class _PurchaseState extends State<Purchase> {
           endIndent: 0,
           color: Colors.grey,
         ),
-        Expanded(
-          child: TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, paySuccesRoute);
-            },
-            child: Center(
-              child: Text(
-                'Confirm',
-                style: MyStyle.tx17B.copyWith(
-                  fontSize: 15,
-                  fontFamily: 'NotoSansKR-Medium',
-                  fontWeight: FontWeight.w400,
-                ),
+        TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, paySuccesRoute);
+          },
+          child: Center(
+            child: Text(
+              'Confirm',
+              style: MyStyle.tx17B.copyWith(
+                fontSize: 15,
+                fontFamily: 'NotoSansKR-Medium',
+                fontWeight: FontWeight.w400,
               ),
             ),
           ),
