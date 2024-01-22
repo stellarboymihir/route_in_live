@@ -13,6 +13,7 @@ class LiveBroadcast extends StatefulWidget {
 }
 
 class _LiveBroadcastState extends State<LiveBroadcast> {
+  TextEditingController pointController = TextEditingController();
   final List<String> _list = <String>[
     '1080p',
     '720p',
@@ -21,6 +22,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
     '240p',
     '144p',
   ];
+
+  bool onClick = false;
 
   String? selectedList;
 
@@ -82,35 +85,45 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                       padding: const EdgeInsets.all(8.0),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: MyColor.orange.withOpacity(0.25),
+                        color: onQuizClick
+                            ? MyColor.yellowamber
+                            : MyColor.orange.withOpacity(0.25),
                       ),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Let\'s play golf after knowing it!',
-                            textAlign: TextAlign.center,
-                            style: MyStyle.tx14W.copyWith(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 13,
+                      child: onQuizClick
+                          ? Center(
+                              child: Text(
+                                'An unexpected quiz!',
+                                style: MyStyle.tx14W.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            )
+                          : Column(
+                              children: [
+                                Text(
+                                  'Let\'s play golf after knowing it!',
+                                  textAlign: TextAlign.center,
+                                  style: MyStyle.tx14W.copyWith(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                                Text(
+                                  'Pak Se-ri',
+                                  style: MyStyle.tx10.copyWith(
+                                    fontFamily: 'NotoSansKR-Regular',
+                                    decoration: TextDecoration.none,
+                                    color: MyColor.white,
+                                  ),
+                                )
+                              ],
                             ),
-                          ),
-                          Text(
-                            'Pak Se-ri',
-                            style: MyStyle.tx10.copyWith(
-                              fontFamily: 'NotoSansKR-Regular',
-                              decoration: TextDecoration.none,
-                              color: MyColor.white,
-                            ),
-                          )
-                        ],
-                      ),
                     ),
-
                     // 2nd Row
                     Row(
                       children: [
                         Container(
-                          padding: EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(8.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: MyColor.white.withOpacity(0.20),
@@ -511,7 +524,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
         style: MyStyle.tx17B,
         textAlign: TextAlign.center,
       ),
-      content: Column(
+      content: const Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
@@ -604,7 +617,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                       Container(
                         height: 32,
                         // width: 132,
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
                           color: MyColor.orange,
@@ -624,7 +637,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                       Expanded(
                         child: Container(
                           height: 32,
-                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(16),
                             color: MyColor.black.withOpacity(0.05),
@@ -669,6 +682,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               Expanded(
                                 child: InkWell(
                                   onTap: () {
+                                    Navigator.pop(context);
                                     detailSheet();
                                     // setState(() {
                                     //   isModelProduct == true
@@ -1121,7 +1135,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         height: 32,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
@@ -1577,6 +1591,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
           style: MyStyle.tx17B.copyWith(fontFamily: 'NotoSansKR-Medium'),
         ),
       ),
+      actionsPadding:
+          const EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 10),
       actions: [
         const Divider(
           thickness: 0,
@@ -1588,7 +1604,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
             Navigator.pop(context);
           },
           child: SizedBox(
-            height: 40,
+            height: 30,
             child: Center(
               child: Text(
                 'Close',
@@ -1620,163 +1636,137 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
         return SizedBox(
           height: MediaQuery.of(context).size.height * 0.75,
           width: MediaQuery.of(context).size.width,
-          // height: 652,
-          // width: 375,
 
           //Top UI
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  // Indicators
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.asset(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Indicators
+                    Image.asset(
                       'assets/icons/leftArrow.png',
                       height: 24,
                       width: 24,
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
                       child: Image.asset(
                         'assets/icons/cancel.png',
                         height: 24,
                         width: 24,
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height - 230,
-                width: MediaQuery.of(context).size.width,
-                child: Stack(
-                  children: [
-                    //Stack ke andar UI
-                    Positioned(
-                      top: 40,
-                      right: 0,
-                      left: 0,
-                      child: Expanded(
-                        child: SingleChildScrollView(
-                          physics: const BouncingScrollPhysics(),
+              Expanded(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: Stack(
+                    children: [
+                      //Stack ke andar UI
+                      SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Image.asset(
-                                  'assets/images/img3.png',
-                                  height: 352,
-                                  width: 352,
-                                ),
+                              Image.asset(
+                                'assets/images/img3.png',
+                                height: 352,
                               ),
 
                               // Bottom Text
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Row(
-                                  children: [
-                                    Text(
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
                                       '11 types of vivid golf balls',
                                       style: MyStyle.tx16B.copyWith(
                                         fontFamily: 'NotoSansKR-Medium',
-                                        fontSize: 14,
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
-                                    const SizedBox(
-                                      width: 14,
-                                    ),
-                                    RichText(
-                                      text: TextSpan(
-                                        children: [
-                                          TextSpan(
-                                            text: 'the rate of discount ',
-                                            style: MyStyle.tx14W.copyWith(
-                                              color: MyColor.purple,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w100,
-                                              fontFamily: 'NotoSansKR-Regular',
-                                            ),
+                                  ),
+                                  RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: 'the rate of discount ',
+                                          style: MyStyle.tx14W.copyWith(
+                                            color: MyColor.purple,
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.w100,
+                                            fontFamily: 'NotoSansKR-Regular',
                                           ),
-                                          TextSpan(
-                                            text: '10%',
-                                            style: MyStyle.tx14W.copyWith(
-                                              color: MyColor.purple,
-                                              // fontSize: 13,
-                                              fontWeight: FontWeight.w300,
-                                              fontFamily: 'NotoSansKR-SemiBold',
-                                            ),
+                                        ),
+                                        TextSpan(
+                                          text: '10%',
+                                          style: MyStyle.tx14W.copyWith(
+                                            color: MyColor.purple,
+                                            // fontSize: 13,
+                                            fontWeight: FontWeight.w300,
+                                            fontFamily: 'NotoSansKR-SemiBold',
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
 
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      '36,000',
-                                      style: MyStyle.tx13B.copyWith(
-                                          // fontWeight: FontWeight.w300,
-                                          fontFamily: 'NotoSansKR-SemiBold'),
+                              Row(
+                                children: [
+                                  Text(
+                                    '36,000',
+                                    style: MyStyle.tx13B.copyWith(
+                                        // fontWeight: FontWeight.w300,
+                                        fontFamily: 'NotoSansKR-SemiBold'),
+                                  ),
+                                  Text(
+                                    'won   |   ',
+                                    style: MyStyle.tx13B.copyWith(
+                                      fontWeight: FontWeight.w100,
+                                      fontFamily: 'NotoSansKR-Regular',
                                     ),
-                                    Text(
-                                      'won   |   ',
-                                      style: MyStyle.tx13B.copyWith(
-                                        fontWeight: FontWeight.w100,
-                                        fontFamily: 'NotoSansKR-Regular',
-                                      ),
+                                  ),
+                                  Text(
+                                    '40,000',
+                                    style: MyStyle.tx13B.copyWith(
+                                      fontFamily: 'NotoSansKR-Regular',
+                                      color: MyColor.black.withOpacity(0.7),
+                                      decoration: TextDecoration.lineThrough,
                                     ),
-                                    Text(
-                                      '40,000',
-                                      style: MyStyle.tx13B.copyWith(
-                                        fontFamily: 'NotoSansKR-Regular',
-                                        color: MyColor.black.withOpacity(0.7),
-                                        decoration: TextDecoration.lineThrough,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                               const SizedBox(
                                 height: 15,
                               ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Row(
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/badge.png',
-                                      width: 10,
-                                      height: 13,
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/badge.png',
+                                    width: 10,
+                                    height: 13,
+                                  ),
+                                  Text(
+                                    ' Promoted celebrity list',
+                                    style: MyStyle.tx14W.copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      color: MyColor.purple,
                                     ),
-                                    Text(
-                                      ' Promoted celebrity list',
-                                      style: MyStyle.tx14W.copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        color: MyColor.purple,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 30,
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                ],
                               ),
 
                               //  Images in Row
@@ -1819,8 +1809,8 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               // Img container
                               Container(
                                 // padding: const EdgeInsets.all(20.0),
-                                margin: const EdgeInsets.all(15.0),
-                                width: 351,
+                                margin: const EdgeInsets.symmetric(
+                                    horizontal: 2.0, vertical: 8.0),
                                 height: 476,
                                 color: MyColor.lgrey,
                                 child: const Center(
@@ -1832,7 +1822,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               ),
 
                               Padding(
-                                padding: const EdgeInsets.all(10.0),
+                                padding: const EdgeInsets.all(2.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   // mainAxisAlignment: MainAxisAlignment.start,
@@ -1841,9 +1831,9 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                         style: MyStyle.tx14B),
                                     const SizedBox(
                                       height: 10,
-                                    ),
-                                    const Divider(
-                                      thickness: 0,
+                                      child: Divider(
+                                        thickness: 0,
+                                      ),
                                     ),
                                     const Text(
                                       '- Delivery: CJ Logistics \n'
@@ -1853,9 +1843,9 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                     ),
                                     const SizedBox(
                                       height: 10,
-                                    ),
-                                    const Divider(
-                                      thickness: 0,
+                                      child: Divider(
+                                        thickness: 0,
+                                      ),
                                     ),
                                     Row(
                                       mainAxisAlignment:
@@ -1874,9 +1864,9 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                     ),
                                     const SizedBox(
                                       height: 10,
-                                    ),
-                                    const Divider(
-                                      thickness: 0,
+                                      child: const Divider(
+                                        thickness: 0,
+                                      ),
                                     ),
                                     Row(
                                       mainAxisAlignment:
@@ -1895,9 +1885,9 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                                     ),
                                     const SizedBox(
                                       height: 10,
-                                    ),
-                                    const Divider(
-                                      thickness: 0,
+                                      child: const Divider(
+                                        thickness: 0,
+                                      ),
                                     ),
                                     ListTileTheme(
                                       // contentPadding: const EdgeInsets.all(8.0),
@@ -2122,58 +2112,61 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                           ),
                         ),
                       ),
-                    ),
-                    // Image
+                      // Image
 
-                    // Bottom 2 Row
-                    Positioned(
-                      bottom: 0,
-                      left: 0,
-                      right: 0,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: InkWell(
-                              onTap: () {
-                                shoppingBasket();
-                              },
-                              child: Container(
-                                height: 44,
-                                color: MyColor.yellowamber,
-                                child: Center(
-                                  child: Text(
-                                    'A Shopping Basket',
-                                    style: MyStyle.tx14W.copyWith(
-                                      fontWeight: FontWeight.w500,
+                      // Bottom 2 Row
+                      Positioned(
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                  shoppingBasket();
+                                },
+                                child: Container(
+                                  height: 44,
+                                  color: MyColor.yellowamber,
+                                  child: Center(
+                                    child: Text(
+                                      'A Shopping Basket',
+                                      style: MyStyle.tx14W.copyWith(
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Expanded(
-                            child: InkWell(
-                              onTap: () {
-                                paymentSheet();
-                              },
-                              child: Container(
-                                height: 44,
-                                color: MyColor.purple,
-                                child: Center(
-                                  child: Text(
-                                    'Buy it right away',
-                                    style: MyStyle.tx14W.copyWith(
-                                      fontWeight: FontWeight.w500,
+                            Expanded(
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+
+                                  paymentSheet();
+                                },
+                                child: Container(
+                                  height: 44,
+                                  color: MyColor.purple,
+                                  child: Center(
+                                    child: Text(
+                                      'Buy it right away',
+                                      style: MyStyle.tx14W.copyWith(
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -3046,7 +3039,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
       isScrollControlled: true,
       builder: (BuildContext context) {
         return SizedBox(
-          height: MediaQuery.of(context).size.height * 0.35 + 7,
+          height: MediaQuery.of(context).size.height * 0.38,
           // width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
@@ -3081,6 +3074,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       'Point',
@@ -3089,9 +3083,9 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         fontFamily: 'NotoSansKR-Medium',
                       ),
                     ),
-                    const SizedBox(
-                      width: 80,
-                    ),
+                    // const SizedBox(
+                    //   width: 80,
+                    // ),
                     RichText(
                       text: TextSpan(
                         children: [
@@ -3111,9 +3105,9 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      width: 40,
-                    ),
+                    // const SizedBox(
+                    //   width: 40,
+                    // ),
                     InkWell(
                       onTap: () {
                         pointsSheet();
@@ -3151,45 +3145,65 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(4.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 1,
-                          color: MyColor.black.withOpacity(0.5),
-                        ),
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(4.0),
+                    margin: const EdgeInsets.all(8.0),
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    height: 44,
+                    child: TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      style: MyStyle.tx13B.copyWith(
+                        fontSize: 12,
                       ),
-                      height: 32,
-                      width: 260,
-                      child: Text(
-                        'Please input the point.',
-                        style: MyStyle.tx13B.copyWith(
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.all(10.0),
+                        isDense: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: MyColor.black.withOpacity(0.5),
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(0.6),
+                        ),
+                        border: const OutlineInputBorder(),
+                        hintText: 'Please input the point.',
+                        hintStyle: MyStyle.tx13B.copyWith(
                           color: MyColor.black.withOpacity(0.3),
+                          fontFamily: 'NotoSansKR-Regular',
                         ),
                       ),
+                      controller: pointController,
+                      keyboardType: TextInputType.number,
+                      onChanged: (value) {
+                        setState(() {});
+                      },
                     ),
-                    const SizedBox(
-                      width: 5,
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    'Points',
+                    textAlign: TextAlign.end,
+                    style: MyStyle.tx14B.copyWith(
+                      fontSize: 14,
+                      color: MyColor.black.withOpacity(0.5),
                     ),
-                    Text(
-                      'Points',
-                      textAlign: TextAlign.end,
-                      style: MyStyle.tx14B.copyWith(
-                        fontSize: 14,
-                        color: MyColor.black.withOpacity(0.5),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               InkWell(
                 onTap: () {
                   setState(() {
-                    onQuizClick = false;
+                    onQuizClick = true;
                   });
                   Navigator.pop(context);
                   showDialog(
@@ -3239,7 +3253,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
       isScrollControlled: true,
       builder: (BuildContext context) {
         return SizedBox(
-          height: MediaQuery.of(context).size.height * 0.8,
+          height: MediaQuery.of(context).size.height * 0.81,
           width: MediaQuery.of(context).size.width,
           child: Column(
             children: [
@@ -3257,11 +3271,16 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                         fontSize: 15,
                       ),
                     ),
-                    Image.asset(
-                      'assets/icons/Circle.png',
-                      height: 24,
-                      width: 24,
-                      color: MyColor.black,
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Image.asset(
+                        'assets/icons/Circle.png',
+                        height: 24,
+                        width: 24,
+                        color: MyColor.black,
+                      ),
                     ),
                   ],
                 ),
@@ -3307,8 +3326,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 28.0, vertical: 10.0),
-                      // margin: const EdgeInsets.symmetric(
-                      //     horizontal: 20.0, vertical: 20.0),
                       decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
@@ -3367,11 +3384,14 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 },
                 child: Container(
                   padding: const EdgeInsets.all(12),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: MyColor.purple,
                   ),
-                  width: 346,
                   height: 56,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -3427,8 +3447,11 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 28.0, vertical: 10.0),
-                      // margin: const EdgeInsets.symmetric(
-                      //     horizontal: 20.0, vertical: 20.0),
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 2,
+                      ),
+                      height: 56,
                       decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
@@ -3466,11 +3489,14 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 },
                 child: Container(
                   padding: const EdgeInsets.all(12),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: MyColor.purple,
                   ),
-                  width: 346,
                   height: 56,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -3526,8 +3552,11 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 28.0, vertical: 10.0),
-                      // margin: const EdgeInsets.symmetric(
-                      //     horizontal: 20.0, vertical: 20.0),
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 2,
+                      ),
+                      height: 56,
                       decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
@@ -3565,11 +3594,12 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 },
                 child: Container(
                   padding: const EdgeInsets.all(12),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: MyColor.purple,
                   ),
-                  width: 346,
                   height: 56,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -3634,8 +3664,11 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 28.0, vertical: 10.0),
-                      // margin: const EdgeInsets.symmetric(
-                      //     horizontal: 20.0, vertical: 20.0),
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 2,
+                      ),
+                      height: 56,
                       decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
@@ -3673,11 +3706,12 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 },
                 child: Container(
                   padding: const EdgeInsets.all(12),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: MyColor.purple,
                   ),
-                  width: 346,
                   height: 56,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -3734,6 +3768,11 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 28.0, vertical: 10.0),
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 2,
+                      ),
+                      height: 56,
                       decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
@@ -3771,11 +3810,14 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                 },
                 child: Container(
                   padding: const EdgeInsets.all(12),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: MyColor.purple,
                   ),
-                  width: 346,
                   height: 56,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -3830,10 +3872,13 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                   //Interactive toast, set [isIgnoring] false.
                   showToastWidget(
                     Container(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 2,
+                      ),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 28.0, vertical: 10.0),
-                      // margin: const EdgeInsets.symmetric(
-                      //     horizontal: 20.0, vertical: 20.0),
+                      height: 56,
                       decoration: ShapeDecoration(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0),
@@ -3936,57 +3981,10 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
       color: Colors.transparent,
       child: Column(
         children: [
-          const SizedBox(height: 18),
-          Container(
-            height: 40,
-            width: 351,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: MyColor.yellowamber.withOpacity(0.3),
-            ),
-            child: Center(
-              child: Text(
-                'An unexpected quiz!',
-                style: MyStyle.tx14W.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 25,
-          ),
+          SizedBox(height: MediaQuery.of(context).size.width * 0.3),
 
           // Timer
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.all(4),
-                height: 24,
-                width: 94,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: MyColor.white.withOpacity(0.2),
-                ),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/icons/clock.png',
-                      height: 16,
-                      width: 16,
-                    ),
-                    Text(
-                      ' 29:59:59',
-                      style: MyStyle.tx11W.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
+
           AlertDialog(
             alignment: Alignment.center,
             backgroundColor: MyColor.white.withOpacity(0.8),
@@ -4011,7 +4009,7 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                     return InkWell(
                       onTap: () {
                         setState(() {
-                          onQuizClick = true;
+                          onQuizClick = !onQuizClick;
                         });
                         if (onQuizClick) {
                           print('yellow');

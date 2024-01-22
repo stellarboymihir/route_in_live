@@ -33,29 +33,100 @@ class _DashboardState extends State<Dashboard> {
             pageIndex = value;
           });
         },
+        backgroundColor: MyColor.white,
         currentIndex: pageIndex,
         selectedItemColor: MyColor.orange,
-        unselectedItemColor: MyColor.black,
+        unselectedItemColor: MyColor.black.withOpacity(0.3),
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: true,
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Image.asset(
+                'assets/icons/home.png',
+                height: 25.75,
+                width: 23.75,
+              ),
+            ),
+            activeIcon: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Image.asset(
+                'assets/icons/homeo.png',
+                height: 25.75,
+                width: 23.75,
+              ),
+            ),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.message_sharp),
+            icon: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Image.asset(
+                'assets/icons/message.png',
+                height: 25.75,
+                width: 23.75,
+              ),
+            ),
+            activeIcon: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Image.asset(
+                'assets/icons/messageo.png',
+                height: 25.75,
+                width: 23.75,
+              ),
+            ),
             label: "Feed",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.card_giftcard),
+            icon: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Image.asset(
+                'assets/icons/store.png',
+                height: 25.75,
+                width: 23.75,
+              ),
+            ),
+            activeIcon: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Image.asset(
+                'assets/icons/storeo.png',
+                height: 25.75,
+                width: 23.75,
+              ),
+            ),
             label: "Store",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
+            icon: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Image.asset(
+                'assets/icons/profile.png',
+                height: 25.75,
+                width: 23.75,
+              ),
+            ),
+            activeIcon: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Image.asset(
+                'assets/icons/profileo.png',
+                height: 25.75,
+                width: 23.75,
+              ),
+            ),
             label: "Profile",
           ),
         ],
+        selectedLabelStyle: MyStyle.tx10O.copyWith(
+          fontFamily: 'NotoSansKR-Medium',
+          fontWeight: FontWeight.w700,
+        ),
+        unselectedLabelStyle: MyStyle.tx10.copyWith(
+          fontWeight: FontWeight.w300,
+          fontFamily: 'NotoSansKR-Regular',
+          color: MyColor.black.withOpacity(0.3),
+          decoration: TextDecoration.none,
+        ),
       ),
       body: pages[pageIndex],
     );

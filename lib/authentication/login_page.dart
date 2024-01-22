@@ -261,27 +261,28 @@ class _LoginPageState extends State<LoginPage> {
 
   void bottomSheet1() {
     showModalBottomSheet(
-        backgroundColor: Colors.transparent,
+        backgroundColor: MyColor.black.withOpacity(0.7),
+        isScrollControlled: true,
         context: context,
         builder: (BuildContext context) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              // mainAxisSize: MainAxisSize.min,
               children: [
-                // const SizedBox(
-                //   height: 185,
-                // ),
+                SizedBox(
+                  height: (MediaQuery.sizeOf(context).height) * 0.68,
+                ),
                 Text(
                   'Login',
                   style:
                       MyStyle.tx18.copyWith(fontSize: 17, letterSpacing: 0.15),
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 SizedBox(
-                  height: 40,
+                  // height: 40,
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(
                     onPressed: () {},
@@ -331,7 +332,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 70,
+                  height: 20,
                 ),
               ],
             ),
@@ -341,24 +342,25 @@ class _LoginPageState extends State<LoginPage> {
 
   void bottomSheet2() {
     showModalBottomSheet(
-        backgroundColor: Colors.transparent,
+        backgroundColor: MyColor.black.withOpacity(0.7),
         context: context,
+        isScrollControlled: true,
         builder: (BuildContext context) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // const SizedBox(
-                //   height: 185,
-                // ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.68,
+                ),
                 Text(
                   'Login',
                   style:
                       MyStyle.tx18.copyWith(fontSize: 17, letterSpacing: 0.15),
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 SizedBox(
                   height: 40,
@@ -413,7 +415,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 70,
+                  height: 20,
                 ),
               ],
             ),
@@ -423,7 +425,8 @@ class _LoginPageState extends State<LoginPage> {
 
   void bottomSheet3() {
     showModalBottomSheet(
-        backgroundColor: Colors.transparent,
+        backgroundColor: MyColor.black.withOpacity(0.7),
+        isScrollControlled: true,
         context: context,
         builder: (BuildContext context) {
           return Padding(
@@ -431,16 +434,16 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // const SizedBox(
-                //   height: 185,
-                // ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.68,
+                ),
                 Text(
                   'Login',
                   style:
                       MyStyle.tx18.copyWith(fontSize: 17, letterSpacing: 0.15),
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 10,
                 ),
                 SizedBox(
                   height: 40,
@@ -475,7 +478,7 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius: BorderRadius.circular(4),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Log in with a different Google account',
                       style: MyStyle.tx14W,
                     ),
@@ -495,7 +498,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 70,
+                  height: 20,
                 ),
               ],
             ),

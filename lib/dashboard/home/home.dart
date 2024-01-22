@@ -18,6 +18,7 @@ class _HomePageState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0.0,
         automaticallyImplyLeading: false,
         title: Image.asset('assets/images/Frame.png'),
         centerTitle: true,

@@ -327,6 +327,7 @@ class _MyScreenState extends State<MyScreen> {
                           'assets/images/img8.png',
                           fit: BoxFit.fill,
                           height: 264,
+                          width: MediaQuery.of(context).size.width,
                         );
                       },
                     ),
@@ -369,32 +370,35 @@ class _MyScreenState extends State<MyScreen> {
                             width: 24,
                           ),
                         ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: 55.0, right: 55.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: imgList.asMap().entries.map((entry) {
-                              print(entry);
-                              return Row(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () =>
-                                        _controller.animateToPage(entry.key),
-                                    child: Container(
-                                      padding: const EdgeInsets.all(8.0),
-                                      width: 15,
-                                      height: 4.0,
-                                      margin: const EdgeInsets.only(right: 10),
-                                      color: _current == entry.key
-                                          ? MyColor.orange
-                                          : MyColor.grey,
-                                      // color: MyColor.orange,
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(left: 55.0, right: 55.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: imgList.asMap().entries.map((entry) {
+                                print(entry);
+                                return Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () =>
+                                          _controller.animateToPage(entry.key),
+                                      child: Container(
+                                        padding: const EdgeInsets.all(8.0),
+                                        width: 15,
+                                        height: 4.0,
+                                        margin:
+                                            const EdgeInsets.only(right: 10),
+                                        color: _current == entry.key
+                                            ? MyColor.orange
+                                            : MyColor.grey,
+                                        // color: MyColor.orange,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              );
-                            }).toList(),
+                                  ],
+                                );
+                              }).toList(),
+                            ),
                           ),
                         ),
                         InkWell(
@@ -453,26 +457,25 @@ class _MyScreenState extends State<MyScreen> {
                             width: 44,
                           ),
                         ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Running shoes with comfo...',
-                              style: MyStyle.tx13B.copyWith(
-                                letterSpacing: 0.33,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Running shoes with comfo...',
+                                style: MyStyle.tx13B.copyWith(
+                                  letterSpacing: 0.33,
+                                ),
                               ),
-                            ),
-                            Text(
-                              'Running ㅣ 50,000 won',
-                              style: MyStyle.tx11.copyWith(
-                                fontFamily: 'NotoSansKR-Thin',
-                                fontWeight: FontWeight.w400,
-                              ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          width: 4,
+                              Text(
+                                'Running ㅣ 50,000 won',
+                                style: MyStyle.tx11.copyWith(
+                                  fontFamily: 'NotoSansKR-Thin',
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                         Container(
                           height: 30,
@@ -531,7 +534,6 @@ class _MyScreenState extends State<MyScreen> {
                     ),
                     Container(
                       height: 32,
-                      width: 340,
                       margin: EdgeInsets.all(8.0),
                       padding: EdgeInsets.only(left: 10.0),
                       decoration: BoxDecoration(
@@ -682,6 +684,7 @@ class _MyScreenState extends State<MyScreen> {
                           'assets/images/img26.png',
                           fit: BoxFit.fill,
                           height: 264,
+                          width: MediaQuery.of(context).size.width,
                         );
                       },
                     ),
@@ -724,32 +727,35 @@ class _MyScreenState extends State<MyScreen> {
                             width: 24,
                           ),
                         ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: 55.0, right: 55.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: imgList.asMap().entries.map((entry) {
-                              print(entry);
-                              return Row(
-                                children: [
-                                  GestureDetector(
-                                    onTap: () =>
-                                        _controller.animateToPage(entry.key),
-                                    child: Container(
-                                      padding: const EdgeInsets.all(8.0),
-                                      width: 15,
-                                      height: 4.0,
-                                      margin: const EdgeInsets.only(right: 10),
-                                      color: _current == entry.key
-                                          ? MyColor.orange
-                                          : MyColor.grey,
-                                      // color: MyColor.orange,
+                        Expanded(
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.only(left: 55.0, right: 55.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: imgList.asMap().entries.map((entry) {
+                                print(entry);
+                                return Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () =>
+                                          _controller.animateToPage(entry.key),
+                                      child: Container(
+                                        padding: const EdgeInsets.all(8.0),
+                                        width: 15,
+                                        height: 4.0,
+                                        margin:
+                                            const EdgeInsets.only(right: 10),
+                                        color: _current == entry.key
+                                            ? MyColor.orange
+                                            : MyColor.grey,
+                                        // color: MyColor.orange,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              );
-                            }).toList(),
+                                  ],
+                                );
+                              }).toList(),
+                            ),
                           ),
                         ),
                         InkWell(

@@ -57,14 +57,13 @@ class _FollowingScreenState extends State<FollowingScreen> {
                       const SizedBox(
                         width: 13,
                       ),
-                      Text(
-                        'Merry00',
-                        style: MyStyle.tx16B.copyWith(
-                          fontWeight: FontWeight.w700,
+                      Expanded(
+                        child: Text(
+                          'Merry00',
+                          style: MyStyle.tx16B.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 145,
                       ),
                       InkWell(
                         onTap: () {
@@ -136,6 +135,7 @@ class _FollowingScreenState extends State<FollowingScreen> {
                       'assets/images/img10.png',
                       fit: BoxFit.fill,
                       height: 264,
+                      width: MediaQuery.of(context).size.width,
                     );
                   },
                 ),
@@ -179,31 +179,33 @@ class _FollowingScreenState extends State<FollowingScreen> {
                       ),
                     ),
                     // Scroll Images Indicator
-                    Padding(
-                      padding: const EdgeInsets.only(left: 55.0, right: 55.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: imgList.asMap().entries.map((entry) {
-                          print(entry);
-                          return Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () =>
-                                    _controller.animateToPage(entry.key),
-                                child: Container(
-                                  padding: const EdgeInsets.all(8.0),
-                                  width: 15,
-                                  height: 4.0,
-                                  margin: const EdgeInsets.only(right: 10),
-                                  color: _current == entry.key
-                                      ? MyColor.orange
-                                      : MyColor.grey,
-                                  // color: MyColor.orange,
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 55.0, right: 55.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: imgList.asMap().entries.map((entry) {
+                            print(entry);
+                            return Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () =>
+                                      _controller.animateToPage(entry.key),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8.0),
+                                    width: 15,
+                                    height: 4.0,
+                                    margin: const EdgeInsets.only(right: 10),
+                                    color: _current == entry.key
+                                        ? MyColor.orange
+                                        : MyColor.grey,
+                                    // color: MyColor.orange,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          );
-                        }).toList(),
+                              ],
+                            );
+                          }).toList(),
+                        ),
                       ),
                     ),
                     Image.asset(
@@ -278,7 +280,6 @@ class _FollowingScreenState extends State<FollowingScreen> {
                 ),
                 Container(
                   height: 32,
-                  width: 340,
                   margin: EdgeInsets.all(8.0),
                   padding: EdgeInsets.only(left: 10.0),
                   decoration: BoxDecoration(
@@ -327,8 +328,6 @@ class _FollowingScreenState extends State<FollowingScreen> {
           ),
           Container(
             margin: EdgeInsets.all(10.0),
-            // height: MediaQuery.of(context).size.height,
-            // width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: MyColor.white,
@@ -350,14 +349,13 @@ class _FollowingScreenState extends State<FollowingScreen> {
                       const SizedBox(
                         width: 13,
                       ),
-                      Text(
-                        'sosososo',
-                        style: MyStyle.tx16B.copyWith(
-                          fontWeight: FontWeight.w700,
+                      Expanded(
+                        child: Text(
+                          'sosososo',
+                          style: MyStyle.tx16B.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 135,
                       ),
                       InkWell(
                         onTap: () {
@@ -428,6 +426,7 @@ class _FollowingScreenState extends State<FollowingScreen> {
                       'assets/images/img8.png',
                       fit: BoxFit.fill,
                       height: 264,
+                      width: MediaQuery.of(context).size.width,
                     );
                   },
                 ),
@@ -470,31 +469,33 @@ class _FollowingScreenState extends State<FollowingScreen> {
                         width: 24,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 55.0, right: 55.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: imgList.asMap().entries.map((entry) {
-                          print(entry);
-                          return Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () =>
-                                    _controller.animateToPage(entry.key),
-                                child: Container(
-                                  padding: const EdgeInsets.all(8.0),
-                                  width: 15,
-                                  height: 4.0,
-                                  margin: const EdgeInsets.only(right: 10),
-                                  color: _current == entry.key
-                                      ? MyColor.orange
-                                      : MyColor.grey,
-                                  // color: MyColor.orange,
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 55.0, right: 55.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: imgList.asMap().entries.map((entry) {
+                            print(entry);
+                            return Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () =>
+                                      _controller.animateToPage(entry.key),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8.0),
+                                    width: 15,
+                                    height: 4.0,
+                                    margin: const EdgeInsets.only(right: 10),
+                                    color: _current == entry.key
+                                        ? MyColor.orange
+                                        : MyColor.grey,
+                                    // color: MyColor.orange,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          );
-                        }).toList(),
+                              ],
+                            );
+                          }).toList(),
+                        ),
                       ),
                     ),
                     Image.asset(
@@ -571,7 +572,6 @@ class _FollowingScreenState extends State<FollowingScreen> {
                 ),
                 Container(
                   height: 32,
-                  width: 340,
                   margin: EdgeInsets.all(8.0),
                   padding: EdgeInsets.only(left: 10.0),
                   decoration: BoxDecoration(

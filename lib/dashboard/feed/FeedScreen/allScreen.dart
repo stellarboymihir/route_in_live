@@ -100,56 +100,49 @@ class _AllScreenState extends State<AllScreen> {
                       const SizedBox(
                         width: 13,
                       ),
-                      Text(
-                        'Run',
-                        style: MyStyle.tx16B.copyWith(
-                          fontWeight: FontWeight.w700,
+                      Expanded(
+                        child: Text(
+                          'Run',
+                          style: MyStyle.tx16B.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 175,
                       ),
                       InkWell(
                         onTap: () {
-                          isFollowing[0] = true;
+                          setState(() {
+                            isFollowing[0] = !isFollowing[0];
+                          });
                         },
-                        child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              isFollowing[0] = !isFollowing[0];
-                            });
-                          },
-                          child: Container(
-                            alignment: Alignment.bottomRight,
-                            height: 24,
-                            width: 66,
-                            padding: const EdgeInsets.all(2.0),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 1,
-                              ),
-                              borderRadius: BorderRadius.circular(12),
-                              color: isFollowing[0]
-                                  ? MyColor.white
-                                  : MyColor.purple,
+                        child: Container(
+                          alignment: Alignment.bottomRight,
+                          height: 24,
+                          width: 66,
+                          padding: const EdgeInsets.all(2.0),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
                             ),
-                            child: Center(
-                              child: isFollowing[0]
-                                  ? Text(
-                                      'Follow',
-                                      style: MyStyle.tx12B.copyWith(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 11,
-                                      ),
-                                    )
-                                  : Text(
-                                      'Following',
-                                      style: MyStyle.tx12W.copyWith(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 11,
-                                      ),
+                            borderRadius: BorderRadius.circular(12),
+                            color:
+                                isFollowing[0] ? MyColor.white : MyColor.purple,
+                          ),
+                          child: Center(
+                            child: isFollowing[0]
+                                ? Text(
+                                    'Follow',
+                                    style: MyStyle.tx12B.copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 11,
                                     ),
-                            ),
+                                  )
+                                : Text(
+                                    'Following',
+                                    style: MyStyle.tx12W.copyWith(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 11,
+                                    ),
+                                  ),
                           ),
                         ),
                       ),
@@ -178,6 +171,7 @@ class _AllScreenState extends State<AllScreen> {
                       'assets/images/img8.png',
                       fit: BoxFit.fill,
                       height: 264,
+                      width: MediaQuery.of(context).size.width,
                     );
                   },
                 ),
@@ -220,31 +214,33 @@ class _AllScreenState extends State<AllScreen> {
                         width: 24,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 55.0, right: 55.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: imgList.asMap().entries.map((entry) {
-                          print(entry);
-                          return Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () =>
-                                    _controller.animateToPage(entry.key),
-                                child: Container(
-                                  padding: const EdgeInsets.all(8.0),
-                                  width: 15,
-                                  height: 4.0,
-                                  margin: const EdgeInsets.only(right: 10),
-                                  color: _current == entry.key
-                                      ? MyColor.orange
-                                      : MyColor.grey,
-                                  // color: MyColor.orange,
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 55.0, right: 55.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: imgList.asMap().entries.map((entry) {
+                            print(entry);
+                            return Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () =>
+                                      _controller.animateToPage(entry.key),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8.0),
+                                    width: 15,
+                                    height: 4.0,
+                                    margin: const EdgeInsets.only(right: 10),
+                                    color: _current == entry.key
+                                        ? MyColor.orange
+                                        : MyColor.grey,
+                                    // color: MyColor.orange,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          );
-                        }).toList(),
+                              ],
+                            );
+                          }).toList(),
+                        ),
                       ),
                     ),
                     Image.asset(
@@ -298,26 +294,25 @@ class _AllScreenState extends State<AllScreen> {
                         width: 44,
                       ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Running shoes with comfo...',
-                          style: MyStyle.tx13B.copyWith(
-                            letterSpacing: 0.33,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Running shoes with comfo...',
+                            style: MyStyle.tx13B.copyWith(
+                              letterSpacing: 0.33,
+                            ),
                           ),
-                        ),
-                        Text(
-                          'Running ㅣ 50,000 won',
-                          style: MyStyle.tx11.copyWith(
-                            fontFamily: 'NotoSansKR-Thin',
-                            fontWeight: FontWeight.w400,
-                          ),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 4,
+                          Text(
+                            'Running ㅣ 50,000 won',
+                            style: MyStyle.tx11.copyWith(
+                              fontFamily: 'NotoSansKR-Thin',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                     InkWell(
                       onTap: () {
@@ -381,7 +376,6 @@ class _AllScreenState extends State<AllScreen> {
                 ),
                 Container(
                   height: 32,
-                  width: 340,
                   margin: const EdgeInsets.all(8.0),
                   padding: const EdgeInsets.only(left: 10.0),
                   decoration: BoxDecoration(
@@ -453,14 +447,13 @@ class _AllScreenState extends State<AllScreen> {
                       const SizedBox(
                         width: 13,
                       ),
-                      Text(
-                        'Merry00',
-                        style: MyStyle.tx16B.copyWith(
-                          fontWeight: FontWeight.w700,
+                      Expanded(
+                        child: Text(
+                          'Merry00',
+                          style: MyStyle.tx16B.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        width: 145,
                       ),
                       InkWell(
                         onTap: () {
@@ -532,6 +525,7 @@ class _AllScreenState extends State<AllScreen> {
                       'assets/images/img10.png',
                       fit: BoxFit.fill,
                       height: 264,
+                      width: MediaQuery.of(context).size.width,
                     );
                   },
                 ),
@@ -574,31 +568,33 @@ class _AllScreenState extends State<AllScreen> {
                         width: 24,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 55.0, right: 55.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: imgList.asMap().entries.map((entry) {
-                          print(entry);
-                          return Row(
-                            children: [
-                              GestureDetector(
-                                onTap: () =>
-                                    _controller.animateToPage(entry.key),
-                                child: Container(
-                                  padding: const EdgeInsets.all(8.0),
-                                  width: 15,
-                                  height: 4.0,
-                                  margin: const EdgeInsets.only(right: 10),
-                                  color: _current == entry.key
-                                      ? MyColor.orange
-                                      : MyColor.grey,
-                                  // color: MyColor.orange,
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 55.0, right: 55.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: imgList.asMap().entries.map((entry) {
+                            print(entry);
+                            return Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () =>
+                                      _controller.animateToPage(entry.key),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(8.0),
+                                    width: 15,
+                                    height: 4.0,
+                                    margin: const EdgeInsets.only(right: 10),
+                                    color: _current == entry.key
+                                        ? MyColor.orange
+                                        : MyColor.grey,
+                                    // color: MyColor.orange,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          );
-                        }).toList(),
+                              ],
+                            );
+                          }).toList(),
+                        ),
                       ),
                     ),
                     Image.asset(
@@ -743,13 +739,13 @@ class _AllScreenState extends State<AllScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            right: 12.0, top: 15.0, bottom: 5.0),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              right: 12.0, top: 15.0, bottom: 5.0),
                           child: Image.asset(
                             'assets/icons/cancel.png',
                             height: 20,
@@ -761,39 +757,36 @@ class _AllScreenState extends State<AllScreen> {
                   ),
                   Expanded(
                     child: SingleChildScrollView(
-                        child: Column(
-                      children: [
-                        // Images for 1st Row
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 9.0, vertical: 8.0),
-                          child: Expanded(
+                      child: Column(
+                        children: [
+                          // Images for 1st Row
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 9.0, vertical: 8.0),
                             child: Row(
                               children: [
                                 // 1st Image
-                                InkWell(
-                                  onTap: () {
-                                    // detailSheet();
-                                    // setState(() {
-                                    //   isModelProduct == true
-                                    //       ? supportSheet()
-                                    //       : detailSheet();
-                                    // }
-                                    // );
-                                  },
-                                  child: Expanded(
+                                Expanded(
+                                  child: InkWell(
+                                    onTap: () {
+                                      // detailSheet();
+                                      // setState(() {
+                                      //   isModelProduct == true
+                                      //       ? supportSheet()
+                                      //       : detailSheet();
+                                      // }
+                                      // );
+                                    },
                                     child: Container(
                                       padding: const EdgeInsets.only(top: 15.0),
                                       color: MyColor.black.withOpacity(0.05),
                                       height: 236,
-                                      width: 172,
                                       child: Column(
                                         children: [
                                           Stack(children: [
                                             Image.asset(
                                               'assets/images/img1.png',
                                               height: 172,
-                                              width: 172,
                                             ),
                                             Positioned(
                                               top: 10,
@@ -864,7 +857,6 @@ class _AllScreenState extends State<AllScreen> {
                                 const SizedBox(
                                   width: 10,
                                 ),
-
                                 // 2nd Image
                                 Expanded(
                                   child: InkWell(
@@ -879,7 +871,6 @@ class _AllScreenState extends State<AllScreen> {
                                       padding: const EdgeInsets.only(top: 15.0),
                                       color: MyColor.black.withOpacity(0.05),
                                       height: 236,
-                                      width: 172,
                                       child: Column(
                                         children: [
                                           Stack(
@@ -887,7 +878,6 @@ class _AllScreenState extends State<AllScreen> {
                                               Image.asset(
                                                 'assets/images/img2.png',
                                                 height: 172,
-                                                width: 172,
                                               ),
                                               Positioned(
                                                 top: 10,
@@ -958,12 +948,10 @@ class _AllScreenState extends State<AllScreen> {
                               ],
                             ),
                           ),
-                        ),
 
-                        //  Images for 2nd Row
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Expanded(
+                          // //  Images for 2nd Row
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: Row(
                               children: [
                                 // 3rd Image
@@ -972,13 +960,11 @@ class _AllScreenState extends State<AllScreen> {
                                     padding: const EdgeInsets.only(top: 15.0),
                                     color: MyColor.black.withOpacity(0.05),
                                     height: 236,
-                                    width: 172,
                                     child: Column(
                                       children: [
                                         Image.asset(
                                           'assets/images/img3.png',
                                           height: 172,
-                                          width: 172,
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.symmetric(
@@ -1033,13 +1019,11 @@ class _AllScreenState extends State<AllScreen> {
                                     padding: const EdgeInsets.only(top: 15.0),
                                     color: MyColor.black.withOpacity(0.05),
                                     height: 236,
-                                    width: 172,
                                     child: Column(
                                       children: [
                                         Image.asset(
                                           'assets/images/img4.png',
                                           height: 172,
-                                          width: 172,
                                         ),
                                         Row(
                                           mainAxisAlignment:
@@ -1089,12 +1073,10 @@ class _AllScreenState extends State<AllScreen> {
                               ],
                             ),
                           ),
-                        ),
 
-                        //  Images for 3rd Row
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Expanded(
+                          //  Images for 3rd Row
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: Row(
                               children: [
                                 // 5th Image
@@ -1103,13 +1085,11 @@ class _AllScreenState extends State<AllScreen> {
                                     padding: const EdgeInsets.only(top: 15.0),
                                     color: MyColor.black.withOpacity(0.05),
                                     height: 236,
-                                    width: 172,
                                     child: Column(
                                       children: [
                                         Image.asset(
                                           'assets/images/img5.png',
                                           height: 172,
-                                          width: 172,
                                         ),
                                         Row(
                                           mainAxisAlignment:
@@ -1166,13 +1146,11 @@ class _AllScreenState extends State<AllScreen> {
                                     padding: const EdgeInsets.only(top: 15.0),
                                     color: MyColor.black.withOpacity(0.05),
                                     height: 236,
-                                    width: 172,
                                     child: Column(
                                       children: [
                                         Image.asset(
                                           'assets/images/img6.png',
                                           height: 172,
-                                          width: 172,
                                         ),
                                         Row(
                                           mainAxisAlignment:
@@ -1222,9 +1200,9 @@ class _AllScreenState extends State<AllScreen> {
                               ],
                             ),
                           ),
-                        ),
-                      ],
-                    )),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),

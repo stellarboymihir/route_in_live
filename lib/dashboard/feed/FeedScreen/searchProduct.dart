@@ -80,7 +80,8 @@ class _SearchProductState extends State<SearchProduct> {
           // *** Search Bar ***
           Container(
             margin: const EdgeInsets.all(12.0),
-            height: 32,
+            height: 40,
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: MyColor.black.withOpacity(0.05),

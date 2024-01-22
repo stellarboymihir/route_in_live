@@ -41,7 +41,8 @@ class _EditProfileState extends State<EditProfile> {
         centerTitle: true,
         actions: [
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding:
+                EdgeInsets.only(left: 8.0, top: 8.0, bottom: 8.0, right: 16.0),
             child: InkWell(
               onTap: () {
                 Navigator.pop(context);
@@ -263,31 +264,35 @@ class _EditProfileState extends State<EditProfile> {
                   },
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RichText(
-                      text: TextSpan(
-                        children: [
-                          TextSpan(
-                              text: 'Please register the category of interest ',
-                              style: MyStyle.tx16O.copyWith(
-                                fontSize: 14,
-                              )),
-                          TextSpan(
-                            text: '(Max 3)',
-                            style: MyStyle.tx12O.copyWith(
-                              fontWeight: FontWeight.w400,
-                              fontFamily: 'NotoSansKR-Medium',
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                                text:
+                                    'Please register the category of interest ',
+                                style: MyStyle.tx16O.copyWith(
+                                  fontSize: 14,
+                                )),
+                            TextSpan(
+                              text: '(Max 3)',
+                              style: MyStyle.tx12O.copyWith(
+                                fontWeight: FontWeight.w400,
+                                fontFamily: 'NotoSansKR-Medium',
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
 
               //  Golf
