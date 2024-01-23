@@ -669,7 +669,6 @@ class _AllScreenState extends State<AllScreen> {
                 ),
                 Container(
                   height: 32,
-                  width: 340,
                   margin: const EdgeInsets.all(8.0),
                   padding: const EdgeInsets.only(left: 10.0),
                   decoration: BoxDecoration(

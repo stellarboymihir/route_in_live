@@ -33,12 +33,15 @@ class _StoredItemState extends State<StoredItem> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'A total of 8 cases',
-              style: MyStyle.tx16B.copyWith(
-                fontFamily: 'NotoSansKR-SemiBold',
-                fontWeight: FontWeight.w700,
-                fontSize: 15,
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, top: 4.0),
+              child: Text(
+                'A total of 8 cases',
+                style: MyStyle.tx16B.copyWith(
+                  fontFamily: 'NotoSansKR-SemiBold',
+                  fontWeight: FontWeight.w700,
+                  fontSize: 15,
+                ),
               ),
             ),
             const SizedBox(

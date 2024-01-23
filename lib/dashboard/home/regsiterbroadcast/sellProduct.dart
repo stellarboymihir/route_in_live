@@ -35,7 +35,7 @@ class _SellProductState extends State<SellProduct> {
             fontFamily: 'NotoSansKR-Regular',
           ),
         ),
-        bottom: PreferredSize(
+        bottom: const PreferredSize(
           preferredSize: Size.fromHeight(0),
           child: Divider(
             thickness: 0,
@@ -694,7 +694,6 @@ class _SellProductState extends State<SellProduct> {
         context: context,
         builder: (BuildContext context) {
           return SizedBox(
-            height: (MediaQuery.of(context).size.height * 0.5) + 64,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(

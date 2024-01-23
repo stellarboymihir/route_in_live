@@ -12,13 +12,19 @@ class Purchase extends StatefulWidget {
 }
 
 class _PurchaseState extends State<Purchase> {
+  TextEditingController recipName = TextEditingController();
+  TextEditingController homeAdd = TextEditingController();
+  TextEditingController detailAdd = TextEditingController();
+  TextEditingController phoneNumber = TextEditingController();
+  TextEditingController pointsController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColor.grey,
       appBar: AppBar(
         backgroundColor: MyColor.white,
-        scrolledUnderElevation: 0.0,
+        scrolledUnderElevation: 0,
         title: Text(
           'Purchase',
           textAlign: TextAlign.center,
@@ -177,26 +183,61 @@ class _PurchaseState extends State<Purchase> {
                       'Recipient',
                       style: MyStyle.tx14B.copyWith(
                         fontSize: 14,
-                        fontFamily: 'NotoSansKR-Regualar',
+                        fontFamily: 'NotoSansKR-Regular',
                       ),
                     ),
                     Container(
-                      height: 32,
+                      height: 42,
                       width: MediaQuery.of(context).size.width,
-                      padding: const EdgeInsets.all(6.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 0.4,
-                          color: MyColor.black.withOpacity(0.5),
-                        ),
-                        borderRadius: BorderRadius.circular(0.6),
-                      ),
-                      child: Text(
-                        'Please enter the recipient\'s name.',
-                        textAlign: TextAlign.start,
+                      padding: const EdgeInsets.all(0.0),
+                      // decoration: BoxDecoration(
+                      //   border: Border.all(
+                      //     width: 0.4,
+                      //     color: MyColor.black.withOpacity(0.5),
+                      //   ),
+                      //   borderRadius: BorderRadius.circular(0.6),
+                      // ),
+                      child: TextFormField(
+                        buildCounter: (context,
+                                {required currentLength,
+                                required isFocused,
+                                maxLength}) =>
+                            const SizedBox(),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please Enter some Text';
+                          }
+                          return null;
+                        },
                         style: MyStyle.tx13B.copyWith(
-                          color: MyColor.black.withOpacity(0.3),
+                          fontFamily: 'NotoSansKR-Regular',
                         ),
+                        controller: recipName,
+                        maxLines: 1,
+                        keyboardType: TextInputType.text,
+                        onChanged: (value) {
+                          setState(() {});
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Please enter the recipient\'s name.',
+                          hintStyle: MyStyle.tx13B.copyWith(
+                            color: MyColor.black.withOpacity(0.3),
+                          ),
+                          contentPadding: EdgeInsets.all(8.0),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(1),
+                            borderSide: BorderSide(
+                              color: MyColor.black.withOpacity(0.5),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(1),
+                            borderSide: BorderSide(
+                              color: MyColor.black.withOpacity(0.3),
+                            ),
+                          ),
+                        ),
+                        textAlign: TextAlign.start,
                       ),
                     ),
                     const SizedBox(
@@ -212,44 +253,100 @@ class _PurchaseState extends State<Purchase> {
                       ),
                     ),
                     Container(
-                      height: 32,
+                      height: 42,
                       width: MediaQuery.of(context).size.width,
-                      padding: const EdgeInsets.all(6.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 0.4,
-                          color: MyColor.black.withOpacity(0.5),
-                        ),
-                        borderRadius: BorderRadius.circular(0.6),
-                      ),
-                      child: Text(
-                        'Please enter your home address.',
-                        textAlign: TextAlign.start,
+                      padding: const EdgeInsets.all(0.0),
+                      child: TextFormField(
+                        buildCounter: (context,
+                                {required currentLength,
+                                required isFocused,
+                                maxLength}) =>
+                            const SizedBox(),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please Enter some Text';
+                          }
+                          return null;
+                        },
                         style: MyStyle.tx13B.copyWith(
-                          color: MyColor.black.withOpacity(0.3),
+                          fontFamily: 'NotoSansKR-Regular',
                         ),
+                        controller: homeAdd,
+                        maxLines: 1,
+                        keyboardType: TextInputType.text,
+                        onChanged: (value) {
+                          setState(() {});
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Please enter your home address.',
+                          hintStyle: MyStyle.tx13B.copyWith(
+                            color: MyColor.black.withOpacity(0.3),
+                          ),
+                          contentPadding: EdgeInsets.all(8.0),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(1),
+                            borderSide: BorderSide(
+                              color: MyColor.black.withOpacity(0.5),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(1),
+                            borderSide: BorderSide(
+                              color: MyColor.black.withOpacity(0.3),
+                            ),
+                          ),
+                        ),
+                        textAlign: TextAlign.start,
                       ),
                     ),
                     const SizedBox(
                       height: 4,
                     ),
                     Container(
-                      height: 32,
+                      height: 42,
                       width: MediaQuery.of(context).size.width,
-                      padding: const EdgeInsets.all(6.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 0.4,
-                          color: MyColor.black.withOpacity(0.5),
-                        ),
-                        borderRadius: BorderRadius.circular(0.6),
-                      ),
-                      child: Text(
-                        'Please enter your detailed address.',
-                        textAlign: TextAlign.start,
+                      padding: const EdgeInsets.all(0.0),
+                      child: TextFormField(
+                        buildCounter: (context,
+                                {required currentLength,
+                                required isFocused,
+                                maxLength}) =>
+                            const SizedBox(),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please Enter some Text';
+                          }
+                          return null;
+                        },
                         style: MyStyle.tx13B.copyWith(
-                          color: MyColor.black.withOpacity(0.3),
+                          fontFamily: 'NotoSansKR-Regular',
                         ),
+                        controller: detailAdd,
+                        maxLines: 1,
+                        keyboardType: TextInputType.text,
+                        onChanged: (value) {
+                          setState(() {});
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Please enter your detailed address.',
+                          hintStyle: MyStyle.tx13B.copyWith(
+                            color: MyColor.black.withOpacity(0.3),
+                          ),
+                          contentPadding: EdgeInsets.all(8.0),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(1),
+                            borderSide: BorderSide(
+                              color: MyColor.black.withOpacity(0.5),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(1),
+                            borderSide: BorderSide(
+                              color: MyColor.black.withOpacity(0.3),
+                            ),
+                          ),
+                        ),
+                        textAlign: TextAlign.start,
                       ),
                     ),
                     const SizedBox(
@@ -265,26 +362,51 @@ class _PurchaseState extends State<Purchase> {
                       ),
                     ),
                     Container(
-                      height: 32,
+                      height: 42,
                       width: MediaQuery.of(context).size.width,
-                      padding: const EdgeInsets.all(6.0),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          width: 0.4,
-                          color: MyColor.black.withOpacity(0.5),
-                        ),
-                        borderRadius: BorderRadius.circular(0.6),
-                      ),
-                      child: Text(
-                        'Please enter your mobile phone number.',
-                        textAlign: TextAlign.start,
+                      padding: const EdgeInsets.all(0.0),
+                      child: TextFormField(
+                        buildCounter: (context,
+                                {required currentLength,
+                                required isFocused,
+                                maxLength}) =>
+                            const SizedBox(),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please Enter some Text';
+                          }
+                          return null;
+                        },
                         style: MyStyle.tx13B.copyWith(
-                          color: MyColor.black.withOpacity(0.3),
+                          fontFamily: 'NotoSansKR-Regular',
                         ),
+                        controller: phoneNumber,
+                        maxLines: 1,
+                        keyboardType: TextInputType.phone,
+                        onChanged: (value) {
+                          setState(() {});
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Please enter your mobile phone number.',
+                          hintStyle: MyStyle.tx13B.copyWith(
+                            color: MyColor.black.withOpacity(0.3),
+                          ),
+                          contentPadding: EdgeInsets.all(8.0),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(1),
+                            borderSide: BorderSide(
+                              color: MyColor.black.withOpacity(0.5),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(1),
+                            borderSide: BorderSide(
+                              color: MyColor.black.withOpacity(0.3),
+                            ),
+                          ),
+                        ),
+                        textAlign: TextAlign.start,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 12,
                     ),
                   ],
                 ),
@@ -292,7 +414,8 @@ class _PurchaseState extends State<Purchase> {
 
               //   Shipping Requests
               Container(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                margin: const EdgeInsets.symmetric(vertical: 0.0),
                 color: MyColor.white,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -312,7 +435,7 @@ class _PurchaseState extends State<Purchase> {
                         shippingRequestSheet();
                       },
                       child: Container(
-                        height: 32,
+                        height: 42,
                         width: MediaQuery.of(context).size.width,
                         padding: const EdgeInsets.all(6.0),
                         decoration: BoxDecoration(
@@ -409,21 +532,54 @@ class _PurchaseState extends State<Purchase> {
                         const SizedBox(
                           width: 20,
                         ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                          width: 90,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: MyColor.black.withOpacity(0.3),
-                                width: 0.5),
-                          ),
-                          child: Text(
-                            '0',
-                            textAlign: TextAlign.right,
-                            style: MyStyle.tx14B.copyWith(
-                              fontSize: 14,
-                              fontFamily: 'NotoSansKR-Medium',
-                              color: MyColor.black,
+                        Expanded(
+                          child: Container(
+                            height: 34,
+                            padding:
+                                const EdgeInsets.only(left: 4.0, right: 2.0),
+                            width: MediaQuery.of(context).size.width,
+                            child: TextFormField(
+                              buildCounter: (context,
+                                      {required currentLength,
+                                      required isFocused,
+                                      maxLength}) =>
+                                  const SizedBox(),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please Enter some Text';
+                                }
+                                return null;
+                              },
+                              style: MyStyle.tx13B.copyWith(
+                                fontFamily: 'NotoSansKR-Regular',
+                              ),
+                              controller: pointsController,
+                              maxLines: 1,
+                              keyboardType: TextInputType.number,
+                              onChanged: (value) {
+                                setState(() {});
+                              },
+                              decoration: InputDecoration(
+                                hintText: '0',
+                                hintStyle: MyStyle.tx13B.copyWith(
+                                  color: MyColor.black,
+                                ),
+                                contentPadding: const EdgeInsets.only(
+                                    left: 4.0, right: 4.0),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(1),
+                                  borderSide: BorderSide(
+                                    color: MyColor.black.withOpacity(0.5),
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(1),
+                                  borderSide: BorderSide(
+                                    color: MyColor.black.withOpacity(0.3),
+                                  ),
+                                ),
+                              ),
+                              textAlign: TextAlign.start,
                             ),
                           ),
                         ),
@@ -695,16 +851,17 @@ class _PurchaseState extends State<Purchase> {
                       padding: const EdgeInsets.all(6.0),
                       child: Row(
                         children: [
-                          Container(
-                            height: 40,
-                            width: 164,
-                            color: MyColor.orange,
-                            child: Center(
-                              child: Text(
-                                'Credit card',
-                                style: MyStyle.tx14W.copyWith(
-                                  fontSize: 13,
-                                  fontFamily: 'NotoSansKR-Medium',
+                          Expanded(
+                            child: Container(
+                              height: 40,
+                              color: MyColor.orange,
+                              child: Center(
+                                child: Text(
+                                  'Credit card',
+                                  style: MyStyle.tx14W.copyWith(
+                                    fontSize: 13,
+                                    fontFamily: 'NotoSansKR-Medium',
+                                  ),
                                 ),
                               ),
                             ),
@@ -712,20 +869,21 @@ class _PurchaseState extends State<Purchase> {
                           const SizedBox(
                             width: 8,
                           ),
-                          Container(
-                            height: 40,
-                            width: 164,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                              color: MyColor.orange,
-                              width: 0.4,
-                            )),
-                            child: Center(
-                              child: Text(
-                                'Cell phone',
-                                style: MyStyle.tx14O.copyWith(
-                                  fontSize: 13,
-                                  fontFamily: 'NotoSansKR-Medium',
+                          Expanded(
+                            child: Container(
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                color: MyColor.orange,
+                                width: 0.4,
+                              )),
+                              child: Center(
+                                child: Text(
+                                  'Cell phone',
+                                  style: MyStyle.tx14O.copyWith(
+                                    fontSize: 13,
+                                    fontFamily: 'NotoSansKR-Medium',
+                                  ),
                                 ),
                               ),
                             ),
@@ -740,20 +898,21 @@ class _PurchaseState extends State<Purchase> {
                       padding: const EdgeInsets.all(6.0),
                       child: Row(
                         children: [
-                          Container(
-                            height: 40,
-                            width: 164,
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                              color: MyColor.orange,
-                              width: 0.4,
-                            )),
-                            child: Center(
-                              child: Text(
-                                'Make a deposit',
-                                style: MyStyle.tx14O.copyWith(
-                                  fontSize: 13,
-                                  fontFamily: 'NotoSansKR-Medium',
+                          Expanded(
+                            child: Container(
+                              height: 40,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                color: MyColor.orange,
+                                width: 0.4,
+                              )),
+                              child: Center(
+                                child: Text(
+                                  'Make a deposit',
+                                  style: MyStyle.tx14O.copyWith(
+                                    fontSize: 13,
+                                    fontFamily: 'NotoSansKR-Medium',
+                                  ),
                                 ),
                               ),
                             ),
@@ -761,21 +920,22 @@ class _PurchaseState extends State<Purchase> {
                           const SizedBox(
                             width: 8,
                           ),
-                          Container(
-                            height: 40,
-                            width: 164,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: MyColor.orange,
-                                width: 0.4,
+                          Expanded(
+                            child: Container(
+                              height: 40,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: MyColor.orange,
+                                  width: 0.4,
+                                ),
                               ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Payment method API',
-                                style: MyStyle.tx14O.copyWith(
-                                  fontSize: 13,
-                                  fontFamily: 'NotoSansKR-Medium',
+                              child: Center(
+                                child: Text(
+                                  'Payment method API',
+                                  style: MyStyle.tx14O.copyWith(
+                                    fontSize: 13,
+                                    fontFamily: 'NotoSansKR-Medium',
+                                  ),
                                 ),
                               ),
                             ),
@@ -811,16 +971,15 @@ class _PurchaseState extends State<Purchase> {
                           const SizedBox(
                             width: 8,
                           ),
-                          Text(
-                            'Confirmation of terms and conditions and \n'
-                            'consent to payment.',
-                            style: MyStyle.tx14B.copyWith(
-                              fontSize: 13,
-                              color: MyColor.black.withOpacity(0.5),
+                          Expanded(
+                            child: Text(
+                              'Confirmation of terms and conditions and \n'
+                              'consent to payment.',
+                              style: MyStyle.tx14B.copyWith(
+                                fontSize: 13,
+                                color: MyColor.black.withOpacity(0.5),
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 22,
                           ),
                           Image.asset(
                             'assets/icons/downArrow.png',
@@ -838,8 +997,7 @@ class _PurchaseState extends State<Purchase> {
                     ExpansionTile(
                       shape: Border.all(color: Colors.transparent),
                       leading: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 4.0, vertical: 0.0),
+                        padding: const EdgeInsets.only(left: 2.0),
                         child: Image.asset(
                           'assets/icons/right.png',
                           height: 24,
@@ -917,15 +1075,14 @@ class _PurchaseState extends State<Purchase> {
                           const SizedBox(
                             width: 8,
                           ),
-                          Text(
-                            'Agree to collect and use personal \n information.',
-                            style: MyStyle.tx14B.copyWith(
-                              fontSize: 13,
-                              color: MyColor.black.withOpacity(0.5),
+                          Expanded(
+                            child: Text(
+                              'Agree to collect and use personal \n information.',
+                              style: MyStyle.tx14B.copyWith(
+                                fontSize: 13,
+                                color: MyColor.black.withOpacity(0.5),
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 73,
                           ),
                           Image.asset(
                             'assets/icons/downArrow.png',
@@ -953,15 +1110,14 @@ class _PurchaseState extends State<Purchase> {
                           const SizedBox(
                             width: 8,
                           ),
-                          Text(
-                            'I agree to use Welcome Payments.',
-                            style: MyStyle.tx14B.copyWith(
-                              fontSize: 13,
-                              color: MyColor.black.withOpacity(0.5),
+                          Expanded(
+                            child: Text(
+                              'I agree to use Welcome Payments.',
+                              style: MyStyle.tx14B.copyWith(
+                                fontSize: 13,
+                                color: MyColor.black.withOpacity(0.5),
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 70,
                           ),
                           Image.asset(
                             'assets/icons/downArrow.png',
@@ -1277,23 +1433,21 @@ class _PurchaseState extends State<Purchase> {
           endIndent: 0,
           color: Colors.grey,
         ),
-        Expanded(
-          child: TextButton(
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return paymentDialog();
-                  });
-            },
-            child: Center(
-              child: Text(
-                'Confirm',
-                style: MyStyle.tx17B.copyWith(
-                  fontSize: 15,
-                  fontFamily: 'NotoSansKR-Medium',
-                  fontWeight: FontWeight.w400,
-                ),
+        TextButton(
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return paymentDialog();
+                });
+          },
+          child: Center(
+            child: Text(
+              'Confirm',
+              style: MyStyle.tx17B.copyWith(
+                fontSize: 15,
+                fontFamily: 'NotoSansKR-Medium',
+                fontWeight: FontWeight.w400,
               ),
             ),
           ),
@@ -1327,23 +1481,21 @@ class _PurchaseState extends State<Purchase> {
           endIndent: 0,
           color: Colors.grey,
         ),
-        Expanded(
-          child: TextButton(
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return agreeDialog();
-                  });
-            },
-            child: Center(
-              child: Text(
-                'Confirm',
-                style: MyStyle.tx17B.copyWith(
-                  fontSize: 15,
-                  fontFamily: 'NotoSansKR-Medium',
-                  fontWeight: FontWeight.w400,
-                ),
+        TextButton(
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return agreeDialog();
+                });
+          },
+          child: Center(
+            child: Text(
+              'Confirm',
+              style: MyStyle.tx17B.copyWith(
+                fontSize: 15,
+                fontFamily: 'NotoSansKR-Medium',
+                fontWeight: FontWeight.w400,
               ),
             ),
           ),
