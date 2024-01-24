@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:route_in_live/constants/routes.dart';
-import 'package:route_in_live/values/MyColor.dart';
-import 'package:route_in_live/values/MyStyle.dart';
 
-class Purchase extends StatefulWidget {
-  const Purchase({super.key});
+import '../../constants/routes.dart';
+import '../../values/MyColor.dart';
+import '../../values/MyStyle.dart';
+
+class StorePurchase extends StatefulWidget {
+  const StorePurchase({super.key});
 
   @override
-  State<Purchase> createState() => _PurchaseState();
+  State<StorePurchase> createState() => _StorePurchaseState();
 }
 
-class _PurchaseState extends State<Purchase> {
+class _StorePurchaseState extends State<StorePurchase> {
   TextEditingController recipName = TextEditingController();
   TextEditingController homeAdd = TextEditingController();
   TextEditingController detailAdd = TextEditingController();
@@ -21,7 +21,6 @@ class _PurchaseState extends State<Purchase> {
   bool onClick0 = false;
   bool onClick1 = false;
   bool onClick2 = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1484,6 +1483,7 @@ class _PurchaseState extends State<Purchase> {
         ),
         TextButton(
           onPressed: () {
+            Navigator.pop(context);
             showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -1532,6 +1532,8 @@ class _PurchaseState extends State<Purchase> {
         ),
         TextButton(
           onPressed: () {
+            Navigator.pop(context);
+
             showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -1581,7 +1583,9 @@ class _PurchaseState extends State<Purchase> {
         ),
         TextButton(
           onPressed: () {
-            Navigator.pushNamed(context, paySuccesRoute);
+            Navigator.pop(context);
+
+            Navigator.pushNamed(context, succesPaidRoute);
           },
           child: Center(
             child: Text(

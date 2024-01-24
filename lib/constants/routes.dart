@@ -48,3 +48,5 @@ const searchPageRoute = '/searchPageRoute/';
 // Store
 const storeRoute = '/storeRoute/';
 const productInfoRoute = '/productInfoRoute/';
+const storePurchaseRoute = '/storePurchaseRoute/';
+const succesPaidRoute = '/succesPaidRoute/';

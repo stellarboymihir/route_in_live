@@ -18,9 +18,7 @@ class _PaymentSuccesfullState extends State<PaymentSuccesfull> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(
-              height: 180,
-            ),
+            Spacer(),
             Image.asset(
               'assets/icons/payment.png',
               width: 140,
@@ -52,7 +50,6 @@ class _PaymentSuccesfullState extends State<PaymentSuccesfull> {
               },
               child: Container(
                 height: 46,
-                width: 351,
                 color: MyColor.orange,
                 child: Center(
                   child: Text(
@@ -66,12 +63,9 @@ class _PaymentSuccesfullState extends State<PaymentSuccesfull> {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 140,
-            ),
+            Spacer(),
             Container(
               height: 46,
-              width: 351,
               color: MyColor.yellowamber,
               child: Center(
                 child: Text(
@@ -89,7 +83,6 @@ class _PaymentSuccesfullState extends State<PaymentSuccesfull> {
             ),
             Container(
               height: 46,
-              width: 351,
               color: MyColor.yellowamber,
               child: Center(
                 child: Text(

@@ -537,7 +537,6 @@ class _ProductInformationState extends State<ProductInformation> {
                           Expanded(
                             child: InkWell(
                               onTap: () {
-                                Navigator.pop(context);
                                 shoppingBasket();
                               },
                               child: Container(
@@ -558,7 +557,7 @@ class _ProductInformationState extends State<ProductInformation> {
                             child: InkWell(
                               onTap: () {
                                 Navigator.pop(context);
-                                return paymentSheet();
+                                return paymentSheet(context);
                                 print('tapping');
                               },
                               child: Container(
@@ -770,7 +769,7 @@ class _ProductInformationState extends State<ProductInformation> {
                       showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return shoppingCardDialog();
+                            return shoppingCardDialog(context);
                           });
                     },
                     child: Container(
@@ -796,13 +795,13 @@ class _ProductInformationState extends State<ProductInformation> {
         });
   }
 
-  Widget shoppingCardDialog() {
+  Widget shoppingCardDialog(BuildContext context) {
     return AlertDialog(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(18),
       ),
       title: Text(
-        'The product\n Added to shopping cart \n',
+        'The product\n Added to shopping cart ',
         textAlign: TextAlign.center,
         style: MyStyle.tx17B.copyWith(
           fontFamily: 'NotoSansKR-Medium',
@@ -812,7 +811,7 @@ class _ProductInformationState extends State<ProductInformation> {
         top: 10.0,
         bottom: 0.0,
       ),
-      contentPadding: const EdgeInsets.all(0),
+      contentPadding: const EdgeInsets.symmetric(vertical: 0),
       actionsPadding:
           const EdgeInsets.only(left: 0, right: 0, top: 0.0, bottom: 10.0),
       actions: [
@@ -823,11 +822,12 @@ class _ProductInformationState extends State<ProductInformation> {
         ),
         InkWell(
           onTap: () {
-            if (mounted) {
-              setState(() {
-                Navigator.pop(context);
-              });
-            }
+            // if (mounted) {
+            //   setState(() {
+            //     return paymentSheet(context);
+            //   });
+            // }
+            return paymentSheet(context);
           },
           child: SizedBox(
             height: 22,
@@ -844,11 +844,27 @@ class _ProductInformationState extends State<ProductInformation> {
             ),
           ),
         ),
+        // TextButton(
+        //   onPressed: () {
+        //     return paymentSheet(context);
+        //   },
+        //   child: Center(
+        //     child: Text(
+        //       'Closed',
+        //       textAlign: TextAlign.center,
+        //       style: MyStyle.tx17B.copyWith(
+        //         fontSize: 15,
+        //         fontFamily: 'NotoSansKR-Regular',
+        //         fontWeight: FontWeight.w400,
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }
 
-  void paymentSheet() {
+  void paymentSheet(BuildContext context) {
     showModalBottomSheet(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -909,7 +925,7 @@ class _ProductInformationState extends State<ProductInformation> {
                         ),
                       ),
                     ),
-                    const Spacer(),
+                    Spacer(),
                     InkWell(
                       onTap: () {
                         Navigator.pop(context);
@@ -956,7 +972,7 @@ class _ProductInformationState extends State<ProductInformation> {
                           ),
                         ),
                       ),
-                      const Spacer(),
+                      Spacer(),
                       InkWell(
                         onTap: () {
                           saleSheet();
@@ -1087,7 +1103,7 @@ class _ProductInformationState extends State<ProductInformation> {
                         ],
                       ),
                     ),
-                    const Spacer(),
+                    Spacer(),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12.0),
                       child: RichText(
@@ -1117,7 +1133,7 @@ class _ProductInformationState extends State<ProductInformation> {
                   children: [
                     Expanded(
                       child: Container(
-                        margin: const EdgeInsets.only(left: 30.0),
+                        margin: EdgeInsets.only(left: 30.0),
                         decoration: BoxDecoration(
                           border: Border.all(
                             width: 0.4,
@@ -1303,10 +1319,10 @@ class _ProductInformationState extends State<ProductInformation> {
                     ),
                   ),
                 ),
-                const Spacer(),
+                Spacer(),
                 InkWell(
                   onTap: () {
-                    Navigator.pushNamed(context, purchaseRoute);
+                    Navigator.pushNamed(context, storePurchaseRoute);
                   },
                   child: Container(
                     height: 48,
