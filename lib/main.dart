@@ -20,6 +20,7 @@ import 'package:route_in_live/dashboard/home/paysuccessful.dart';
 import 'package:route_in_live/dashboard/home/purchase.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/LiveReservation.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/sellProduct.dart';
+import 'package:route_in_live/dashboard/store/prodcutInfo.dart';
 import 'authentication/pass_sign_page.dart';
 import 'authentication/permission/permission_page.dart';
 import 'authentication/register/findingid/findingid.dart';
@@ -36,6 +37,7 @@ import 'dashboard/feed/FeedScreen/Writing.dart';
 import 'dashboard/feed/FeedScreen/comment.dart';
 import 'dashboard/feed/feed.dart';
 import 'dashboard/home/regsiterbroadcast/StoredItem.dart';
+import 'dashboard/store/store.dart';
 
 void main() {
   runApp(const MyApp());
@@ -104,6 +106,10 @@ class MyApp extends StatelessWidget {
         writingRoute: (context) => const Writing(),
         editProfileRoute: (context) => const EditProfile(),
         searchProductRoute: (context) => const SearchProduct(),
+
+        //   ** Store Route **
+        storeRoute: (context) => const Store(),
+        productInfoRoute: (context) => const ProductInformation(),
       },
     );
   }

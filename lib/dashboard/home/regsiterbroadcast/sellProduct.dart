@@ -12,6 +12,7 @@ class SellProduct extends StatefulWidget {
 }
 
 class _SellProductState extends State<SellProduct> {
+  TextEditingController searchBar = TextEditingController();
   final List<String> _capacity = <String>[
     '11, graphite, golf bag set, genuine product.',
     '11, graphite, caddy bag, genuine product.',
@@ -61,54 +62,82 @@ class _SellProductState extends State<SellProduct> {
           children: [
             // *** Search Bar ***
             Container(
-              height: 38,
               margin: const EdgeInsets.all(8.0),
-              padding: const EdgeInsets.only(left: 10.0),
+              height: 40,
+              padding:
+                  EdgeInsets.only(left: 8.0, right: 0.0, top: 0.0, bottom: 0.0),
+              width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: MyColor.black.withOpacity(0.05),
                 borderRadius: BorderRadius.circular(26),
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Enter the product name.',
-                    style: MyStyle.tx14W.copyWith(
-                      color: MyColor.black.withOpacity(0.7),
+                  Expanded(
+                    child: TextFormField(
+                      buildCounter: (context,
+                              {required currentLength,
+                              required isFocused,
+                              maxLength}) =>
+                          const SizedBox(),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.all(8.0),
+                        hintText: 'Please enter the post.',
+                        hintStyle: TextStyle(
+                          color: MyColor.black.withOpacity(0.7),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14,
+                        ),
+                      ),
+                      style: const TextStyle(
+                        color: MyColor.black,
+                      ),
+                      controller: searchBar,
+                      keyboardType: TextInputType.text,
+                      onChanged: (value) {
+                        setState(() {});
+                      },
                     ),
-                    textAlign: TextAlign.start,
-                  ),
-                  const SizedBox(
-                    width: 30,
                   ),
                   InkWell(
-                    // onTap: () {
-                    //   Navigator.pop(context);
-                    // },
                     child: Image.asset(
                       'assets/icons/close.png',
                       width: 16,
                       height: 16,
                     ),
                   ),
+                  const SizedBox(
+                    width: 5,
+                  ),
                   Container(
-                    // padding: EdgeInsets.all(8.0),
-                    // width: 120
-                    alignment: Alignment.topRight,
+                    height: 40,
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 0.0, vertical: 0),
+                    // height: 40,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0, vertical: 0.0),
                     decoration: BoxDecoration(
                         color: MyColor.orange,
                         borderRadius: BorderRadius.circular(33)),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 8.0, horizontal: 15.0),
+                    // padding: const EdgeInsets.symmetric(
+                    //     vertical: 0.0, horizontal: 12.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const Text(
-                          'search',
-                          style: MyStyle.tx14W,
-                        ),
-                        const SizedBox(
-                          width: 5,
+                        Center(
+                          child: Text(
+                            'search ',
+                            style: MyStyle.tx14W.copyWith(
+                              fontSize: 13,
+                            ),
+                          ),
                         ),
                         Image.asset(
                           'assets/icons/search.png',
@@ -118,7 +147,7 @@ class _SellProductState extends State<SellProduct> {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

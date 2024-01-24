@@ -44,3 +44,7 @@ const myScreenRoute = '/myScreenRoute/';
 const writingRoute = '/writingRoute/';
 const editProfileRoute = '/editProfileRoute/';
 const searchPageRoute = '/searchPageRoute/';
+
+// Store
+const storeRoute = '/storeRoute/';
+const productInfoRoute = '/productInfoRoute/';

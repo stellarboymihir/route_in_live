@@ -2147,7 +2147,6 @@ class _LiveBroadcastState extends State<LiveBroadcast> {
                               child: InkWell(
                                 onTap: () {
                                   Navigator.pop(context);
-
                                   paymentSheet();
                                 },
                                 child: Container(

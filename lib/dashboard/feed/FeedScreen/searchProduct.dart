@@ -79,9 +79,10 @@ class _SearchProductState extends State<SearchProduct> {
         children: [
           // *** Search Bar ***
           Container(
-            margin: const EdgeInsets.all(12.0),
+            margin: const EdgeInsets.all(8.0),
             height: 40,
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            padding:
+                EdgeInsets.only(left: 8.0, right: 0.0, top: 0.0, bottom: 0.0),
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: MyColor.black.withOpacity(0.05),
@@ -123,9 +124,6 @@ class _SearchProductState extends State<SearchProduct> {
                   ),
                 ),
                 InkWell(
-                  // onTap: () {
-                  //   Navigator.pop(context);
-                  // },
                   child: Image.asset(
                     'assets/icons/close.png',
                     width: 16,
@@ -136,12 +134,17 @@ class _SearchProductState extends State<SearchProduct> {
                   width: 5,
                 ),
                 Container(
-                  height: 32,
+                  height: 40,
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 0.0, vertical: 0),
+                  // height: 40,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 0.0),
                   decoration: BoxDecoration(
                       color: MyColor.orange,
                       borderRadius: BorderRadius.circular(33)),
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 5.0, horizontal: 12.0),
+                  // padding: const EdgeInsets.symmetric(
+                  //     vertical: 0.0, horizontal: 12.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -166,7 +169,7 @@ class _SearchProductState extends State<SearchProduct> {
             ),
           ),
           Expanded(
-            child: Container(
+            child: SizedBox(
               height: MediaQuery.of(context).size.height,
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

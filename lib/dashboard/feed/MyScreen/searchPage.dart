@@ -114,7 +114,7 @@ class _SearchPageState extends State<SearchPage> {
         children: [
           // *** Search Bar ***
           Container(
-            margin: const EdgeInsets.all(12.0),
+            margin: const EdgeInsets.only(left: 8.0, right: 4.0),
             height: 32,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
@@ -157,9 +157,6 @@ class _SearchPageState extends State<SearchPage> {
                   ),
                 ),
                 InkWell(
-                  // onTap: () {
-                  //   Navigator.pop(context);
-                  // },
                   child: Image.asset(
                     'assets/icons/close.png',
                     width: 16,

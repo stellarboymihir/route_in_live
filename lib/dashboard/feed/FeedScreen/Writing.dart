@@ -172,7 +172,7 @@ class _WritingState extends State<Writing> {
                 height: 40,
                 width: MediaQuery.of(context).size.width,
                 color: MyColor.yellowamber,
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Search',
                     style: MyStyle.tx14W,
