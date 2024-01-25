@@ -198,7 +198,8 @@ class _ResetPasswordState extends State<ResetPassword> {
         ),
         InkWell(
           onTap: () {
-            Navigator.pushNamed(context, recommendedRoute);
+            Navigator.pop(context);
+            Navigator.pop(context);
           },
           child: SizedBox(
             height: 40,

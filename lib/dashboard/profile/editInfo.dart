@@ -201,56 +201,84 @@ class _EditInformationState extends State<EditInformation> {
             const Divider(
               thickness: 0,
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              height: 40,
-              child: Text(
-                'Referral registration',
-                style: MyStyle.tx14B.copyWith(
-                  fontSize: 14,
-                  fontFamily: 'NotoSansKR-Regular',
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, recommendedRoute);
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                height: 40,
+                child: Text(
+                  'Referral registration',
+                  style: MyStyle.tx14B.copyWith(
+                    fontSize: 14,
+                    fontFamily: 'NotoSansKR-Regular',
+                  ),
                 ),
               ),
             ),
             const Divider(
               thickness: 0,
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              height: 40,
-              child: Text(
-                'Point',
-                style: MyStyle.tx14B.copyWith(
-                  fontSize: 14,
-                  fontFamily: 'NotoSansKR-Regular',
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, pointRoute);
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                height: 40,
+                child: Text(
+                  'Point',
+                  style: MyStyle.tx14B.copyWith(
+                    fontSize: 14,
+                    fontFamily: 'NotoSansKR-Regular',
+                  ),
                 ),
               ),
             ),
             const Divider(
               thickness: 0,
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              height: 40,
-              child: Text(
-                'Log Out',
-                style: MyStyle.tx14B.copyWith(
-                  fontSize: 14,
-                  fontFamily: 'NotoSansKR-Regular',
+            InkWell(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return logOutDialog();
+                    });
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                height: 40,
+                child: Text(
+                  'Log Out',
+                  style: MyStyle.tx14B.copyWith(
+                    fontSize: 14,
+                    fontFamily: 'NotoSansKR-Regular',
+                  ),
                 ),
               ),
             ),
             const Divider(
               thickness: 0,
             ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              height: 40,
-              child: Text(
-                'Withdrawal',
-                style: MyStyle.tx14B.copyWith(
-                  fontSize: 14,
-                  fontFamily: 'NotoSansKR-Regular',
+            InkWell(
+              onTap: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return membershipDialog();
+                    });
+              },
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                height: 40,
+                child: Text(
+                  'Withdrawal',
+                  style: MyStyle.tx14B.copyWith(
+                    fontSize: 14,
+                    fontFamily: 'NotoSansKR-Regular',
+                  ),
                 ),
               ),
             ),
@@ -390,5 +418,149 @@ class _EditInformationState extends State<EditInformation> {
         print('Failed to pick Image: $e');
       }
     }
+  }
+
+  Widget logOutDialog() {
+    return AlertDialog(
+      title: Text(
+        'Logout successful',
+        textAlign: TextAlign.center,
+        style: MyStyle.tx17B.copyWith(
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+      content: Text(
+        'If you press "Confirm",\n'
+        'Go to the login screen.',
+        textAlign: TextAlign.center,
+        style: MyStyle.tx13B.copyWith(
+          color: MyColor.black.withOpacity(0.5),
+        ),
+      ),
+      contentPadding:
+          const EdgeInsets.only(left: 8, right: 8, top: 10, bottom: 0),
+      actionsPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+      actions: [
+        const Divider(
+          thickness: 1,
+        ),
+        InkWell(
+          onTap: () {
+            Navigator.pop(context);
+            // Navigator.pushNamed(context, recommendedRoute);
+          },
+          child: SizedBox(
+            height: 40,
+            child: Center(
+              child: Text(
+                'Confirm',
+                style: MyStyle.tx17B.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget membershipDialog() {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18),
+      ),
+      titlePadding: const EdgeInsets.only(top: 20),
+      title: Text(
+        'Membership Withdrawal',
+        style: MyStyle.tx17B.copyWith(
+          letterSpacing: 0.41,
+        ),
+        textAlign: TextAlign.center,
+      ),
+      // contentPadding:
+      //     const EdgeInsets.only(top: 5, bottom: 10, right: 5, left: 5),
+      actionsPadding:
+          const EdgeInsets.only(top: 10, left: 20, right: 20, bottom: 0),
+      actions: [
+        const Center(
+          child: Text(
+            'Do you really want to leave?',
+            textAlign: TextAlign.center,
+            style: MyStyle.tx13B,
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        const Divider(
+          height: 0,
+          thickness: 0,
+          indent: 0,
+          endIndent: 0,
+          color: Colors.grey,
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                  // showDialog(
+                  //     context: context,
+                  //     builder: (BuildContext context) {
+                  //       return failedDialog();
+                  //     });
+                },
+                child: SizedBox(
+                  // height: 30,
+                  child: Text(
+                    'Cancel',
+                    style: MyStyle.tx17N.copyWith(
+                      // fontSize: 1,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 44,
+              child: VerticalDivider(
+                width: 0,
+                thickness: 0,
+                indent: 0,
+                endIndent: 0,
+                color: Colors.grey,
+              ),
+            ),
+            Expanded(
+              child: TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                  // showDialog(
+                  //     context: context,
+                  //     builder: (BuildContext context) {
+                  //       return successDialog();
+                  //     });
+                },
+                child: SizedBox(
+                  // height: 30,
+                  child: Text(
+                    'Withdrawal',
+                    style: MyStyle.tx17P.copyWith(
+                      // fontSize: 16,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }

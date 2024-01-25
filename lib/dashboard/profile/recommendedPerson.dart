@@ -37,7 +37,7 @@ class _RecommendedPersonState extends State<RecommendedPerson> {
       body: Form(
         key: formKey,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -79,7 +79,7 @@ class _RecommendedPersonState extends State<RecommendedPerson> {
                     ),
                   ),
                   controller: recommendController,
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.text,
                   onChanged: (value) {
                     setState(() {});
                   },
@@ -117,6 +117,7 @@ class _RecommendedPersonState extends State<RecommendedPerson> {
 
               // My Recommendation Code
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -132,16 +133,22 @@ class _RecommendedPersonState extends State<RecommendedPerson> {
                   Container(
                     height: 24,
                     width: 56,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 4, vertical: 2.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
                       color: MyColor.orange,
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
                           'assets/icons/note.png',
                           height: 12,
                           width: 10,
+                        ),
+                        SizedBox(
+                          width: 4,
                         ),
                         Text(
                           'Copy',
@@ -155,9 +162,13 @@ class _RecommendedPersonState extends State<RecommendedPerson> {
                   )
                 ],
               ),
+              SizedBox(
+                height: 10,
+              ),
               Container(
                 color: MyColor.black.withOpacity(0.05),
                 height: 88,
+                margin: const EdgeInsets.all(8.0),
                 width: MediaQuery.of(context).size.width,
                 child: Center(
                   child: Text(
@@ -169,20 +180,17 @@ class _RecommendedPersonState extends State<RecommendedPerson> {
                 ),
               ),
 
-              const SizedBox(
-                height: 20,
-              ),
               //For Button
 
               //Invite a friend Button
               InkWell(
                 onTap: () {
                   //Routing for Next Page
-                  Navigator.pop(context);
-                  // Navigator.pushNamed(
-                  //   context,
-                  //   profileSettingsRoute,
-                  // );
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return recommendDialog();
+                      });
                 },
                 child: Container(
                   padding: const EdgeInsets.all(8.0),
@@ -202,6 +210,51 @@ class _RecommendedPersonState extends State<RecommendedPerson> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget recommendDialog() {
+    return AlertDialog(
+      title: Text(
+        'Recommendation successful',
+        textAlign: TextAlign.center,
+        style: MyStyle.tx17B.copyWith(
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+      content: Text(
+        'I have recommended the code you entered.',
+        textAlign: TextAlign.center,
+        style: MyStyle.tx13B.copyWith(
+          color: MyColor.black.withOpacity(0.5),
+        ),
+      ),
+      contentPadding:
+          const EdgeInsets.only(left: 8, right: 8, top: 10, bottom: 0),
+      actionsPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+      actions: [
+        const Divider(
+          thickness: 0,
+        ),
+        InkWell(
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+            // Navigator.pushNamed(context, recommendedRoute);
+          },
+          child: SizedBox(
+            height: 40,
+            child: Center(
+              child: Text(
+                'Confirm',
+                style: MyStyle.tx17B.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
     );
   }
 }

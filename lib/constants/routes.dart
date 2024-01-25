@@ -56,3 +56,7 @@ const profileRoute = '/profileRoute/';
 const editInfoRoute = '/editInfoRoute/';
 const resetPasswordRoute = '/resetPasswordRoute/';
 const recommendedRoute = '/recommendedRoute/';
+const pointRoute = '/pointRoute/';
+const withdrawalAppRoute = '/withdrawalAppRoute/';
+const shoppingInfoRoute = '/shoppingInfoRoute/';
+const trackingRoute = '/trackingRoute/';

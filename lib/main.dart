@@ -24,6 +24,9 @@ import 'package:route_in_live/dashboard/profile/editInfo.dart';
 import 'package:route_in_live/dashboard/profile/profile.dart';
 import 'package:route_in_live/dashboard/profile/recommendedPerson.dart';
 import 'package:route_in_live/dashboard/profile/resetPassword.dart';
+import 'package:route_in_live/dashboard/profile/shoppingInfo.dart';
+import 'package:route_in_live/dashboard/profile/trackingRoute.dart';
+import 'package:route_in_live/dashboard/profile/withdrawalApp.dart';
 import 'package:route_in_live/dashboard/store/prodcutInfo.dart';
 import 'package:route_in_live/dashboard/store/successfulPaid.dart';
 import 'authentication/pass_sign_page.dart';
@@ -42,6 +45,7 @@ import 'dashboard/feed/FeedScreen/Writing.dart';
 import 'dashboard/feed/FeedScreen/comment.dart';
 import 'dashboard/feed/feed.dart';
 import 'dashboard/home/regsiterbroadcast/StoredItem.dart';
+import 'dashboard/profile/pointRoute.dart';
 import 'dashboard/store/store.dart';
 import 'dashboard/store/storePurchase.dart';
 
@@ -124,6 +128,10 @@ class MyApp extends StatelessWidget {
         editInfoRoute: (context) => const EditInformation(),
         resetPasswordRoute: (context) => const ResetPassword(),
         recommendedRoute: (context) => const RecommendedPerson(),
+        pointRoute: (context) => const PointRoute(),
+        withdrawalAppRoute: (context) => const WithdrawalApplication(),
+        shoppingInfoRoute: (context) => const ShoppingInformation(),
+        trackingRoute: (context) => const TrackingRoute(),
       },
     );
   }

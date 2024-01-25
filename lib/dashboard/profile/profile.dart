@@ -99,20 +99,25 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                 ),
-                Container(
-                  height: 32,
-                  // width: 115,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: MyColor.purple,
-                  ),
-                  child: const Center(
-                    child: Text(
-                      'Point charging',
-                      style: MyStyle.tx14W,
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, pointRoute);
+                  },
+                  child: Container(
+                    height: 32,
+                    // width: 115,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0,
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: MyColor.purple,
+                    ),
+                    child: const Center(
+                      child: Text(
+                        'Point charging',
+                        style: MyStyle.tx14W,
+                      ),
                     ),
                   ),
                 )
@@ -142,15 +147,20 @@ class _ProfileState extends State<Profile> {
           const Divider(
             thickness: 0,
           ),
-          Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-            height: 40,
-            child: Text(
-              'My Shopping Info',
-              style: MyStyle.tx14B.copyWith(
-                fontSize: 14,
-                fontFamily: 'NotoSansKR-Regular',
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, shoppingInfoRoute);
+            },
+            child: Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+              height: 40,
+              child: Text(
+                'My Shopping Info',
+                style: MyStyle.tx14B.copyWith(
+                  fontSize: 14,
+                  fontFamily: 'NotoSansKR-Regular',
+                ),
               ),
             ),
           ),
