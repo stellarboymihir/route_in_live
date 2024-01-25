@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyColor.dart';
 
 import '../../values/MyStyle.dart';
@@ -51,7 +52,7 @@ class _ProfileState extends State<Profile> {
             child: Row(
               children: [
                 Image.asset(
-                  'assets/images/img27.png',
+                  'assets/images/img7.png',
                   height: 48,
                   width: 48,
                 ),
@@ -121,15 +122,20 @@ class _ProfileState extends State<Profile> {
           const Divider(
             thickness: 0,
           ),
-          Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-            height: 40,
-            child: Text(
-              'Edit My Information',
-              style: MyStyle.tx14B.copyWith(
-                fontSize: 14,
-                fontFamily: 'NotoSansKR-Regular',
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, editInfoRoute);
+            },
+            child: Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+              height: 40,
+              child: Text(
+                'Edit My Information',
+                style: MyStyle.tx14B.copyWith(
+                  fontSize: 14,
+                  fontFamily: 'NotoSansKR-Regular',
+                ),
               ),
             ),
           ),
@@ -196,7 +202,7 @@ class _ProfileState extends State<Profile> {
           const Divider(
             thickness: 0,
           ),
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
           Container(
@@ -208,7 +214,7 @@ class _ProfileState extends State<Profile> {
             margin: const EdgeInsets.symmetric(
               horizontal: 8.0,
             ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: MyColor.purple,
             ),
             child: const Center(

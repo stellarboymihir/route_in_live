@@ -284,7 +284,7 @@ class _ProductInformationState extends State<ProductInformation> {
                                   ),
                                   const SizedBox(
                                     height: 10,
-                                    child: const Divider(
+                                    child: Divider(
                                       thickness: 0,
                                     ),
                                   ),
@@ -305,7 +305,7 @@ class _ProductInformationState extends State<ProductInformation> {
                                   ),
                                   const SizedBox(
                                     height: 10,
-                                    child: const Divider(
+                                    child: Divider(
                                       thickness: 0,
                                     ),
                                   ),

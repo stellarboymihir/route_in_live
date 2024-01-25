@@ -226,7 +226,7 @@ class _StorePurchaseState extends State<StorePurchase> {
                           hintStyle: MyStyle.tx13B.copyWith(
                             color: MyColor.black.withOpacity(0.3),
                           ),
-                          contentPadding: EdgeInsets.all(8.0),
+                          contentPadding: const EdgeInsets.all(8.0),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(1),
                             borderSide: BorderSide(
@@ -285,7 +285,7 @@ class _StorePurchaseState extends State<StorePurchase> {
                           hintStyle: MyStyle.tx13B.copyWith(
                             color: MyColor.black.withOpacity(0.3),
                           ),
-                          contentPadding: EdgeInsets.all(8.0),
+                          contentPadding: const EdgeInsets.all(8.0),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(1),
                             borderSide: BorderSide(
@@ -335,7 +335,7 @@ class _StorePurchaseState extends State<StorePurchase> {
                           hintStyle: MyStyle.tx13B.copyWith(
                             color: MyColor.black.withOpacity(0.3),
                           ),
-                          contentPadding: EdgeInsets.all(8.0),
+                          contentPadding: const EdgeInsets.all(8.0),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(1),
                             borderSide: BorderSide(
@@ -394,7 +394,7 @@ class _StorePurchaseState extends State<StorePurchase> {
                           hintStyle: MyStyle.tx13B.copyWith(
                             color: MyColor.black.withOpacity(0.3),
                           ),
-                          contentPadding: EdgeInsets.all(8.0),
+                          contentPadding: const EdgeInsets.all(8.0),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(1),
                             borderSide: BorderSide(
@@ -1193,7 +1193,7 @@ class _StorePurchaseState extends State<StorePurchase> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     InkWell(

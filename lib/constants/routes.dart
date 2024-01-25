@@ -50,3 +50,9 @@ const storeRoute = '/storeRoute/';
 const productInfoRoute = '/productInfoRoute/';
 const storePurchaseRoute = '/storePurchaseRoute/';
 const succesPaidRoute = '/succesPaidRoute/';
+
+// Profile
+const profileRoute = '/profileRoute/';
+const editInfoRoute = '/editInfoRoute/';
+const resetPasswordRoute = '/resetPasswordRoute/';
+const recommendedRoute = '/recommendedRoute/';

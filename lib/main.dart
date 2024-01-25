@@ -20,6 +20,10 @@ import 'package:route_in_live/dashboard/home/paysuccessful.dart';
 import 'package:route_in_live/dashboard/home/purchase.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/LiveReservation.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/sellProduct.dart';
+import 'package:route_in_live/dashboard/profile/editInfo.dart';
+import 'package:route_in_live/dashboard/profile/profile.dart';
+import 'package:route_in_live/dashboard/profile/recommendedPerson.dart';
+import 'package:route_in_live/dashboard/profile/resetPassword.dart';
 import 'package:route_in_live/dashboard/store/prodcutInfo.dart';
 import 'package:route_in_live/dashboard/store/successfulPaid.dart';
 import 'authentication/pass_sign_page.dart';
@@ -114,6 +118,12 @@ class MyApp extends StatelessWidget {
         productInfoRoute: (context) => const ProductInformation(),
         storePurchaseRoute: (context) => const StorePurchase(),
         succesPaidRoute: (context) => const SuccessfulPaid(),
+
+        // ** Profile Route **
+        profileRoute: (context) => const Profile(),
+        editInfoRoute: (context) => const EditInformation(),
+        resetPasswordRoute: (context) => const ResetPassword(),
+        recommendedRoute: (context) => const RecommendedPerson(),
       },
     );
   }

@@ -64,8 +64,8 @@ class _SellProductState extends State<SellProduct> {
             Container(
               margin: const EdgeInsets.all(8.0),
               height: 40,
-              padding:
-                  EdgeInsets.only(left: 8.0, right: 0.0, top: 0.0, bottom: 0.0),
+              padding: const EdgeInsets.only(
+                  left: 8.0, right: 0.0, top: 0.0, bottom: 0.0),
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 color: MyColor.black.withOpacity(0.05),
@@ -290,7 +290,7 @@ class _SellProductState extends State<SellProduct> {
                                                 fontFamily: 'Montserrat-Medium',
                                               ),
                                             ),
-                                            WidgetSpan(
+                                            const WidgetSpan(
                                                 child: SizedBox(
                                               width: 0,
                                             )),
@@ -384,7 +384,7 @@ class _SellProductState extends State<SellProduct> {
                                               fontFamily: 'Montserrat-Medium',
                                             ),
                                           ),
-                                          WidgetSpan(
+                                          const WidgetSpan(
                                               child: SizedBox(
                                             width: 0,
                                           )),
@@ -949,8 +949,8 @@ class _SellProductState extends State<SellProduct> {
           fontFamily: 'NotoSansKR-Medium',
         ),
       ),
-      contentPadding: EdgeInsets.all(0.0),
-      actionsPadding: EdgeInsets.only(top: 0, bottom: 10),
+      contentPadding: const EdgeInsets.all(0.0),
+      actionsPadding: const EdgeInsets.only(top: 0, bottom: 10),
       actions: [
         const Divider(
           thickness: 1,

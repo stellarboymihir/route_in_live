@@ -59,7 +59,7 @@ class _EditProfileState extends State<EditProfile> {
           key: _editKey,
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 // height: MediaQuery.of(context).size.height * 0.05,
                 height: 40,
               ),
