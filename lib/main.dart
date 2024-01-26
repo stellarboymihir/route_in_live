@@ -20,14 +20,19 @@ import 'package:route_in_live/dashboard/home/paysuccessful.dart';
 import 'package:route_in_live/dashboard/home/purchase.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/LiveReservation.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/sellProduct.dart';
+import 'package:route_in_live/dashboard/profile/Celebrity.dart';
 import 'package:route_in_live/dashboard/profile/Edit/editInfo.dart';
+import 'package:route_in_live/dashboard/profile/Info/Info.dart';
 import 'package:route_in_live/dashboard/profile/ShoppingInfo/deliveryDestination.dart';
+import 'package:route_in_live/dashboard/profile/notification/notification.dart';
 import 'package:route_in_live/dashboard/profile/profile.dart';
 import 'package:route_in_live/dashboard/profile/Edit/recommendedPerson.dart';
 import 'package:route_in_live/dashboard/profile/Edit/resetPassword.dart';
 import 'package:route_in_live/dashboard/profile/ShoppingInfo/shoppingInfo.dart';
 import 'package:route_in_live/dashboard/profile/ShoppingInfo/trackingRoute.dart';
 import 'package:route_in_live/dashboard/profile/Edit/withdrawalApp.dart';
+import 'package:route_in_live/dashboard/profile/service/frequently.dart';
+import 'package:route_in_live/dashboard/profile/service/noticeService.dart';
 import 'package:route_in_live/dashboard/store/prodcutInfo.dart';
 import 'package:route_in_live/dashboard/store/successfulPaid.dart';
 import 'authentication/pass_sign_page.dart';
@@ -46,8 +51,11 @@ import 'dashboard/feed/FeedScreen/Writing.dart';
 import 'dashboard/feed/FeedScreen/comment.dart';
 import 'dashboard/feed/feed.dart';
 import 'dashboard/home/regsiterbroadcast/StoredItem.dart';
-import 'dashboard/profile/orderTracking.dart';
+import 'dashboard/profile/ShoppingInfo/orderTracking.dart';
 import 'dashboard/profile/Edit/pointRoute.dart';
+import 'dashboard/profile/service/personal.dart';
+import 'dashboard/profile/service/service.dart';
+import 'dashboard/profile/service/terms.dart';
 import 'dashboard/store/store.dart';
 import 'dashboard/store/storePurchase.dart';
 
@@ -127,15 +135,33 @@ class MyApp extends StatelessWidget {
 
         // ** Profile Route **
         profileRoute: (context) => const Profile(),
+        celebrityRoute: (context) => const CelebrityApp(),
+
+        // ** Edit Info Route **
         editInfoRoute: (context) => const EditInformation(),
         resetPasswordRoute: (context) => const ResetPassword(),
         recommendedRoute: (context) => const RecommendedPerson(),
         pointRoute: (context) => const PointRoute(),
         withdrawalAppRoute: (context) => const WithdrawalApplication(),
+
+        // ** Shopping Info Route **
         shoppingInfoRoute: (context) => const ShoppingInformation(),
         trackingRoute: (context) => const TrackingRoute(),
         orderTrackingRoute: (context) => const OrderTracking(),
         deliveryRoute: (context) => const Delivery(),
+
+        //** Service **
+        serviceRoute: (context) => const Service(),
+        noticesServiceRoute: (context) => const NoticeService(),
+        frequentlyRoute: (context) => const Frequently(),
+
+        //  ** Notification Setting **
+        notificationRoute: (context) => const SetNotification(),
+
+        //   ** Service Information
+        serviceInformationRoute: (context) => const Information(),
+        termsRoute: (context) => const TermsPage(),
+        personalRoute: (context) => const Personal(),
       },
     );
   }

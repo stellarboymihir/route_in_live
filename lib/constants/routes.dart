@@ -53,12 +53,30 @@ const succesPaidRoute = '/succesPaidRoute/';
 
 // Profile
 const profileRoute = '/profileRoute/';
+const celebrityRoute = '/celebrityRoute/';
+
+// EditInfoRoute
 const editInfoRoute = '/editInfoRoute/';
 const resetPasswordRoute = '/resetPasswordRoute/';
 const recommendedRoute = '/recommendedRoute/';
 const pointRoute = '/pointRoute/';
 const withdrawalAppRoute = '/withdrawalAppRoute/';
+
+// Shopping Route
 const shoppingInfoRoute = '/shoppingInfoRoute/';
 const trackingRoute = '/trackingRoute/';
 const orderTrackingRoute = '/orderTrackingRoute/';
 const deliveryRoute = '/deliveryRoute/';
+
+// Service Route
+const serviceRoute = '/serviceRoute/';
+const noticesServiceRoute = '/noticesRoute/';
+const frequentlyRoute = '/frequentlyRoute/';
+
+// Notification Route
+const notificationRoute = '/notificationRoute/';
+
+//  Service information
+const serviceInformationRoute = '/serviceInformationRoute/';
+const termsRoute = '/termsRoute/';
+const personalRoute = '/personalRoute/';

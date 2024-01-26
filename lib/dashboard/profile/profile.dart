@@ -167,45 +167,60 @@ class _ProfileState extends State<Profile> {
           const Divider(
             thickness: 0,
           ),
-          Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-            height: 40,
-            child: Text(
-              'Service Center',
-              style: MyStyle.tx14B.copyWith(
-                fontSize: 14,
-                fontFamily: 'NotoSansKR-Regular',
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, serviceRoute);
+            },
+            child: Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+              height: 40,
+              child: Text(
+                'Service Center',
+                style: MyStyle.tx14B.copyWith(
+                  fontSize: 14,
+                  fontFamily: 'NotoSansKR-Regular',
+                ),
               ),
             ),
           ),
           const Divider(
             thickness: 0,
           ),
-          Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-            height: 40,
-            child: Text(
-              'Notification Settings',
-              style: MyStyle.tx14B.copyWith(
-                fontSize: 14,
-                fontFamily: 'NotoSansKR-Regular',
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, notificationRoute);
+            },
+            child: Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+              height: 40,
+              child: Text(
+                'Notification Settings',
+                style: MyStyle.tx14B.copyWith(
+                  fontSize: 14,
+                  fontFamily: 'NotoSansKR-Regular',
+                ),
               ),
             ),
           ),
           const Divider(
             thickness: 0,
           ),
-          Container(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-            height: 40,
-            child: Text(
-              'Service Information',
-              style: MyStyle.tx14B.copyWith(
-                fontSize: 14,
-                fontFamily: 'NotoSansKR-Regular',
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, serviceInformationRoute);
+            },
+            child: Container(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+              height: 40,
+              child: Text(
+                'Service Information',
+                style: MyStyle.tx14B.copyWith(
+                  fontSize: 14,
+                  fontFamily: 'NotoSansKR-Regular',
+                ),
               ),
             ),
           ),
@@ -215,22 +230,27 @@ class _ProfileState extends State<Profile> {
           const SizedBox(
             height: 8,
           ),
-          Container(
-            height: 44,
-            // width: 115,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8.0,
-            ),
-            margin: const EdgeInsets.symmetric(
-              horizontal: 8.0,
-            ),
-            decoration: const BoxDecoration(
-              color: MyColor.purple,
-            ),
-            child: const Center(
-              child: Text(
-                'Celebrity application',
-                style: MyStyle.tx14W,
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, celebrityRoute);
+            },
+            child: Container(
+              height: 44,
+              // width: 115,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8.0,
+              ),
+              margin: const EdgeInsets.symmetric(
+                horizontal: 8.0,
+              ),
+              decoration: const BoxDecoration(
+                color: MyColor.purple,
+              ),
+              child: const Center(
+                child: Text(
+                  'Celebrity application',
+                  style: MyStyle.tx14W,
+                ),
               ),
             ),
           ),
