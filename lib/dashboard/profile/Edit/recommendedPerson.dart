@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../values/MyColor.dart';
-import '../../values/MyStyle.dart';
+import '../../../values/MyColor.dart';
+import '../../../values/MyStyle.dart';
 
 class RecommendedPerson extends StatefulWidget {
   const RecommendedPerson({super.key});

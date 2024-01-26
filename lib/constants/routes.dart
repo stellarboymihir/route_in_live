@@ -60,3 +60,5 @@ const pointRoute = '/pointRoute/';
 const withdrawalAppRoute = '/withdrawalAppRoute/';
 const shoppingInfoRoute = '/shoppingInfoRoute/';
 const trackingRoute = '/trackingRoute/';
+const orderTrackingRoute = '/orderTrackingRoute/';
+const deliveryRoute = '/deliveryRoute/';

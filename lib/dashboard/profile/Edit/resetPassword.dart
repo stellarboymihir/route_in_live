@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:route_in_live/constants/routes.dart';
 
-import '../../values/MyColor.dart';
-import '../../values/MyStyle.dart';
+import '../../../values/MyColor.dart';
+import '../../../values/MyStyle.dart';
 
 class ResetPassword extends StatefulWidget {
   const ResetPassword({super.key});

@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:route_in_live/constants/routes.dart';
 import 'package:route_in_live/values/MyColor.dart';
-import '../../values/MyStyle.dart';
+import '../../../values/MyStyle.dart';
 
 class EditInformation extends StatefulWidget {
   const EditInformation({super.key});

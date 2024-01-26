@@ -20,13 +20,14 @@ import 'package:route_in_live/dashboard/home/paysuccessful.dart';
 import 'package:route_in_live/dashboard/home/purchase.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/LiveReservation.dart';
 import 'package:route_in_live/dashboard/home/regsiterbroadcast/sellProduct.dart';
-import 'package:route_in_live/dashboard/profile/editInfo.dart';
+import 'package:route_in_live/dashboard/profile/Edit/editInfo.dart';
+import 'package:route_in_live/dashboard/profile/ShoppingInfo/deliveryDestination.dart';
 import 'package:route_in_live/dashboard/profile/profile.dart';
-import 'package:route_in_live/dashboard/profile/recommendedPerson.dart';
-import 'package:route_in_live/dashboard/profile/resetPassword.dart';
-import 'package:route_in_live/dashboard/profile/shoppingInfo.dart';
-import 'package:route_in_live/dashboard/profile/trackingRoute.dart';
-import 'package:route_in_live/dashboard/profile/withdrawalApp.dart';
+import 'package:route_in_live/dashboard/profile/Edit/recommendedPerson.dart';
+import 'package:route_in_live/dashboard/profile/Edit/resetPassword.dart';
+import 'package:route_in_live/dashboard/profile/ShoppingInfo/shoppingInfo.dart';
+import 'package:route_in_live/dashboard/profile/ShoppingInfo/trackingRoute.dart';
+import 'package:route_in_live/dashboard/profile/Edit/withdrawalApp.dart';
 import 'package:route_in_live/dashboard/store/prodcutInfo.dart';
 import 'package:route_in_live/dashboard/store/successfulPaid.dart';
 import 'authentication/pass_sign_page.dart';
@@ -45,7 +46,8 @@ import 'dashboard/feed/FeedScreen/Writing.dart';
 import 'dashboard/feed/FeedScreen/comment.dart';
 import 'dashboard/feed/feed.dart';
 import 'dashboard/home/regsiterbroadcast/StoredItem.dart';
-import 'dashboard/profile/pointRoute.dart';
+import 'dashboard/profile/orderTracking.dart';
+import 'dashboard/profile/Edit/pointRoute.dart';
 import 'dashboard/store/store.dart';
 import 'dashboard/store/storePurchase.dart';
 
@@ -132,6 +134,8 @@ class MyApp extends StatelessWidget {
         withdrawalAppRoute: (context) => const WithdrawalApplication(),
         shoppingInfoRoute: (context) => const ShoppingInformation(),
         trackingRoute: (context) => const TrackingRoute(),
+        orderTrackingRoute: (context) => const OrderTracking(),
+        deliveryRoute: (context) => const Delivery(),
       },
     );
   }

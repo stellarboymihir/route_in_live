@@ -63,7 +63,7 @@ class MyStyle {
 
   static const tx12O = TextStyle(
     fontSize: 12,
-    fontFamily: 'NotoSansKR',
+    fontFamily: 'NotoSansKR-Medium',
     fontWeight: FontWeight.w300,
     color: MyColor.orange,
   );
