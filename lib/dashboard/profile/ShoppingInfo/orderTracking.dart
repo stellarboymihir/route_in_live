@@ -90,7 +90,7 @@ class _OrderTrackingState extends State<OrderTracking> {
                       index: 1,
                       text: 'It\'s being delivered',
                       textColor:
-                          selectedIndex == 0 ? MyColor.black : MyColor.white,
+                          selectedIndex == 1 ? MyColor.white : MyColor.black,
                       onTap: (index) {
                         setState(() {
                           selectedIndex = index;
@@ -112,7 +112,7 @@ class _OrderTrackingState extends State<OrderTracking> {
                       index: 2,
                       text: 'Delivery complete',
                       textColor:
-                          selectedIndex == 0 ? MyColor.black : MyColor.white,
+                          selectedIndex == 2 ? MyColor.white : MyColor.black,
                       onTap: (index) {
                         setState(() {
                           selectedIndex = index;

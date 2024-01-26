@@ -63,6 +63,12 @@ class _RecommendedPersonState extends State<RecommendedPerson> {
                     return null;
                   },
                   decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(1),
+                      borderSide: const BorderSide(
+                        color: MyColor.orange,
+                      ),
+                    ),
                     contentPadding: const EdgeInsets.all(8.0),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(1),
@@ -229,12 +235,12 @@ class _RecommendedPersonState extends State<RecommendedPerson> {
           color: MyColor.black.withOpacity(0.5),
         ),
       ),
-      contentPadding:
-          const EdgeInsets.only(left: 8, right: 8, top: 10, bottom: 0),
-      actionsPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+      // contentPadding:
+      //     const EdgeInsets.only(left: 8, right: 8, top: 10, bottom: 0),
+      // actionsPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
       actions: [
         const Divider(
-          thickness: 0,
+          thickness: 1,
         ),
         InkWell(
           onTap: () {
@@ -243,7 +249,7 @@ class _RecommendedPersonState extends State<RecommendedPerson> {
             // Navigator.pushNamed(context, recommendedRoute);
           },
           child: SizedBox(
-            height: 40,
+            height: 30,
             child: Center(
               child: Text(
                 'Confirm',

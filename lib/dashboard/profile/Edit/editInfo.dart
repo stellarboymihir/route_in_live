@@ -49,243 +49,245 @@ class _EditInformationState extends State<EditInformation> {
           ),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: InkWell(
-                onTap: () {
-                  imageBottomSheet();
-                },
-                child: Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        // gradient: MyColor.circleOrange,
-                        border: Border.all(width: 3, color: MyColor.orange),
-                      ),
-                      child: Center(
-                        child: Image.asset(
-                          'assets/images/img7.png',
-                          width: 152,
-                          height: 152,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: InkWell(
+                  onTap: () {
+                    imageBottomSheet();
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          // gradient: MyColor.circleOrange,
+                          border: Border.all(width: 3, color: MyColor.orange),
+                        ),
+                        child: Center(
+                          child: Image.asset(
+                            'assets/images/img7.png',
+                            width: 152,
+                            height: 152,
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      top: 5,
-                      left: 150,
-                      right: 10,
-                      child: InkWell(
-                        onTap: () {
-                          // showDialog(
-                          //     context: context,
-                          //     builder: (BuildContext context) {
-                          //       return deleteDialog();
-                          //     });
-                        },
-                        child: Image.asset(
-                          'assets/icons/Circle.png',
-                          color: MyColor.orange,
-                          height: 24,
-                          width: 24,
+                      Positioned(
+                        top: 5,
+                        left: 150,
+                        right: 10,
+                        child: InkWell(
+                          onTap: () {
+                            // showDialog(
+                            //     context: context,
+                            //     builder: (BuildContext context) {
+                            //       return deleteDialog();
+                            //     });
+                          },
+                          child: Image.asset(
+                            'assets/icons/Circle.png',
+                            color: MyColor.orange,
+                            height: 24,
+                            width: 24,
+                          ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  width: 40,
-                ),
-                // TextField(
-                //   readOnly: true,
-                //   decoration: InputDecoration(
-                //     labelText: "Input Nama",
-                //     hintText: "Input Nama",
-                //     border: OutlineInputBorder(
-                //       borderRadius: BorderRadius.circular(20.0),
-                //     ),
-                //   ),
-                // ),
+              SizedBox(
+                height: 30,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    width: 40,
+                  ),
+                  // TextField(
+                  //   readOnly: true,
+                  //   decoration: InputDecoration(
+                  //     labelText: "Input Nama",
+                  //     hintText: "Input Nama",
+                  //     border: OutlineInputBorder(
+                  //       borderRadius: BorderRadius.circular(20.0),
+                  //     ),
+                  //   ),
+                  // ),
 
-                Container(
-                  width: 100,
-                  height: 30,
-                  child: TextField(
-                    style: MyStyle.tx20B.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-                    // enabled: false,
-                    // readOnly: false,
-                    onChanged: (value) {},
-                    decoration: InputDecoration(
-                      // border: OutlineInputBorder(),
-                      border: InputBorder.none,
-                      hintText: "Run",
-                      hintStyle: MyStyle.tx20B.copyWith(
+                  Container(
+                    width: 100,
+                    height: 30,
+                    child: TextField(
+                      style: MyStyle.tx20B.copyWith(
                         fontWeight: FontWeight.w700,
                       ),
+                      // enabled: false,
+                      // readOnly: false,
+                      onChanged: (value) {},
+                      decoration: InputDecoration(
+                        // border: OutlineInputBorder(),
+                        border: InputBorder.none,
+                        hintText: "Run",
+                        hintStyle: MyStyle.tx20B.copyWith(
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // TextFormField(
+                  //   controller: editName,
+                  //   decoration: InputDecoration(
+                  //     hintText: 'Run',
+                  //     hintStyle: MyStyle.tx20B.copyWith(
+                  //       fontWeight: FontWeight.w700,
+                  //     ),
+                  //   ),
+                  //   validator: (String? value) {
+                  //     if (value == null || value.isEmpty) {
+                  //       return 'Please enter some text';
+                  //     }
+                  //     return null;
+                  //   },
+                  // ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Image.asset(
+                    'assets/icons/pencil.png',
+                    color: MyColor.yellowamber,
+                    height: 24,
+                    width: 24,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                height: 44,
+                width: MediaQuery.of(context).size.width,
+                color: MyColor.orange,
+                child: Center(
+                  child: Text(
+                    'Save',
+                    style: MyStyle.tx16W,
+                  ),
+                ),
+              ),
+              Divider(
+                thickness: 0,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, resetPasswordRoute);
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  height: 40,
+                  child: Text(
+                    'Change Password',
+                    style: MyStyle.tx14B.copyWith(
+                      fontSize: 14,
+                      fontFamily: 'NotoSansKR-Regular',
                     ),
                   ),
                 ),
-                // TextFormField(
-                //   controller: editName,
-                //   decoration: InputDecoration(
-                //     hintText: 'Run',
-                //     hintStyle: MyStyle.tx20B.copyWith(
-                //       fontWeight: FontWeight.w700,
-                //     ),
-                //   ),
-                //   validator: (String? value) {
-                //     if (value == null || value.isEmpty) {
-                //       return 'Please enter some text';
-                //     }
-                //     return null;
-                //   },
-                // ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Image.asset(
-                  'assets/icons/pencil.png',
-                  color: MyColor.yellowamber,
-                  height: 24,
-                  width: 24,
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Container(
-              height: 44,
-              width: MediaQuery.of(context).size.width,
-              color: MyColor.orange,
-              child: Center(
-                child: Text(
-                  'Save',
-                  style: MyStyle.tx16W,
-                ),
               ),
-            ),
-            Divider(
-              thickness: 0,
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, resetPasswordRoute);
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                height: 40,
-                child: Text(
-                  'Change Password',
-                  style: MyStyle.tx14B.copyWith(
-                    fontSize: 14,
-                    fontFamily: 'NotoSansKR-Regular',
+              const Divider(
+                thickness: 0,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, recommendedRoute);
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  height: 40,
+                  child: Text(
+                    'Referral registration',
+                    style: MyStyle.tx14B.copyWith(
+                      fontSize: 14,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
                   ),
                 ),
               ),
-            ),
-            const Divider(
-              thickness: 0,
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, recommendedRoute);
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                height: 40,
-                child: Text(
-                  'Referral registration',
-                  style: MyStyle.tx14B.copyWith(
-                    fontSize: 14,
-                    fontFamily: 'NotoSansKR-Regular',
+              const Divider(
+                thickness: 0,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, pointRoute);
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  height: 40,
+                  child: Text(
+                    'Point',
+                    style: MyStyle.tx14B.copyWith(
+                      fontSize: 14,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
                   ),
                 ),
               ),
-            ),
-            const Divider(
-              thickness: 0,
-            ),
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, pointRoute);
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                height: 40,
-                child: Text(
-                  'Point',
-                  style: MyStyle.tx14B.copyWith(
-                    fontSize: 14,
-                    fontFamily: 'NotoSansKR-Regular',
+              const Divider(
+                thickness: 0,
+              ),
+              InkWell(
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return logOutDialog();
+                      });
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  height: 40,
+                  child: Text(
+                    'Log Out',
+                    style: MyStyle.tx14B.copyWith(
+                      fontSize: 14,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
                   ),
                 ),
               ),
-            ),
-            const Divider(
-              thickness: 0,
-            ),
-            InkWell(
-              onTap: () {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return logOutDialog();
-                    });
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                height: 40,
-                child: Text(
-                  'Log Out',
-                  style: MyStyle.tx14B.copyWith(
-                    fontSize: 14,
-                    fontFamily: 'NotoSansKR-Regular',
+              const Divider(
+                thickness: 0,
+              ),
+              InkWell(
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return membershipDialog();
+                      });
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 10.0),
+                  height: 40,
+                  child: Text(
+                    'Withdrawal',
+                    style: MyStyle.tx14B.copyWith(
+                      fontSize: 14,
+                      fontFamily: 'NotoSansKR-Regular',
+                    ),
                   ),
                 ),
               ),
-            ),
-            const Divider(
-              thickness: 0,
-            ),
-            InkWell(
-              onTap: () {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return membershipDialog();
-                    });
-              },
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                height: 40,
-                child: Text(
-                  'Withdrawal',
-                  style: MyStyle.tx14B.copyWith(
-                    fontSize: 14,
-                    fontFamily: 'NotoSansKR-Regular',
-                  ),
-                ),
+              const Divider(
+                thickness: 0,
               ),
-            ),
-            const Divider(
-              thickness: 0,
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

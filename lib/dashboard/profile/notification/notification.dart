@@ -57,6 +57,7 @@ class _SetNotificationState extends State<SetNotification> {
                   padding: 4.0,
                   showOnOff: false,
                   onToggle: (val) {
+                    status0 = val;
                     // Show the dialog when the switch is toggled
                     showDialog(
                       context: context,
@@ -130,7 +131,7 @@ class _SetNotificationState extends State<SetNotification> {
                     showOnOff: false,
                     onToggle: (val) {
                       setState(() {
-                        // status1 = val;
+                        status1 = val;
                         showDialog(
                           context: context,
                           builder: (context) {
@@ -193,64 +194,28 @@ class _SetNotificationState extends State<SetNotification> {
                   style: MyStyle.tx14B.copyWith(fontSize: 14),
                 ),
                 const Spacer(),
-                FlutterSwitch(
-                    width: 51.0,
-                    height: 32.0,
-                    toggleSize: 20.0,
-                    value: status2,
-                    borderRadius: 30.0,
-                    padding: 4.0,
-                    showOnOff: false,
-                    onToggle: (val) {
-                      setState(() {
-                        // status2 = val;
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: Center(
-                                child: Text(
-                                  'Push notification has been changed to '
-                                  'consent and reception status.',
-                                  textAlign: TextAlign.center,
-                                  style: MyStyle.tx17B
-                                      .copyWith(fontWeight: FontWeight.w700),
-                                ),
-                              ),
-                              actionsPadding: EdgeInsets.zero,
-                              contentPadding: EdgeInsets.zero,
-                              actions: [
-                                // Cancel button
-                                Divider(
-                                  thickness: 1,
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    // Close the dialog and keep the switch value unchanged
-                                    Navigator.pop(context);
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return pushDialog();
-                                        });
-                                  },
-                                  child: Center(
-                                    child: Text(
-                                      'Confirm',
-                                      style: MyStyle.tx14B.copyWith(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                // OK button
-                              ],
-                            );
-                          },
-                        );
-                      });
-                    }),
+                InkWell(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return consentDialog();
+                        });
+                  },
+                  child: FlutterSwitch(
+                      width: 51.0,
+                      height: 32.0,
+                      toggleSize: 20.0,
+                      value: status2,
+                      borderRadius: 30.0,
+                      padding: 4.0,
+                      showOnOff: false,
+                      onToggle: (val) {
+                        setState(() {
+                          status2 = val;
+                        });
+                      }),
+                ),
               ],
             ),
             const SizedBox(
@@ -266,64 +231,28 @@ class _SetNotificationState extends State<SetNotification> {
                   style: MyStyle.tx14B.copyWith(fontSize: 14),
                 ),
                 const Spacer(),
-                FlutterSwitch(
-                    width: 51.0,
-                    height: 32.0,
-                    toggleSize: 20.0,
-                    value: status3,
-                    borderRadius: 30.0,
-                    padding: 4.0,
-                    showOnOff: false,
-                    onToggle: (val) {
-                      setState(() {
-                        // status3 = val;
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: Center(
-                                child: Text(
-                                  'Push notification has been changed to '
-                                  'consent and reception status.',
-                                  textAlign: TextAlign.center,
-                                  style: MyStyle.tx17B
-                                      .copyWith(fontWeight: FontWeight.w700),
-                                ),
-                              ),
-                              actionsPadding: EdgeInsets.zero,
-                              contentPadding: EdgeInsets.zero,
-                              actions: [
-                                // Cancel button
-                                Divider(
-                                  thickness: 1,
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    // Close the dialog and keep the switch value unchanged
-                                    Navigator.pop(context);
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return pushDialog();
-                                        });
-                                  },
-                                  child: Center(
-                                    child: Text(
-                                      'Confirm',
-                                      style: MyStyle.tx14B.copyWith(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                // OK button
-                              ],
-                            );
-                          },
-                        );
-                      });
-                    }),
+                InkWell(
+                  onTap: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return consentDialog();
+                        });
+                  },
+                  child: FlutterSwitch(
+                      width: 51.0,
+                      height: 32.0,
+                      toggleSize: 20.0,
+                      value: status3,
+                      borderRadius: 30.0,
+                      padding: 4.0,
+                      showOnOff: false,
+                      onToggle: (val) {
+                        setState(() {
+                          status3 = val;
+                        });
+                      }),
+                ),
               ],
             ),
             const SizedBox(
@@ -335,6 +264,48 @@ class _SetNotificationState extends State<SetNotification> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget consentDialog() {
+    return AlertDialog(
+      title: Center(
+        child: Text(
+          'Push notification has been changed to '
+          'consent and reception status.',
+          textAlign: TextAlign.center,
+          style: MyStyle.tx17B.copyWith(fontWeight: FontWeight.w700),
+        ),
+      ),
+      actionsPadding: EdgeInsets.zero,
+      contentPadding: EdgeInsets.zero,
+      actions: [
+        // Cancel button
+        Divider(
+          thickness: 1,
+        ),
+        TextButton(
+          onPressed: () {
+            // Close the dialog and keep the switch value unchanged
+            Navigator.pop(context);
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return pushDialog();
+                });
+          },
+          child: Center(
+            child: Text(
+              'Confirm',
+              style: MyStyle.tx14B.copyWith(
+                fontWeight: FontWeight.w400,
+                fontSize: 14,
+              ),
+            ),
+          ),
+        ),
+        // OK button
+      ],
     );
   }
 

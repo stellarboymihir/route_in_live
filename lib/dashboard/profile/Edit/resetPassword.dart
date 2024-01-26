@@ -189,9 +189,9 @@ class _ResetPasswordState extends State<ResetPassword> {
           color: MyColor.black.withOpacity(0.5),
         ),
       ),
-      contentPadding:
-          const EdgeInsets.only(left: 8, right: 8, top: 10, bottom: 0),
-      actionsPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+      // contentPadding:
+      //     const EdgeInsets.only(left: 8, right: 8, top: 10, bottom: 0),
+      // actionsPadding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
       actions: [
         const Divider(
           thickness: 0,

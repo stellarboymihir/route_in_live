@@ -184,6 +184,7 @@ class _TrackingRouteState extends State<TrackingRoute> {
           Container(
             padding: const EdgeInsets.all(8.0),
             margin: const EdgeInsets.symmetric(vertical: 8.0),
+            width: MediaQuery.of(context).size.width,
             color: MyColor.white,
             child: Column(
               children: [
@@ -257,6 +258,8 @@ class _TrackingRouteState extends State<TrackingRoute> {
                               child: Container(
                                 height: 24,
                                 padding: EdgeInsets.all(2.0),
+                                margin: EdgeInsets.symmetric(
+                                    horizontal: 6.0, vertical: 2.0),
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                     color: MyColor.black.withOpacity(0.1),

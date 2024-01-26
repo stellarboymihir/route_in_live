@@ -35,16 +35,21 @@ class _SuccessfulPaidState extends State<SuccessfulPaid> {
               style: MyStyle.tx17B.copyWith(color: MyColor.orange),
             ),
             Spacer(),
-            Container(
-              height: 46,
-              color: MyColor.yellowamber,
-              child: Center(
-                child: Text(
-                  'Order check',
-                  style: MyStyle.tx16B.copyWith(
-                    fontWeight: FontWeight.w500,
-                    color: MyColor.white,
-                    fontFamily: 'NotoSansKR-Medium',
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, shoppingInfoRoute);
+              },
+              child: Container(
+                height: 46,
+                color: MyColor.yellowamber,
+                child: Center(
+                  child: Text(
+                    'Order check',
+                    style: MyStyle.tx16B.copyWith(
+                      fontWeight: FontWeight.w500,
+                      color: MyColor.white,
+                      fontFamily: 'NotoSansKR-Medium',
+                    ),
                   ),
                 ),
               ),

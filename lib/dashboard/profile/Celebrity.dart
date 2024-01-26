@@ -320,7 +320,6 @@ class _CelebrityAppState extends State<CelebrityApp> {
                   height: 5,
                 ),
                 SizedBox(
-                  height: 134,
                   width: MediaQuery.of(context).size.width,
                   child: TextFormField(
                     validator: (value) {
@@ -355,7 +354,7 @@ class _CelebrityAppState extends State<CelebrityApp> {
                         color: MyColor.orangeO,
                       ),
                     ),
-                    maxLines: 10,
+                    maxLines: 5,
                     minLines: 1,
                     style: MyStyle.tx14O,
                     controller: activityController,
@@ -365,7 +364,8 @@ class _CelebrityAppState extends State<CelebrityApp> {
                     },
                   ),
                 ),
-                const SizedBox(
+
+                SizedBox(
                   height: 10,
                 ),
                 InkWell(
