@@ -4,9 +4,8 @@ A Flutter-based **route_in_live** application that allows users to connect, shar
 
 ## Features
 
-- **User Authentication**: Sign up, log in, and manage user accounts securely.
+
 - **News Feed**: Display a feed of posts from other users.
-- **Live Streaming**: Users can do live streaming
 - **Product Details**: Browse product categories, View product details
 - **Product Cart**: Add products to the cart
 - **Order Details**: Place orders & Track order history
